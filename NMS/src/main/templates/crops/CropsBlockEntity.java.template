@@ -1,0 +1,104 @@
+package com.bgsoftware.superiorskyblock.nms.${NMS_VERSION}.crops;
+
+import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
+import com.bgsoftware.superiorskyblock.api.island.Island;
+import com.bgsoftware.superiorskyblock.core.ChunkPosition;
+import com.bgsoftware.superiorskyblock.core.collections.Chunk2ObjectMap;
+import com.bgsoftware.superiorskyblock.nms.${NMS_VERSION}.NMSUtils;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.LevelChunk;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class CropsBlockEntity extends BlockEntity {
+
+    private static final SuperiorSkyblockPlugin plugin = SuperiorSkyblockPlugin.getPlugin();
+
+    private static final Chunk2ObjectMap<CropsBlockEntity> tickingChunks = new Chunk2ObjectMap<>();
+
+    private final WeakReference<Island> island;
+    private final WeakReference<LevelChunk> chunk;
+
+    private int currentTick = 0;
+
+    private double cachedCropGrowthMultiplier;
+
+    private CropsBlockEntity(Island island, LevelChunk levelChunk, BlockPos blockPos) {
+        super(${BLOCK_ENTITY_TYPE_VALUES_CLASS}.COMMAND_BLOCK, blockPos, levelChunk.getLevel().getBlockState(blockPos));
+        this.island = new WeakReference<>(island);
+        this.chunk = new WeakReference<>(levelChunk);
+        setLevel(levelChunk.getLevel());
+        levelChunk.getLevel().addBlockEntityTicker(new CropsTickingBlockEntity(this));
+        this.cachedCropGrowthMultiplier = island.getCropGrowthMultiplier() - 1;
+    }
+
+    public static void create(Island island, String worldName, LevelChunk levelChunk) {
+        int chunkX = levelChunk.locX;
+        int chunkZ = levelChunk.locZ;
+        long packedPos = NMSUtils.getChunkPackedPos(chunkX, chunkZ);
+        tickingChunks.computeIfAbsent(worldName, packedPos, () -> {
+            BlockPos blockPos = new BlockPos(chunkX << 4, 1, chunkZ << 4);
+            return new CropsBlockEntity(island, levelChunk, blockPos);
+        });
+    }
+
+    public static CropsBlockEntity remove(String worldName, long chunkPos) {
+        return tickingChunks.remove(worldName, chunkPos);
+    }
+
+    public static void forEachChunk(List<ChunkPosition> chunkPositions, Consumer<CropsBlockEntity> cropsBlockEntityConsumer) {
+        if (tickingChunks.isEmpty())
+            return;
+
+        chunkPositions.forEach(chunkPosition -> {
+            long chunkKey = chunkPosition.asPair();
+            CropsBlockEntity cropsBlockEntity = tickingChunks.get(chunkPosition.getWorldName(), chunkKey);
+            if (cropsBlockEntity != null)
+                cropsBlockEntityConsumer.accept(cropsBlockEntity);
+        });
+    }
+
+    public boolean isValidBlockState(BlockState state) {
+        return true;
+    }
+
+    private net.minecraft.world.level.ChunkPos getPos() {
+        LevelChunk levelChunk = this.chunk.get();
+        return levelChunk == null ? null : levelChunk.getPos();
+    }
+
+    public void remove() {
+        this.remove = true;
+    }
+
+    public void tick() {
+        if (++currentTick <= plugin.getSettings().getCropsInterval())
+            return;
+
+        LevelChunk levelChunk = this.chunk.get();
+        Island island = this.island.get();
+        ServerLevel serverLevel = (ServerLevel) getLevel();
+
+        if (levelChunk == null || island == null || serverLevel == null) {
+            remove();
+            return;
+        }
+
+        currentTick = 0;
+
+        int worldRandomTick = serverLevel.getGameRules().${GET_RANDOM_TICK_SPEED_METHOD};
+        int chunkRandomTickSpeed = (int) (worldRandomTick * this.cachedCropGrowthMultiplier * plugin.getSettings().getCropsInterval());
+        if (chunkRandomTickSpeed > 0)
+            CropsTickingMethod.tick(levelChunk, chunkRandomTickSpeed);
+    }
+
+    public void setCropGrowthMultiplier(double cropGrowthMultiplier) {
+        this.cachedCropGrowthMultiplier = cropGrowthMultiplier;
+    }
+
+}

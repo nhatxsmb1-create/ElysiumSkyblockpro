@@ -1,0 +1,89 @@
+package com.bgsoftware.superiorskyblock.core.menu.button.impl;
+
+import com.bgsoftware.common.annotations.Nullable;
+import com.bgsoftware.superiorskyblock.api.island.Island;
+import com.bgsoftware.superiorskyblock.api.island.bank.BankTransaction;
+import com.bgsoftware.superiorskyblock.api.menu.button.click.ButtonClickContext;
+import com.bgsoftware.superiorskyblock.api.menu.button.MenuTemplateButton;
+import com.bgsoftware.superiorskyblock.api.world.GameSound;
+import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
+import com.bgsoftware.superiorskyblock.core.menu.MenuActions;
+import com.bgsoftware.superiorskyblock.core.menu.button.AbstractMenuTemplateButton;
+import com.bgsoftware.superiorskyblock.core.menu.button.AbstractMenuViewButton;
+import com.bgsoftware.superiorskyblock.core.menu.button.MenuTemplateButtonImpl;
+import com.bgsoftware.superiorskyblock.core.menu.view.impl.IslandMenuView;
+
+import java.math.BigDecimal;
+
+public class BankDepositButton extends AbstractMenuViewButton<IslandMenuView> {
+
+    private BankDepositButton(AbstractMenuTemplateButton<IslandMenuView> templateButton, IslandMenuView menuView) {
+        super(templateButton, menuView);
+    }
+
+    @Override
+    public Template getTemplate() {
+        return (Template) super.getTemplate();
+    }
+
+    @Override
+    public void onButtonClick(ButtonClickContext<IslandMenuView> context) {
+        SuperiorPlayer clickedPlayer = plugin.getPlayers().getSuperiorPlayer(context.getPlayer());
+
+        Island island = menuView.getIsland();
+
+        BigDecimal amount = plugin.getProviders().getBankEconomyProvider().getBalance(clickedPlayer)
+                .multiply(getTemplate().depositPercentage);
+
+        BankTransaction bankTransaction = island.getIslandBank().depositMoney(clickedPlayer, amount);
+        MenuActions.handleDeposit(clickedPlayer, island, bankTransaction,
+                getTemplate().successSound, getTemplate().failSound, amount);
+    }
+
+    public static class Builder extends AbstractMenuTemplateButton.AbstractBuilder<IslandMenuView> {
+
+        private final double depositPercentage;
+        private GameSound successSound;
+        private GameSound failSound;
+
+        public Builder(double depositPercentage) {
+            this.depositPercentage = depositPercentage;
+        }
+
+        public Builder setSuccessSound(GameSound successSound) {
+            this.successSound = successSound;
+            return this;
+        }
+
+        public Builder setFailSound(GameSound failSound) {
+            this.failSound = failSound;
+            return this;
+        }
+
+        @Override
+        public MenuTemplateButton<IslandMenuView> build() {
+            this.clickSound = null;
+            return new Template(this, successSound, failSound, depositPercentage);
+        }
+
+    }
+
+    public static class Template extends MenuTemplateButtonImpl<IslandMenuView> {
+
+        @Nullable
+        private final GameSound successSound;
+        @Nullable
+        private final GameSound failSound;
+        private final BigDecimal depositPercentage;
+
+        Template(AbstractBuilder<IslandMenuView> builder, @Nullable GameSound successSound,
+                 @Nullable GameSound failSound, double depositPercentage) {
+            super(builder, BankDepositButton.class, BankDepositButton::new);
+            this.successSound = successSound;
+            this.failSound = failSound;
+            this.depositPercentage = BigDecimal.valueOf(depositPercentage / 100D);
+        }
+
+    }
+
+}

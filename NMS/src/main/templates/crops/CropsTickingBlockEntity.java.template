@@ -1,0 +1,30 @@
+package com.bgsoftware.superiorskyblock.nms.${NMS_VERSION}.crops;
+
+import com.bgsoftware.superiorskyblock.nms.${NMS_VERSION}.utils.NMSUtilsVersioned;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.TickingBlockEntity;
+
+public record CropsTickingBlockEntity(CropsBlockEntity cropsBlockEntity) implements TickingBlockEntity {
+
+
+    @Override
+    public void tick() {
+        cropsBlockEntity.tick();
+    }
+
+    @Override
+    public boolean isRemoved() {
+        return cropsBlockEntity.isRemoved();
+    }
+
+    @Override
+    public BlockPos getPos() {
+        return cropsBlockEntity.getBlockPos();
+    }
+
+    @Override
+    public String getType() {
+        return NMSUtilsVersioned.getBlockEntityTypeKey(cropsBlockEntity.getType()) + "";
+    }
+
+}
