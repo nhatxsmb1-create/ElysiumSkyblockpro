@@ -1,0 +1,32 @@
+name: Build Plugin Jar
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Cho phép bấm nút build thủ công bất cứ lúc nào
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Make gradlew executable
+      run: chmod +x gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Upload Artifact (.jar)
+      uses: actions/upload-artifact@v4
+      with:
+        name: ElysiumSkyblock-Plugin
+        path: build/libs/*.jar
