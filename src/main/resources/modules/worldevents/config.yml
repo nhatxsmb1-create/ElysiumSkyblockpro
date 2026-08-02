@@ -1,0 +1,29 @@
+# ============================================================
+#              ELYSIUM — World Events Module
+# ============================================================
+
+# Enable or disable the entire module.
+enabled: true
+
+# How often (in seconds) the scheduler checks each island
+# for a possible World Event. Default: 300 (5 minutes).
+check-interval-seconds: 300
+
+# Base percentage chance (0–100) for a World Event to fire
+# on any given check when instability is at 0%.
+base-event-chance: 5
+
+# Extra chance added per instability point.
+# At 50% instability the total chance = 5 + (50 × 0.5) = 30%
+# At 100% instability the total chance = 5 + (100 × 0.5) = 55%
+instability-chance-bonus: 0.5
+
+# Instability gained per mob kill on the island.
+instability-per-kill: 2
+
+# Instability gained per block mined on the island.
+instability-per-mine: 1
+
+# Instability passively lost every scheduler check.
+# Keeps islands from sitting at max instability forever.
+instability-decay-per-check: 3

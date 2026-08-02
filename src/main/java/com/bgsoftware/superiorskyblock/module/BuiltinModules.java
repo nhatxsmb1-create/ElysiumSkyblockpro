@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.module.bank.BankModule;
 import com.bgsoftware.superiorskyblock.module.generators.GeneratorsModule;
 import com.bgsoftware.superiorskyblock.module.missions.MissionsModule;
 import com.bgsoftware.superiorskyblock.module.upgrades.UpgradesModule;
+import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventsModule;
 
 import java.util.Locale;
 
@@ -14,6 +15,7 @@ public class BuiltinModules {
     public static final MissionsModule MISSIONS = new MissionsModule();
     public static final BankModule BANK = new BankModule();
     public static final UpgradesModule UPGRADES = new UpgradesModule();
+    public static final WorldEventsModule WORLD_EVENTS = new WorldEventsModule();
 
     private BuiltinModules() {
 
@@ -29,6 +31,8 @@ public class BuiltinModules {
                 return BANK;
             case "upgrades":
                 return UPGRADES;
+            case "worldevents":
+                return WORLD_EVENTS;
             default:
                 return null;
         }
