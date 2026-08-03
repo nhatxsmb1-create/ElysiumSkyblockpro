@@ -4,8 +4,11 @@ import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.SuperiorSkyblockAPI;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
+import com.bgsoftware.superiorskyblock.api.world.Dimension;
 import com.bgsoftware.superiorskyblock.module.worldevents.event.*;
+import com.bgsoftware.superiorskyblock.world.Dimensions;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
@@ -15,8 +18,6 @@ public class WorldEventScheduler {
     private final SuperiorSkyblockPlugin plugin;
     private final WorldEventsModule module;
     private BukkitTask task;
-
-    // Islands currently running an event – only one event per island at a time
     private final Set<UUID> activeEvents = new HashSet<>();
 
     public WorldEventScheduler(SuperiorSkyblockPlugin plugin, WorldEventsModule module) {
@@ -37,21 +38,16 @@ public class WorldEventScheduler {
         WorldEventsModule.Configuration cfg = module.getConfiguration();
         Random rng = new Random();
 
-        // Iterate over every loaded island
         for (Island island : SuperiorSkyblockAPI.getGrid().getIslands()) {
             UUID id = island.getUniqueId();
-            if (activeEvents.contains(id)) continue; // already busy
+            if (activeEvents.contains(id)) continue;
 
             int instability = module.getInstabilityManager().getInstability(id);
-
-            // Passive decay
             module.getInstabilityManager().addInstability(id, -cfg.getInstabilityDecayPerCheck());
 
-            // Roll for event
             double chance = cfg.getBaseEventChance() + instability * cfg.getInstabilityChanceBonus();
             if (rng.nextDouble() * 100 > chance) continue;
 
-            // Pick eligible event type weighted by instability + weight
             WorldEventType type = pickEventType(instability, rng);
             if (type == null) continue;
 
@@ -59,7 +55,6 @@ public class WorldEventScheduler {
         }
     }
 
-    /** Weighted random pick among event types whose minInstability is satisfied. */
     private WorldEventType pickEventType(int instability, Random rng) {
         List<WorldEventType> eligible = new ArrayList<>();
         int totalWeight = 0;
@@ -70,7 +65,6 @@ public class WorldEventScheduler {
             }
         }
         if (eligible.isEmpty()) return null;
-
         int roll = rng.nextInt(totalWeight);
         int cursor = 0;
         for (WorldEventType t : eligible) {
@@ -80,23 +74,21 @@ public class WorldEventScheduler {
         return eligible.get(eligible.size() - 1);
     }
 
-    /** Publicly callable (e.g. from admin command) to force an event on an island. */
     public void triggerEvent(Island island, WorldEventType type) {
-        Location center = island.getCenter(com.bgsoftware.superiorskyblock.world.Dimensions.NORMAL);
+        // Use fromEnvironment to get the overworld Dimension
+        Dimension normalDim = Dimensions.fromEnvironment(World.Environment.NORMAL);
+        Location center = island.getCenter(normalDim);
         if (center == null || center.getWorld() == null) return;
 
-        List<SuperiorPlayer> members = island.getIslandMembers(true);
-
-        // Notify island members
-        String prefix = "§d§l[World Event] §r";
-        for (SuperiorPlayer sp : members) {
+        for (SuperiorPlayer sp : island.getIslandMembers(true)) {
             if (sp.isOnline() && sp.asPlayer() != null) {
-                sp.asPlayer().sendTitle(
+                plugin.getNMSPlayers().sendTitle(
+                        sp.asPlayer(),
                         "§6" + type.getDisplayName(),
-                        "§eA world event has appeared on your island!",
+                        "§eA world event appeared on your island!",
                         10, 60, 20
                 );
-                sp.asPlayer().sendMessage(prefix + "§6" + type.getDisplayName()
+                sp.asPlayer().sendMessage("§d§l[World Event] §r§6" + type.getDisplayName()
                         + " §fhas appeared on your island!");
             }
         }

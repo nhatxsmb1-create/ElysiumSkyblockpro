@@ -9,12 +9,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-/**
- * 🌳 ANCIENT TREE EVENT
- * - Giant leaf/vine particle "tree" appears at island center
- * - Spawns a Dryad (Witch) with regeneration + nature theme
- * - Killing Dryad drops Nature Essence + Woodland Seed
- */
 public class AncientTreeEvent extends IslandWorldEvent {
 
     public AncientTreeEvent(Island island, Location center) {
@@ -23,10 +17,10 @@ public class AncientTreeEvent extends IslandWorldEvent {
 
     @Override
     public void start(SuperiorSkyblockPlugin plugin, Runnable onFinish) {
-        broadcast("§2🌳 §fAn §2Ancient Tree §fhas grown on your island! A §aDryad §fguards it!");
+        this.plugin = plugin;
+        broadcast("§2🌳 §fAn §2Ancient Tree §fhas grown! A §aDryad §fguards it!");
         World world = center.getWorld();
 
-        // Grow "tree" visually with particles
         BukkitRunnable treeAura = new BukkitRunnable() {
             double angle = 0;
             int elapsed  = 0;
@@ -39,16 +33,14 @@ public class AncientTreeEvent extends IslandWorldEvent {
                     double r    = Math.max(0.5, 3.0 - layer * 0.4);
                     double a    = Math.toRadians(angle + layer * 30);
                     Location p  = center.clone().add(Math.cos(a) * r, yOff, Math.sin(a) * r);
-                    world.spawnParticle(Particle.VILLAGER_HAPPY, p, 1, 0, 0, 0, 0);
-                    world.spawnParticle(Particle.COMPOSTER,      p, 1, 0.1, 0.1, 0.1, 0);
+                    fx(p, 1, "HAPPY_VILLAGER", "FIREWORKS_SPARK");
+                    fx(p, 1, "MOBSPAWNER_FLAMES");
                 }
             }
         };
         treeAura.runTaskTimer(plugin, 0L, 3L);
 
-        // Spawn Dryad (Witch)
-        Location bossLoc = center.clone().add(0, 1, 0);
-        Witch dryad = (Witch) world.spawnEntity(bossLoc, EntityType.WITCH);
+        Witch dryad = (Witch) world.spawnEntity(center.clone().add(0, 1, 0), EntityType.WITCH);
         dryad.setCustomName("§a🌿 Ancient Dryad");
         dryad.setCustomNameVisible(true);
         dryad.setMaxHealth(100.0);
@@ -56,29 +48,25 @@ public class AncientTreeEvent extends IslandWorldEvent {
         dryad.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 0, false, false));
         dryad.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,         Integer.MAX_VALUE, 0, false, false));
 
-        world.playSound(center, Sound.BLOCK_GRASS_PLACE, 1f, 0.6f);
+        sound(center, 1f, 0.6f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
 
         new BukkitRunnable() {
             int elapsed = 0;
             @Override public void run() {
                 elapsed += 20;
                 if (!dryad.isValid()) {
-                    cancel();
-                    treeAura.cancel();
-                    Location dropLoc = dryad.getLocation();
-                    world.dropItemNaturally(dropLoc, named(Material.VINE,          "§a§lNature Essence"));
-                    world.dropItemNaturally(dropLoc, named(Material.OAK_SAPLING,   "§2§lWoodland Seed"));
-                    world.dropItemNaturally(dropLoc, named(Material.GREEN_DYE,     "§a§lForest Dust"));
-                    broadcast("§a🌳 Ancient Dryad defeated! Nature Essence has dropped!");
-                    world.playSound(center, Sound.ENTITY_ENDER_DRAGON_DEATH, 1f, 1.6f);
-                    onFinish.run();
-                    return;
+                    cancel(); treeAura.cancel();
+                    Location drop = dryad.getLocation();
+                    world.dropItemNaturally(drop, named(Material.VINE,    "§a§lNature Essence"));
+                    world.dropItemNaturally(drop, named(Material.SAPLING, "§2§lWoodland Seed"));
+                    world.dropItemNaturally(drop, named(Material.EMERALD, "§a§lForest Dust"));
+                    broadcast("§a🌳 Ancient Dryad defeated! Nature Essence dropped!");
+                    sound(center, 1f, 1.6f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
+                    onFinish.run(); return;
                 }
                 if (elapsed >= 20 * 60 * 5) {
-                    cancel();
-                    treeAura.cancel();
-                    dryad.remove();
-                    broadcast("§c🌳 The Ancient Tree withered... Dryad vanished.");
+                    cancel(); treeAura.cancel(); dryad.remove();
+                    broadcast("§c🌳 The Ancient Tree withered...");
                     onFinish.run();
                 }
             }

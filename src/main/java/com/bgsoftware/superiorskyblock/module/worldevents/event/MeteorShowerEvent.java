@@ -9,16 +9,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
-/**
- * 🌠 METEOR SHOWER
- * - 5 meteors fall at random island positions over 2 minutes
- * - First player to reach impact site within 15s gets rare ore + possible mini-boss
- */
 public class MeteorShowerEvent extends IslandWorldEvent {
 
     private static final int METEOR_COUNT    = 5;
     private static final int ISLAND_RADIUS   = 55;
-    private static final int PICKUP_WINDOW_S = 15; // seconds to reach impact
+    private static final int PICKUP_WINDOW_S = 15;
 
     public MeteorShowerEvent(Island island, Location center) {
         super(island, center);
@@ -26,77 +21,58 @@ public class MeteorShowerEvent extends IslandWorldEvent {
 
     @Override
     public void start(SuperiorSkyblockPlugin plugin, Runnable onFinish) {
+        this.plugin = plugin;
         broadcast("§e🌠 §fA §eMeteor Shower §fis incoming! Watch the skies!");
         World world = center.getWorld();
         Random rng  = new Random();
 
-        int[] remaining = {METEOR_COUNT};
-
-        // Drop meteors every 20 seconds
         new BukkitRunnable() {
             int count = 0;
             @Override public void run() {
                 if (count >= METEOR_COUNT) {
                     cancel();
-                    if (remaining[0] == 0) {
-                        broadcast("§a🌠 Meteor Shower complete!");
-                        onFinish.run();
-                    } else {
-                        broadcast("§e🌠 The shower has passed.");
-                        onFinish.run();
-                    }
+                    broadcast("§e🌠 The shower has passed.");
+                    onFinish.run();
                     return;
                 }
                 count++;
-
                 double ox = (rng.nextDouble() - 0.5) * ISLAND_RADIUS;
                 double oz = (rng.nextDouble() - 0.5) * ISLAND_RADIUS;
-                Location impactLoc = center.clone().add(ox, 0, oz);
-
-                // Find ground
-                impactLoc = findGround(impactLoc, world);
-
-                dropMeteor(plugin, world, impactLoc, rng, remaining, onFinish);
+                Location impact = center.clone().add(ox, 0, oz);
+                impact.setY(world.getHighestBlockYAt(impact));
+                dropMeteor(plugin, world, impact, rng);
             }
-        }.runTaskTimer(plugin, 40L, 20 * 20L); // first drop 2s in, then every 20s
+        }.runTaskTimer(plugin, 40L, 20 * 20L);
     }
 
-    private void dropMeteor(SuperiorSkyblockPlugin plugin, World world,
-                             Location groundLoc, Random rng,
-                             int[] remaining, Runnable onFinish) {
-        Location launchLoc = groundLoc.clone().add(0, 50, 0);
-        broadcast("§e🌠 A meteor is incoming! Get ready!");
-        world.playSound(launchLoc, Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1f, 0.4f);
+    private void dropMeteor(SuperiorSkyblockPlugin plugin, World world, Location ground, Random rng) {
+        broadcast("§e🌠 A meteor is incoming!");
+        sound(ground.clone().add(0, 50, 0), 1f, 0.4f, "FIREWORK_LAUNCH", "ENTITY_FIREWORK_ROCKET_LAUNCH");
 
-        // Falling trail
         new BukkitRunnable() {
             double y = 50;
             @Override public void run() {
                 y -= 3;
-                Location cur = groundLoc.clone().add(0, y, 0);
-                world.spawnParticle(Particle.FLAME,       cur, 5,  0.3, 0.1, 0.3, 0.05);
-                world.spawnParticle(Particle.LAVA,        cur, 3,  0.2, 0.1, 0.2, 0.01);
+                Location cur = ground.clone().add(0, y, 0);
+                fx(cur, 3, "FLAME");
+                fx(cur, 2, "LAVADRIP");
                 if (y <= 0) {
                     cancel();
-                    impact(plugin, world, groundLoc, rng, remaining, onFinish);
+                    impact(plugin, world, ground, rng);
                 }
             }
         }.runTaskTimer(plugin, 0L, 1L);
     }
 
-    private void impact(SuperiorSkyblockPlugin plugin, World world,
-                        Location loc, Random rng, int[] remaining, Runnable onFinish) {
-        world.playSound(loc, Sound.ENTITY_GENERIC_EXPLODE, 1f, 0.7f);
-        world.spawnParticle(Particle.EXPLOSION_HUGE, loc, 3);
-        world.spawnParticle(Particle.LAVA, loc, 20, 0.5, 0.5, 0.5, 0.1);
-        broadcast("§6☄ Meteor impact at §e" + locStr(loc) + "§6! Reach it in §c" + PICKUP_WINDOW_S + "s§6!");
+    private void impact(SuperiorSkyblockPlugin plugin, World world, Location loc, Random rng) {
+        sound(loc, 1f, 0.7f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
+        fx(loc, 3, "EXPLOSION_LARGE");
+        fx(loc, 10, "LAVADRIP");
+        broadcast("§6☄ Meteor landed at §e" + fmt(loc) + "§6! Grab loot in §c" + PICKUP_WINDOW_S + "s§6!");
 
-        // Drop loot that expires after PICKUP_WINDOW_S seconds
-        Item lootItem = world.dropItem(loc.clone().add(0, 1, 0), randomMeteorLoot(rng));
-        lootItem.setCustomName("§6§lMeteor Loot");
-        lootItem.setPickupDelay(0);
+        Item loot = world.dropItem(loc.clone().add(0, 1, 0), randomLoot(rng));
+        loot.setPickupDelay(0);
 
-        // 20% chance for mini-boss
         if (rng.nextInt(100) < 20) {
             Zombie mini = (Zombie) world.spawnEntity(loc, EntityType.ZOMBIE);
             mini.setCustomName("§6Meteor Golem");
@@ -106,30 +82,23 @@ public class MeteorShowerEvent extends IslandWorldEvent {
         }
 
         plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
-            if (lootItem.isValid()) {
-                lootItem.remove();
-                broadcast("§c☄ The meteor loot crumbled before anyone reached it.");
+            if (loot.isValid()) {
+                loot.remove();
+                broadcast("§c☄ The meteor loot crumbled away...");
             }
-            remaining[0]--;
         }, PICKUP_WINDOW_S * 20L);
     }
 
-    private ItemStack randomMeteorLoot(Random rng) {
-        Material[] options = {Material.DIAMOND, Material.EMERALD, Material.GOLD_INGOT, Material.IRON_INGOT};
-        Material mat = options[rng.nextInt(options.length)];
+    private ItemStack randomLoot(Random rng) {
+        Material[] opts = {Material.DIAMOND, Material.EMERALD, Material.GOLD_INGOT, Material.IRON_INGOT};
+        Material mat = opts[rng.nextInt(opts.length)];
         ItemStack item = new ItemStack(mat, 1 + rng.nextInt(3));
         org.bukkit.inventory.meta.ItemMeta meta = item.getItemMeta();
         if (meta != null) { meta.setDisplayName("§6§lMeteor " + mat.name()); item.setItemMeta(meta); }
         return item;
     }
 
-    private Location findGround(Location loc, World world) {
-        Location check = loc.clone();
-        check.setY(world.getHighestBlockYAt(check));
-        return check;
-    }
-
-    private String locStr(Location loc) {
+    private String fmt(Location loc) {
         return "(" + loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ() + ")";
     }
 }
