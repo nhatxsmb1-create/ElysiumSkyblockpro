@@ -7,7 +7,6 @@ import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import com.bgsoftware.superiorskyblock.api.world.Dimension;
 import com.bgsoftware.superiorskyblock.module.worldevents.event.*;
 import com.bgsoftware.superiorskyblock.world.Dimensions;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.scheduler.BukkitTask;
@@ -92,7 +91,7 @@ public class WorldEventScheduler {
 
         // Server-wide announce for rare events
         if (module.getConfiguration().isAnnounceRareEvents() && RARE_EVENTS.contains(type)) {
-            Bukkit.broadcastMessage("§d§l[ELYSIUM] §r§6" + type.getDisplayName()
+            plugin.getServer().broadcastMessage("§d§l[ELYSIUM] §r§6" + type.getDisplayName()
                     + " §fđã xuất hiện trên đảo §e" + island.getOwner().getName() + "§f!");
         }
 
