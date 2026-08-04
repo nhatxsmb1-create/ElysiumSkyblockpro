@@ -81,8 +81,16 @@ public abstract class IslandWorldEvent {
                 double pct = boss.getHealth() / boss.getMaxHealth();
                 int filled  = (int)(pct * 20);
                 String color = pct > 0.6 ? "§a" : pct > 0.3 ? "§e" : "§c";
-                String bar   = color + "█".repeat(Math.max(0, filled))
-                             + "§8" + "█".repeat(Math.max(0, 20 - filled));
+
+                // Build bar without String.repeat() for Java 8 compatibility
+                int filledCount = Math.max(0, filled);
+                int emptyCount = Math.max(0, 20 - filledCount);
+                StringBuilder filledBuilder = new StringBuilder(filledCount);
+                for (int i = 0; i < filledCount; i++) filledBuilder.append('█');
+                StringBuilder emptyBuilder = new StringBuilder(emptyCount);
+                for (int i = 0; i < emptyCount; i++) emptyBuilder.append('█');
+                String bar = color + filledBuilder.toString() + "§8" + emptyBuilder.toString();
+
                 String msg   = bossName + " §f" + bar + " §7" + (int)(pct * 100) + "% HP";
                 for (Player p : getOnlinePlayers())
                     plugin.getNMSPlayers().sendActionBar(p, msg);
@@ -95,7 +103,7 @@ public abstract class IslandWorldEvent {
     protected void logResult(String result) {
         WorldEventsModule module = getModule();
         int instability = module.getInstabilityManager().getInstability(island.getUniqueId());
-        module.getLogger().log(island, eventType, instability, result);
+        module.getWorldEventLogger().log(island, eventType, instability, result);
     }
 
     // ── Broadcast helpers ─────────────────────────────────────
