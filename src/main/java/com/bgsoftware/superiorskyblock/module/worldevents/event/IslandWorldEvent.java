@@ -156,6 +156,6 @@ public abstract class IslandWorldEvent {
     }
 
     private WorldEventsModule getModule() {
-        return (WorldEventsModule) plugin.getModuleManager().getModule("worldevents");
+        return (WorldEventsModule) plugin.getModules().getModule("worldevents");
     }
 }
