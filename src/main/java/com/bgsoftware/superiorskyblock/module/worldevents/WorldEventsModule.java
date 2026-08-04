@@ -63,9 +63,8 @@ public class WorldEventsModule extends BuiltinModule<WorldEventsModule.Configura
 
     public InstabilityManager getInstabilityManager() { return instabilityManager; }
     public WorldEventScheduler getScheduler()         { return scheduler; }
--    public WorldEventLogger getLogger()               { return logger; }
-+    // Avoid overriding final getLogger() from PluginModule; provide module-specific getter
-+    public WorldEventLogger getWorldEventLogger()     { return logger; }
+    // Avoid overriding final getLogger() from PluginModule; provide module-specific getter
+    public WorldEventLogger getWorldEventLogger()     { return logger; }
 
     // =========================================================
     public static class Configuration implements IModuleConfiguration {
