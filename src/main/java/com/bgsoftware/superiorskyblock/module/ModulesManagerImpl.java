@@ -50,6 +50,7 @@ public class ModulesManagerImpl extends Manager implements ModulesManager {
         registerModule(BuiltinModules.MISSIONS);
         registerModule(BuiltinModules.BANK);
         registerModule(BuiltinModules.UPGRADES);
+        registerModule(BuiltinModules.WORLD_EVENTS);
         registerExternalModules();
     }
 
