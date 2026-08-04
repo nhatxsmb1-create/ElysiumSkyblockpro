@@ -45,8 +45,15 @@ public class CmdInstability implements SuperiorCommand {
 
         int filled = instability / 5;
         String color = instability < 25 ? "§a" : instability < 50 ? "§e" : instability < 75 ? "§c" : "§4";
-        String bar   = color + "█".repeat(Math.max(0, filled))
-                     + "§8" + "█".repeat(Math.max(0, 20 - filled));
+
+        // Build progress bar without using String.repeat() for Java 8 compatibility
+        int filledCount = Math.max(0, filled);
+        int emptyCount = Math.max(0, 20 - filledCount);
+        StringBuilder filledBuilder = new StringBuilder(filledCount);
+        for (int i = 0; i < filledCount; i++) filledBuilder.append('█');
+        StringBuilder emptyBuilder = new StringBuilder(emptyCount);
+        for (int i = 0; i < emptyCount; i++) emptyBuilder.append('█');
+        String bar = color + filledBuilder.toString() + "§8" + emptyBuilder.toString();
 
         player.sendMessage("§8§m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
         player.sendMessage("§d§l  ĐỘ BẤT ỔN ĐẢO");
