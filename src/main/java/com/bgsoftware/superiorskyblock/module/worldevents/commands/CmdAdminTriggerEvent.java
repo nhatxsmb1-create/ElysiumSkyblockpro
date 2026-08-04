@@ -16,52 +16,40 @@ public class CmdAdminTriggerEvent implements SuperiorCommand {
 
     private final WorldEventsModule module;
 
-    public CmdAdminTriggerEvent(WorldEventsModule module) {
-        this.module = module;
-    }
+    public CmdAdminTriggerEvent(WorldEventsModule module) { this.module = module; }
 
-    @Override public List<String> getAliases() { return Arrays.asList("triggerevent", "triggerEvent"); }
-    @Override public String getPermission()     { return "superior.admin.triggerevent"; }
-    @Override public String getUsage(Locale l)  { return "admin triggerevent <player> <" + types() + ">"; }
-    @Override public String getDescription(Locale l) { return "Force a World Event on a player's island."; }
-    @Override public int getMinArgs()           { return 4; }
-    @Override public int getMaxArgs()           { return 4; }
-    @Override public boolean canBeExecutedByConsole() { return true; }
-    @Override public boolean displayCommand()   { return true; }
+    @Override public List<String> getAliases()       { return Arrays.asList("triggerevent", "triggerEvent"); }
+    @Override public String getPermission()          { return "superior.admin.triggerevent"; }
+    @Override public String getUsage(Locale l)       { return "admin triggerevent <người chơi> <" + types() + ">"; }
+    @Override public String getDescription(Locale l) { return "Kích hoạt sự kiện thế giới trên đảo của người chơi."; }
+    @Override public int getMinArgs()                { return 4; }
+    @Override public int getMaxArgs()                { return 4; }
+    @Override public boolean canBeExecutedByConsole(){ return true; }
+    @Override public boolean displayCommand()        { return true; }
 
     @Override
     public void execute(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
         SuperiorPlayer target = SuperiorSkyblockAPI.getPlayer(args[2]);
-        if (target == null) { sender.sendMessage("§cPlayer '" + args[2] + "' not found."); return; }
+        if (target == null) { sender.sendMessage("§cKhông tìm thấy người chơi: §e" + args[2]); return; }
 
         Island island = target.getIsland();
-        if (island == null) { sender.sendMessage("§cThat player has no island."); return; }
+        if (island == null) { sender.sendMessage("§cNgười chơi này chưa có đảo."); return; }
 
         WorldEventType type;
-        try {
-            type = WorldEventType.valueOf(args[3].toUpperCase());
-        } catch (IllegalArgumentException e) {
-            sender.sendMessage("§cUnknown event. Options: " + types());
-            return;
-        }
+        try { type = WorldEventType.valueOf(args[3].toUpperCase()); }
+        catch (IllegalArgumentException e) { sender.sendMessage("§cSự kiện không hợp lệ. Danh sách: " + types()); return; }
 
         module.getScheduler().triggerEvent(island, type);
-        sender.sendMessage("§aTriggered §e" + type.getDisplayName() + " §aon §e" + target.getName() + "§a's island.");
+        sender.sendMessage("§aĐã kích hoạt §e" + type.getDisplayName() + " §atrên đảo của §e" + target.getName() + "§a.");
     }
 
     @Override
     public List<String> tabComplete(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
-        if (args.length == 3) {
-            return SuperiorSkyblockAPI.getGrid().getIslands().stream()
-                    .map(i -> i.getOwner().getName())
-                    .filter(n -> n.toLowerCase().startsWith(args[2].toLowerCase()))
-                    .collect(Collectors.toList());
-        }
-        if (args.length == 4) {
-            return Arrays.stream(WorldEventType.values()).map(Enum::name)
-                    .filter(n -> n.toLowerCase().startsWith(args[3].toLowerCase()))
-                    .collect(Collectors.toList());
-        }
+        if (args.length == 3) return SuperiorSkyblockAPI.getGrid().getIslands().stream()
+                .map(i -> i.getOwner().getName()).filter(n -> n.toLowerCase().startsWith(args[2].toLowerCase()))
+                .collect(Collectors.toList());
+        if (args.length == 4) return Arrays.stream(WorldEventType.values()).map(Enum::name)
+                .filter(n -> n.toLowerCase().startsWith(args[3].toLowerCase())).collect(Collectors.toList());
         return Collections.emptyList();
     }
 

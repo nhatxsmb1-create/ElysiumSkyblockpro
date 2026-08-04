@@ -31,16 +31,15 @@ public class WorldEventsListener implements Listener {
         if (island == null) return;
         if (!island.isMember(SuperiorSkyblockAPI.getPlayer(player))) return;
 
-        int newVal = module.getInstabilityManager()
+        int val = module.getInstabilityManager()
                 .addInstability(island.getUniqueId(), module.getConfiguration().getInstabilityPerMine());
-        notifyThreshold(player, newVal);
+        notify(plugin, player, island.getUniqueId(), val);
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Player) return;
-
         Player killer = entity.getKiller();
         if (killer == null) return;
 
@@ -48,19 +47,17 @@ public class WorldEventsListener implements Listener {
         if (island == null) return;
         if (!island.isMember(SuperiorSkyblockAPI.getPlayer(killer))) return;
 
-        int newVal = module.getInstabilityManager()
+        int val = module.getInstabilityManager()
                 .addInstability(island.getUniqueId(), module.getConfiguration().getInstabilityPerKill());
-        notifyThreshold(killer, newVal);
+        notify(plugin, killer, island.getUniqueId(), val);
     }
 
-    private void notifyThreshold(Player player, int instability) {
+    private void notify(SuperiorSkyblockPlugin plugin, Player player, UUID islandId, int instability) {
         String msg = null;
-        if      (instability == 25)  msg = "§e⚠ Island Instability: §625% §7— Mild events possible";
-        else if (instability == 50)  msg = "§c⚠ Island Instability: §c50% §7— Strong events approaching!";
-        else if (instability == 75)  msg = "§4⚠ Island Instability: §475% §7— Extreme events incoming!";
-        else if (instability >= 90)  msg = "§4§l⚠ CRITICAL INSTABILITY §c— Space Rift / Volcano imminent!";
-
-        if (msg != null)
-            plugin.getNMSPlayers().sendActionBar(player, msg);
+        if      (instability == 25) msg = "§e⚠ Độ bất ổn đảo: §625% §7— Sự kiện nhẹ có thể xảy ra";
+        else if (instability == 50) msg = "§c⚠ Độ bất ổn đảo: §c50% §7— Sự kiện mạnh đang đến gần!";
+        else if (instability == 75) msg = "§4⚠ Độ bất ổn đảo: §475% §7— Sự kiện cực mạnh sắp xuất hiện!";
+        else if (instability >= 90) msg = "§4§l⚠ BẤT ỔN CỰC ĐỘ §c— Cổng Không Gian / Núi Lửa sắp đến!";
+        if (msg != null) plugin.getNMSPlayers().sendActionBar(player, msg);
     }
 }

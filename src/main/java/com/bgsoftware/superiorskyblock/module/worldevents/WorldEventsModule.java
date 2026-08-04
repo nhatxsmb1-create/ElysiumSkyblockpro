@@ -7,6 +7,7 @@ import com.bgsoftware.superiorskyblock.module.BuiltinModule;
 import com.bgsoftware.superiorskyblock.module.IModuleConfiguration;
 import com.bgsoftware.superiorskyblock.module.worldevents.commands.CmdAdminSetInstability;
 import com.bgsoftware.superiorskyblock.module.worldevents.commands.CmdAdminTriggerEvent;
+import com.bgsoftware.superiorskyblock.module.worldevents.commands.CmdInstability;
 import com.bgsoftware.superiorskyblock.module.worldevents.data.InstabilityManager;
 import com.bgsoftware.superiorskyblock.module.worldevents.listener.WorldEventsListener;
 import org.bukkit.event.Listener;
@@ -15,15 +16,15 @@ public class WorldEventsModule extends BuiltinModule<WorldEventsModule.Configura
 
     private InstabilityManager instabilityManager;
     private WorldEventScheduler scheduler;
+    private WorldEventLogger logger;
 
-    public WorldEventsModule() {
-        super("worldevents");
-    }
+    public WorldEventsModule() { super("worldevents"); }
 
     @Override
     protected void onEnable(SuperiorSkyblockPlugin plugin) {
         this.instabilityManager = new InstabilityManager(getModuleFolder());
         this.instabilityManager.load();
+        this.logger = new WorldEventLogger(getModuleFolder());
         this.scheduler = new WorldEventScheduler(plugin, this);
         this.scheduler.start();
     }
@@ -35,18 +36,16 @@ public class WorldEventsModule extends BuiltinModule<WorldEventsModule.Configura
     }
 
     @Override
-    protected void loadData(SuperiorSkyblockPlugin plugin) {
-        // nothing extra
-    }
+    protected void loadData(SuperiorSkyblockPlugin plugin) {}
 
     @Override
     protected Listener[] getModuleListeners(SuperiorSkyblockPlugin plugin) {
-        return new Listener[]{new WorldEventsListener(plugin, this)};
+        return new Listener[]{ new WorldEventsListener(plugin, this) };
     }
 
     @Override
     protected SuperiorCommand[] getSuperiorCommands(SuperiorSkyblockPlugin plugin) {
-        return null;
+        return new SuperiorCommand[]{ new CmdInstability(this) };
     }
 
     @Override
@@ -62,52 +61,56 @@ public class WorldEventsModule extends BuiltinModule<WorldEventsModule.Configura
         return new Configuration(config);
     }
 
-    public InstabilityManager getInstabilityManager() {
-        return instabilityManager;
-    }
+    public InstabilityManager getInstabilityManager() { return instabilityManager; }
+    public WorldEventScheduler getScheduler()         { return scheduler; }
+    public WorldEventLogger getLogger()               { return logger; }
 
-    public WorldEventScheduler getScheduler() {
-        return scheduler;
-    }
-
-    // =========================================================
-    // Configuration
     // =========================================================
     public static class Configuration implements IModuleConfiguration {
 
         private final boolean enabled;
-        // How often (seconds) the scheduler checks each island for a possible event
-        private final int checkIntervalSeconds;
-        // Base chance (0-100) at 0% instability that any event fires on a check
-        private final int baseEventChance;
-        // Bonus chance added per instability point (e.g. 0.5 → at 100% instability total chance = base + 50)
+        private final int  checkIntervalSeconds;
+        private final int  baseEventChance;
         private final double instabilityChanceBonus;
-        // How much instability each tracked action adds
-        private final int instabilityPerKill;
-        private final int instabilityPerMine;
-        // How fast instability decays per check (passive decay)
-        private final int instabilityDecayPerCheck;
+        private final int  instabilityPerKill;
+        private final int  instabilityPerMine;
+        private final int  instabilityDecayPerCheck;
+        // new
+        private final int    islandCooldownSeconds;
+        private final double bossHPPerLevel;
+        private final int    bonusLootThreshold;
+        private final double bonusLootChance;
+        private final int    countdownSeconds;
+        private final boolean announceRareEvents;
 
         Configuration(CommentedConfiguration config) {
-            this.enabled = config.getBoolean("enabled", true);
-            this.checkIntervalSeconds = config.getInt("check-interval-seconds", 300);
-            this.baseEventChance = config.getInt("base-event-chance", 5);
-            this.instabilityChanceBonus = config.getDouble("instability-chance-bonus", 0.5);
-            this.instabilityPerKill = config.getInt("instability-per-kill", 2);
-            this.instabilityPerMine = config.getInt("instability-per-mine", 1);
-            this.instabilityDecayPerCheck = config.getInt("instability-decay-per-check", 3);
+            enabled                  = config.getBoolean("enabled", true);
+            checkIntervalSeconds     = config.getInt("check-interval-seconds", 300);
+            baseEventChance          = config.getInt("base-event-chance", 5);
+            instabilityChanceBonus   = config.getDouble("instability-chance-bonus", 0.5);
+            instabilityPerKill       = config.getInt("instability-per-kill", 2);
+            instabilityPerMine       = config.getInt("instability-per-mine", 1);
+            instabilityDecayPerCheck = config.getInt("instability-decay-per-check", 3);
+            islandCooldownSeconds    = config.getInt("island-cooldown-seconds", 600);
+            bossHPPerLevel           = config.getDouble("boss-hp-per-level", 0.001); // +0.1% per level point
+            bonusLootThreshold       = config.getInt("bonus-loot-threshold", 70);
+            bonusLootChance          = config.getDouble("bonus-loot-chance", 0.5);
+            countdownSeconds         = config.getInt("countdown-seconds", 5);
+            announceRareEvents       = config.getBoolean("announce-rare-events", true);
         }
 
-        @Override
-        public boolean isEnabled() {
-            return enabled;
-        }
-
-        public int getCheckIntervalSeconds() { return checkIntervalSeconds; }
-        public int getBaseEventChance() { return baseEventChance; }
-        public double getInstabilityChanceBonus() { return instabilityChanceBonus; }
-        public int getInstabilityPerKill() { return instabilityPerKill; }
-        public int getInstabilityPerMine() { return instabilityPerMine; }
-        public int getInstabilityDecayPerCheck() { return instabilityDecayPerCheck; }
+        @Override public boolean isEnabled()               { return enabled; }
+        public int  getCheckIntervalSeconds()              { return checkIntervalSeconds; }
+        public int  getBaseEventChance()                   { return baseEventChance; }
+        public double getInstabilityChanceBonus()          { return instabilityChanceBonus; }
+        public int  getInstabilityPerKill()                { return instabilityPerKill; }
+        public int  getInstabilityPerMine()                { return instabilityPerMine; }
+        public int  getInstabilityDecayPerCheck()          { return instabilityDecayPerCheck; }
+        public int  getIslandCooldownSeconds()             { return islandCooldownSeconds; }
+        public double getBossHPPerLevel()                  { return bossHPPerLevel; }
+        public int  getBonusLootThreshold()                { return bonusLootThreshold; }
+        public double getBonusLootChance()                 { return bonusLootChance; }
+        public int  getCountdownSeconds()                  { return countdownSeconds; }
+        public boolean isAnnounceRareEvents()              { return announceRareEvents; }
     }
 }

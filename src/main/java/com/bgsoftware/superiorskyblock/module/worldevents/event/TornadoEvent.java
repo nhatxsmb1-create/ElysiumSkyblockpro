@@ -2,79 +2,58 @@ package com.bgsoftware.superiorskyblock.module.worldevents.event;
 
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
-import org.bukkit.*;
-import org.bukkit.entity.*;
-import org.bukkit.inventory.ItemStack;
+import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
+import org.bukkit.*; import org.bukkit.entity.*; import org.bukkit.potion.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TornadoEvent extends IslandWorldEvent {
+    private static final int DURATION = 20*60*3;
 
-    private static final int DURATION_TICKS = 20 * 60 * 3;
+    public TornadoEvent(Island island, Location center) { super(island, center, WorldEventType.TORNADO); }
 
-    public TornadoEvent(Island island, Location center) {
-        super(island, center);
+    @Override public void start(SuperiorSkyblockPlugin plugin, Runnable onFinish) {
+        this.plugin = plugin;
+        broadcast("§b🌪 §fMột §b§lLốc Xoáy §fkhổng lồ đang hình thành! Tiêu diệt §e§lHồn Bão§f!");
+        countdown("§eĐang tạo lốc xoáy...", () -> spawnBoss(onFinish));
     }
 
-    @Override
-    public void start(SuperiorSkyblockPlugin plugin, Runnable onFinish) {
-        this.plugin = plugin;
-        broadcast("§b🌪 A §fTornado §bhas formed! Defeat the §eStorm Spirit§b!");
-
+    private void spawnBoss(Runnable onFinish) {
         World world = center.getWorld();
-        Location bossLoc = center.clone().add(0, 3, 0);
+        Zombie boss = (Zombie) world.spawnEntity(center.clone().add(0,3,0), EntityType.ZOMBIE);
+        boss.setCustomName("§b⚡ Hồn Bão"); boss.setCustomNameVisible(true);
+        double hp = scaledHP(120.0); boss.setMaxHealth(hp); boss.setHealth(hp);
+        boss.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1, false, false));
+        trackHPBar(boss, "§b⚡ Hồn Bão");
 
-        Zombie boss = (Zombie) world.spawnEntity(bossLoc, EntityType.ZOMBIE);
-        boss.setCustomName("§b⚡ Storm Spirit");
-        boss.setCustomNameVisible(true);
-        boss.setMaxHealth(120.0);
-        boss.setHealth(120.0);
-        boss.addPotionEffect(new org.bukkit.potion.PotionEffect(
-                org.bukkit.potion.PotionEffectType.SPEED, Integer.MAX_VALUE, 1, false, false));
-
-        // Tornado particle effect using Effect enum (1.8 compatible)
-        BukkitRunnable particleTask = new BukkitRunnable() {
-            double angle = 0;
-            int elapsed = 0;
+        BukkitRunnable particles = new BukkitRunnable() {
+            double a=0; int e=0;
             @Override public void run() {
-                elapsed += 2;
-                if (elapsed >= DURATION_TICKS || !boss.isValid()) { cancel(); return; }
-                angle += 15;
-                for (int layer = 0; layer < 8; layer++) {
-                    double yOff   = layer * 0.5;
-                    double radius = 1.5 + layer * 0.3;
-                    double a      = Math.toRadians(angle + layer * 22);
-                    Location p    = center.clone().add(Math.cos(a) * radius, yOff, Math.sin(a) * radius);
-                    fx(p, 1, "LARGE_SMOKE", "CLOUD");
-                    fx(p, 1, "CRIT");
+                e+=2; if(e>=DURATION||!boss.isValid()){cancel();return;}
+                a+=15;
+                for(int l=0;l<8;l++){
+                    double ang=Math.toRadians(a+l*22),r=1.5+l*0.3;
+                    Location p=center.clone().add(Math.cos(ang)*r,l*0.5,Math.sin(ang)*r);
+                    fx(p,1,"LARGE_SMOKE","CLOUD"); fx(p,1,"CRIT");
                 }
             }
         };
-        particleTask.runTaskTimer(plugin, 0L, 2L);
+        particles.runTaskTimer(plugin,0L,2L);
 
         new BukkitRunnable() {
-            int elapsed = 0;
-            @Override public void run() {
-                elapsed += 20;
-                if (!boss.isValid()) {
-                    cancel(); particleTask.cancel();
-                    world.dropItemNaturally(boss.getLocation(), named(Material.NETHER_STAR, "§b§lStorm Core"));
-                    broadcast("§a🌪 Storm Spirit defeated! §eStorm Core §ahas dropped!");
-                    sound(center, 1f, 1.5f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
-                    onFinish.run(); return;
+            int e=0; @Override public void run() {
+                e+=20;
+                if(!boss.isValid()){
+                    cancel(); particles.cancel();
+                    world.dropItemNaturally(boss.getLocation(), named(Material.NETHER_STAR,"§b§lLõi Bão"));
+                    if(hasLootBonus()) world.dropItemNaturally(boss.getLocation(), named(Material.GOLD_INGOT,"§b§lMảnh Sét"));
+                    broadcast("§a🌪 Hồn Bão đã bị tiêu diệt! §eLõi Bão §ađã rơi xuống!");
+                    sound(center,1f,1.5f,"ENDERDRAGON_DEATH","ENTITY_ENDER_DRAGON_DEATH");
+                    logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }
-                if (elapsed >= DURATION_TICKS) {
-                    cancel(); particleTask.cancel(); boss.remove();
-                    broadcast("§c🌪 The Tornado dissipated...");
-                    onFinish.run();
-                }
+                if(e>=DURATION){cancel();particles.cancel();boss.remove();
+                    broadcast("§c🌪 Lốc Xoáy đã tan biến... Hồn Bão đã thoát.");
+                    logResult("HẾT GIỜ"); onFinish.run();}
             }
-        }.runTaskTimer(plugin, 20L, 20L);
-    }
-
-    private ItemStack named(Material mat, String name) {
-        ItemStack item = new ItemStack(mat);
-        org.bukkit.inventory.meta.ItemMeta meta = item.getItemMeta();
-        if (meta != null) { meta.setDisplayName(name); item.setItemMeta(meta); }
-        return item;
+        }.runTaskTimer(plugin,20L,20L);
     }
 }
