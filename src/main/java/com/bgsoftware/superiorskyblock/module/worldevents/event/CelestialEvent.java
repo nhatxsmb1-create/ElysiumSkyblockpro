@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*;
 import org.bukkit.entity.*;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -43,10 +44,10 @@ public class CelestialEvent extends IslandWorldEvent {
         targetNearestPlayer(beast);
         trackHPBar(beast, "§d✦ Ác Thú Sao");
 
-        // Spawn 5 visible Ender Crystals around the Boss to shield it
+        // Spawn 4 visible Ender Crystals (changed from 5 to 4 per user request)
         List<Entity> crystals = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            double a = i * (2 * Math.PI / 5);
+        for (int i = 0; i < 4; i++) {
+            double a = i * (2 * Math.PI / 4);
             Location loc = spawnBase.clone().add(Math.cos(a) * 12, 4 + rng.nextInt(3), Math.sin(a) * 12);
             loc.setY(world.getHighestBlockYAt(loc) + 4);
 
@@ -57,7 +58,6 @@ public class CelestialEvent extends IslandWorldEvent {
                 try {
                     crystal = world.spawnEntity(loc, EntityType.valueOf("END_CRYSTAL"));
                 } catch (Exception ex2) {
-                    // Fallback to visible ArmorStand wearing glowstone if EnderCrystal fails
                     ArmorStand stand = (ArmorStand) world.spawnEntity(loc, EntityType.ARMOR_STAND);
                     stand.setCustomName("§b✦ Pha Lê Thiên Thể");
                     stand.setCustomNameVisible(true);
@@ -69,6 +69,8 @@ public class CelestialEvent extends IslandWorldEvent {
                 }
             }
             if (crystal != null) {
+                // Mark with metadata so it doesn't break blocks on explosion if hit
+                crystal.setMetadata("worldevent_star", new FixedMetadataValue(plugin, true));
                 crystals.add(crystal);
                 lightningEffect(loc);
             }
@@ -198,7 +200,6 @@ public class CelestialEvent extends IslandWorldEvent {
         }
 
         if (star == null) {
-            // Safety fallback: run impact effect after flight time
             plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
                 sound(ground, 0.9f, 1.3f, "FIREWORK_BLAST", "ENTITY_FIREWORK_ROCKET_BLAST");
                 particle(ground, 15, "FIREWORK", "FIREWORKS_SPARK");
@@ -208,6 +209,8 @@ public class CelestialEvent extends IslandWorldEvent {
         }
 
         star.setDropItem(false);
+        // Mark star with metadata so it doesn't solidify or break blocks
+        star.setMetadata("worldevent_star", new FixedMetadataValue(plugin, true));
         star.setVelocity(new Vector((rng.nextDouble() - 0.5) * 0.05, -2.2, (rng.nextDouble() - 0.5) * 0.05));
 
         final FallingBlock finalStar = star;

@@ -3,14 +3,15 @@ package com.bgsoftware.superiorskyblock.module.worldevents.listener;
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.SuperiorSkyblockAPI;
 import com.bgsoftware.superiorskyblock.api.island.Island;
-import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventsModule;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 
 import java.util.UUID;
 
@@ -50,6 +51,35 @@ public class WorldEventsListener implements Listener {
         int val = module.getInstabilityManager()
                 .addInstability(island.getUniqueId(), module.getConfiguration().getInstabilityPerKill());
         notify(plugin, killer, island.getUniqueId(), val);
+    }
+
+    // ── Prevent Falling Blocks (Meteors, Stars, Spores, Geysers) from solidifying/damaging islands ──
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onEntityChangeBlock(EntityChangeBlockEvent event) {
+        Entity entity = event.getEntity();
+        if (entity.getType() == EntityType.FALLING_BLOCK) {
+            if (entity.hasMetadata("worldevent_meteor")
+                    || entity.hasMetadata("worldevent_star")
+                    || entity.hasMetadata("worldevent_geyser")
+                    || entity.hasMetadata("worldevent_spore")) {
+                event.setCancelled(true);
+                entity.remove();
+            }
+        }
+    }
+
+    // ── Prevent Volcano Fireballs or Celestial/Meteor explosions from breaking blocks ──
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onEntityExplode(EntityExplodeEvent event) {
+        Entity entity = event.getEntity();
+        if (entity != null) {
+            if (entity.hasMetadata("worldevent_fireball")
+                    || entity.hasMetadata("worldevent_meteor")
+                    || entity.hasMetadata("worldevent_star")
+                    || entity.getType() == EntityType.FIREBALL) {
+                event.blockList().clear();
+            }
+        }
     }
 
     private void notify(SuperiorSkyblockPlugin plugin, Player player, UUID islandId, int instability) {

@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*;
 import org.bukkit.entity.*;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -36,7 +37,6 @@ public class MeteorShowerEvent extends IslandWorldEvent {
                     return;
                 }
                 n++;
-                // Target a location near a random player (height snapped safely inside getPlayerNearbySpawn)
                 Location impact = getPlayerNearbySpawn(RADIUS).clone();
                 dropMeteor(world, impact);
             }
@@ -46,7 +46,6 @@ public class MeteorShowerEvent extends IslandWorldEvent {
     private void dropMeteor(World world, Location ground) {
         broadcast("§c☄ §eThiên thạch sắp đánh trúng gần bạn! §cHÃY CHẠY!");
 
-        // Phase 1: Glowing target marker for 3 seconds (60 ticks)
         new BukkitRunnable() {
             int ticks = 0;
             @Override
@@ -62,20 +61,17 @@ public class MeteorShowerEvent extends IslandWorldEvent {
                 sound(ground, 0.7f, speed, "NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING");
 
                 double radius = 3.5;
-                // Outer spinning ring
                 for (int i = 0; i < 20; i++) {
                     double angle = (i * (Math.PI * 2.0 / 20)) + (ticks * 0.12);
                     Location ring = ground.clone().add(Math.cos(angle) * radius, 0.15, Math.sin(angle) * radius);
                     particle(ring, 1, "FLAME");
                 }
-                // Inner cross marker
                 for (int r = 1; r <= 3; r++) {
                     particle(ground.clone().add(r, 0.15, 0), 1, "FLAME");
                     particle(ground.clone().add(-r, 0.15, 0), 1, "FLAME");
                     particle(ground.clone().add(0, 0.15, r), 1, "FLAME");
                     particle(ground.clone().add(0, 0.15, -r), 1, "FLAME");
                 }
-                // Lava drips if close to landing
                 if (ticks > 30) {
                     particle(ground.clone().add(0, 0.3, 0), 3, "LAVA");
                 }
@@ -84,7 +80,6 @@ public class MeteorShowerEvent extends IslandWorldEvent {
     }
 
     private void spawnPhysicalMeteor(World world, Location ground) {
-        // Drop from directly above target ground location
         Location spawnLoc = ground.clone().add(0, 45, 0);
 
         FallingBlock meteor = null;
@@ -107,12 +102,13 @@ public class MeteorShowerEvent extends IslandWorldEvent {
         }
 
         if (meteor == null) {
-            // Safety fallback: run impact effect after flight time
             plugin.getServer().getScheduler().runTaskLater(plugin, () -> impact(world, ground), 20L);
             return;
         }
 
         meteor.setDropItem(false);
+        // Mark meteor with metadata so it doesn't break blocks or solidify on land
+        meteor.setMetadata("worldevent_meteor", new FixedMetadataValue(plugin, true));
         meteor.setVelocity(new Vector((rng.nextDouble() - 0.5) * 0.1, -2.5, (rng.nextDouble() - 0.5) * 0.1));
 
         sound(spawnLoc, 1f, 0.5f, "FIREWORK_LAUNCH", "ENTITY_FIREWORK_ROCKET_LAUNCH");
@@ -136,19 +132,16 @@ public class MeteorShowerEvent extends IslandWorldEvent {
 
                 Location loc = finalMeteor.getLocation();
 
-                // Fire + smoke trail
                 particle(loc, 3, "FLAME");
                 particle(loc, 2, "SMOKE_LARGE", "LARGE_SMOKE", "SMOKE");
                 if (life % 3 == 0) {
                     particle(loc, 2, "LAVA");
                 }
 
-                // Whistle sound as it falls
                 if (life % 5 == 0) {
                     sound(loc, 0.6f, 0.5f + (life * 0.02f), "GHAST_FIREBALL", "ENTITY_GHAST_SHOOT");
                 }
 
-                // Damage players it passes through
                 for (Player p : getOnlinePlayers()) {
                     if (p.getWorld().equals(loc.getWorld()) && p.getLocation().distance(loc) < 2.0) {
                         p.damage(5.0);
@@ -164,10 +157,8 @@ public class MeteorShowerEvent extends IslandWorldEvent {
         sound(loc, 1f, 0.7f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
         lightningEffect(loc);
 
-        // Explosion visual
         particle(loc, 8, "EXPLOSION_LARGE", "EXPLODE");
 
-        // Fire scatter
         for (int i = 0; i < 24; i++) {
             double ang = rng.nextDouble() * Math.PI * 2;
             double r   = rng.nextDouble() * 3;
@@ -175,7 +166,6 @@ public class MeteorShowerEvent extends IslandWorldEvent {
             particle(p, 2, "FLAME");
         }
 
-        // Lava spread ring
         for (int i = 0; i < 12; i++) {
             double ang = i * (Math.PI * 2 / 12);
             Location ring = loc.clone().add(Math.cos(ang) * 2, 0.1, Math.sin(ang) * 2);
@@ -192,7 +182,6 @@ public class MeteorShowerEvent extends IslandWorldEvent {
                 named(mat, "§6§lQuặng Thiên Thạch (" + mat.name() + ")", qty));
         lootItem.setPickupDelay(0);
 
-        // Chance to spawn a crater guardian
         if (rng.nextInt(100) < 25) {
             Zombie mini = (Zombie) world.spawnEntity(loc, EntityType.ZOMBIE);
             mini.setCustomName("§6Golem Thiên Thạch");

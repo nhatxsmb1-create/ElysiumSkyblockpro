@@ -175,6 +175,7 @@ public class VolcanoEvent extends IslandWorldEvent {
             lava = ground.getWorld().spawnFallingBlock(ground.clone().add(0, 1, 0), Material.GRAVEL, (byte) 0);
         }
         lava.setDropItem(false);
+        lava.setMetadata("worldevent_geyser", new org.bukkit.metadata.FixedMetadataValue(plugin, true));
         lava.setVelocity(new Vector(
                 (rng.nextDouble() - 0.5) * 0.4,
                 1.5 + rng.nextDouble() * 0.4,

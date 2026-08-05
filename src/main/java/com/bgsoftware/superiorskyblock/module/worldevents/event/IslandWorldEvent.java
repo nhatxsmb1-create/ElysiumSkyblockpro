@@ -30,9 +30,8 @@ public abstract class IslandWorldEvent {
     protected final Random rng = new Random();
 
     // ── Particle reflection cache ─────────────────────────────
-    // We try multiple World#spawnParticle overloads at first use.
     private static boolean particleInitDone = false;
-    private static Method spawnParticleMethod = null;  // (Particle, Location, int)
+    private static Method spawnParticleMethod = null;
     private static Class<?> particleClass = null;
 
     // ── BossBar reflection cache ──────────────────────────────
@@ -69,10 +68,6 @@ public abstract class IslandWorldEvent {
 
     // ── Spawn near player ────────────────────────────────────
 
-    /**
-     * Return a location on solid ground within [minDist, minDist+range] blocks
-     * of a random online player. Falls back to island center if no players online.
-     */
     protected Location getPlayerNearbySpawn(double range) {
         List<Player> online = getOnlinePlayers();
         if (online.isEmpty()) return center.clone();
@@ -81,11 +76,16 @@ public abstract class IslandWorldEvent {
         double angle = rng.nextDouble() * Math.PI * 2;
         double dist  = 3.0 + rng.nextDouble() * Math.max(1.0, range - 3.0);
         base.add(Math.cos(angle) * dist, 0, Math.sin(angle) * dist);
-        base.setY(base.getWorld().getHighestBlockYAt(base) + 1);
+        
+        int highestY = base.getWorld().getHighestBlockYAt(base);
+        if (highestY < target.getLocation().getBlockY() - 5) {
+            base.setY(target.getLocation().getY());
+        } else {
+            base.setY(highestY + 1);
+        }
         return base;
     }
 
-    /** Return the nearest online player's location (for targeting impacts) */
     protected Location getNearestPlayerLocation() {
         List<Player> online = getOnlinePlayers();
         if (online.isEmpty()) return center.clone();
@@ -98,7 +98,6 @@ public abstract class IslandWorldEvent {
         return nearest.getLocation().clone();
     }
 
-    /** Make a mob immediately target the nearest player */
     protected void targetNearestPlayer(LivingEntity entity) {
         if (!(entity instanceof Mob)) return;
         Player nearest = null;
@@ -128,16 +127,10 @@ public abstract class IslandWorldEvent {
 
     // ── HP Bar via BossBar (top of screen) ───────────────────
 
-    /**
-     * Shows the boss HP bar at the TOP of the screen using the BossBar API (1.9+).
-     * Falls back to action bar on 1.8 servers.
-     */
     protected void trackHPBar(LivingEntity boss, String bossName) {
-        // Try to create a BossBar — appears at top of screen, doesn't clash with skill bar
         Object bossBar = tryCreateBossBar(bossName);
 
         if (bossBar != null) {
-            // Add all current online players to the bar
             try {
                 Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
                 for (Player p : getOnlinePlayers()) addPlayer.invoke(bossBar, p);
@@ -151,12 +144,20 @@ public abstract class IslandWorldEvent {
                         removeBossBar(bar);
                         return;
                     }
-                    double pct = Math.max(0, boss.getHealth() / boss.getMaxHealth());
+                    double pct = Math.max(0.0, Math.min(1.0, boss.getHealth() / boss.getMaxHealth()));
                     updateBossBar(bar, bossName, pct);
-                    // Ensure any newly-joined players see the bar
+                    
+                    // Add newly joined players
                     try {
                         Method addPlayer = bar.getClass().getMethod("addPlayer", Player.class);
-                        for (Player p : getOnlinePlayers()) addPlayer.invoke(bar, p);
+                        for (Player p : getOnlinePlayers()) {
+                            // Check if already in bar before adding to prevent duplicates
+                            Method getPlayers = bar.getClass().getMethod("getPlayers");
+                            java.util.Collection<?> active = (java.util.Collection<?>) getPlayers.invoke(bar);
+                            if (!active.contains(p)) {
+                                addPlayer.invoke(bar, p);
+                            }
+                        }
                     } catch (Exception ignored) {}
                 }
             }.runTaskTimer(plugin, 0L, 10L);
@@ -188,28 +189,42 @@ public abstract class IslandWorldEvent {
             try {
                 barColorClass = Class.forName("org.bukkit.boss.BarColor");
                 barStyleClass = Class.forName("org.bukkit.boss.BarStyle");
-                createBossBarMethod = Bukkit.class.getMethod(
-                        "createBossBar", String.class, barColorClass, barStyleClass);
+                
+                // Retrieve createBossBar dynamically avoiding varargs reflection issues
+                for (Method m : Bukkit.class.getMethods()) {
+                    if (m.getName().equals("createBossBar") && m.getParameterCount() >= 3) {
+                        createBossBarMethod = m;
+                        break;
+                    }
+                }
             } catch (Exception ignored) {}
         }
         if (createBossBarMethod == null) return null;
         try {
             Object green = Enum.valueOf((Class<Enum>) barColorClass, "GREEN");
             Object solid = Enum.valueOf((Class<Enum>) barStyleClass, "SOLID");
-            return createBossBarMethod.invoke(null, name, green, solid);
+            
+            Class<?> barFlagClass = Class.forName("org.bukkit.boss.BarFlag");
+            Object flagsArray = java.lang.reflect.Array.newInstance(barFlagClass, 0);
+            
+            Object bar = createBossBarMethod.invoke(null, name, green, solid, flagsArray);
+            if (bar != null) {
+                bar.getClass().getMethod("setVisible", boolean.class).invoke(bar, true);
+            }
+            return bar;
         } catch (Exception ignored) { return null; }
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     private void updateBossBar(Object bar, String name, double pct) {
         try {
-            // setProgress
             bar.getClass().getMethod("setProgress", double.class).invoke(bar, pct);
-            // setColor based on hp
+            
             String colorName = pct > 0.6 ? "GREEN" : pct > 0.3 ? "YELLOW" : "RED";
             Object color = Enum.valueOf((Class<Enum>) barColorClass, colorName);
             bar.getClass().getMethod("setColor", barColorClass).invoke(bar, color);
-            // setTitle with HP number
+            
+            bar.getClass().getMethod("setTitle", String.class).invoke(bar, name + " §f- " + (int)(pct * 100) + "% HP");
         } catch (Exception ignored) {}
     }
 
@@ -262,21 +277,14 @@ public abstract class IslandWorldEvent {
 
     // ── Particles ─────────────────────────────────────────────
 
-    /**
-     * Spawn a particle using Bukkit's Particle API (1.9+) via reflection.
-     * Tries multiple particle name aliases for cross-version compat.
-     * Falls back to Effect enum for 1.8.
-     */
     protected void particle(Location loc, int count, String... names) {
         ensureParticleMethod(loc);
         for (String name : names) {
             if (trySpawnParticle(loc, count, name)) return;
         }
-        // Fallback: Effect enum (uses last name in list for backward compat)
         fx(loc, count, names);
     }
 
-    /** Effect enum — works on 1.8 for names like SMOKE, MOBSPAWNER_FLAMES */
     protected void fx(Location loc, int count, String... effectNames) {
         for (String name : effectNames) {
             try {
@@ -287,14 +295,12 @@ public abstract class IslandWorldEvent {
         }
     }
 
-    /** Strike a cosmetic lightning bolt at location (very visible, no damage) */
     protected void lightningEffect(Location loc) {
         try {
             loc.getWorld().getClass()
                     .getMethod("strikeLightningEffect", Location.class)
                     .invoke(loc.getWorld(), loc);
         } catch (Exception ignored) {
-            // fallback: normal lightning
             try { loc.getWorld().strikeLightning(loc); } catch (Exception ignored2) {}
         }
     }
@@ -305,12 +311,10 @@ public abstract class IslandWorldEvent {
         particleInitDone = true;
         try {
             particleClass = Class.forName("org.bukkit.Particle");
-            // Try the simple 3-arg overload first
             try {
-                spawnParticleMethod = loc.getWorld().getClass().getMethod(
+                spawnParticleMethod = org.bukkit.World.class.getMethod(
                         "spawnParticle", particleClass, Location.class, int.class);
             } catch (NoSuchMethodException ex) {
-                // Some Paper versions use different signatures; try double,double,double variant
                 spawnParticleMethod = null;
             }
         } catch (Exception ignored) {}
@@ -325,8 +329,7 @@ public abstract class IslandWorldEvent {
                 spawnParticleMethod.invoke(loc.getWorld(), particleObj, loc, count);
                 return true;
             }
-            // Fallback: try the Location x,y,z double overload
-            Method m = loc.getWorld().getClass().getMethod(
+            Method m = org.bukkit.World.class.getMethod(
                     "spawnParticle", particleClass,
                     double.class, double.class, double.class, int.class);
             m.invoke(loc.getWorld(), particleObj, loc.getX(), loc.getY(), loc.getZ(), count);

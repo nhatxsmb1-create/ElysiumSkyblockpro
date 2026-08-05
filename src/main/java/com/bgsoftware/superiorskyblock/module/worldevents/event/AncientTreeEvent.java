@@ -238,6 +238,7 @@ public class AncientTreeEvent extends IslandWorldEvent {
             }
         }
         spore.setDropItem(false);
+        spore.setMetadata("worldevent_spore", new org.bukkit.metadata.FixedMetadataValue(plugin, true));
         Vector dir = target.toVector().subtract(from.toVector()).normalize().multiply(1.3);
         dir.setY(dir.getY() + 0.45);
         spore.setVelocity(dir);
