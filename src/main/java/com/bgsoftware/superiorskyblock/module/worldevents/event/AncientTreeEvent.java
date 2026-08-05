@@ -26,35 +26,44 @@ public class AncientTreeEvent extends IslandWorldEvent {
         World world = center.getWorld();
         int maxDuration = 20 * 60 * 5;
 
-        // Spiraling vine aura around the tree center
+        // Boss spawns near a player
+        Location bossSpawn = getPlayerNearbySpawn(8);
+
+        // Spiraling vine aura (SLIME + FIREWORKS_SPARK — always visible)
         BukkitRunnable aura = new BukkitRunnable() {
-            double a = 0;
+            double angle = 0;
             int e = 0;
             @Override
             public void run() {
                 e += 3;
                 if (e > maxDuration) { cancel(); return; }
-                a += 8;
-                for (int l = 0; l < 6; l++) {
-                    double r = Math.max(0.5, 3.0 - l * 0.4), ang = Math.toRadians(a + l * 30);
-                    Location p = center.clone().add(Math.cos(ang) * r, l * 1.5, Math.sin(ang) * r);
-                    fx(p, 1, "HAPPY_VILLAGER", "FIREWORKS_SPARK");
-                    fx(p, 1, "MOBSPAWNER_FLAMES");
+                angle += 10;
+                for (int l = 0; l < 7; l++) {
+                    double r   = Math.max(0.4, l * 0.6);
+                    double ang = Math.toRadians(angle + l * 25.7);
+                    Location p = bossSpawn.clone().add(Math.cos(ang) * r, l * 0.65, Math.sin(ang) * r);
+                    fx(p, 1, "FIREWORKS_SPARK");
+                    particle(p, 1, "FIREWORKS_SPARK");
+                    if (l % 2 == 0) {
+                        fx(p, 1, "SMOKE");
+                        particle(p, 1, "SMOKE_LARGE");
+                    }
                 }
-                // Ground roots radiate outward
-                if (e % 20 == 0) {
-                    double rootAng = rng.nextDouble() * Math.PI * 2;
-                    for (int i = 0; i < 8; i++) {
-                        double dist = i * 0.8;
-                        Location rp = center.clone().add(Math.cos(rootAng) * dist, 0.1, Math.sin(rootAng) * dist);
-                        fx(rp, 1, "SLIME", "HAPPY_VILLAGER");
+                // Ground root veins radiating outward
+                if (e % 15 == 0) {
+                    double rootDir = rng.nextDouble() * Math.PI * 2;
+                    for (int step = 0; step < 8; step++) {
+                        double dist = step * 0.9;
+                        Location rp = bossSpawn.clone().add(Math.cos(rootDir) * dist, 0.1, Math.sin(rootDir) * dist);
+                        fx(rp, 1, "FIREWORKS_SPARK");
+                        particle(rp, 1, "FIREWORKS_SPARK");
                     }
                 }
             }
         };
         aura.runTaskTimer(plugin, 0L, 3L);
 
-        Witch dryad = (Witch) world.spawnEntity(center.clone().add(0, 1, 0), EntityType.WITCH);
+        Witch dryad = (Witch) world.spawnEntity(bossSpawn, EntityType.WITCH);
         dryad.setCustomName("§a🌿 Dryad Cổ Đại");
         dryad.setCustomNameVisible(true);
         double hp = scaledHP(100.0);
@@ -62,12 +71,14 @@ public class AncientTreeEvent extends IslandWorldEvent {
         dryad.setHealth(hp);
         dryad.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 0, false, false));
         dryad.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0, false, false));
-        sound(center, 1f, 0.6f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
+        sound(bossSpawn, 1f, 0.6f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
+        targetNearestPlayer(dryad);
         trackHPBar(dryad, "§a🌿 Dryad Cổ Đại");
 
-        int[] rootCooldown = {0};
+        int[] rootCooldown  = {0};
         int[] pollenCooldown = {0};
-        int[] sporesCooldown = {0};
+        int[] sporeCooldown  = {0};
+        int[] retarget       = {0};
 
         new BukkitRunnable() {
             int e = 0;
@@ -84,119 +95,121 @@ public class AncientTreeEvent extends IslandWorldEvent {
                         world.dropItemNaturally(d, named(Material.NETHER_STAR, "§2§lPhước Lành Dryad"));
                         broadcast("§a🌳 §lPhần thưởng đặc biệt! §r§aPhước Lành Dryad đã rơi!");
                     }
-                    broadcast("§a🌳 Dryad Cổ Đại đã bị đánh bại! Tinh Chất Thiên Nhiên đã rơi!");
+                    broadcast("§a🌳 Dryad Cổ Đại đã bị đánh bại!");
                     sound(center, 1f, 1.6f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }
 
                 Location dLoc = dryad.getLocation();
-                rootCooldown[0] += 20;
+                rootCooldown[0]  += 20;
                 pollenCooldown[0] += 20;
-                sporesCooldown[0] += 20;
+                sporeCooldown[0]  += 20;
+                retarget[0]       += 20;
 
-                // ── ABILITY 1: Entangling Roots ─────────────────────────────────
-                // Target a player, show animated roots crawling along the ground,
-                // then fully lock them in place for 4 seconds.
+                if (retarget[0] >= 80) { retarget[0] = 0; targetNearestPlayer(dryad); }
+
+                // ── ABILITY 1: Entangling Roots ───────────────────────────
+                // Animated roots crawl from boss toward target
                 if (rootCooldown[0] >= 120) {
                     rootCooldown[0] = 0;
-                    List<Player> players = getOnlinePlayers();
-                    players.removeIf(p -> !p.getWorld().equals(dLoc.getWorld()) || p.getLocation().distance(dLoc) > 25.0);
-                    if (!players.isEmpty()) {
-                        Player target = players.get(rng.nextInt(players.size()));
-                        Location tLoc = target.getLocation();
-                        target.sendMessage("§2🌿 Rễ cây cổ đại đang trườn về phía bạn!");
-                        // Animated roots creeping toward player from boss
+                    List<Player> candidates = new ArrayList<>(getOnlinePlayers());
+                    candidates.removeIf(p -> !p.getWorld().equals(dLoc.getWorld())
+                            || p.getLocation().distance(dLoc) > 22.0);
+                    if (!candidates.isEmpty()) {
+                        Player target = candidates.get(rng.nextInt(candidates.size()));
+                        Location tLoc = target.getLocation().clone();
+                        target.sendMessage("§2🌿 Rễ cây đang trườn về phía bạn!");
+                        double totalDist = dLoc.distance(tLoc);
+                        Vector dir = tLoc.toVector().subtract(dLoc.toVector()).normalize();
+
                         new BukkitRunnable() {
-                            int step = 0;
-                            final int totalSteps = 12;
-                            final Vector dir = tLoc.toVector().subtract(dLoc.toVector()).normalize();
+                            int step = 0; final int steps = 14;
                             @Override
                             public void run() {
                                 step++;
-                                if (step > totalSteps) {
+                                if (step > steps) {
                                     cancel();
-                                    // ROOT LOCK: heavy slowness + visual burst
+                                    // Root lock
                                     target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 80, 5));
-                                    target.sendMessage("§2🌿 Rễ cây đã trói chặt chân bạn!");
+                                    target.sendMessage("§2🌿 Rễ cây trói chặt chân bạn!");
                                     for (int i = 0; i < 20; i++) {
                                         double ang = i * (Math.PI * 2 / 20);
-                                        Location rp = tLoc.clone().add(Math.cos(ang) * 1.5, 0.2, Math.sin(ang) * 1.5);
-                                        fx(rp, 1, "SLIME");
-                                        fx(rp, 1, "HAPPY_VILLAGER");
+                                        Location rp = tLoc.clone().add(Math.cos(ang) * 1.8, 0.15, Math.sin(ang) * 1.8);
+                                        fx(rp, 1, "FIREWORKS_SPARK");
+                                        particle(rp, 1, "FIREWORKS_SPARK");
                                     }
-                                    sound(tLoc, 1f, 0.7f, "WOOD_BREAK", "BLOCK_WOOD_BREAK");
-                                    sound(tLoc, 0.7f, 0.5f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
+                                    sound(tLoc, 1f, 0.6f, "DIG_WOOD", "BLOCK_WOOD_BREAK");
                                     return;
                                 }
-                                double frac = step / (double) totalSteps;
-                                Location rootTip = dLoc.clone().add(dir.clone().multiply(frac * dLoc.distance(tLoc)));
-                                fx(rootTip, 2, "SLIME");
-                                fx(rootTip, 1, "HAPPY_VILLAGER");
-                                sound(rootTip, 0.4f, 0.8f, "WOOD_BREAK", "BLOCK_WOOD_BREAK");
+                                double frac = step / (double) steps;
+                                Location tip = dLoc.clone().add(dir.clone().multiply(frac * totalDist));
+                                fx(tip, 2, "FIREWORKS_SPARK");
+                                particle(tip, 2, "FIREWORKS_SPARK");
+                                sound(tip, 0.4f, 0.7f, "DIG_WOOD", "BLOCK_WOOD_BREAK");
                             }
                         }.runTaskTimer(plugin, 0L, 2L);
                     }
                 }
 
-                // ── ABILITY 2: Healing Pollen + Poison Cloud ────────────────────
-                // Dryad releases a burst of pollen that heals herself and poisons
-                // nearby players. The cloud visually billows outward.
+                // ── ABILITY 2: Healing Pollen Burst ──────────────────────
+                // Expanding green ring that heals dryad + poisons players on contact
                 if (pollenCooldown[0] >= 80) {
                     pollenCooldown[0] = 0;
-                    double newHP = Math.min(dryad.getMaxHealth(), dryad.getHealth() + 8.0);
-                    dryad.setHealth(newHP);
-                    // Pollen burst visual: expanding ring
+                    double heal = Math.min(dryad.getMaxHealth(), dryad.getHealth() + 7.0);
+                    dryad.setHealth(heal);
+
                     new BukkitRunnable() {
                         double radius = 0.5;
                         int t = 0;
                         @Override
                         public void run() {
                             t += 3;
-                            radius = 0.5 + (t / 30.0) * 7.5;
-                            if (t >= 30) { cancel(); return; }
-                            for (int i = 0; i < 16; i++) {
-                                double ang = i * (Math.PI * 2 / 16);
-                                Location pp = dLoc.clone().add(Math.cos(ang) * radius, 0.8, Math.sin(ang) * radius);
-                                fx(pp, 1, "HAPPY_VILLAGER");
-                                fx(pp, 1, "SPELL_MOB", "SPELL_MOB_AMBIENT");
+                            radius = 0.5 + (t / 24.0) * 7.5;
+                            if (t >= 24) { cancel(); return; }
+                            for (int i = 0; i < 18; i++) {
+                                double ang = i * (Math.PI * 2 / 18);
+                                Location pp = dLoc.clone().add(Math.cos(ang) * radius, 0.7, Math.sin(ang) * radius);
+                                fx(pp, 1, "FIREWORKS_SPARK");
+                                particle(pp, 1, "FIREWORKS_SPARK");
+                                particle(pp, 1, "SMOKE_LARGE");
                             }
-                            // Apply poison to players caught in expanding cloud
                             for (Player p : getOnlinePlayers()) {
                                 if (!p.getWorld().equals(dLoc.getWorld())) continue;
-                                if (Math.abs(p.getLocation().distance(dLoc) - radius) < 2.0) {
+                                double pDist = p.getLocation().distance(dLoc);
+                                if (Math.abs(pDist - radius) < 1.8) {
                                     p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 60, 0));
                                     p.sendMessage("§a🌿 Phấn hoa độc chạm vào bạn!");
                                 }
                             }
                         }
                     }.runTaskTimer(plugin, 0L, 3L);
-                    sound(dLoc, 0.8f, 1.2f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
+                    sound(dLoc, 0.8f, 1.1f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
                 }
 
-                // ── ABILITY 3: Thorn Spore Barrage ──────────────────────────────
-                // Every 8 seconds, fling thorns (FallingBlock logs) in an arc at
-                // players. Each spore marks its landing zone before impact.
-                if (sporesCooldown[0] >= 160) {
-                    sporesCooldown[0] = 0;
-                    broadcast("§2🌿 Dryad phóng bào tử gai về phía người chơi!");
+                // ── ABILITY 3: Thorn Spore Barrage ───────────────────────
+                // Fling FallingBlock thorns toward every nearby player with FIREWORK marker
+                if (sporeCooldown[0] >= 160) {
+                    sporeCooldown[0] = 0;
+                    broadcast("§2🌿 Dryad phóng bào tử gai!");
                     for (Player p : getOnlinePlayers()) {
                         if (!p.getWorld().equals(dLoc.getWorld())) continue;
-                        if (p.getLocation().distance(dLoc) > 30.0) continue;
-                        Location pLoc = p.getLocation();
-                        // Ground target marker
+                        if (p.getLocation().distance(dLoc) > 28.0) continue;
+                        final Location pLoc = p.getLocation().clone();
+
+                        // Marker ring at target
                         new BukkitRunnable() {
                             int wt = 0;
                             @Override
                             public void run() {
                                 wt += 4;
-                                if (wt >= 40) { cancel(); flingSpore(dLoc, pLoc); return; }
-                                for (int i = 0; i < 8; i++) {
-                                    double ang = (i * Math.PI * 2 / 8) + wt * 0.1;
-                                    Location mark = pLoc.clone().add(Math.cos(ang) * 1.8, 0.15, Math.sin(ang) * 1.8);
-                                    fx(mark, 1, "SLIME");
-                                    fx(mark, 1, "HAPPY_VILLAGER");
+                                if (wt >= 36) { cancel(); flingSpore(dLoc, pLoc); return; }
+                                for (int i = 0; i < 10; i++) {
+                                    double ang = (i * Math.PI * 2 / 10) + wt * 0.12;
+                                    Location mark = pLoc.clone().add(Math.cos(ang) * 1.6, 0.15, Math.sin(ang) * 1.6);
+                                    fx(mark, 1, "FIREWORKS_SPARK");
+                                    particle(mark, 1, "FIREWORKS_SPARK");
                                 }
-                                sound(pLoc, 0.3f, 0.6f + (wt / 40.0f * 0.4f), "WOOD_BREAK", "BLOCK_WOOD_BREAK");
+                                sound(pLoc, 0.35f, 0.5f + (wt / 36.0f * 0.4f), "DIG_WOOD", "BLOCK_WOOD_BREAK");
                             }
                         }.runTaskTimer(plugin, 0L, 4L);
                     }
@@ -210,17 +223,23 @@ public class AncientTreeEvent extends IslandWorldEvent {
         }.runTaskTimer(plugin, 20L, 20L);
     }
 
-    /** Fling a FallingBlock spore from boss toward target with leaf trail */
     private void flingSpore(Location from, Location target) {
         FallingBlock spore;
         try {
-            spore = from.getWorld().spawnFallingBlock(from.clone().add(0, 2, 0), Material.valueOf("LOG"), (byte) 1);
+            spore = from.getWorld().spawnFallingBlock(from.clone().add(0, 2, 0),
+                    Material.valueOf("LOG"), (byte) 1);
         } catch (Exception ex) {
-            spore = from.getWorld().spawnFallingBlock(from.clone().add(0, 2, 0), Material.SAND, (byte) 0);
+            try {
+                spore = from.getWorld().spawnFallingBlock(from.clone().add(0, 2, 0),
+                        Material.SAND, (byte) 0);
+            } catch (Exception ex2) {
+                spore = from.getWorld().spawnFallingBlock(from.clone().add(0, 2, 0),
+                        Material.GRAVEL, (byte) 0);
+            }
         }
         spore.setDropItem(false);
-        Vector dir = target.toVector().subtract(from.toVector()).normalize().multiply(1.4);
-        dir.setY(dir.getY() + 0.4);
+        Vector dir = target.toVector().subtract(from.toVector()).normalize().multiply(1.3);
+        dir.setY(dir.getY() + 0.45);
         spore.setVelocity(dir);
 
         final FallingBlock block = spore;
@@ -229,24 +248,25 @@ public class AncientTreeEvent extends IslandWorldEvent {
             @Override
             public void run() {
                 life += 2;
-                if (!block.isValid() || block.isOnGround() || life > 60) {
+                if (!block.isValid() || block.isOnGround() || life > 70) {
                     cancel(); block.remove();
                     Location land = block.getLocation();
-                    sound(land, 0.9f, 0.8f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
-                    fx(land, 10, "SLIME");
-                    fx(land, 5, "HAPPY_VILLAGER");
+                    sound(land, 0.9f, 0.8f, "DIG_WOOD", "BLOCK_WOOD_BREAK");
+                    fx(land, 8, "FIREWORKS_SPARK");
+                    particle(land, 8, "FIREWORKS_SPARK");
                     for (Player p : getOnlinePlayers()) {
-                        if (p.getWorld().equals(land.getWorld()) && p.getLocation().distance(land) < 2.0) {
+                        if (p.getWorld().equals(land.getWorld()) && p.getLocation().distance(land) < 2.2) {
                             p.damage(4.0);
                             p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 40, 2));
-                            p.sendMessage("§2🌿 Bào tử gai cây cổ thụ ghim vào chân bạn!");
+                            p.sendMessage("§2🌿 Bào tử gai ghim vào chân bạn!");
                         }
                     }
                     return;
                 }
                 Location loc = block.getLocation();
-                fx(loc, 1, "HAPPY_VILLAGER");
-                fx(loc, 1, "SLIME");
+                fx(loc, 1, "FIREWORKS_SPARK");
+                particle(loc, 1, "FIREWORKS_SPARK");
+                particle(loc, 1, "SMOKE_LARGE");
             }
         }.runTaskTimer(plugin, 0L, 2L);
     }

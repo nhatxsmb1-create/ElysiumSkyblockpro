@@ -25,149 +25,159 @@ public class InvasionEvent extends IslandWorldEvent {
     }
 
     private void spawnWave(int idx, Runnable onFinish) {
-        World world = center.getWorld();
         if (idx >= WAVES.length) {
-            world.dropItemNaturally(center.clone().add(0, 1, 0), named(Material.IRON_INGOT, "§c§lCúp Bảo Vệ Đảo"));
-            world.dropItemNaturally(center.clone().add(0, 1, 0), named(Material.GOLD_NUGGET, "§6§lXu Chiến Lợi Phẩm", 5));
+            Location drop = getPlayerNearbySpawn(5);
+            center.getWorld().dropItemNaturally(drop, named(Material.IRON_INGOT, "§c§lCúp Bảo Vệ Đảo"));
+            center.getWorld().dropItemNaturally(drop, named(Material.GOLD_NUGGET, "§6§lXu Chiến Lợi Phẩm", 5));
             if (hasLootBonus()) {
-                world.dropItemNaturally(center.clone().add(0, 1, 0), named(Material.DIAMOND, "§c§lKim Cương Chỉ Huy", 3));
+                center.getWorld().dropItemNaturally(drop, named(Material.DIAMOND, "§c§lKim Cương Chỉ Huy", 3));
                 broadcast("§c👹 §lPhần thưởng đặc biệt! §r§cKim Cương Chỉ Huy đã rơi!");
             }
-            broadcast("§a👹 Quân xâm lược đã bị đẩy lui! §cCúp Bảo Vệ Đảo §ađã rơi!");
+            broadcast("§a👹 Quân xâm lược đã bị đẩy lui!");
             sound(center, 1f, 1f, "LEVEL_UP", "ENTITY_PLAYER_LEVELUP");
             logResult("HOÀN THÀNH"); onFinish.run(); return;
         }
 
+        World world = center.getWorld();
         broadcast("§c👹 §fĐợt §e" + (idx + 1) + "§c/§e" + WAVES.length + " §fquân tấn công ào đến!");
         sound(center, 0.7f, 0.8f, "ENDERDRAGON_WINGS", "ENTITY_ENDER_DRAGON_FLAP");
 
         List<LivingEntity> waveMobs = new ArrayList<>();
+
         for (int i = 0; i < WAVES[idx][0]; i++) {
-            double a = rng.nextDouble() * Math.PI * 2;
-            Location loc = center.clone().add(Math.cos(a) * 10, 1, Math.sin(a) * 10);
-            loc.setY(world.getHighestBlockYAt(loc) + 1);
+            // Spawn each mob near a random player
+            Location spawnLoc = getPlayerNearbySpawn(8);
             // Spawn flash effect
-            fx(loc, 5, "FIREWORKS_SPARK");
-            LivingEntity mob = spawnMob(world, loc, WAVES[idx][1], idx);
+            for (int j = 0; j < 16; j++) {
+                double ang = j * (Math.PI * 2 / 16);
+                Location ring = spawnLoc.clone().add(Math.cos(ang) * 1.5, 0.1, Math.sin(ang) * 1.5);
+                fx(ring, 1, "CRIT");
+                particle(ring, 1, "CRIT");
+            }
+            fx(spawnLoc.clone().add(0, 1, 0), 4, "SMOKE");
+            particle(spawnLoc.clone().add(0, 1, 0), 4, "SMOKE_LARGE");
+
+            LivingEntity mob = spawnMob(world, spawnLoc, WAVES[idx][1], idx);
             if (mob != null) {
+                targetNearestPlayer(mob);
                 waveMobs.add(mob);
                 if (WAVES[idx][1] == 3) trackHPBar(mob, "§4⚔ Tướng Tổng Chỉ Huy");
             }
         }
 
-        // Wave-specific cooldowns
-        int[] arrowCooldown = {0};
-        int[] slamCooldown = {0};
+        int[] arrowCooldown  = {0};
+        int[] slamCooldown   = {0};
+        int[] retargetTicker = {0};
 
         new BukkitRunnable() {
             int e = 0;
             @Override
             public void run() {
                 e += 20;
+                retargetTicker[0] += 20;
 
-                // --- WAVE 1: Zombie Rush — charge toward nearest player ---
-                if (idx == 0) {
-                    for (LivingEntity m : waveMobs) {
-                        if (!m.isValid()) continue;
-                        // Ambient growl and smoke
-                        if (rng.nextDouble() < 0.1) {
-                            sound(m.getLocation(), 0.5f, 0.9f, "MOB_ZOMBIE_HURT", "ENTITY_ZOMBIE_HURT");
-                            fx(m.getLocation(), 2, "LARGE_SMOKE");
-                        }
-                    }
+                // Re-target mobs every 5 seconds
+                if (retargetTicker[0] >= 100) {
+                    retargetTicker[0] = 0;
+                    waveMobs.forEach(m -> { if (m.isValid()) targetNearestPlayer(m); });
                 }
 
-                // --- WAVE 2: Arrow Rain from Skeleton archers ---
+                // ── WAVE 2: Skeleton Arrow Rain ────────────────────────
                 if (idx == 1) {
                     arrowCooldown[0] += 20;
-                    boolean skeletonsAlive = waveMobs.stream().anyMatch(m -> m instanceof Skeleton && m.isValid());
-                    if (skeletonsAlive && arrowCooldown[0] >= 80) {
+                    boolean skelAlive = waveMobs.stream().anyMatch(m -> m instanceof Skeleton && m.isValid());
+                    if (skelAlive && arrowCooldown[0] >= 80) {
                         arrowCooldown[0] = 0;
-                        broadcast("§e🏹 Cung thủ bóng tối khai hỏa! Mưa tên từ trên trời!");
+                        broadcast("§e🏹 Cung Thủ Bóng Tối khai hỏa! Né ngay!");
                         for (Player p : getOnlinePlayers()) {
                             Location pLoc = p.getLocation();
-                            // Warning marker: ring of sparks at player's feet
-                            for (int i = 0; i < 10; i++) {
-                                double ang = i * (Math.PI * 2 / 10);
-                                Location mark = pLoc.clone().add(Math.cos(ang) * 2, 0.1, Math.sin(ang) * 2);
-                                fx(mark, 1, "FIREWORKS_SPARK");
+                            // Ground warning ring
+                            for (int i = 0; i < 14; i++) {
+                                double ang = i * (Math.PI * 2 / 14);
+                                Location mark = pLoc.clone().add(Math.cos(ang) * 2.0, 0.15, Math.sin(ang) * 2.0);
+                                fx(mark, 1, "CRIT");
+                                particle(mark, 1, "CRIT");
                             }
-                            sound(pLoc, 0.8f, 0.5f, "SHOOT_ARROW", "ENTITY_ARROW_SHOOT");
-                            // Delay arrows by 1 second so player can dodge
+                            sound(pLoc, 0.9f, 0.5f, "SHOOT_ARROW", "ENTITY_ARROW_SHOOT");
+                            // 1-second delay so players can dodge
                             final Location frozenLoc = pLoc.clone();
                             plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
-                                for (int i = 0; i < 5; i++) {
-                                    Location arrowFrom = frozenLoc.clone().add(
-                                            (rng.nextDouble() - 0.5) * 6, 18 + rng.nextDouble() * 5,
-                                            (rng.nextDouble() - 0.5) * 6);
-                                    Arrow arrow = frozenLoc.getWorld().spawnArrow(arrowFrom,
-                                            new Vector(0, -1, 0), 1.5f, 8f);
+                                for (int i = 0; i < 6; i++) {
+                                    Location from = frozenLoc.clone().add(
+                                            (rng.nextDouble() - 0.5) * 5,
+                                            16 + rng.nextDouble() * 6,
+                                            (rng.nextDouble() - 0.5) * 5);
+                                    Arrow arrow = frozenLoc.getWorld().spawnArrow(from,
+                                            new Vector(0, -1, 0), 1.6f, 6f);
                                     arrow.setShooter(null);
-                                    arrow.setFireTicks(0);
                                 }
                             }, 20L);
                         }
                     }
                 }
 
-                // --- WAVE 3: Elite Warriors — charge and leap at players ---
+                // ── WAVE 3: Elite Warriors Leap ────────────────────────
                 if (idx == 2) {
                     for (LivingEntity m : waveMobs) {
                         if (!(m instanceof PigZombie) || !m.isValid()) continue;
-                        if (rng.nextDouble() < 0.15) {
-                            // Leap toward nearest player
+                        if (e % 60 == 0) {
                             Player nearest = getNearestPlayer(m.getLocation());
-                            if (nearest != null) {
+                            if (nearest != null && m.getLocation().distance(nearest.getLocation()) > 4) {
                                 Vector leap = nearest.getLocation().toVector()
-                                        .subtract(m.getLocation().toVector()).normalize().multiply(0.8);
-                                leap.setY(0.5);
+                                        .subtract(m.getLocation().toVector()).normalize().multiply(0.9);
+                                leap.setY(0.55);
                                 m.setVelocity(leap);
-                                sound(m.getLocation(), 0.7f, 1.2f, "MOB_ZOMBIE_HURT", "ENTITY_ZOMBIE_HURT");
-                                fx(m.getLocation(), 3, "FIREWORKS_SPARK");
+                                fx(m.getLocation(), 4, "CRIT");
+                                particle(m.getLocation(), 4, "CRIT");
+                                sound(m.getLocation(), 0.8f, 1.2f, "MOB_ZOMBIE_HURT", "ENTITY_ZOMBIE_HURT");
                             }
                         }
                     }
                 }
 
-                // --- WAVE 4: Iron Golem Commander Ground Slam ---
+                // ── WAVE 4: Iron Golem Ground Slam ─────────────────────
                 if (idx == 3) {
                     slamCooldown[0] += 20;
                     for (LivingEntity m : waveMobs) {
                         if (!(m instanceof IronGolem) || !m.isValid()) continue;
                         Location gLoc = m.getLocation();
 
-                        // Rotating fire aura around boss
-                        double aAng = e * 5;
-                        for (int i = 0; i < 6; i++) {
-                            double ang = Math.toRadians(aAng + i * 60);
-                            Location fp = gLoc.clone().add(Math.cos(ang) * 3, 1, Math.sin(ang) * 3);
-                            fx(fp, 1, "MOBSPAWNER_FLAMES");
+                        // Rotating fire aura
+                        double aAng = e * 6;
+                        for (int i = 0; i < 8; i++) {
+                            double ang = Math.toRadians(aAng + i * 45);
+                            Location fp = gLoc.clone().add(Math.cos(ang) * 3.5, 0.8, Math.sin(ang) * 3.5);
+                            fx(fp, 1, "FLAME");
+                            particle(fp, 1, "FLAME");
                         }
 
-                        // Ground slam every 5 seconds
+                        // Ground slam with wind-up ring
                         if (slamCooldown[0] >= 100) {
                             slamCooldown[0] = 0;
-                            broadcast("§4§l⚔ Tướng Chỉ Huy đang tụ lực đập đất!");
-                            // Wind-up warning ring
+                            broadcast("§4§l⚔ Tướng Chỉ Huy đang tụ lực!");
                             new BukkitRunnable() {
                                 int wt = 0;
+                                final Location slamLoc = gLoc.clone();
                                 @Override
                                 public void run() {
-                                    wt += 4;
-                                    if (wt >= 20) {
+                                    wt += 5;
+                                    if (wt >= 25) {
                                         cancel();
-                                        executeSlamExplosion(gLoc);
+                                        doSlam(slamLoc);
                                         return;
                                     }
-                                    for (int i = 0; i < 12; i++) {
-                                        double ang = (i * (Math.PI * 2 / 12)) + wt * 0.3;
-                                        Location ring = gLoc.clone().add(Math.cos(ang) * 6, 0.1, Math.sin(ang) * 6);
-                                        fx(ring, 1, "MOBSPAWNER_FLAMES");
+                                    // Wind-up ring contracts inward
+                                    double r = 7.0 - (wt / 25.0) * 5.0;
+                                    for (int i = 0; i < 16; i++) {
+                                        double ang = (i * (Math.PI * 2 / 16)) + wt * 0.4;
+                                        Location ring = slamLoc.clone().add(Math.cos(ang) * r, 0.15, Math.sin(ang) * r);
+                                        fx(ring, 1, "FLAME");
+                                        particle(ring, 1, "FLAME");
                                     }
-                                    sound(gLoc, 0.6f + (wt / 20.0f) * 0.4f, 0.4f + (wt / 20.0f) * 0.4f,
-                                            "BURNING", "BLOCK_FIRE_AMBIENT");
+                                    sound(slamLoc, 0.5f + (wt / 25.0f) * 0.5f, 0.4f + (wt / 25.0f) * 0.3f,
+                                            "ANVIL_LAND", "BLOCK_ANVIL_LAND");
                                 }
-                            }.runTaskTimer(plugin, 0L, 4L);
+                            }.runTaskTimer(plugin, 0L, 5L);
                         }
                         break;
                     }
@@ -187,31 +197,36 @@ public class InvasionEvent extends IslandWorldEvent {
         }.runTaskTimer(plugin, 20L, 20L);
     }
 
-    /** Slam explosion centered at boss location */
-    private void executeSlamExplosion(Location gLoc) {
+    private void doSlam(Location gLoc) {
         sound(gLoc, 1.2f, 0.5f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
-        fx(gLoc, 8, "EXPLOSION_LARGE");
-        fx(gLoc, 15, "LARGE_SMOKE");
+        // Big explosion visual
+        fx(gLoc, 5, "EXPLOSION_LARGE");
+        particle(gLoc, 8, "EXPLOSION_LARGE");
+        // Ground crack ring
+        for (int i = 0; i < 20; i++) {
+            double ang = i * (Math.PI * 2 / 20);
+            Location ring = gLoc.clone().add(Math.cos(ang) * 5, 0.1, Math.sin(ang) * 5);
+            fx(ring, 2, "SMOKE");
+            particle(ring, 2, "SMOKE_LARGE");
+        }
         for (Player p : getOnlinePlayers()) {
             if (!p.getWorld().equals(gLoc.getWorld())) continue;
             double dist = p.getLocation().distance(gLoc);
             if (dist < 10.0) {
-                double dmg = dist < 4.0 ? 8.0 : 4.0;
+                double dmg = dist < 4.0 ? 8.0 : 5.0;
                 p.damage(dmg);
                 Vector knock = p.getLocation().toVector().subtract(gLoc.toVector());
                 knock.setY(0);
-                if (knock.lengthSquared() > 0) knock.normalize().multiply(1.0);
-                knock.setY(0.55);
+                if (knock.lengthSquared() > 0) knock.normalize().multiply(1.1);
+                knock.setY(0.6);
                 p.setVelocity(knock);
                 p.sendMessage("§c§l⚔ Bạn bị hất tung bởi cú đập đất của Tướng Chỉ Huy!");
             }
         }
     }
 
-    /** Return nearest online player to a location */
     private Player getNearestPlayer(Location loc) {
-        Player nearest = null;
-        double minDist = Double.MAX_VALUE;
+        Player nearest = null; double minDist = Double.MAX_VALUE;
         for (Player p : getOnlinePlayers()) {
             if (!p.getWorld().equals(loc.getWorld())) continue;
             double d = p.getLocation().distanceSquared(loc);
@@ -237,8 +252,7 @@ public class InvasionEvent extends IslandWorldEvent {
                 PigZombie v = (PigZombie) world.spawnEntity(loc, EntityType.PIG_ZOMBIE);
                 v.setCustomName("§4§lTinh Nhuệ Chiến Binh"); v.setCustomNameVisible(true);
                 v.setMaxHealth(80 * scale); v.setHealth(v.getMaxHealth()); v.setAngry(true);
-                v.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1, false, false));
-                return v;
+                v.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1, false, false)); return v;
             }
             case 3: {
                 IronGolem r = (IronGolem) world.spawnEntity(loc, EntityType.IRON_GOLEM);

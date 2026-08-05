@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 public class VolcanoEvent extends IslandWorldEvent {
-    private static final int DURATION = 20 * 60 * 4, RADIUS = 60;
+    private static final int DURATION = 20 * 60 * 4;
 
     public VolcanoEvent(Island island, Location center) {
         super(island, center, WorldEventType.VOLCANO);
@@ -27,104 +27,93 @@ public class VolcanoEvent extends IslandWorldEvent {
     private void spawnBoss(Runnable onFinish) {
         World world = center.getWorld();
 
-        // Ambient ash/smoke across the island
+        // Spawn boss near a player
+        Location bossSpawn = getPlayerNearbySpawn(12);
+
+        // Continuous ash rain across island
         BukkitRunnable ash = new BukkitRunnable() {
             int e = 0;
             @Override
             public void run() {
-                e += 4;
+                e += 3;
                 if (e >= DURATION) { cancel(); return; }
-                for (int i = 0; i < 8; i++) {
+                for (int i = 0; i < 10; i++) {
                     Location p = center.clone().add(
-                            (rng.nextDouble() - .5) * RADIUS,
-                            18 + rng.nextInt(8),
-                            (rng.nextDouble() - .5) * RADIUS);
-                    fx(p, 1, "LARGE_SMOKE");
-                    fx(p, 1, "FLAME");
+                            (rng.nextDouble() - .5) * 60,
+                            20 + rng.nextInt(6),
+                            (rng.nextDouble() - .5) * 60);
+                    fx(p, 1, "SMOKE");
+                    particle(p, 1, "SMOKE_LARGE");
+                    if (rng.nextBoolean()) fx(p, 1, "FLAME");
                 }
             }
         };
-        ash.runTaskTimer(plugin, 0L, 4L);
+        ash.runTaskTimer(plugin, 0L, 3L);
 
-        // Real lava geyser projectiles every 5 seconds
+        // Lava geyser eruptions every 4 seconds near players
         BukkitRunnable geysers = new BukkitRunnable() {
             int e = 0;
             @Override
             public void run() {
                 e += 80;
                 if (e >= DURATION) { cancel(); return; }
-                // Ground warning then FallingBlock lava geyser
-                Location from = center.clone().add(
-                        (rng.nextDouble() - .5) * RADIUS * 0.6,
-                        0, (rng.nextDouble() - .5) * RADIUS * 0.6);
-                from.setY(world.getHighestBlockYAt(from));
-                launchLavaGeyser(from);
+                Location geyserLoc = getPlayerNearbySpawn(25);
+                geyserLoc.setY(world.getHighestBlockYAt(geyserLoc));
+                launchLavaGeyser(geyserLoc);
             }
         };
-        geysers.runTaskTimer(plugin, 40L, 80L);
+        geysers.runTaskTimer(plugin, 60L, 80L);
 
-        Blaze boss = (Blaze) world.spawnEntity(center.clone().add(0, 2, 0), EntityType.BLAZE);
+        Blaze boss = (Blaze) world.spawnEntity(bossSpawn, EntityType.BLAZE);
         boss.setCustomName("§c🌋 Golem Lửa");
         boss.setCustomNameVisible(true);
         double hp = scaledHP(180.0);
         boss.setMaxHealth(hp);
         boss.setHealth(hp);
         boss.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 1, false, false));
+        targetNearestPlayer(boss);
         trackHPBar(boss, "§c🌋 Golem Lửa");
 
-        // Burning aura around boss
+        // Heat aura + flame ring around boss
         BukkitRunnable heatAura = new BukkitRunnable() {
             int e = 0;
             double auraAngle = 0;
             @Override
             public void run() {
-                e += 20;
+                e += 10;
                 if (e >= DURATION || !boss.isValid()) { cancel(); return; }
+                auraAngle += 20;
                 Location bossLoc = boss.getLocation();
 
-                // Rotating fire ring around boss
-                auraAngle += 30;
-                for (int i = 0; i < 8; i++) {
-                    double ang = Math.toRadians(auraAngle + i * 45);
-                    Location fp = bossLoc.clone().add(Math.cos(ang) * 3, 1, Math.sin(ang) * 3);
+                // Rotating fire ring (FLAME — most visible effect)
+                for (int i = 0; i < 10; i++) {
+                    double ang = Math.toRadians(auraAngle + i * 36);
+                    Location fp = bossLoc.clone().add(Math.cos(ang) * 3.5, 1, Math.sin(ang) * 3.5);
                     fx(fp, 1, "FLAME");
-                    fx(fp, 1, "LARGE_SMOKE");
+                    particle(fp, 1, "FLAME");
+                    if (i % 2 == 0) {
+                        particle(fp, 1, "SMOKE_LARGE");
+                    }
                 }
 
-                for (Player p : getOnlinePlayers()) {
-                    if (!p.getWorld().equals(bossLoc.getWorld())) continue;
-                    double dist = p.getLocation().distance(bossLoc);
-                    // Inner burn zone: < 10 blocks
-                    if (dist < 10.0) {
-                        p.sendMessage("§c§l🌋 Hơi nóng thiêu đốt cực mạnh!");
-                        p.setFireTicks(60);
-                        p.damage(2.0);
-                        fx(p.getLocation(), 3, "FLAME");
-                    }
-                    // Outer warning zone: < 20 blocks, random flame jets
-                    else if (dist < 20.0 && rng.nextDouble() < 0.3) {
-                        p.sendMessage("§c🔥 Mặt đất dưới chân đang nóng lên!");
-                        Location pLoc = p.getLocation().clone();
-                        // Show 3-tick warning
-                        fx(pLoc, 6, "MOBSPAWNER_FLAMES");
-                        sound(pLoc, 0.6f, 0.5f, "FIZZ", "BLOCK_FIRE_EXTINGUISH");
-                        // Delayed eruption under player's feet
-                        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
-                            if (!boss.isValid() || !p.isOnline()) return;
-                            sound(pLoc, 0.9f, 0.8f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
-                            fx(pLoc, 12, "LAVA");
-                            fx(pLoc, 6, "LARGE_SMOKE");
-                            if (p.getLocation().distance(pLoc) < 2.5) {
-                                p.damage(5.0);
-                                p.setFireTicks(100);
-                                p.setVelocity(new Vector(0, 0.5, 0));
-                            }
-                        }, 30L);
+                // Damage players in burning aura
+                if (e % 40 == 0) {
+                    for (Player p : getOnlinePlayers()) {
+                        if (!p.getWorld().equals(bossLoc.getWorld())) continue;
+                        double dist = p.getLocation().distance(bossLoc);
+                        if (dist < 8.0) {
+                            p.sendMessage("§c§l🌋 Hơi nóng thiêu đốt cực mạnh!");
+                            p.setFireTicks(80);
+                            p.damage(2.5);
+                            fx(p.getLocation(), 4, "FLAME");
+                        }
                     }
                 }
+
+                targetNearestPlayer(boss);
             }
         };
-        heatAura.runTaskTimer(plugin, 0L, 20L);
+        heatAura.runTaskTimer(plugin, 0L, 10L);
 
         new BukkitRunnable() {
             int e = 0;
@@ -136,12 +125,11 @@ public class VolcanoEvent extends IslandWorldEvent {
                     Location d = boss.getLocation();
                     world.dropItemNaturally(d, named(Material.MAGMA_CREAM, "§c§lTinh Thể Dung Nham"));
                     world.dropItemNaturally(d, named(Material.BLAZE_ROD, "§6§lLõi Nham Thạch"));
-                    world.dropItemNaturally(d, named(Material.NETHERRACK, "§4§lQuặng Núi Lửa"));
                     if (hasLootBonus()) {
                         world.dropItemNaturally(d, named(Material.NETHER_STAR, "§c§lBảo Ngọc Địa Ngục"));
                         broadcast("§6🌋 §lPhần thưởng đặc biệt! §r§6Bảo Ngọc Địa Ngục đã rơi!");
                     }
-                    broadcast("§a🌋 Golem Lửa đã bị tiêu diệt! Chiến lợi phẩm núi lửa đã rơi!");
+                    broadcast("§a🌋 Golem Lửa đã bị tiêu diệt!");
                     sound(center, 1f, 0.8f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }
@@ -153,32 +141,33 @@ public class VolcanoEvent extends IslandWorldEvent {
         }.runTaskTimer(plugin, 20L, 20L);
     }
 
-    /** Ground warning ring then shoot a FallingBlock lava geyser upward */
     private void launchLavaGeyser(Location ground) {
-        // Warning ring on the ground for 1.5 seconds
+        broadcast("§c🌋 §eDung nham phun lên gần bạn! §cCHẠY NGAY!");
+
+        // Warning ring (FLAME)
         new BukkitRunnable() {
             int ticks = 0;
             @Override
             public void run() {
-                ticks += 3;
-                if (ticks >= 30) {
+                ticks += 4;
+                if (ticks >= 40) {
                     cancel();
-                    shootGeyserBlock(ground);
+                    shootGeyser(ground);
                     return;
                 }
-                for (int i = 0; i < 10; i++) {
-                    double angle = (i * (Math.PI * 2 / 10)) + ticks * 0.2;
-                    Location p = ground.clone().add(Math.cos(angle) * 2.0, 0.2, Math.sin(angle) * 2.0);
-                    fx(p, 1, "LAVA");
+                for (int i = 0; i < 16; i++) {
+                    double ang = (i * (Math.PI * 2 / 16)) + ticks * 0.15;
+                    Location p = ground.clone().add(Math.cos(ang) * 2.5, 0.2, Math.sin(ang) * 2.5);
                     fx(p, 1, "FLAME");
+                    fx(p, 1, "LAVA");
+                    particle(p, 1, "FLAME");
                 }
-                sound(ground, 0.4f, 0.3f + (ticks / 30.0f * 0.5f), "FIZZ", "BLOCK_FIRE_EXTINGUISH");
+                sound(ground, 0.5f, 0.3f + (ticks / 40.0f * 0.5f), "FIZZ", "BLOCK_FIRE_EXTINGUISH");
             }
-        }.runTaskTimer(plugin, 0L, 3L);
+        }.runTaskTimer(plugin, 0L, 4L);
     }
 
-    /** Shoot FallingBlock magma upward like a geyser with a molten trail */
-    private void shootGeyserBlock(Location ground) {
+    private void shootGeyser(Location ground) {
         FallingBlock lava;
         try {
             lava = ground.getWorld().spawnFallingBlock(ground.clone().add(0, 1, 0), Material.valueOf("MAGMA"), (byte) 0);
@@ -187,9 +176,9 @@ public class VolcanoEvent extends IslandWorldEvent {
         }
         lava.setDropItem(false);
         lava.setVelocity(new Vector(
-                (rng.nextDouble() - 0.5) * 0.5,
-                1.4 + rng.nextDouble() * 0.5,
-                (rng.nextDouble() - 0.5) * 0.5));
+                (rng.nextDouble() - 0.5) * 0.4,
+                1.5 + rng.nextDouble() * 0.4,
+                (rng.nextDouble() - 0.5) * 0.4));
 
         final FallingBlock block = lava;
         new BukkitRunnable() {
@@ -198,26 +187,29 @@ public class VolcanoEvent extends IslandWorldEvent {
             public void run() {
                 life += 2;
                 if (!block.isValid() || block.isOnGround() || life > 80) {
-                    cancel();
-                    block.remove();
+                    cancel(); block.remove();
                     Location land = block.getLocation();
                     sound(land, 1f, 0.7f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
-                    fx(land, 15, "LAVA");
-                    fx(land, 8, "LARGE_SMOKE");
+                    fx(land, 8, "LAVA");
+                    fx(land, 6, "FLAME");
+                    particle(land, 10, "LAVA");
+                    particle(land, 6, "FLAME");
                     for (Player p : getOnlinePlayers()) {
-                        if (p.getWorld().equals(land.getWorld()) && p.getLocation().distance(land) < 2.5) {
-                            p.damage(6.0);
-                            p.setFireTicks(80);
-                            p.setVelocity(new Vector(0, 0.4, 0));
+                        if (p.getWorld().equals(land.getWorld()) && p.getLocation().distance(land) < 3.0) {
+                            p.damage(7.0);
+                            p.setFireTicks(100);
+                            p.setVelocity(new Vector(0, 0.6, 0));
                             p.sendMessage("§c🌋 Dung nham phun lên thiêu đốt bạn!");
                         }
                     }
                     return;
                 }
                 Location loc = block.getLocation();
-                fx(loc, 2, "FLAME");
-                fx(loc, 1, "LAVA");
-                fx(loc, 1, "LARGE_SMOKE");
+                fx(loc, 3, "FLAME");
+                fx(loc, 2, "LAVA");
+                particle(loc, 3, "FLAME");
+                particle(loc, 2, "LAVA");
+                particle(loc, 1, "SMOKE_LARGE");
             }
         }.runTaskTimer(plugin, 0L, 2L);
     }
