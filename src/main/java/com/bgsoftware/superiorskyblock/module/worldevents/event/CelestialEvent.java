@@ -49,7 +49,15 @@ public class CelestialEvent extends IslandWorldEvent {
         for (int i = 0; i < 4; i++) {
             double a = i * (2 * Math.PI / 4);
             Location loc = spawnBase.clone().add(Math.cos(a) * 12, 4 + rng.nextInt(3), Math.sin(a) * 12);
-            loc.setY(world.getHighestBlockYAt(loc) + 4);
+            
+            // Safe height check for crystals: don't snap to Y=0 deep void!
+            int highestY = world.getHighestBlockYAt(loc);
+            if (highestY < spawnBase.getBlockY() - 5) {
+                // If void, float them at player Y level + 3 block offsets
+                loc.setY(spawnBase.getY() + 3);
+            } else {
+                loc.setY(highestY + 4);
+            }
 
             Entity crystal = null;
             try {
@@ -69,7 +77,6 @@ public class CelestialEvent extends IslandWorldEvent {
                 }
             }
             if (crystal != null) {
-                // Mark with metadata so it doesn't break blocks on explosion if hit
                 crystal.setMetadata("worldevent_star", new FixedMetadataValue(plugin, true));
                 crystals.add(crystal);
                 lightningEffect(loc);
@@ -209,7 +216,6 @@ public class CelestialEvent extends IslandWorldEvent {
         }
 
         star.setDropItem(false);
-        // Mark star with metadata so it doesn't solidify or break blocks
         star.setMetadata("worldevent_star", new FixedMetadataValue(plugin, true));
         star.setVelocity(new Vector((rng.nextDouble() - 0.5) * 0.05, -2.2, (rng.nextDouble() - 0.5) * 0.05));
 
