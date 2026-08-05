@@ -78,7 +78,10 @@ public class SpaceRiftEvent extends IslandWorldEvent {
                             double distHoriz = Math.sqrt(Math.pow(pLoc.getX() - rift.getX(), 2) + Math.pow(pLoc.getZ() - rift.getZ(), 2));
                             if (distHoriz < 25.0) {
                                 p.sendMessage("§d§l🌀 Trọng lực hư vô đang hút bạn về phía cổng!");
-                                p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 40, 1));
+                                PotionEffectType levitation = PotionEffectType.getByName("LEVITATION");
+                                if (levitation != null) {
+                                    p.addPotionEffect(new PotionEffect(levitation, 40, 1));
+                                }
                                 Vector pull = rift.toVector().subtract(pLoc.toVector());
                                 pull.setY(0);
                                 if (pull.lengthSquared() > 0) {
