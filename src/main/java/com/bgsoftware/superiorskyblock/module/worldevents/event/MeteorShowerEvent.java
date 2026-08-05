@@ -4,6 +4,7 @@ import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*; import org.bukkit.entity.*; import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 public class MeteorShowerEvent extends IslandWorldEvent {
     private static final int COUNT=5, RADIUS=55, PICKUP_S=15;
@@ -28,13 +29,73 @@ public class MeteorShowerEvent extends IslandWorldEvent {
     }
 
     private void dropMeteor(World world, Location ground) {
-        broadcast("§e☄ Một thiên thạch đang rơi xuống! Chuẩn bị!");
-        sound(ground.clone().add(0,50,0),1f,0.4f,"FIREWORK_LAUNCH","ENTITY_FIREWORK_ROCKET_LAUNCH");
-        new BukkitRunnable(){double y=50; @Override public void run(){
-            y-=3; Location cur=ground.clone().add(0,y,0);
-            fx(cur,2,"FLAME"); fx(cur,1,"LAVADRIP");
-            if(y<=0){cancel();impact(world,ground);}
-        }}.runTaskTimer(plugin,0L,1L);
+        broadcast("§e☄ Phát hiện dấu hiệu thiên thạch sắp rơi xuống đảo!");
+
+        // 1. Mark target on the ground for 60 ticks (3 seconds)
+        new BukkitRunnable() {
+            int ticks = 0;
+            @Override public void run() {
+                ticks += 5;
+                if (ticks >= 60 || !ground.getChunk().isLoaded()) {
+                    cancel();
+                    // 2. Spawn physical meteor falling down
+                    spawnPhysicalMeteor(world, ground);
+                    return;
+                }
+
+                sound(ground, 0.8f, 0.5f + (ticks / 60.0f) * 0.5f, "NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING");
+
+                double radius = 3.0;
+                for (int i = 0; i < 16; i++) {
+                    double angle = (i * (Math.PI * 2 / 16)) + (ticks * 0.1);
+                    Location p = ground.clone().add(Math.cos(angle) * radius, 0.2, Math.sin(angle) * radius);
+                    fx(p, 1, "MOBSPAWNER_FLAMES", "FLAME");
+                    if (rng.nextBoolean()) fx(p, 1, "LAVADRIP");
+                }
+            }
+        }.runTaskTimer(plugin, 0L, 5L);
+    }
+
+    private void spawnPhysicalMeteor(World world, Location ground) {
+        Location spawnLoc = ground.clone().add(0, 40, 0);
+        FallingBlock meteor;
+        try {
+            meteor = world.spawnFallingBlock(spawnLoc, Material.valueOf("MAGMA"), (byte) 0);
+        } catch (Exception e) {
+            meteor = world.spawnFallingBlock(spawnLoc, Material.NETHERRACK, (byte) 0);
+        }
+
+        meteor.setDropItem(false);
+        final FallingBlock finalMeteor = meteor;
+        sound(spawnLoc, 1f, 0.4f, "FIREWORK_LAUNCH", "ENTITY_FIREWORK_ROCKET_LAUNCH");
+
+        new BukkitRunnable() {
+            @Override public void run() {
+                if (!finalMeteor.isValid() || finalMeteor.isOnGround() || finalMeteor.getLocation().getY() <= ground.getY()) {
+                    cancel();
+                    finalMeteor.remove();
+                    impact(world, ground);
+                    return;
+                }
+
+                Location loc = finalMeteor.getLocation();
+                fx(loc, 3, "FLAME");
+                fx(loc, 2, "LARGE_SMOKE");
+                if (rng.nextBoolean()) fx(loc, 1, "LAVADRIP");
+
+                if (rng.nextDouble() < 0.2) {
+                    sound(loc, 0.5f, 0.6f, "GHAST_FIREBALL", "ENTITY_GHAST_SHOOT");
+                }
+
+                for (Player p : getOnlinePlayers()) {
+                    if (p.getWorld().equals(loc.getWorld()) && p.getLocation().distance(loc) < 2.0) {
+                        p.damage(6.0);
+                        p.setFireTicks(60);
+                        p.setVelocity(p.getLocation().toVector().subtract(loc.toVector()).normalize().multiply(0.5).setY(0.3));
+                    }
+                }
+            }
+        }.runTaskTimer(plugin, 0L, 1L);
     }
 
     private void impact(World world, Location loc) {
