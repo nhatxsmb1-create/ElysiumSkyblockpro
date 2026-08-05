@@ -36,9 +36,8 @@ public class MeteorShowerEvent extends IslandWorldEvent {
                     return;
                 }
                 n++;
-                // Each meteor targets near a random online player
+                // Target a location near a random player (height snapped safely inside getPlayerNearbySpawn)
                 Location impact = getPlayerNearbySpawn(RADIUS).clone();
-                impact.setY(world.getHighestBlockYAt(impact));
                 dropMeteor(world, impact);
             }
         }.runTaskTimer(plugin, 40L, 20 * 18L);
@@ -63,50 +62,58 @@ public class MeteorShowerEvent extends IslandWorldEvent {
                 sound(ground, 0.7f, speed, "NOTE_PLING", "BLOCK_NOTE_BLOCK_PLING");
 
                 double radius = 3.5;
-                // Outer spinning ring (use FLAME effect — very visible)
+                // Outer spinning ring
                 for (int i = 0; i < 20; i++) {
                     double angle = (i * (Math.PI * 2.0 / 20)) + (ticks * 0.12);
-                    Location ring = ground.clone().add(
-                            Math.cos(angle) * radius, 0.15, Math.sin(angle) * radius);
-                    fx(ring, 1, "FLAME");
+                    Location ring = ground.clone().add(Math.cos(angle) * radius, 0.15, Math.sin(angle) * radius);
                     particle(ring, 1, "FLAME");
                 }
                 // Inner cross marker
                 for (int r = 1; r <= 3; r++) {
-                    particle(ground.clone().add(r, 0.1, 0), 1, "FLAME");
-                    particle(ground.clone().add(-r, 0.1, 0), 1, "FLAME");
-                    particle(ground.clone().add(0, 0.1, r), 1, "FLAME");
-                    particle(ground.clone().add(0, 0.1, -r), 1, "FLAME");
+                    particle(ground.clone().add(r, 0.15, 0), 1, "FLAME");
+                    particle(ground.clone().add(-r, 0.15, 0), 1, "FLAME");
+                    particle(ground.clone().add(0, 0.15, r), 1, "FLAME");
+                    particle(ground.clone().add(0, 0.15, -r), 1, "FLAME");
                 }
                 // Lava drips if close to landing
                 if (ticks > 30) {
-                    fx(ground.clone().add(0, 0.2, 0), 3, "LAVA");
+                    particle(ground.clone().add(0, 0.3, 0), 3, "LAVA");
                 }
             }
         }.runTaskTimer(plugin, 0L, 4L);
     }
 
     private void spawnPhysicalMeteor(World world, Location ground) {
-        // Drop from directly above (cleaner visual)
+        // Drop from directly above target ground location
         Location spawnLoc = ground.clone().add(0, 45, 0);
 
-        FallingBlock meteor;
+        FallingBlock meteor = null;
         try {
             meteor = world.spawnFallingBlock(spawnLoc, Material.valueOf("MAGMA"), (byte) 0);
         } catch (Exception e1) {
             try {
-                meteor = world.spawnFallingBlock(spawnLoc, Material.NETHERRACK, (byte) 0);
+                meteor = world.spawnFallingBlock(spawnLoc, Material.valueOf("MAGMA_BLOCK"), (byte) 0);
             } catch (Exception e2) {
-                meteor = world.spawnFallingBlock(spawnLoc, Material.COBBLESTONE, (byte) 0);
+                try {
+                    meteor = world.spawnFallingBlock(spawnLoc, Material.valueOf("NETHERRACK"), (byte) 0);
+                } catch (Exception e3) {
+                    try {
+                        meteor = world.spawnFallingBlock(spawnLoc, Material.valueOf("RED_SANDSTONE"), (byte) 0);
+                    } catch (Exception e4) {
+                        // ignore
+                    }
+                }
             }
         }
 
+        if (meteor == null) {
+            // Safety fallback: run impact effect after flight time
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> impact(world, ground), 20L);
+            return;
+        }
+
         meteor.setDropItem(false);
-        // Apply straight downward velocity with slight scatter
-        meteor.setVelocity(new Vector(
-                (rng.nextDouble() - 0.5) * 0.1,
-                -2.5,
-                (rng.nextDouble() - 0.5) * 0.1));
+        meteor.setVelocity(new Vector((rng.nextDouble() - 0.5) * 0.1, -2.5, (rng.nextDouble() - 0.5) * 0.1));
 
         sound(spawnLoc, 1f, 0.5f, "FIREWORK_LAUNCH", "ENTITY_FIREWORK_ROCKET_LAUNCH");
 
@@ -129,14 +136,11 @@ public class MeteorShowerEvent extends IslandWorldEvent {
 
                 Location loc = finalMeteor.getLocation();
 
-                // Fire + smoke trail — dense column (very visible)
-                fx(loc, 4, "FLAME");
-                fx(loc, 3, "SMOKE");
+                // Fire + smoke trail
                 particle(loc, 3, "FLAME");
-                particle(loc, 2, "SMOKE_LARGE");
+                particle(loc, 2, "SMOKE_LARGE", "LARGE_SMOKE", "SMOKE");
                 if (life % 3 == 0) {
-                    fx(loc, 2, "LAVA");
-                    particle(loc, 1, "LAVA");
+                    particle(loc, 2, "LAVA");
                 }
 
                 // Whistle sound as it falls
@@ -158,17 +162,16 @@ public class MeteorShowerEvent extends IslandWorldEvent {
 
     private void impact(World world, Location loc) {
         sound(loc, 1f, 0.7f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
+        lightningEffect(loc);
 
         // Explosion visual
-        fx(loc, 5, "EXPLOSION_LARGE");
-        particle(loc, 8, "EXPLOSION_LARGE");
+        particle(loc, 8, "EXPLOSION_LARGE", "EXPLODE");
 
         // Fire scatter
         for (int i = 0; i < 24; i++) {
             double ang = rng.nextDouble() * Math.PI * 2;
             double r   = rng.nextDouble() * 3;
             Location p = loc.clone().add(Math.cos(ang) * r, rng.nextDouble() * 2, Math.sin(ang) * r);
-            fx(p, 2, "FLAME");
             particle(p, 2, "FLAME");
         }
 
@@ -176,7 +179,6 @@ public class MeteorShowerEvent extends IslandWorldEvent {
         for (int i = 0; i < 12; i++) {
             double ang = i * (Math.PI * 2 / 12);
             Location ring = loc.clone().add(Math.cos(ang) * 2, 0.1, Math.sin(ang) * 2);
-            fx(ring, 3, "LAVA");
             particle(ring, 2, "LAVA");
         }
 
