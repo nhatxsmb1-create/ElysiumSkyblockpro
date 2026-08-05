@@ -42,10 +42,47 @@ public class VolcanoEvent extends IslandWorldEvent {
         boss.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,Integer.MAX_VALUE,1,false,false));
         trackHPBar(boss,"§c🌋 Golem Lửa");
 
+        BukkitRunnable volcanicHeat = new BukkitRunnable() {
+            int e = 0;
+            @Override public void run() {
+                e += 40; if (e >= DURATION || !boss.isValid()) { cancel(); return; }
+                Location bossLoc = boss.getLocation();
+                for (Player p : getOnlinePlayers()) {
+                    if (p.getWorld().equals(bossLoc.getWorld())) {
+                        double dist = p.getLocation().distance(bossLoc);
+                        if (dist < 15.0) {
+                            p.sendMessage("§c§l🌋 Hơi nóng núi lửa thiêu đốt bạn!");
+                            p.setFireTicks(40);
+                            p.damage(1.0);
+                            fx(p.getLocation(), 3, "FLAME");
+                            sound(p.getLocation(), 0.5f, 0.5f, "FIZZ", "BLOCK_FIRE_EXTINGUISH");
+                        }
+                        if (dist < 30.0 && rng.nextDouble() < 0.4) {
+                            Location playerLoc = p.getLocation().clone();
+                            p.sendMessage("§c🔥 Mặt đất dưới chân đang nóng lên!");
+                            fx(playerLoc, 5, "MOBSPAWNER_FLAMES");
+                            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                                if (boss.isValid() && p.isOnline()) {
+                                    sound(playerLoc, 0.8f, 0.8f, "EXPLODE", "ENTITY_GENERIC_EXPLODE");
+                                    fx(playerLoc, 10, "LAVA", "LAVADRIP");
+                                    if (p.getLocation().distance(playerLoc) < 2.0) {
+                                        p.damage(4.0);
+                                        p.setFireTicks(80);
+                                        p.setVelocity(new Vector(0, 0.35, 0));
+                                    }
+                                }
+                            }, 20L);
+                        }
+                    }
+                }
+            }
+        };
+        volcanicHeat.runTaskTimer(plugin, 0L, 40L);
+
         new BukkitRunnable(){int e=0; @Override public void run(){
             e+=20;
             if(!boss.isValid()){
-                cancel(); ash.cancel(); meteors.cancel();
+                cancel(); ash.cancel(); meteors.cancel(); volcanicHeat.cancel();
                 Location d=boss.getLocation();
                 world.dropItemNaturally(d,named(Material.MAGMA_CREAM,"§c§lTinh Thể Dung Nham"));
                 world.dropItemNaturally(d,named(Material.BLAZE_ROD,"§6§lLõi Nham Thạch"));
@@ -56,7 +93,7 @@ public class VolcanoEvent extends IslandWorldEvent {
                 sound(center,1f,0.8f,"ENDERDRAGON_DEATH","ENTITY_ENDER_DRAGON_DEATH");
                 logResult("HOÀN THÀNH"); onFinish.run(); return;
             }
-            if(e>=DURATION){cancel();ash.cancel();meteors.cancel();boss.remove();
+            if(e>=DURATION){cancel();ash.cancel();meteors.cancel();volcanicHeat.cancel();boss.remove();
                 broadcast("§c🌋 Núi lửa đã nguội dần..."); logResult("HẾT GIỜ"); onFinish.run();}
         }}.runTaskTimer(plugin,20L,20L);
     }

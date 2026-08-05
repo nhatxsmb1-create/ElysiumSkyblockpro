@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*; import org.bukkit.entity.*; import org.bukkit.potion.*;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import java.util.*;
 
 public class SpaceRiftEvent extends IslandWorldEvent {
@@ -61,11 +62,45 @@ public class SpaceRiftEvent extends IslandWorldEvent {
         for(int w=0;w<WAVES;w++)
             plugin.getServer().getScheduler().runTaskLater(plugin,spawnWave::run,(long)w*WAVE_INTERVAL*20L);
 
+        BukkitRunnable gravityPull = new BukkitRunnable() {
+            @Override public void run() {
+                if (wavesDone[0] >= WAVES && mobs.stream().noneMatch(Entity::isValid)) { cancel(); return; }
+                for (int i = 0; i < 8; i++) {
+                    double ang = rng.nextDouble() * Math.PI * 2;
+                    double r = 1.0 + rng.nextDouble() * 3.0;
+                    Location p = rift.clone().add(Math.cos(ang) * r, (rng.nextDouble() - 0.5) * 2, Math.sin(ang) * r);
+                    fx(p, 1, "PORTAL");
+                }
+                if (rng.nextDouble() < 0.3) {
+                    for (Player p : getOnlinePlayers()) {
+                        if (p.getWorld().equals(rift.getWorld())) {
+                            Location pLoc = p.getLocation();
+                            double distHoriz = Math.sqrt(Math.pow(pLoc.getX() - rift.getX(), 2) + Math.pow(pLoc.getZ() - rift.getZ(), 2));
+                            if (distHoriz < 25.0) {
+                                p.sendMessage("§d§l🌀 Trọng lực hư vô đang hút bạn về phía cổng!");
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 40, 1));
+                                Vector pull = rift.toVector().subtract(pLoc.toVector());
+                                pull.setY(0);
+                                if (pull.lengthSquared() > 0) {
+                                    pull.normalize().multiply(0.2);
+                                }
+                                pull.setY(0.1);
+                                p.setVelocity(pull);
+                                sound(pLoc, 0.6f, 0.7f, "ENDERMAN_TELEPORT", "ENTITY_ENDERMAN_TELEPORT");
+                                fx(pLoc, 5, "PORTAL");
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        gravityPull.runTaskTimer(plugin, 0L, 40L);
+
         long timeout=(long)(WAVES+1)*WAVE_INTERVAL*20L+20*60L;
         new BukkitRunnable(){int e=0; @Override public void run(){
             e+=20;
             if(mobs.stream().noneMatch(Entity::isValid)&&wavesDone[0]>=WAVES){
-                cancel();
+                cancel(); gravityPull.cancel();
                 Location drop=rift.clone().add(0,-5,0);
                 world.dropItemNaturally(drop,named(Material.ENDER_PEARL,"§5§lThánh Vật Hư Vô"));
                 world.dropItemNaturally(drop,named(Material.EMERALD,"§d§lMảnh Cổng Không Gian"));
@@ -75,7 +110,7 @@ public class SpaceRiftEvent extends IslandWorldEvent {
                 sound(rift,1f,1.2f,"ENDERDRAGON_DEATH","ENTITY_ENDER_DRAGON_DEATH");
                 logResult("HOÀN THÀNH"); onFinish.run(); return;
             }
-            if(e>=timeout){cancel();mobs.forEach(m->{if(m.isValid())m.remove();});
+            if(e>=timeout){cancel(); gravityPull.cancel(); mobs.forEach(m->{if(m.isValid())m.remove();});
                 broadcast("§c🌀 Cổng tự đóng lại... Thực thể đã rút lui."); logResult("HẾT GIỜ"); onFinish.run();}
         }}.runTaskTimer(plugin,20L,20L);
     }

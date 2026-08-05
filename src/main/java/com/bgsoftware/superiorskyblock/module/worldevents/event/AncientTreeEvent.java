@@ -47,6 +47,45 @@ public class AncientTreeEvent extends IslandWorldEvent {
                 sound(center,1f,1.6f,"ENDERDRAGON_DEATH","ENTITY_ENDER_DRAGON_DEATH");
                 logResult("HOÀN THÀNH"); onFinish.run(); return;
             }
+
+            // Custom dryad abilities
+            Location dLoc = dryad.getLocation();
+
+            // 1. Entangling Roots every 100 ticks (5s)
+            if (e % 100 == 0) {
+                List<Player> players = getOnlinePlayers();
+                if (!players.isEmpty()) {
+                    Player target = players.get(rng.nextInt(players.size()));
+                    if (target.getWorld().equals(dLoc.getWorld()) && target.getLocation().distance(dLoc) < 25.0) {
+                        target.sendMessage("§2🌿 Rễ cây cổ đại đang trói chân bạn!");
+                        target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, 4));
+                        Location targetLoc = target.getLocation();
+                        fx(targetLoc, 15, "SLIME", "HAPPY_VILLAGER");
+                        sound(targetLoc, 1f, 0.8f, "WOOD_BREAK", "BLOCK_WOOD_BREAK");
+                    }
+                }
+            }
+
+            // 2. Healing Pollen / Poison every 60 ticks (3s)
+            if (e % 60 == 0) {
+                double newHP = Math.min(dryad.getMaxHealth(), dryad.getHealth() + 10.0);
+                dryad.setHealth(newHP);
+                fx(dLoc.clone().add(0, 1, 0), 10, "HAPPY_VILLAGER");
+                sound(dLoc, 0.6f, 1.2f, "DIG_GRASS", "BLOCK_GRASS_PLACE");
+
+                for (Player p : getOnlinePlayers()) {
+                    if (p.getWorld().equals(dLoc.getWorld())) {
+                        double dist = p.getLocation().distance(dLoc);
+                        if (dist < 6.0) {
+                            p.sendMessage("§a🌿 Bạn hít phải phấn hoa độc của Dryad!");
+                            p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 60, 0));
+                            fx(p.getLocation().add(0, 1, 0), 5, "SPELL_MOB", "SPELL_MOB_AMBIENT");
+                            sound(p.getLocation(), 0.5f, 0.9f, "FIZZ", "BLOCK_FIRE_EXTINGUISH");
+                        }
+                    }
+                }
+            }
+
             if(e>=20*60*5){cancel();aura.cancel();dryad.remove();
                 broadcast("§c🌳 Cây Cổ Thụ đã tàn lụi..."); logResult("HẾT GIỜ"); onFinish.run();}
         }}.runTaskTimer(plugin,20L,20L);

@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*; import org.bukkit.entity.*; import org.bukkit.potion.*;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 public class TornadoEvent extends IslandWorldEvent {
     private static final int DURATION = 20*60*3;
@@ -30,10 +31,31 @@ public class TornadoEvent extends IslandWorldEvent {
             @Override public void run() {
                 e+=2; if(e>=DURATION||!boss.isValid()){cancel();return;}
                 a+=15;
+                Location tornadoLoc = boss.getLocation();
                 for(int l=0;l<8;l++){
                     double ang=Math.toRadians(a+l*22),r=1.5+l*0.3;
-                    Location p=center.clone().add(Math.cos(ang)*r,l*0.5,Math.sin(ang)*r);
+                    Location p=tornadoLoc.clone().add(Math.cos(ang)*r,l*0.5,Math.sin(ang)*r);
                     fx(p,1,"LARGE_SMOKE","CLOUD"); fx(p,1,"CRIT");
+                }
+
+                // Pull players towards the tornado boss and lift them
+                if (e % 10 == 0) { // Check every 10 ticks
+                    for (Player p : getOnlinePlayers()) {
+                        if (p.getWorld().equals(tornadoLoc.getWorld())) {
+                            double dist = p.getLocation().distance(tornadoLoc);
+                            if (dist < 12.0) {
+                                Vector dir = tornadoLoc.toVector().subtract(p.getLocation().toVector());
+                                dir.setY(0);
+                                if (dir.lengthSquared() > 0) {
+                                    dir.normalize().multiply(0.25);
+                                }
+                                dir.setY(0.35); // pull upwards
+                                p.setVelocity(dir);
+                                p.sendMessage("§c§l🌪 Bạn đang bị hút vào cơn lốc xoáy!");
+                                sound(p.getLocation(), 0.5f, 0.8f, "GHAST_FIREBALL", "ENTITY_GHAST_SHOOT");
+                            }
+                        }
+                    }
                 }
             }
         };

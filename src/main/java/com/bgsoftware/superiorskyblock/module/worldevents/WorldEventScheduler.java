@@ -44,6 +44,9 @@ public class WorldEventScheduler {
         Random rng = new Random();
 
         for (Island island : SuperiorSkyblockAPI.getGrid().getIslands()) {
+            // Check if any players are actually on the island to experience the event
+            if (island.getAllPlayersInside().isEmpty()) continue;
+
             UUID id = island.getUniqueId();
             if (activeEvents.contains(id)) continue;
             if (isOnCooldown(id)) continue;

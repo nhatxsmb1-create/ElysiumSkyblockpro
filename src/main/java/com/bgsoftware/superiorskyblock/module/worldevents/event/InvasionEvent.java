@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*; import org.bukkit.entity.*; import org.bukkit.potion.*;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import java.util.*;
 
 public class InvasionEvent extends IslandWorldEvent {
@@ -52,6 +53,59 @@ public class InvasionEvent extends IslandWorldEvent {
                 plugin.getServer().getScheduler().runTaskLater(plugin,()->spawnWave(idx+1,onFinish),60L);
                 return;
             }
+
+            // Wave 2 Arrow Rain (idx == 1)
+            if (idx == 1 && e % 100 == 0) {
+                boolean skeletonsAlive = waveMobs.stream().anyMatch(m -> m instanceof Skeleton && m.isValid());
+                if (skeletonsAlive) {
+                    for (Player p : getOnlinePlayers()) {
+                        Location pLoc = p.getLocation();
+                        p.sendMessage("§c🎯 Mưa tên từ trên trời đang rơi xuống vị trí của bạn!");
+                        sound(pLoc, 0.8f, 1.2f, "SHOOT_ARROW", "ENTITY_ARROW_SHOOT");
+                        for (int i = 0; i < 3; i++) {
+                            Location arrowLoc = pLoc.clone().add((rng.nextDouble() - 0.5) * 4, 12 + rng.nextDouble() * 4, (rng.nextDouble() - 0.5) * 4);
+                            Arrow arrow = p.getWorld().spawnArrow(arrowLoc, new Vector(0, -1, 0), 1.2f, 12f);
+                            arrow.setShooter(null);
+                        }
+                    }
+                }
+            }
+
+            // Wave 4 Boss Slam (idx == 3)
+            if (idx == 3 && e % 100 == 0) {
+                for (LivingEntity m : waveMobs) {
+                    if (m instanceof IronGolem && m.isValid()) {
+                        Location gLoc = m.getLocation();
+                        broadcast("§4§l⚔ Tướng Chỉ Huy đang tụ lực đập đất!");
+                        fx(gLoc.clone().add(0, 0.5, 0), 10, "MOBSPAWNER_FLAMES");
+                        sound(gLoc, 1f, 0.5f, "BURNING", "BLOCK_FIRE_AMBIENT");
+                        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                            if (m.isValid()) {
+                                sound(gLoc, 1.2f, 0.6f, "ANVIL_LAND", "BLOCK_ANVIL_LAND", "EXPLODE");
+                                fx(gLoc, 5, "EXPLOSION_LARGE");
+                                for (Player p : getOnlinePlayers()) {
+                                    if (p.getWorld().equals(gLoc.getWorld())) {
+                                        double dist = p.getLocation().distance(gLoc);
+                                        if (dist < 8.0) {
+                                            p.damage(4.0);
+                                            Vector knock = p.getLocation().toVector().subtract(gLoc.toVector());
+                                            knock.setY(0);
+                                            if (knock.lengthSquared() > 0) {
+                                                knock.normalize().multiply(0.8);
+                                            }
+                                            knock.setY(0.4);
+                                            p.setVelocity(knock);
+                                            p.sendMessage("§c§l⚔ Bạn bị chấn động bởi cú đập đất của Tướng Chỉ Huy!");
+                                        }
+                                    }
+                                }
+                            }
+                        }, 20L);
+                        break;
+                    }
+                }
+            }
+
             if(e>=20*60*3){cancel();waveMobs.forEach(m->{if(m.isValid())m.remove();});
                 broadcast("§c👹 Đảo đã bị quân xâm lược tràn ngập..."); logResult("THẤT BẠI"); onFinish.run();}
         }}.runTaskTimer(plugin,20L,20L);

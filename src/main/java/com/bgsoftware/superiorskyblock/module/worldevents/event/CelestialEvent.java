@@ -4,6 +4,7 @@ import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.worldevents.WorldEventType;
 import org.bukkit.*; import org.bukkit.entity.*; import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import java.util.*;
 
 public class CelestialEvent extends IslandWorldEvent {
@@ -26,13 +27,22 @@ public class CelestialEvent extends IslandWorldEvent {
             stand.setCustomName("§b✦ Pha Lê Thiên Thể"); stand.setCustomNameVisible(true);
             stand.setGravity(false); stand.setVisible(false); crystals.add(stand);}
 
-        BukkitRunnable stars=new BukkitRunnable(){int e=0; @Override public void run(){
-            e+=4; if(e>DURATION){cancel();return;}
-            for(int i=0;i<8;i++){
-                Location p=center.clone().add((rng.nextDouble()-.5)*60,5+rng.nextDouble()*18,(rng.nextDouble()-.5)*60);
-                fx(p,1,"FIREWORKS_SPARK"); fx(p,1,"WITCH_MAGIC","SPELL_WITCH");}
-        }};
-        stars.runTaskTimer(plugin,0L,4L);
+        BukkitRunnable stars = new BukkitRunnable() {
+            int e = 0;
+            @Override public void run() {
+                e += 4; if (e > DURATION) { cancel(); return; }
+                for (int i = 0; i < 4; i++) {
+                    Location p = center.clone().add((rng.nextDouble() - .5) * 60, 5 + rng.nextDouble() * 18, (rng.nextDouble() - .5) * 60);
+                    fx(p, 1, "FIREWORKS_SPARK"); fx(p, 1, "WITCH_MAGIC", "SPELL_WITCH");
+                }
+                if (rng.nextDouble() < 0.25) {
+                    Location target = center.clone().add((rng.nextDouble() - 0.5) * 50, 0, (rng.nextDouble() - 0.5) * 50);
+                    target.setY(target.getWorld().getHighestBlockYAt(target));
+                    spawnCelestialMeteor(target);
+                }
+            }
+        };
+        stars.runTaskTimer(plugin, 0L, 4L);
 
         Ghast beast=(Ghast)world.spawnEntity(center.clone().add(0,20,0),EntityType.GHAST);
         beast.setCustomName("§d✦ Ác Thú Sao"); beast.setCustomNameVisible(true);
@@ -57,5 +67,35 @@ public class CelestialEvent extends IslandWorldEvent {
                 crystals.forEach(c->{if(c.isValid())c.remove();});
                 broadcast("§c✦ Sự Kiện Thiên Thể đã tan biến..."); logResult("HẾT GIỜ"); onFinish.run();}
         }}.runTaskTimer(plugin,20L,20L);
+    }
+
+    private void spawnCelestialMeteor(Location ground) {
+        double startY = 30.0;
+        final Location start = ground.clone().add(12, startY, 12);
+        final Vector direction = ground.toVector().subtract(start.toVector()).normalize();
+
+        new BukkitRunnable() {
+            double progress = 0;
+            final double speed = 1.5;
+            final double totalDist = start.distance(ground);
+
+            @Override public void run() {
+                progress += speed;
+                if (progress >= totalDist) {
+                    cancel();
+                    sound(ground, 0.7f, 1.2f, "FIREWORK_BLAST", "ENTITY_FIREWORK_ROCKET_BLAST");
+                    fx(ground, 5, "FIREWORKS_SPARK");
+                    fx(ground, 3, "SPELL_INSTANT", "INSTANT_SPELL");
+                    return;
+                }
+
+                Location current = start.clone().add(direction.clone().multiply(progress));
+                fx(current, 1, "FIREWORKS_SPARK");
+                fx(current, 1, "WITCH_MAGIC", "SPELL_WITCH");
+                if (rng.nextBoolean()) {
+                    fx(current, 1, "PORTAL");
+                }
+            }
+        }.runTaskTimer(plugin, 0L, 1L);
     }
 }

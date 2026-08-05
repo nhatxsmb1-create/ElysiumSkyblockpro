@@ -6,8 +6,8 @@
 enabled: true
 
 # How often (in seconds) the scheduler checks each island
-# for a possible World Event. Default: 300 (5 minutes).
-check-interval-seconds: 300
+# for a possible World Event. Default: 60 (1 minute).
+check-interval-seconds: 60
 
 # Base percentage chance (0–100) for a World Event to fire
 # on any given check when instability is at 0%.
