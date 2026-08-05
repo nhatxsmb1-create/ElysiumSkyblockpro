@@ -9,9 +9,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
@@ -125,59 +122,54 @@ public abstract class IslandWorldEvent {
     // ── HP Bar via BossBar (top of screen) ───────────────────
 
     /**
-     * Shows the boss HP bar at the TOP of the screen using the BossBar API natively.
-     * Handles fallback to action bar if BossBar API is completely missing.
+     * Shows the boss HP bar at the TOP of the screen using the BossBar API dynamically.
+     * Fallback to action bar if BossBar API is completely missing.
      */
     protected void trackHPBar(LivingEntity boss, String bossName) {
-        try {
-            // Native BossBar API call (clean, robust, displays at the top of the screen)
-            final BossBar bar = Bukkit.createBossBar(bossName, BarColor.GREEN, BarStyle.SOLID);
-            bar.setVisible(true);
-            
-            for (Player p : getOnlinePlayers()) {
-                bar.addPlayer(p);
-            }
+        final Object bossBar = tryCreateBossBar(bossName);
+
+        if (bossBar != null) {
+            try {
+                Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
+                for (Player p : getOnlinePlayers()) addPlayer.invoke(bossBar, p);
+            } catch (Exception ignored) {}
 
             new BukkitRunnable() {
                 @Override public void run() {
                     if (!boss.isValid()) {
                         cancel();
-                        bar.removeAll();
-                        bar.setVisible(false);
+                        removeBossBar(bossBar);
                         return;
                     }
                     double pct = Math.max(0.0, Math.min(1.0, boss.getHealth() / boss.getMaxHealth()));
-                    bar.setProgress(pct);
-                    
-                    if (pct > 0.6) {
-                        bar.setColor(BarColor.GREEN);
-                    } else if (pct > 0.3) {
-                        bar.setColor(BarColor.YELLOW);
-                    } else {
-                        bar.setColor(BarColor.RED);
-                    }
-                    
-                    bar.setTitle(bossName + " §f- " + (int)(pct * 100) + "% HP");
+                    updateBossBar(bossBar, bossName, pct);
                     
                     // Maintain player list
-                    List<Player> current = getOnlinePlayers();
-                    for (Player p : current) {
-                        if (!bar.getPlayers().contains(p)) {
-                            bar.addPlayer(p);
+                    try {
+                        Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
+                        Method getPlayers = bossBar.getClass().getMethod("getPlayers");
+                        java.util.Collection<?> active = (java.util.Collection<?>) getPlayers.invoke(bossBar);
+                        
+                        List<Player> current = getOnlinePlayers();
+                        for (Player p : current) {
+                            if (!active.contains(p)) {
+                                addPlayer.invoke(bossBar, p);
+                            }
                         }
-                    }
-                    // Remove players who left
-                    List<Player> copy = new ArrayList<>(bar.getPlayers());
-                    for (Player p : copy) {
-                        if (!current.contains(p)) {
-                            bar.removePlayer(p);
+                        
+                        Method removePlayer = bossBar.getClass().getMethod("removePlayer", Player.class);
+                        List<Player> copy = new ArrayList<>((java.util.Collection<Player>) active);
+                        for (Player p : copy) {
+                            if (!current.contains(p)) {
+                                removePlayer.invoke(bossBar, p);
+                            }
                         }
-                    }
+                    } catch (Exception ignored) {}
                 }
             }.runTaskTimer(plugin, 0L, 10L);
 
-        } catch (Throwable t) {
-            // Action bar fallback if BossBar is not supported
+        } else {
+            // Fallback: action bar
             new BukkitRunnable() {
                 @Override public void run() {
                     if (!boss.isValid()) { cancel(); return; }
@@ -194,6 +186,59 @@ public abstract class IslandWorldEvent {
                 }
             }.runTaskTimer(plugin, 0L, 10L);
         }
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private Object tryCreateBossBar(String name) {
+        try {
+            ClassLoader cl = Bukkit.class.getClassLoader();
+            Class<?> colorClass = cl.loadClass("org.bukkit.boss.BarColor");
+            Class<?> styleClass = cl.loadClass("org.bukkit.boss.BarStyle");
+            Class<?> flagClass  = cl.loadClass("org.bukkit.boss.BarFlag");
+            
+            Object green = Enum.valueOf((Class<Enum>) colorClass, "GREEN");
+            Object solid = Enum.valueOf((Class<Enum>) styleClass, "SOLID");
+            Object flags = java.lang.reflect.Array.newInstance(flagClass, 0);
+            
+            Method createBar = null;
+            for (Method m : Bukkit.class.getMethods()) {
+                if (m.getName().equals("createBossBar")) {
+                    createBar = m;
+                    break;
+                }
+            }
+            if (createBar == null) return null;
+            
+            Object bar = createBar.invoke(null, name, green, solid, flags);
+            if (bar != null) {
+                bar.getClass().getMethod("setVisible", boolean.class).invoke(bar, true);
+            }
+            return bar;
+        } catch (Throwable t) {
+            return null;
+        }
+    }
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private void updateBossBar(Object bar, String name, double pct) {
+        try {
+            bar.getClass().getMethod("setProgress", double.class).invoke(bar, pct);
+            
+            ClassLoader cl = Bukkit.class.getClassLoader();
+            Class<?> colorClass = cl.loadClass("org.bukkit.boss.BarColor");
+            String colorName = pct > 0.6 ? "GREEN" : pct > 0.3 ? "YELLOW" : "RED";
+            Object color = Enum.valueOf((Class<Enum>) colorClass, colorName);
+            
+            bar.getClass().getMethod("setColor", colorClass).invoke(bar, color);
+            bar.getClass().getMethod("setTitle", String.class).invoke(bar, name + " §f- " + (int)(pct * 100) + "% HP");
+        } catch (Throwable ignored) {}
+    }
+
+    private void removeBossBar(Object bar) {
+        try {
+            bar.getClass().getMethod("removeAll").invoke(bar);
+            bar.getClass().getMethod("setVisible", boolean.class).invoke(bar, false);
+        } catch (Exception ignored) {}
     }
 
     // ── Logging ───────────────────────────────────────────────
