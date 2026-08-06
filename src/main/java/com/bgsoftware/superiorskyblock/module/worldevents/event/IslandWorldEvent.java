@@ -119,73 +119,56 @@ public abstract class IslandWorldEvent {
         }.runTaskTimer(plugin, 0L, 20L);
     }
 
-    // ── HP Bar via BossBar (top of screen) ───────────────────
+    // ── HP Bar via BossBar (top of screen ONLY) ───────────────
 
     /**
-     * Shows the boss HP bar at the TOP of the screen using the BossBar API dynamically.
-     * Fallback to action bar if BossBar API is completely missing.
+     * Shows the boss HP bar exclusively at the TOP of the screen using BossBar API via reflection.
+     * Action Bar fallback has been completely removed per request.
      */
     protected void trackHPBar(LivingEntity boss, String bossName) {
         final Object bossBar = tryCreateBossBar(bossName);
+        if (bossBar == null) return;
 
-        if (bossBar != null) {
-            try {
-                Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
-                for (Player p : getOnlinePlayers()) addPlayer.invoke(bossBar, p);
-            } catch (Exception ignored) {}
+        try {
+            Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
+            for (Player p : getOnlinePlayers()) {
+                addPlayer.invoke(bossBar, p);
+            }
+        } catch (Exception ignored) {}
 
-            new BukkitRunnable() {
-                @Override public void run() {
-                    if (!boss.isValid()) {
-                        cancel();
-                        removeBossBar(bossBar);
-                        return;
-                    }
-                    double pct = Math.max(0.0, Math.min(1.0, boss.getHealth() / boss.getMaxHealth()));
-                    updateBossBar(bossBar, bossName, pct);
+        new BukkitRunnable() {
+            @Override public void run() {
+                if (!boss.isValid()) {
+                    cancel();
+                    removeBossBar(bossBar);
+                    return;
+                }
+                double pct = Math.max(0.0, Math.min(1.0, boss.getHealth() / boss.getMaxHealth()));
+                updateBossBar(bossBar, bossName, pct);
+                
+                // Maintain active player list on the BossBar
+                try {
+                    Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
+                    Method getPlayers = bossBar.getClass().getMethod("getPlayers");
+                    java.util.Collection<?> active = (java.util.Collection<?>) getPlayers.invoke(bossBar);
                     
-                    // Maintain player list
-                    try {
-                        Method addPlayer = bossBar.getClass().getMethod("addPlayer", Player.class);
-                        Method getPlayers = bossBar.getClass().getMethod("getPlayers");
-                        java.util.Collection<?> active = (java.util.Collection<?>) getPlayers.invoke(bossBar);
-                        
-                        List<Player> current = getOnlinePlayers();
-                        for (Player p : current) {
-                            if (!active.contains(p)) {
-                                addPlayer.invoke(bossBar, p);
-                            }
+                    List<Player> current = getOnlinePlayers();
+                    for (Player p : current) {
+                        if (!active.contains(p)) {
+                            addPlayer.invoke(bossBar, p);
                         }
-                        
-                        Method removePlayer = bossBar.getClass().getMethod("removePlayer", Player.class);
-                        List<Player> copy = new ArrayList<>((java.util.Collection<Player>) active);
-                        for (Player p : copy) {
-                            if (!current.contains(p)) {
-                                removePlayer.invoke(bossBar, p);
-                            }
+                    }
+                    
+                    Method removePlayer = bossBar.getClass().getMethod("removePlayer", Player.class);
+                    List<Player> copy = new ArrayList<>((java.util.Collection<Player>) active);
+                    for (Player p : copy) {
+                        if (!current.contains(p)) {
+                            removePlayer.invoke(bossBar, p);
                         }
-                    } catch (Exception ignored) {}
-                }
-            }.runTaskTimer(plugin, 0L, 10L);
-
-        } else {
-            // Fallback: action bar
-            new BukkitRunnable() {
-                @Override public void run() {
-                    if (!boss.isValid()) { cancel(); return; }
-                    double pct = boss.getHealth() / boss.getMaxHealth();
-                    int filled  = (int)(pct * 20);
-                    String color = pct > 0.6 ? "§a" : pct > 0.3 ? "§e" : "§c";
-                    StringBuilder f = new StringBuilder();
-                    StringBuilder e = new StringBuilder();
-                    for (int i = 0; i < Math.max(0, filled); i++) f.append('█');
-                    for (int i = 0; i < Math.max(0, 20 - filled); i++) e.append('█');
-                    String msg = bossName + " §f" + color + f + "§8" + e + " §7" + (int)(pct * 100) + "%";
-                    for (Player p : getOnlinePlayers())
-                        plugin.getNMSPlayers().sendActionBar(p, msg);
-                }
-            }.runTaskTimer(plugin, 0L, 10L);
-        }
+                    }
+                } catch (Exception ignored) {}
+            }
+        }.runTaskTimer(plugin, 0L, 10L);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -203,10 +186,15 @@ public abstract class IslandWorldEvent {
             Method createBar = null;
             for (Method m : Bukkit.class.getMethods()) {
                 if (m.getName().equals("createBossBar")) {
-                    createBar = m;
-                    break;
+                    Class<?>[] pTypes = m.getParameterTypes();
+                    // Must take String as 1st parameter to avoid NamespacedKey overloads in MC 1.20+
+                    if (pTypes.length >= 3 && pTypes[0] == String.class) {
+                        createBar = m;
+                        break;
+                    }
                 }
             }
+            
             if (createBar == null) return null;
             
             Object bar = createBar.invoke(null, name, green, solid, flags);
@@ -215,6 +203,7 @@ public abstract class IslandWorldEvent {
             }
             return bar;
         } catch (Throwable t) {
+            plugin.getLogger().warning("[WorldEvents] Failed to create top BossBar: " + t.getMessage());
             return null;
         }
     }
