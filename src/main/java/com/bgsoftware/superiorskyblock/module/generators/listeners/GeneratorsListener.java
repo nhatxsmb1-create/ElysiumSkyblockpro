@@ -26,6 +26,7 @@ public class GeneratorsListener implements Listener {
 
     private static final Material BASALT_MATERIAL = EnumHelper.getEnum(Material.class, "BASALT");
     private static final Material LAVA_MATERIAL = EnumHelper.getEnum(Material.class, "STATIONARY_LAVA", "LAVA");
+    private static final Material WATER_MATERIAL = EnumHelper.getEnum(Material.class, "STATIONARY_WATER", "WATER");
 
     private final SuperiorSkyblockPlugin plugin;
 
@@ -89,7 +90,7 @@ public class GeneratorsListener implements Listener {
             if (island == null)
                 return;
 
-            if (e.getBlock().getType() != LAVA_MATERIAL)
+            if (e.getBlock().getType() != WATER_MATERIAL)
                 return;
 
             GeneratorType generatorType = GeneratorType.detectGenerator(block);

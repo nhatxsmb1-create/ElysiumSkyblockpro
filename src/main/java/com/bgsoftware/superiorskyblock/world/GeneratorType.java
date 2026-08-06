@@ -40,8 +40,11 @@ public enum GeneratorType {
                     return GeneratorType.BASALT;
             }
         } else {
-            for (BlockFace blockFace : nearbyFaces) {
-                if (plugin.getNMSWorld().isWaterLogged(block.getRelative(blockFace)))
+            BlockFace[] allFaces = new BlockFace[]{
+                    BlockFace.WEST, BlockFace.EAST, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.UP, BlockFace.DOWN
+            };
+            for (BlockFace blockFace : allFaces) {
+                if (block.getRelative(blockFace).getType().name().contains("FENCE"))
                     return GeneratorType.NORMAL;
             }
         }
