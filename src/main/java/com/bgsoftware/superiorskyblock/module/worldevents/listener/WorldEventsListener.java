@@ -28,13 +28,7 @@ public class WorldEventsListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        Island island = SuperiorSkyblockAPI.getGrid().getIslandAt(event.getBlock().getLocation());
-        if (island == null) return;
-        if (!island.isMember(SuperiorSkyblockAPI.getPlayer(player))) return;
-
-        int val = module.getInstabilityManager()
-                .addInstability(island.getUniqueId(), module.getConfiguration().getInstabilityPerMine());
-        notify(plugin, player, island.getUniqueId(), val);
+        handleAction(player, event.getBlock().getLocation(), module.getConfiguration().getInstabilityPerMine());
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -42,15 +36,27 @@ public class WorldEventsListener implements Listener {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Player) return;
         Player killer = entity.getKiller();
-        if (killer == null) return;
+        if (killer != null) {
+            handleAction(killer, entity.getLocation(), module.getConfiguration().getInstabilityPerKill());
+        }
+    }
 
-        Island island = SuperiorSkyblockAPI.getGrid().getIslandAt(entity.getLocation());
+    private void handleAction(Player player, org.bukkit.Location loc, int amount) {
+        Island island = SuperiorSkyblockAPI.getGrid().getIslandAt(loc);
         if (island == null) return;
-        if (!island.isMember(SuperiorSkyblockAPI.getPlayer(killer))) return;
+        if (!island.isMember(SuperiorSkyblockAPI.getPlayer(player))) return;
 
-        int val = module.getInstabilityManager()
-                .addInstability(island.getUniqueId(), module.getConfiguration().getInstabilityPerKill());
-        notify(plugin, killer, island.getUniqueId(), val);
+        UUID id = island.getUniqueId();
+        if (module.getScheduler().isActive(id) || module.getScheduler().isOnCooldown(id)) return;
+
+        int val = module.getInstabilityManager().addInstability(id, amount);
+        
+        if (val >= 100) {
+            module.getInstabilityManager().setInstability(id, 0); // Reset after trigger
+            module.getScheduler().triggerRandomEvent(island, 100);
+        } else {
+            notify(plugin, player, id, val);
+        }
     }
 
     // ── Prevent Falling Blocks (Meteors, Stars, Spores, Geysers) from solidifying/damaging islands ──

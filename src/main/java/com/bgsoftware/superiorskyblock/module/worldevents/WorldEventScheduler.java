@@ -52,13 +52,17 @@ public class WorldEventScheduler {
             if (isOnCooldown(id)) continue;
 
             int instability = module.getInstabilityManager().getInstability(id);
-            module.getInstabilityManager().addInstability(id, -cfg.getInstabilityDecayPerCheck());
+            if (instability <= 0) continue;
 
             double chance = cfg.getBaseEventChance() + instability * cfg.getInstabilityChanceBonus();
-            if (rng.nextDouble() * 100 > chance) continue;
-
-            WorldEventType type = pickType(instability, rng);
-            if (type != null) triggerEvent(island, type);
+            if (rng.nextDouble() * 100 <= chance) {
+                // Natural trigger
+                triggerRandomEvent(island, instability);
+                module.getInstabilityManager().setInstability(id, 0);
+            } else {
+                // Decay
+                module.getInstabilityManager().addInstability(id, -cfg.getInstabilityDecayPerCheck());
+            }
         }
     }
 
@@ -75,6 +79,12 @@ public class WorldEventScheduler {
     }
 
     // ── Trigger ───────────────────────────────────────────────
+
+    public void triggerRandomEvent(Island island, int instability) {
+        Random rng = new Random();
+        WorldEventType type = pickType(instability, rng);
+        if (type != null) triggerEvent(island, type);
+    }
 
     public void triggerEvent(Island island, WorldEventType type) {
         Dimension normalDim = Dimensions.fromEnvironment(World.Environment.NORMAL);
