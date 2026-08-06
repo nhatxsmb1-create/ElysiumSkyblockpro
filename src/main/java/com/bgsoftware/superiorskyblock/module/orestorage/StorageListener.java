@@ -62,6 +62,9 @@ public class StorageListener implements Listener {
 
         if (!TRACKABLE_MATERIALS.contains(stack.getType())) return;
 
+        // Bỏ qua các vật phẩm có tên hoặc lore tùy chỉnh (ví dụ: vật phẩm từ sự kiện Meteor)
+        if (stack.hasItemMeta() && (stack.getItemMeta().hasDisplayName() || stack.getItemMeta().hasLore())) return;
+
         Island island = SuperiorSkyblockAPI.getGrid().getIslandAt(item.getLocation());
         if (island == null) return;
 
