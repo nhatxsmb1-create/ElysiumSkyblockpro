@@ -630,7 +630,11 @@ public class SIsland implements Island {
         superiorPlayer.setIsland(null);
 
         if (reason == MemberRemoveReason.DISBAND) {
-            ClearActions.runClearActions(superiorPlayer, plugin.getSettings().getClearActionsOnDisband(),
+            java.util.List<com.bgsoftware.superiorskyblock.player.inventory.ClearAction> actions = new java.util.ArrayList<>(plugin.getSettings().getClearActionsOnDisband());
+            actions.remove(com.bgsoftware.superiorskyblock.player.inventory.ClearActions.INVENTORY);
+            actions.remove(com.bgsoftware.superiorskyblock.player.inventory.ClearActions.ENDER_CHEST);
+            actions.remove(com.bgsoftware.superiorskyblock.player.inventory.ClearActions.EXPERIENCE);
+            ClearActions.runClearActions(superiorPlayer, actions,
                     isInside ? plugin.getGrid().getSpawnIsland() : null);
         } else if (reason == MemberRemoveReason.KICK) {
             boolean shouldTeleport = plugin.getSettings().isTeleportOnKick() && isInside;
