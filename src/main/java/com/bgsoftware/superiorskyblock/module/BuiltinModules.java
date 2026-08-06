@@ -16,6 +16,7 @@ public class BuiltinModules {
     public static final BankModule BANK = new BankModule();
     public static final UpgradesModule UPGRADES = new UpgradesModule();
     public static final WorldEventsModule WORLD_EVENTS = new WorldEventsModule();
+    public static final com.bgsoftware.superiorskyblock.module.orestorage.OreStorageModule ORE_STORAGE = new com.bgsoftware.superiorskyblock.module.orestorage.OreStorageModule();
 
     private BuiltinModules() {
 
@@ -33,6 +34,8 @@ public class BuiltinModules {
                 return UPGRADES;
             case "worldevents":
                 return WORLD_EVENTS;
+            case "orestorage":
+                return ORE_STORAGE;
             default:
                 return null;
         }
