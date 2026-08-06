@@ -53,7 +53,7 @@ default-values:
   #     HOPPER: 8
   # You can find a list of materials here: https://bg-software.com/materials/
   block-limits:
-    HOPPER: 8
+    HOPPER: 16
 
   # Set the default entity limits of all islands.
   # The following example will set a limit of 4 Minecarts in islands:
@@ -62,6 +62,8 @@ default-values:
   # You can find a list of entities here: https://bg-software.com/entities/
   entity-limits:
     MINECART: 4
+    VILLAGER: 15
+    ARMOR_STAND: 10
 
   # Set the default warps limit of all islands.
   warps-limit: 3
@@ -96,8 +98,8 @@ default-values:
   # You can find a list of materials here: https://bg-software.com/materials/
   generator:
     normal:
-      COBBLESTONE: 95
-      COAL_ORE: 5
+      COBBLESTONE: 90
+      COAL_ORE: 10
 
   # Set the default role limits of all islands.
   # The following example will set the limit of the role with the id 1 (Moderator by default) to 5:
@@ -557,7 +559,6 @@ change-island-rating: true
 # A list of default settings for new islands.
 # You can find a list of settings here: https://wiki.bg-software.com/superiorskyblock/island-settings
 default-settings:
-  - 'CREEPER_EXPLOSION'
   - 'NATURAL_ANIMALS_SPAWN'
   - 'NATURAL_MONSTER_SPAWN'
   - 'SPAWNER_ANIMALS_SPAWN'
@@ -566,7 +567,6 @@ default-settings:
   - 'LAVA_FLOW'
   - 'CROPS_GROWTH'
   - 'TREE_GROWTH'
-  - 'FIRE_SPREAD'
   - 'EGG_LAY'
 
 # Should redstone be disabled on islands that none of the members are online?
