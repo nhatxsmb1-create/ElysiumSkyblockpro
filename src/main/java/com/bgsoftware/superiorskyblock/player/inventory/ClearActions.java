@@ -32,8 +32,7 @@ public class ClearActions {
 
         @Override
         public void doClear(Player player) {
-            // player.getEnderChest().clear();
-            // Đã vô hiệu hóa để không bị mất đồ Ender Chest khi xóa đảo
+            player.getEnderChest().clear();
         }
 
     });
@@ -71,8 +70,7 @@ public class ClearActions {
 
         @Override
         public void doClear(Player player) {
-            // player.getInventory().clear();
-            // Đã vô hiệu hóa để không bị mất đồ trong túi khi xóa đảo
+            player.getInventory().clear();
         }
 
     });
