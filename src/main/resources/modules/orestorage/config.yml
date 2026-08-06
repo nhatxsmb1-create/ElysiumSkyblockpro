@@ -1,0 +1,6 @@
+# ──────────────────────────────────────────────────
+#  Elysium Skyblock — Ore Storage Module
+# ──────────────────────────────────────────────────
+
+# Enable or disable the Ore Storage module entirely.
+enabled: true
