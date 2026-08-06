@@ -117,7 +117,10 @@ public class OreStorageMenu implements InventoryHolder {
     private int countFreeSpace(Player player, Material mat) {
         int space = 0;
         int maxStack = mat.getMaxStackSize();
-        for (ItemStack item : player.getInventory().getStorageContents()) {
+        ItemStack[] contents = player.getInventory().getContents();
+        // Slots 0-35 are the main storage (hotbar 0-8, main 9-35)
+        for (int i = 0; i < 36; i++) {
+            ItemStack item = (i < contents.length) ? contents[i] : null;
             if (item == null || item.getType() == Material.AIR) {
                 space += maxStack;
             } else if (item.getType() == mat && item.getAmount() < maxStack) {
