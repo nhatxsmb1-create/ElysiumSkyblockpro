@@ -78,7 +78,7 @@ public class GeneratorsListener implements Listener {
 
         // Should fix solid blocks from generating custom blocks
         // https://github.com/BG-Software-LLC/SuperiorSkyblock2/issues/837
-        if (block.getType().isSolid())
+        if (block.getType().isSolid() && !block.getType().toString().contains("FENCE"))
             return;
 
         try (ObjectsPools.Wrapper<Location> wrapper = ObjectsPools.LOCATION.obtain()) {
