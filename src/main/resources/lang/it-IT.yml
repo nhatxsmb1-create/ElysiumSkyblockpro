@@ -17,11 +17,11 @@ ADMIN_ADD_PLAYER_NAME: '&e&lIsola | &7Aggiunto correttamente il giocatore {0} al
 ADMIN_DEPOSIT_MONEY: '&e&lBanca | &7Hai depositato ${0} nella banca dell''isola di {1}'
 ADMIN_DEPOSIT_MONEY_NAME: '&e&lBanca | &7Hai depositato &e${0}&f nella banca dell''isola &e{1}.'
 ADMIN_HELP_FOOTER: |-
-  &e&lSuperiorSkyblock &7Creato da Ome_R 
+  &e&lElysium &7Creato da Ome_R 
   &e&lTradotto&7 in Italiano da xSavior_of_God
-ADMIN_HELP_HEADER: '&e&lSuperiorSkyblock &7Comandi di Amministrazione [{0}/{1}]:'
+ADMIN_HELP_HEADER: '&e&lElysium &7Comandi di Amministrazione [{0}/{1}]:'
 ADMIN_HELP_LINE: '&e/{0} &f- &7{1}'
-ADMIN_HELP_NEXT_PAGE: '&e&lSuperiorSkyblock &7Usa /is admin {0} per vedere la prossima pagina.'
+ADMIN_HELP_NEXT_PAGE: '&e&lElysium &7Usa /is admin {0} per vedere la prossima pagina.'
 ALREADY_IN_ISLAND: '&c&lErrore | &7Sei già dentro un''isola.'
 ALREADY_IN_ISLAND_OTHER: '&c&lErrore | &7Questo giocatore è già membro della tua isola.'
 BAN_ANNOUNCEMENT: '&e&lIsola | &7{0} è stato bannato dall''isola di {1}.'
@@ -453,11 +453,11 @@ ISLAND_FLY_ENABLED: '&e&lFly | &7La modalità volo dell''isola è stata  &aattiv
 ISLAND_GOT_DELETED_WHILE_INSIDE: '&e&lIsola | &7&oSei stato all''interno di un''isola che è stata sciolta, quindi sei stato teletrasportato allo spawn...'
 ISLAND_GOT_PVP_ENABLED_WHILE_INSIDE: '&e&lIsola | &7&oSei stato all''interno di un''isola che aveva attivato il pvp, quindi sei stato di nuovo teletrasportato allo spawn...'
 ISLAND_HELP_FOOTER: |-
-  &e&lSuperiorSkyblock &7Creato da Ome_R
+  &e&lElysium &7Creato da Ome_R
   &e&lTradotto&7 in Italiano da xSavior_of_God
-ISLAND_HELP_HEADER: '&e&lSuperiorSkyblock &7Lista dei comandi [{0}/{1}]:'
+ISLAND_HELP_HEADER: '&e&lElysium &7Lista dei comandi [{0}/{1}]:'
 ISLAND_HELP_LINE: '&e/{0} &f- &7{1}'
-ISLAND_HELP_NEXT_PAGE: '&e&lSuperiorSkyblock &7Usa /is help {0} per girare pagina.'
+ISLAND_HELP_NEXT_PAGE: '&e&lElysium &7Usa /is help {0} per girare pagina.'
 ISLAND_INFO_ADMIN_BANK_LIMIT: '&e&lIsola | &7Bank Limit: {0}'
 ISLAND_INFO_ADMIN_BLOCKS_LIMITS: |-
   &e&lIsola | &7Limite dei blocchi:
