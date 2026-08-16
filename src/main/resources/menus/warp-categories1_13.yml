@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lWarp Categories'
+title: '&lDanh Mục Warp'
 previous-menu: true
 
 pattern:
@@ -25,8 +25,8 @@ next-page: '^'
 edit-lore:
   - '&f '
   - '&f '
-  - '&7&o(( &f&oLeft-Click &7&oto see island warps. ))'
-  - '&7&o(( &f&oRight-Click &7&oto edit the category. ))'
+  - '&7&o(( &f&oChuột Trái &7&ođể xem warp đảo. ))'
+  - '&7&o(( &f&oChuột Phải &7&ođể chỉnh sửa danh mục. ))'
 
 items:
   '@':
@@ -34,15 +34,15 @@ items:
     name: '&f'
   '%':
     type: PAPER
-    name: '&cPrevious Page'
+    name: '&cTrang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page 1'
+      - '&7Trang 1'
   '^':
     type: PAPER
-    name: '&cNext Page'
+    name: '&cTrang Sau'
   '$':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'

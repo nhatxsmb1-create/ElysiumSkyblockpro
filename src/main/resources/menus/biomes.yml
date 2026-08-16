@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Biomes'
+title: '&lBiome Của Đảo'
 previous-menu: true
 
 pattern:
@@ -38,33 +38,33 @@ items:
     name: '&f'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: DOUBLE_PLANT
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
 
 biomes:
   BEACH:
     dimension: NORMAL
     access:
       type: SAND
-      name: '&eBeach Biome &a(Available)'
+      name: '&eBeach Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: SAND
-      name: '&eBeach Biome &c(Unavailable)'
+      name: '&eBeach Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -75,9 +75,9 @@ biomes:
     access:
       type: SAPLING
       data: 2
-      name: '&eBirch Forest Biome &a(Available)'
+      name: '&eBirch Forest Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
@@ -85,9 +85,9 @@ biomes:
     no-access:
       type: SAPLING
       data: 2
-      name: '&eBirch Forest Biome &c(Unavailable)'
+      name: '&eBirch Forest Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -97,18 +97,18 @@ biomes:
     dimension: NORMAL
     access:
       type: CACTUS
-      name: '&eDesert Biome &a(Available)'
+      name: '&eDesert Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: CACTUS
-      name: '&eDesert Biome &c(Unavailable)'
+      name: '&eDesert Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -118,18 +118,18 @@ biomes:
     dimension: NORMAL
     access:
       type: SAPLING
-      name: '&eForest Biome &a(Available)'
+      name: '&eForest Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: SAPLING
-      name: '&eForest Biome &c(Unavailable)'
+      name: '&eForest Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -139,18 +139,18 @@ biomes:
     dimension: NORMAL
     access:
       type: PACKED_ICE
-      name: '&eIce Plains Spikes Biome &a(Available)'
+      name: '&eIce Plains Spikes Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: PACKED_ICE
-      name: '&eIce Plains Spikes Biome &c(Unavailable)'
+      name: '&eIce Plains Spikes Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -161,9 +161,9 @@ biomes:
     access:
       type: SAPLING
       data: 3
-      name: '&eJungle Biome &a(Available)'
+      name: '&eJungle Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
@@ -171,9 +171,9 @@ biomes:
     no-access:
       type: SAPLING
       data: 3
-      name: '&eJungle Biome &c(Unavailable)'
+      name: '&eJungle Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -183,18 +183,18 @@ biomes:
     dimension: NORMAL
     access:
       type: DEAD_BUSH
-      name: '&eMesa Biome &a(Available)'
+      name: '&eMesa Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: DEAD_BUSH
-      name: '&eMesa Biome &c(Unavailable)'
+      name: '&eMesa Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -204,18 +204,18 @@ biomes:
     dimension: NORMAL
     access:
       type: MYCEL
-      name: '&eMushroom Island Biome &a(Available)'
+      name: '&eMushroom Island Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: MYCEL
-      name: '&eMushroom Island Biome &c(Unavailable)'
+      name: '&eMushroom Island Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -225,18 +225,18 @@ biomes:
     dimension: NORMAL
     access:
       type: WATER_BUCKET
-      name: '&eOcean Biome &a(Available)'
+      name: '&eOcean Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: WATER_BUCKET
-      name: '&eOcean Biome &c(Unavailable)'
+      name: '&eOcean Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -247,9 +247,9 @@ biomes:
     access:
       type: LONG_GRASS
       data: 1
-      name: '&ePlains Biome &a(Available)'
+      name: '&ePlains Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
@@ -257,9 +257,9 @@ biomes:
     no-access:
       type: LONG_GRASS
       data: 1
-      name: '&ePlains Biome &c(Unavailable)'
+      name: '&ePlains Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -270,9 +270,9 @@ biomes:
     access:
       type: SAPLING
       data: 5
-      name: '&eRoofed Forest Biome &a(Available)'
+      name: '&eRoofed Forest Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
@@ -280,9 +280,9 @@ biomes:
     no-access:
       type: SAPLING
       data: 5
-      name: '&eRoofed Forest Biome &c(Unavailable)'
+      name: '&eRoofed Forest Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -293,9 +293,9 @@ biomes:
     access:
       type: SAPLING
       data: 4
-      name: '&eSavanna Biome &a(Available)'
+      name: '&eSavanna Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
@@ -303,9 +303,9 @@ biomes:
     no-access:
       type: SAPLING
       data: 4
-      name: '&eSavanna Biome &c(Unavailable)'
+      name: '&eSavanna Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -315,18 +315,18 @@ biomes:
     dimension: NORMAL
     access:
       type: WATER_LILY
-      name: '&eSwamp Biome &a(Available)'
+      name: '&eSwamp Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
         pitch: 0.2
     no-access:
       type: WATER_LILY
-      name: '&eSwamp Biome &c(Unavailable)'
+      name: '&eSwamp Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8
@@ -337,9 +337,9 @@ biomes:
     access:
       type: SAPLING
       data: 1
-      name: '&eTaiga Biome &a(Available)'
+      name: '&eTaiga Biome &a(Có thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ENDERMAN_TELEPORT
         volume: 0.8
@@ -347,9 +347,9 @@ biomes:
     no-access:
       type: SAPLING
       data: 1
-      name: '&eTaiga Biome &c(Unavailable)'
+      name: '&eTaiga Biome &c(Không thể dùng)'
       lore:
-        - '&7Change your island biome.'
+        - '&7Thay đổi biome của đảo bạn.'
       sound:
         type: ANVIL_LAND
         volume: 0.8

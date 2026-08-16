@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Settings'
+title: '&lCài Đặt Đảo'
 previous-menu: true
 
 pattern:
@@ -26,31 +26,31 @@ items:
     name: '&f'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
 
 settings:
   always_day:
     display-menu: true
     settings-enabled:
       type: YELLOW_TERRACOTTA
-      name: '&6Always Day'
+      name: '&6Luôn Là Ban Ngày'
       lore:
-        - '&7Set a day time on your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Đặt thời gian ban ngày trên đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: YELLOW_TERRACOTTA
-      name: '&6Always Day'
+      name: '&6Luôn Là Ban Ngày'
       lore:
-        - '&7Set a day time on your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Đặt thời gian ban ngày trên đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -60,16 +60,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: ORANGE_TERRACOTTA
-      name: '&6Always Middle Day'
+      name: '&6Luôn Là Giữa Ban Ngày'
       lore:
-        - '&7Set a middle day time on your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Đặt thời gian giữa ban ngày trên đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: ORANGE_TERRACOTTA
-      name: '&6Always Middle Day'
+      name: '&6Luôn Là Giữa Ban Ngày'
       lore:
-        - '&7Set a middle day time on your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Đặt thời gian giữa ban ngày trên đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -79,16 +79,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Always Night'
+      name: '&6Luôn Là Ban Đêm'
       lore:
-        - '&7Set a night time on your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Đặt thời gian ban đêm trên đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Always Night'
+      name: '&6Luôn Là Ban Đêm'
       lore:
-        - '&7Set a night time on your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Đặt thời gian ban đêm trên đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -98,16 +98,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: BLUE_TERRACOTTA
-      name: '&6Always Middle Night'
+      name: '&6Luôn Là Giữa Ban Đêm'
       lore:
-        - '&7Set a middle night day time on your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Đặt thời gian giữa đêm trên đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: BLUE_TERRACOTTA
-      name: '&6Always Middle Night'
+      name: '&6Luôn Là Giữa Ban Đêm'
       lore:
-        - '&7Set a middle night day time on your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Đặt thời gian giữa đêm trên đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -117,16 +117,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: LILY_PAD
-      name: '&6Always Rain'
+      name: '&6Luôn Luôn Mưa'
       lore:
-        - '&7Set a rainy weather on your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Đặt thời tiết mưa trên đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: LILY_PAD
-      name: '&6Always Rain'
+      name: '&6Luôn Luôn Mưa'
       lore:
-        - '&7Set a rainy weather on your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Đặt thời tiết mưa trên đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -136,16 +136,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: DEAD_BUSH
-      name: '&6Always Shiny'
+      name: '&6Luôn Luôn Nắng'
       lore:
-        - '&7Set a shiny weather on your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Đặt thời tiết nắng trên đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: DEAD_BUSH
-      name: '&6Always Shiny'
+      name: '&6Luôn Luôn Nắng'
       lore:
-        - '&7Set a shiny weather on your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Đặt thời tiết nắng trên đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -155,16 +155,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: CREEPER_HEAD
-      name: '&6Creeper Explosion'
+      name: '&6Nổ Creeper'
       lore:
-        - '&7Allow creepers to explode blocks inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép creeper phá block trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: CREEPER_HEAD
-      name: '&6Creeper Explosion'
+      name: '&6Nổ Creeper'
       lore:
-        - '&7Allow creepers to explode blocks inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép creeper phá block trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -174,16 +174,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: WHEAT_SEEDS
-      name: '&6Crops Growth'
+      name: '&6Sự Phát Triển Cây Trồng'
       lore:
-        - '&7Allow growth of crops inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép cây trồng phát triển trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: WHEAT_SEEDS
-      name: '&6Crops Growth'
+      name: '&6Sự Phát Triển Cây Trồng'
       lore:
-        - '&7Allow growth of crops inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép cây trồng phát triển trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -193,16 +193,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: EGG
-      name: '&6Egg Lay'
+      name: '&6Gà Đẻ Trứng'
       lore:
-        - '&7Allow chickens to lay eggs inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép gà đẻ trứng trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: EGG
-      name: '&6Egg Lay'
+      name: '&6Gà Đẻ Trứng'
       lore:
-        - '&7Allow chickens to lay eggs inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép gà đẻ trứng trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -212,16 +212,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: ENDER_PEARL
-      name: '&6Enderman Grief'
+      name: '&6Enderman Lấy Cắp Block'
       lore:
-        - '&7Allow enderman to grief blocks inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép enderman lấy cắp block trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: ENDER_PEARL
-      name: '&6Enderman Grief'
+      name: '&6Enderman Lấy Cắp Block'
       lore:
-        - '&7Allow enderman to grief blocks inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép enderman lấy cắp block trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -231,16 +231,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: FLINT_AND_STEEL
-      name: '&6Fire Spread'
+      name: '&6Lửa Lan'
       lore:
-        - '&7Allow fire to spread inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép lửa lan trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: FLINT_AND_STEEL
-      name: '&6Fire Spread'
+      name: '&6Lửa Lan'
       lore:
-        - '&7Allow fire to spread inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép lửa lan trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -250,16 +250,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: FIRE_CHARGE
-      name: '&6Ghast Fireball'
+      name: '&6Cầu Lửa Ghast'
       lore:
-        - '&7Allow fireballs to break blocks inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép cầu lửa phá block trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: FIRE_CHARGE
-      name: '&6Ghast Fireball'
+      name: '&6Cầu Lửa Ghast'
       lore:
-        - '&7Allow fireballs to break blocks inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép cầu lửa phá block trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -269,16 +269,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: LAVA_BUCKET
-      name: '&6Lava Flow'
+      name: '&6Dung Nham Chảy'
       lore:
-        - '&7Allow lava to flow inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép dung nham chảy trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: LAVA_BUCKET
-      name: '&6Lava Flow'
+      name: '&6Dung Nham Chảy'
       lore:
-        - '&7Allow lava to flow inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép dung nham chảy trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -288,16 +288,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: PIG_SPAWN_EGG
-      name: '&6Natural Animals Spawn'
+      name: '&6Động Vật Sinh Ra Tự Nhiên'
       lore:
-        - '&7Allow natural spawning of animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép động vật sinh ra tự nhiên trong đảo.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: PIG_SPAWN_EGG
-      name: '&6Natural Animals Spawn'
+      name: '&6Động Vật Sinh Ra Tự Nhiên'
       lore:
-        - '&7Allow natural spawning of animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép động vật sinh ra tự nhiên trong đảo.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -307,16 +307,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: ZOMBIE_SPAWN_EGG
-      name: '&6Natural Monster Spawn'
+      name: '&6Quái Vật Sinh Ra Tự Nhiên'
       lore:
-        - '&7Allow natural spawning of monsters inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép quái vật sinh ra tự nhiên trong đảo.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: ZOMBIE_SPAWN_EGG
-      name: '&6Natural Monster Spawn'
+      name: '&6Quái Vật Sinh Ra Tự Nhiên'
       lore:
-        - '&7Allow natural spawning of monsters inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép quái vật sinh ra tự nhiên trong đảo.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -328,16 +328,16 @@ settings:
       type: DIAMOND_SWORD
       name: '&6PvP'
       lore:
-        - '&7Allow players to pvp inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép người chơi PvP trong đảo.'
+        - '&7Hiện tại: &aBẬT&7.'
       flags:
         - HIDE_ATTRIBUTES
     settings-disabled:
       type: DIAMOND_SWORD
       name: '&6PvP'
       lore:
-        - '&7Allow players to pvp inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép người chơi PvP trong đảo.'
+        - '&7Hiện tại: &cTẮT&7.'
       flags:
         - HIDE_ATTRIBUTES
     sound:
@@ -349,18 +349,18 @@ settings:
     display-menu: true
     settings-enabled:
       type: SPAWNER
-      name: '&6Spawner Animals Spawn'
+      name: '&6Spawner Sinh Động Vật'
       lore:
-        - '&7Allow spawner spawning of animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép spawner sinh động vật trong đảo.'
+        - '&7Hiện tại: &aBẬT&7.'
       flags:
         - HIDE_ADDITIONAL_TOOLTIP
     settings-disabled:
       type: SPAWNER
-      name: '&6Spawner Animals Spawn'
+      name: '&6Spawner Sinh Động Vật'
       lore:
-        - '&7Allow spawner spawning of animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép spawner sinh động vật trong đảo.'
+        - '&7Hiện tại: &cTẮT&7.'
       flags:
         - HIDE_ADDITIONAL_TOOLTIP
     sound:
@@ -372,18 +372,18 @@ settings:
     display-menu: true
     settings-enabled:
       type: SPAWNER
-      name: '&6Spawner Monster Spawn'
+      name: '&6Spawner Sinh Quái Vật'
       lore:
-        - '&7Allow spawner spawning of monsters inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép spawner sinh quái vật trong đảo.'
+        - '&7Hiện tại: &aBẬT&7.'
       flags:
         - HIDE_ADDITIONAL_TOOLTIP
     settings-disabled:
       type: SPAWNER
-      name: '&6Spawner Monster Spawn'
+      name: '&6Spawner Sinh Quái Vật'
       lore:
-        - '&7Allow spawner spawning of monsters inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép spawner sinh quái vật trong đảo.'
+        - '&7Hiện tại: &cTẮT&7.'
       flags:
         - HIDE_ADDITIONAL_TOOLTIP
     sound:
@@ -395,16 +395,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: TNT
-      name: '&6TNT Explosion'
+      name: '&6Nổ TNT'
       lore:
-        - '&7Allow TNT to explode blocks inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép TNT phá block trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: TNT
-      name: '&6TNT Explosion'
+      name: '&6Nổ TNT'
       lore:
-        - '&7Allow TNT to explode blocks inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép TNT phá block trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -414,16 +414,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: OAK_SAPLING
-      name: '&6Tree Growth'
+      name: '&6Sự Phát Triển Cây'
       lore:
-        - '&7Allow growth of trees inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép cây phát triển trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: OAK_SAPLING
-      name: '&6Tree Growth'
+      name: '&6Sự Phát Triển Cây'
       lore:
-        - '&7Allow growth of trees inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép cây phát triển trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -433,16 +433,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: WATER_BUCKET
-      name: '&6Water Flow'
+      name: '&6Nước Chảy'
       lore:
-        - '&7Allow water to flow inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép nước chảy trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: WATER_BUCKET
-      name: '&6Water Flow'
+      name: '&6Nước Chảy'
       lore:
-        - '&7Allow water to flow inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép nước chảy trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2
@@ -452,16 +452,16 @@ settings:
     display-menu: true
     settings-enabled:
       type: WITHER_SKELETON_SKULL
-      name: '&6Wither Explosion'
+      name: '&6Nổ Wither'
       lore:
-        - '&7Allow withers to explode blocks inside your island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Cho phép wither phá block trong đảo của bạn.'
+        - '&7Hiện tại: &aBẬT&7.'
     settings-disabled:
       type: WITHER_SKELETON_SKULL
-      name: '&6Wither Explosion'
+      name: '&6Nổ Wither'
       lore:
-        - '&7Allow withers to explode blocks inside your island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Cho phép wither phá block trong đảo của bạn.'
+        - '&7Hiện tại: &cTẮT&7.'
     sound:
       type: ENTITY_EXPERIENCE_ORB_PICKUP
       volume: 0.2

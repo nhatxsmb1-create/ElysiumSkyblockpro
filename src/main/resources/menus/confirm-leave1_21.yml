@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&c&lConfirm Leave'
+title: '&c&lXác Nhận Rời Đảo'
 previous-menu: true
 type: DIALOG
 
@@ -16,7 +16,7 @@ cancel: '^'
 
 body:
   - type: item
-    description: 'Are you sure you want to leave your island?'
+    description: 'Bạn có chắc muốn rời khỏi đảo của mình?'
     show-decorations: false
     show-tooltip: false
     item:
@@ -25,6 +25,6 @@ body:
 
 buttons:
   '@':
-    label: '&aConfirm'
+    label: '&aĐồng Ý'
   '^':
-    label: '&cCancel'
+    label: '&cHủy'

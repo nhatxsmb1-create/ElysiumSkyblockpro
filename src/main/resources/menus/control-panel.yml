@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Panel'
+title: '&lBảng Điều Khiển Đảo'
 previous-menu: true
 
 pattern:
@@ -22,71 +22,71 @@ visitors: '-'
 items:
   '!':
     type: SIGN
-    name: '&eTeleport'
+    name: '&eDịch Chuyển'
     lore:
-      - '&7Teleport back to your island.'
+      - '&7Dịch chuyển về đảo của bạn.'
   '@':
     type: DIODE
-    name: '&eIsland Settings'
+    name: '&eCài Đặt Đảo'
     lore:
-      - '&7Manage settings regarding your island.'
+      - '&7Quản lý các cài đặt của đảo bạn.'
   '$':
     type: ENDER_PEARL
-    name: '&eIsland Permissions'
+    name: '&eQuyền Hạn Đảo'
     lore:
-      - '&7Manage permissions in your island.'
+      - '&7Quản lý quyền hạn trong đảo của bạn.'
   '%':
     type: GRASS
-    name: '&eIsland Biomes'
+    name: '&eSinh Quản Đảo'
     lore:
-      - '&7Change the biome of your island.'
+      - '&7Thay đổi sinh quản của đảo bạn.'
   '_':
     type: EMERALD
-    name: '&eIsland Bank'
+    name: '&eNgân Hàng Đảo'
     lore:
-      - '&7Open the bank of your island.'
+      - '&7Mở ngân hàng của đảo bạn.'
   '^':
     type: GOLD_INGOT
-    name: '&eIsland Upgrades'
+    name: '&eNâng Cấp Đảo'
     lore:
-      - '&7Upgrade your island statistics!'
+      - '&7Nâng cấp chỉ số đảo của bạn!'
   '&':
     type: BEACON
-    name: '&eTop Islands'
+    name: '&eBảng Xếp Hạng Đảo'
     lore:
-      - '&7Check which island is the best on the server!'
+      - '&7Xem đảo nào là tốt nhất trên máy chủ!'
   '*':
     type: PAPER
-    name: '&eIsland Missions'
+    name: '&eNhiệm Vụ Đảo'
     lore:
-      - '&7Complete missions and get rewarded!'
+      - '&7Hoàn thành nhiệm vụ và nhận phần thưởng!'
   '1':
     type: SMOOTH_BRICK
-    name: '&eIsland Counts'
+    name: '&eSố Lượng Khối Đảo'
     lore:
-      - '&7See all the blocks on your island!'
+      - '&7Xem tất cả các khối trên đảo của bạn!'
   '~':
     type: BARRIER
-    name: '&eIsland Disband'
+    name: '&eGiải Tán Đảo'
     lore:
-      - '&7Disband your island.'
-      - '&cThis action cannot be restored!'
+      - '&7Giải tán đảo của bạn.'
+      - '&cHành động này không thể khôi phục!'
   '=':
     type: CHEST
-    name: '&eIsland Chest'
+    name: '&eRương Đảo'
     lore:
-      - '&7Open the community chest of the island.'
+      - '&7Mở rương chung của đảo.'
   '-':
     type: SKULL_ITEM
-    name: '&eIsland Visitors'
+    name: '&eKhách Thăm Đảo'
     lore:
-      - '&7Check all the visitors of the island.'
+      - '&7Xem tất cả khách thăm của đảo.'
   '+':
     type: SKULL_ITEM
     data: 3
-    name: '&eIsland Members'
+    name: '&eThành Viên Đảo'
     lore:
-      - '&7Manage the members of the island.'
+      - '&7Quản lý thành viên của đảo.'
   '2':
     type: STAINED_GLASS_PANE
     data: 15

@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Banned Players ({0})'
+title: '&lNgười Chơi Bị Cấm ({0})'
 previous-menu: true
 
 pattern:
@@ -26,18 +26,18 @@ items:
     type: PLAYER_HEAD
     name: '&e{0}'
     lore:
-      - '&7Click to unban the player.'
+      - '&7Nhấp để bỏ cấm người chơi.'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '$':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'

@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Bank'
+title: '&lNgân Hàng Đảo'
 previous-menu: true
 
 pattern:
@@ -21,52 +21,52 @@ logs: '~'
 items:
   '!':
     type: LIME_STAINED_GLASS_PANE
-    name: '&aDeposit Half Money'
+    name: '&aGửi Một Nửa Tiền'
     lore:
-      - '&7Deposit half of your money into the bank.'
+      - '&7Gửi một nửa số tiền của bạn vào ngân hàng.'
     bank-action:
       deposit: 50.0
   '#':
     type: LIME_STAINED_GLASS_PANE
-    name: '&aDeposit Money'
+    name: '&aGửi Tiền'
     lore:
-      - '&7Deposit money into the bank.'
+      - '&7Gửi tiền vào ngân hàng.'
     bank-action:
       deposit: 0.0
   '$':
     type: LIME_STAINED_GLASS_PANE
-    name: '&aDeposit All Money'
+    name: '&aGửi Tất Cả Tiền'
     lore:
-      - '&7Deposit all of your money into the bank.'
+      - '&7Gửi tất cả tiền của bạn vào ngân hàng.'
     bank-action:
       deposit: 100.0
   '%':
     type: RED_STAINED_GLASS_PANE
-    name: '&aWithdraw Half Money'
+    name: '&aRút Một Nửa Tiền'
     lore:
-      - '&7Withdraw half of the money from the bank.'
+      - '&7Rút một nửa tiền từ ngân hàng.'
     bank-action:
       withdraw: 50.0
   '^':
     type: RED_STAINED_GLASS_PANE
-    name: '&aWithdraw Money'
+    name: '&aRút Tiền'
     lore:
-      - '&7Withdraw money from the bank.'
+      - '&7Rút tiền từ ngân hàng.'
     bank-action:
       withdraw: 0.0
   '&':
     type: RED_STAINED_GLASS_PANE
-    name: '&aWithdraw All Money'
+    name: '&aRút Tất Cả Tiền'
     lore:
-      - '&7Withdraw all of the money from the bank.'
+      - '&7Rút tất cả tiền từ ngân hàng.'
     bank-action:
       withdraw: 100.0
   '*':
     type: PAPER
-    name: '&6Balance'
+    name: '&6Số Dư'
     lore:
-      - '&7Your bank currently has ${2}'
-      - '&7Next interest on {7}'
+      - '&7Ngân hàng của bạn hiện có ${2}'
+      - '&7Lãi suất tiếp theo vào {7}'
   '=':
     type: EMERALD_BLOCK
     name: '&f '
@@ -75,7 +75,7 @@ items:
     name: '&f '
   '~':
     type: EXPERIENCE_BOTTLE
-    name: '&6Transaction Logs'
+    name: '&6Nhật Ký Giao Dịch'
 
 sounds:
   '!':

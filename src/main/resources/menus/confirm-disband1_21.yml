@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&c&lConfirm Disband'
+title: '&c&lXác Nhận Giải Tán Đảo'
 previous-menu: true
 type: DIALOG
 
@@ -17,8 +17,8 @@ cancel: '^'
 body:
   - type: item
     description: |
-      Are you sure you want to delete your island?
-      &cThis action cannot be undone!
+      Bạn có chắc muốn giải tán đảo của mình?
+      &cHành động này không thể hoàn tác!
     show-decorations: false
     show-tooltip: false
     item:
@@ -27,6 +27,6 @@ body:
 
 buttons:
   '@':
-    label: '&aConfirm'
+    label: '&aĐồng Ý'
   '^':
-    label: '&cCancel'
+    label: '&cHủy'

@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lTransaction Logs &r{0}'
+title: '&lNhật Ký Giao Dịch &r{0}'
 previous-menu: true
 
 pattern:
@@ -27,34 +27,34 @@ money-sort: '-'
 items:
   '@':
     type: PAPER
-    name: '&eTransaction #{0}'
+    name: '&eGiao Dịch #{0}'
     lore:
-      - '&7Player: {1}'
-      - '&7Status: {2}'
-      - '&7Time: {3}'
-      - '&7Amount: ${4}'
+      - '&7Người Chơi: {1}'
+      - '&7Trạng Thái: {2}'
+      - '&7Thời Gian: {3}'
+      - '&7Số Tiền: ${4}'
       - ''
-      - '&7Click to filter transactions by this player.'
+      - '&7Nhấp để lọc giao dịch theo người chơi này.'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '$':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'
   '!':
     type: CLOCK
-    name: '&6Sort by creation time'
+    name: '&6Sắp xếp theo thời gian tạo'
   '-':
     type: EMERALD
-    name: '&6Sort by money'
+    name: '&6Sắp xếp theo tiền'
 
 sounds:
   '@':

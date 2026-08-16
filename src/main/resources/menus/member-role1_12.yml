@@ -23,33 +23,33 @@ items:
   '@':
     role: Member
     type: LEATHER_CHESTPLATE
-    name: '&eMember'
+    name: '&eThành Viên'
     lore:
-      - '&7Click to set player''s role to member.'
+      - '&7Nhấp để đặt vai trò người chơi thành thành viên.'
     flags:
       - HIDE_ATTRIBUTES
   '%':
     role: Moderator
     type: GOLD_CHESTPLATE
-    name: '&eModerator'
+    name: '&eĐiều Phối Viên'
     lore:
-      - '&7Click to set player''s role to moderator.'
+      - '&7Nhấp để đặt vai trò người chơi thành điều phối viên.'
     flags:
       - HIDE_ATTRIBUTES
   '&':
     role: Admin
     type: IRON_CHESTPLATE
-    name: '&eAdmin'
+    name: '&eQuản Trị Viên'
     lore:
-      - '&7Click to set player''s role to admin.'
+      - '&7Nhấp để đặt vai trò người chơi thành quản trị viên.'
     flags:
       - HIDE_ATTRIBUTES
   '*':
     role: Leader
     type: DIAMOND_CHESTPLATE
-    name: '&eLeader'
+    name: '&eChủ Đảo'
     lore:
-      - '&7Click to transfer leadership to player.'
+      - '&7Nhấp để chuyển quyền chủ đảo cho người chơi.'
     flags:
       - HIDE_ATTRIBUTES
 

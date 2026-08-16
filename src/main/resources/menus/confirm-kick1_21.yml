@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&c&lConfirm Kick'
+title: '&c&lXác Nhận Đuổi'
 previous-menu: true
 type: DIALOG
 
@@ -16,7 +16,7 @@ cancel: '^'
 
 body:
   - type: item
-    description: 'Are you sure you want to kick that player?'
+    description: 'Bạn có chắc muốn đuổi người chơi này khỏi đảo?'
     show-decorations: false
     show-tooltip: false
     item:
@@ -25,6 +25,6 @@ body:
 
 buttons:
   '@':
-    label: '&aConfirm'
+    label: '&aĐồng Ý'
   '^':
-    label: '&cCancel'
+    label: '&cHủy'

@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Visitors ({0})'
+title: '&lKhách Thăm Đảo ({0})'
 previous-menu: true
 
 pattern:
@@ -28,26 +28,26 @@ items:
     data: 3
     name: '&e{0}'
     lore:
-      - '&7Island Owner: {1}'
+      - '&7Chủ Đảo: {1}'
       - ''
-      - '&7Left-Click to expel the player.'
-      - '&7Right-Click to invite the player.'
+      - '&7Chuột Trái để trục xuất người chơi.'
+      - '&7Chuột Phải để mời người chơi.'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: DOUBLE_PLANT
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '~':
     type: SKULL_ITEM
-    name: '&eUnique Visitors'
+    name: '&eKhách Thăm Duy Nhất'
     lore:
-      - '&7Click to open all-time visitors menu.'
+      - '&7Nhấp để mở menu khách thăm mọi thời điểm.'
   '$':
     type: STAINED_GLASS_PANE
     data: 15

@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Unique Visitors ({0})'
+title: '&lKhách Thăm Đảo Duy Nhất ({0})'
 previous-menu: true
 
 pattern:
@@ -26,22 +26,22 @@ items:
     type: PLAYER_HEAD
     name: '&e{0}'
     lore:
-      - '&7Island Owner: {1}'
-      - '&7Last Time Joined: {3}'
+      - '&7Chủ Đảo: {1}'
+      - '&7Lần Cuối Tham Gia: {3}'
       - ''
-      - '&7Left-Click to expel the player.'
-      - '&7Right-Click to invite the player.'
+      - '&7Chuột Trái để trục xuất người chơi.'
+      - '&7Chuột Phải để mời người chơi.'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '$':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'

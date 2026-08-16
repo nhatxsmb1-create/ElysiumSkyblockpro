@@ -770,7 +770,7 @@ default-disband-count: 5
 
 # The default language to be used.
 # This should be the same as your language file's name.
-default-language: 'en-US'
+default-language: 'vi-VN'
 
 # Should world borders be enabled by default for new players?
 default-world-border: true

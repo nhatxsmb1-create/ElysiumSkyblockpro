@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Warps'
+title: '&lWarp Đảo'
 previous-menu: true
 
 pattern:
@@ -25,26 +25,26 @@ next-page: '^'
 edit-lore:
   - '&f '
   - '&f '
-  - '&7&o(( &f&oLeft-Click &7&oto warp to the location. ))'
-  - '&7&o(( &f&oRight-Click &7&oto edit warp. ))'
+  - '&7&o(( &f&oChuột Trái &7&ođể dịch chuyển đến vị trí. ))'
+  - '&7&o(( &f&oChuột Phải &7&ođể chỉnh sửa warp. ))'
 
 items:
   '@':
     type: BOOK
     name: '&e{0} {2}'
     lore:
-      - '&7Located at {1}.'
+      - '&7Nằm tại {1}.'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '$':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'

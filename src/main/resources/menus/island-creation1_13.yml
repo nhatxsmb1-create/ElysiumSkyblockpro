@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lCreate a new island...'
+title: '&lTạo Đảo Mới...'
 previous-menu: true
 
 pattern:
@@ -21,19 +21,19 @@ items:
     access:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzk1ZDM3OTkzZTU5NDA4MjY3ODQ3MmJmOWQ4NjgyMzQxM2MyNTBkNDMzMmEyYzdkOGM1MmRlNDk3NmIzNjIifX19'
-      name: '&eNormal Island &a(Available)'
+      name: '&eĐảo Thường &a(Có thể chọn)'
       lore:
-        - '&7Simple island with trees and a mining area!'
+        - '&7Đảo đơn giản với cây cối và khu vực đào mỏ!'
         - '&7 '
-        - '&7&o(( &f&oRight-Click &7&oto preview the island. ))'
+        - '&7&o(( &f&oChuột Phải &7&ođể xem trước đảo. ))'
     no-access:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzk1ZDM3OTkzZTU5NDA4MjY3ODQ3MmJmOWQ4NjgyMzQxM2MyNTBkNDMzMmEyYzdkOGM1MmRlNDk3NmIzNjIifX19'
-      name: '&eNormal Island &c(Unavailable)'
+      name: '&eĐảo Thường &c(Không thể chọn)'
       lore:
-        - '&7Simple island with trees and a mining area!'
+        - '&7Đảo đơn giản với cây cối và khu vực đào mỏ!'
         - '&7 '
-        - '&7&o(( &f&oRight-Click &7&oto preview the island. ))'
+        - '&7&o(( &f&oChuột Phải &7&ođể xem trước đảo. ))'
   '^':
     schematic: 'mycel'
     biome: MUSHROOM_FIELDS
@@ -41,19 +41,19 @@ items:
     access:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWE0NWQxYjQxN2NiZGRjMjE3NjdiMDYwNDRlODk5YjI2NmJmNzhhNjZlMjE4NzZiZTNjMDUxNWFiNTVkNzEifX19'
-      name: '&eMycelium Island &a(Available)'
+      name: '&eĐảo Mycelium &a(Có thể chọn)'
       lore:
-        - '&7Customized island with lots of mycelium!'
+        - '&7Đảo đặc biệt với nhiều mycelium!'
         - '&7 '
-        - '&7&o(( &f&oRight-Click &7&oto preview the island. ))'
+        - '&7&o(( &f&oChuột Phải &7&ođể xem trước đảo. ))'
     no-access:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWE0NWQxYjQxN2NiZGRjMjE3NjdiMDYwNDRlODk5YjI2NmJmNzhhNjZlMjE4NzZiZTNjMDUxNWFiNTVkNzEifX19'
-      name: '&eMycelium Island &c(Unavailable)'
+      name: '&eĐảo Mycelium &c(Không thể chọn)'
       lore:
-        - '&7Customized island with lots of mycelium!'
+        - '&7Đảo đặc biệt với nhiều mycelium!'
         - '&7 '
-        - '&7&o(( &f&oRight-Click &7&oto preview the island. ))'
+        - '&7&o(( &f&oChuột Phải &7&ođể xem trước đảo. ))'
   '$':
     schematic: 'desert'
     biome: DESERT
@@ -61,19 +61,19 @@ items:
     access:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjVkYjMxMjA2N2JlMWQ1YzRmMTQ3OGFmM2NhMmY2Y2Y4MTA0YWI0Y2NiZmY1NzkxN2M4NTc4ZGFhMTUwMDJjMiJ9fX0='
-      name: '&eDesert Island &a(Available)'
+      name: '&eĐảo Sa Mạc &a(Có thể chọn)'
       lore:
-        - '&7Customized island with lots of sand!'
+        - '&7Đảo đặc biệt với nhiều cát!'
         - '&7 '
-        - '&7&o(( &f&oRight-Click &7&oto preview the island. ))'
+        - '&7&o(( &f&oChuột Phải &7&ođể xem trước đảo. ))'
     no-access:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjVkYjMxMjA2N2JlMWQ1YzRmMTQ3OGFmM2NhMmY2Y2Y4MTA0YWI0Y2NiZmY1NzkxN2M4NTc4ZGFhMTUwMDJjMiJ9fX0='
-      name: '&eDesert Island &c(Unavailable)'
+      name: '&eĐảo Sa Mạc &c(Không thể chọn)'
       lore:
-        - '&7Customized island with lots of sand!'
+        - '&7Đảo đặc biệt với nhiều cát!'
         - '&7 '
-        - '&7&o(( &f&oRight-Click &7&oto preview the island. ))'
+        - '&7&o(( &f&oChuột Phải &7&ođể xem trước đảo. ))'
   '~':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'

@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lPermissions Controller'
+title: '&lBảng Điều Khiển Quyền'
 previous-menu: true
 
 pattern:
@@ -31,37 +31,37 @@ items:
     name: '&f'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
 
 permissions:
   all:
     display-menu: true
     permission-enabled:
       type: BEDROCK
-      name: '&6All'
+      name: '&6Tất Cả'
       lore:
-        - '&7Access to all the abilities of the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền truy cập toàn bộ quyền năng của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BEDROCK
-      name: '&6All'
+      name: '&6Tất Cả'
       lore:
-        - '&7Access to all the abilities of the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền truy cập toàn bộ quyền năng của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BEDROCK
-      name: '&6All'
+      name: '&6Tất Cả'
       lore:
-        - '&7Access to all the abilities of the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền truy cập toàn bộ quyền năng của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -79,22 +79,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ALLAY_SPAWN_EGG
-      name: '&6Allay Interact'
+      name: '&6Tương Tác Với Allay'
       lore:
-        - '&7Access to interact with allays inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với allay trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ALLAY_SPAWN_EGG
-      name: '&6Allay Interact'
+      name: '&6Tương Tác Với Allay'
       lore:
-        - '&7Access to interact with allays inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với allay trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ALLAY_SPAWN_EGG
-      name: '&6Allay Interact'
+      name: '&6Tương Tác Với Allay'
       lore:
-        - '&7Access to interact with allays inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với allay trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -112,22 +112,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: WHEAT
-      name: '&6Animal Breed'
+      name: '&6Nuôi Động Vật'
       lore:
-        - '&7Access to breed animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền nuôi động vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
-      name: '&6Animal Breed'
+      name: '&6Nuôi Động Vật'
       type: WHEAT
       lore:
-        - '&7Access to breed animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền nuôi động vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
-      name: '&6Animal Breed'
+      name: '&6Nuôi Động Vật'
       type: WHEAT
       lore:
-        - '&7Access to breed animals inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền nuôi động vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -145,26 +145,26 @@ permissions:
     display-menu: true
     permission-enabled:
       type: DIAMOND_SWORD
-      name: '&6Animal Damage'
+      name: '&6Tấn Công Động Vật'
       lore:
-        - '&7Access to damage animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tấn công động vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
       flags:
         - HIDE_ATTRIBUTES
     permission-disabled:
       type: DIAMOND_SWORD
-      name: '&6Animal Damage'
+      name: '&6Tấn Công Động Vật'
       lore:
-        - '&7Access to damage animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tấn công động vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
       flags:
         - HIDE_ATTRIBUTES
     role-permission:
       type: DIAMOND_SWORD
-      name: '&6Animal Damage'
+      name: '&6Tấn Công Động Vật'
       lore:
-        - '&7Access to damage animals inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tấn công động vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
       flags:
@@ -184,22 +184,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SHEARS
-      name: '&6Animal Shear'
+      name: '&6Cắt Lông Động Vật'
       lore:
-        - '&7Access to shear animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền cắt lông động vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SHEARS
-      name: '&6Animal Shear'
+      name: '&6Cắt Lông Động Vật'
       lore:
-        - '&7Access to shear animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền cắt lông động vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SHEARS
-      name: '&6Animal Shear'
+      name: '&6Cắt Lông Động Vật'
       lore:
-        - '&7Access to shear animals inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền cắt lông động vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -217,22 +217,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: CHICKEN_SPAWN_EGG
-      name: '&6Animal Spawn'
+      name: '&6Triệu Hồi Động Vật'
       lore:
-        - '&7Access to spawn animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền triệu hồi động vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: CHICKEN_SPAWN_EGG
-      name: '&6Animal Spawn'
+      name: '&6Triệu Hồi Động Vật'
       lore:
-        - '&7Access to spawn animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền triệu hồi động vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: CHICKEN_SPAWN_EGG
-      name: '&6Animal Spawn'
+      name: '&6Triệu Hồi Động Vật'
       lore:
-        - '&7Access to spawn animals inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền triệu hồi động vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -250,22 +250,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SKELETON_SKULL
-      name: '&6Ban Member'
+      name: '&6Cấm Thành Viên'
       lore:
-        - '&7Access to ban members from the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền cấm thành viên khỏi đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SKELETON_SKULL
-      name: '&6Ban Member'
+      name: '&6Cấm Thành Viên'
       lore:
-        - '&7Access to ban members from the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền cấm thành viên khỏi đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SKELETON_SKULL
-      name: '&6Ban Member'
+      name: '&6Cấm Thành Viên'
       lore:
-        - '&7Access to ban members from the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền cấm thành viên khỏi đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -283,26 +283,26 @@ permissions:
     display-menu: true
     permission-enabled:
       type: DIAMOND_PICKAXE
-      name: '&6Break'
+      name: '&6Phá Khối'
       lore:
-        - '&7Access to break blocks inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền phá khối trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
       flags:
         - HIDE_ATTRIBUTES
     permission-disabled:
       type: DIAMOND_PICKAXE
-      name: '&6Break'
+      name: '&6Phá Khối'
       lore:
-        - '&7Access to break blocks inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền phá khối trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
       flags:
         - HIDE_ATTRIBUTES
     role-permission:
       type: DIAMOND_PICKAXE
-      name: '&6Break'
+      name: '&6Phá Khối'
       lore:
-        - '&7Access to break blocks inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền phá khối trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
       flags:
@@ -322,22 +322,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: BRUSH
-      name: '&6Brush'
+      name: '&6Cọ Quét'
       lore:
-        - '&7Access to brush suspicious blocks inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền chải khối nghi ngờ trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BRUSH
-      name: '&6Brush'
+      name: '&6Cọ Quét'
       lore:
-        - '&7Access to brush suspicious blocks inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền chải khối nghi ngờ trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BRUSH
-      name: '&6Brush'
+      name: '&6Cọ Quét'
       lore:
-        - '&7Access to brush suspicious blocks inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền chải khối nghi ngờ trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -355,22 +355,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: COBBLESTONE
-      name: '&6Build'
+      name: '&6Xây Dựng'
       lore:
-        - '&7Access to place blocks inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đặt khối trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: COBBLESTONE
-      name: '&6Build'
+      name: '&6Xây Dựng'
       lore:
-        - '&7Access to place blocks inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đặt khối trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: COBBLESTONE
-      name: '&6Build'
+      name: '&6Xây Dựng'
       lore:
-        - '&7Access to place blocks inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đặt khối trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -388,22 +388,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: NAME_TAG
-      name: '&6Change Name'
+      name: '&6Đổi Tên'
       lore:
-        - '&7Access to change the island''s name.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi tên đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: NAME_TAG
-      name: '&6Change Name'
+      name: '&6Đổi Tên'
       lore:
-        - '&7Access to change the island''s name.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi tên đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: NAME_TAG
-      name: '&6Change Name'
+      name: '&6Đổi Tên'
       lore:
-        - '&7Access to change the island''s name.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi tên đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -421,22 +421,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: CHEST
-      name: '&6Chest Access'
+      name: '&6Mở Rương'
       lore:
-        - '&7Access to open chests inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền mở rương trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: CHEST
-      name: '&6Chest Access'
+      name: '&6Mở Rương'
       lore:
-        - '&7Access to open chests inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền mở rương trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: CHEST
-      name: '&6Chest Access'
+      name: '&6Mở Rương'
       lore:
-        - '&7Access to open chests inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền mở rương trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -454,22 +454,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: CHORUS_FRUIT
-      name: '&6Chorus Fruit'
+      name: '&6Quả Chorus'
       lore:
-        - '&7Access to consume chorus fruits inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền ăn quả chorus trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: CHORUS_FRUIT
-      name: '&6Chorus Fruit'
+      name: '&6Quả Chorus'
       lore:
-        - '&7Access to consume chorus fruits inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền ăn quả chorus trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: CHORUS_FRUIT
-      name: '&6Chorus Fruit'
+      name: '&6Quả Chorus'
       lore:
-        - '&7Access to consume chorus fruits inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền ăn quả chorus trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -487,22 +487,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: TRIPWIRE_HOOK
-      name: '&6Locked Bypass'
+      name: '&6Vượt Khóa Đảo'
       lore:
-        - '&7Access to bypass the island''s lock.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền vượt qua khóa của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: TRIPWIRE_HOOK
-      name: '&6Locked Bypass'
+      name: '&6Vượt Khóa Đảo'
       lore:
-        - '&7Access to bypass the island''s lock.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền vượt qua khóa của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: TRIPWIRE_HOOK
-      name: '&6Locked Bypass'
+      name: '&6Vượt Khóa Đảo'
       lore:
-        - '&7Access to bypass the island''s lock.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền vượt qua khóa của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -520,22 +520,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: BARRIER
-      name: '&6Lock Island'
+      name: '&6Khóa Đảo'
       lore:
-        - '&7Access to lock the island from public.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền khóa đảo không cho người ngoài vào.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BARRIER
-      name: '&6Lock Island'
+      name: '&6Khóa Đảo'
       lore:
-        - '&7Access to lock the island from public.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền khóa đảo không cho người ngoài vào.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BARRIER
-      name: '&6Lock Island'
+      name: '&6Khóa Đảo'
       lore:
-        - '&7Access to lock the island from public.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền khóa đảo không cho người ngoài vào.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -553,22 +553,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: GOLDEN_APPLE
-      name: '&6Coop Member'
+      name: '&6Thành Viên Co-op'
       lore:
-        - '&7Access to add a player as a co-op member.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền thêm người chơi làm thành viên co-op.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: GOLDEN_APPLE
-      name: '&6Coop Member'
+      name: '&6Thành Viên Co-op'
       lore:
-        - '&7Access to add a player as a co-op member.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền thêm người chơi làm thành viên co-op.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: GOLDEN_APPLE
-      name: '&6Coop Member'
+      name: '&6Thành Viên Co-op'
       lore:
-        - '&7Access to add a player as a co-op member.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền thêm người chơi làm thành viên co-op.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -586,22 +586,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: COPPER_GOLEM_STATUE
-      name: '&6Copper Golem Interact'
+      name: '&6Tương Tác Với Copper Golem'
       lore:
-        - '&7Access to take items from copper golems.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền lấy đồ từ copper golem.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: COPPER_GOLEM_STATUE
-      name: '&6Copper Golem Interact'
+      name: '&6Tương Tác Với Copper Golem'
       lore:
-        - '&7Access to take items from copper golems.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền lấy đồ từ copper golem.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: COPPER_GOLEM_STATUE
-      name: '&6Copper Golem Interact'
+      name: '&6Tương Tác Với Copper Golem'
       lore:
-        - '&7Access to take items from copper golems.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền lấy đồ từ copper golem.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -619,22 +619,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ENDER_PEARL
-      name: '&6Delete Warp'
+      name: '&6Xóa Warp'
       lore:
-        - '&7Access to delete island warps.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền xóa warp của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ENDER_PEARL
-      name: '&6Delete Warp'
+      name: '&6Xóa Warp'
       lore:
-        - '&7Access to delete island warps.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền xóa warp của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ENDER_PEARL
-      name: '&6Delete Warp'
+      name: '&6Xóa Warp'
       lore:
-        - '&7Access to delete island warps.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền xóa warp của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -652,22 +652,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: IRON_INGOT
-      name: '&6Demote Members'
+      name: '&6Hạ Vai Trò Thành Viên'
       lore:
-        - '&7Access to demote members inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền hạ vai trò của thành viên trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: IRON_INGOT
-      name: '&6Demote Members'
+      name: '&6Hạ Vai Trò Thành Viên'
       lore:
-        - '&7Access to demote members inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền hạ vai trò của thành viên trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: IRON_INGOT
-      name: '&6Demote Members'
+      name: '&6Hạ Vai Trò Thành Viên'
       lore:
-        - '&7Access to demote members inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền hạ vai trò của thành viên trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -685,22 +685,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: MAP
-      name: '&6Deposit Money'
+      name: '&6Gửi Tiền'
       lore:
-        - '&7Access to deposit money into the island''s bank.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền gửi tiền vào ngân hàng đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: MAP
-      name: '&6Deposit Money'
+      name: '&6Gửi Tiền'
       lore:
-        - '&7Access to deposit money into the island''s bank.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền gửi tiền vào ngân hàng đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: MAP
-      name: '&6Deposit Money'
+      name: '&6Gửi Tiền'
       lore:
-        - '&7Access to deposit money into the island''s bank.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền gửi tiền vào ngân hàng đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -718,22 +718,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: TNT
-      name: '&6Disband Island'
+      name: '&6Giải Tán Đảo'
       lore:
-        - '&7Access to disband the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền giải tán đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: TNT
-      name: '&6Disband Island'
+      name: '&6Giải Tán Đảo'
       lore:
-        - '&7Access to disband the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền giải tán đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: TNT
-      name: '&6Disband Island'
+      name: '&6Giải Tán Đảo'
       lore:
-        - '&7Access to disband the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền giải tán đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -751,22 +751,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Discord Show'
+      name: '&6Xem Discord'
       lore:
-        - '&7Access to check the island''s linked discord.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền xem Discord liên kết với đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Discord Show'
+      name: '&6Xem Discord'
       lore:
-        - '&7Access to check the island''s linked discord.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền xem Discord liên kết với đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Discord Show'
+      name: '&6Xem Discord'
       lore:
-        - '&7Access to check the island''s linked discord.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền xem Discord liên kết với đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -784,22 +784,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ARROW
-      name: '&6Drop Items'
+      name: '&6Vứt Đồ'
       lore:
-        - '&7Access to drop items inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền vứt đồ trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ARROW
-      name: '&6Drop Items'
+      name: '&6Vứt Đồ'
       lore:
-        - '&7Access to drop items inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền vứt đồ trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ARROW
-      name: '&6Drop Items'
+      name: '&6Vứt Đồ'
       lore:
-        - '&7Access to drop items inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền vứt đồ trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -817,22 +817,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SHEEP_SPAWN_EGG
-      name: '&6Dye Sheep'
+      name: '&6Nhuộm Cừu'
       lore:
-        - '&7Access to dye sheep inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền nhuộm cừu trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SHEEP_SPAWN_EGG
-      name: '&6Dye Sheep'
+      name: '&6Nhuộm Cừu'
       lore:
-        - '&7Access to dye sheep inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền nhuộm cừu trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SHEEP_SPAWN_EGG
-      name: '&6Dye Sheep'
+      name: '&6Nhuộm Cừu'
       lore:
-        - '&7Access to dye sheep inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền nhuộm cừu trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -850,22 +850,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ENDER_PEARL
-      name: '&6Ender Pearl'
+      name: '&6Ngọc Ender'
       lore:
-        - '&7Access to use ender pearls inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền sử dụng ngọc ender trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ENDER_PEARL
-      name: '&6Ender Pearl'
+      name: '&6Ngọc Ender'
       lore:
-        - '&7Access to use ender pearls inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền sử dụng ngọc ender trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ENDER_PEARL
-      name: '&6Ender Pearl'
+      name: '&6Ngọc Ender'
       lore:
-        - '&7Access to use ender pearls inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền sử dụng ngọc ender trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -883,22 +883,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SADDLE
-      name: '&6Entity Ride'
+      name: '&6Cưỡi Sinh Vật'
       lore:
-        - '&7Access to ride entities inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền cưỡi sinh vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SADDLE
-      name: '&6Entity Ride'
+      name: '&6Cưỡi Sinh Vật'
       lore:
-        - '&7Access to ride entities inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền cưỡi sinh vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SADDLE
-      name: '&6Entity Ride'
+      name: '&6Cưỡi Sinh Vật'
       lore:
-        - '&7Access to ride entities inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền cưỡi sinh vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -916,22 +916,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: FEATHER
-      name: '&6Expel Bypass'
+      name: '&6Miễn Trục Xuất'
       lore:
-        - '&7Access to bypass from being expelled.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền miễn bị trục xuất khỏi đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: FEATHER
-      name: '&6Expel Bypass'
+      name: '&6Miễn Trục Xuất'
       lore:
-        - '&7Access to bypass from being expelled.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền miễn bị trục xuất khỏi đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: FEATHER
-      name: '&6Expel Bypass'
+      name: '&6Miễn Trục Xuất'
       lore:
-        - '&7Access to bypass from being expelled.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền miễn bị trục xuất khỏi đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -949,22 +949,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: DISPENSER
-      name: '&6Expel Players'
+      name: '&6Trục Xuất Người Chơi'
       lore:
-        - '&7Access to expel players from the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền trục xuất người chơi khỏi đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: DISPENSER
-      name: '&6Expel Players'
+      name: '&6Trục Xuất Người Chơi'
       lore:
-        - '&7Access to expel players from the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền trục xuất người chơi khỏi đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: DISPENSER
-      name: '&6Expel Players'
+      name: '&6Trục Xuất Người Chơi'
       lore:
-        - '&7Access to expel players from the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền trục xuất người chơi khỏi đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -982,22 +982,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: FARMLAND
-      name: '&6Farm Tramping'
+      name: '&6Dẫm Đất Trồng'
       lore:
-        - '&7Access to tramp farmlands inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền dẫm lên đất canh tác trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: FARMLAND
-      name: '&6Farm Tramping'
+      name: '&6Dẫm Đất Trồng'
       lore:
-        - '&7Access to tramp farmlands inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền dẫm lên đất canh tác trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: FARMLAND
-      name: '&6Farm Tramping'
+      name: '&6Dẫm Đất Trồng'
       lore:
-        - '&7Access to tramp farmlands inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền dẫm lên đất canh tác trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1015,22 +1015,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: BONE_MEAL
-      name: '&6Fertilize'
+      name: '&6Bón Phân'
       lore:
-        - '&7Access to fertilize blocks around the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền bón phân cho các khối trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BONE_MEAL
-      name: '&6Fertilize'
+      name: '&6Bón Phân'
       lore:
-        - '&7Access to fertilize blocks around the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền bón phân cho các khối trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BONE_MEAL
-      name: '&6Fertilize'
+      name: '&6Bón Phân'
       lore:
-        - '&7Access to fertilize blocks around the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền bón phân cho các khối trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1048,22 +1048,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: FISHING_ROD
-      name: '&6Fish'
+      name: '&6Câu Cá'
       lore:
-        - '&7Access fishing around the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền câu cá quanh đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: FISHING_ROD
-      name: '&6Fish'
+      name: '&6Câu Cá'
       lore:
-        - '&7Access fishing around the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền câu cá quanh đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: FISHING_ROD
-      name: '&6Fish'
+      name: '&6Câu Cá'
       lore:
-        - '&7Access fishing around the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền câu cá quanh đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1081,22 +1081,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: FEATHER
-      name: '&6Fly'
+      name: '&6Bay'
       lore:
-        - '&7Access fly around the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền bay quanh đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: FEATHER
-      name: '&6Fly'
+      name: '&6Bay'
       lore:
-        - '&7Access fly around the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền bay quanh đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: FEATHER
-      name: '&6Fly'
+      name: '&6Bay'
       lore:
-        - '&7Access fly around the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền bay quanh đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1114,22 +1114,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: HORSE_SPAWN_EGG
-      name: '&6Horse Interact'
+      name: '&6Tương Tác Với Ngựa'
       lore:
-        - '&7Access to interact with horses inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với ngựa trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: HORSE_SPAWN_EGG
-      name: '&6Horse Interact'
+      name: '&6Tương Tác Với Ngựa'
       lore:
-        - '&7Access to interact with horses inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với ngựa trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: HORSE_SPAWN_EGG
-      name: '&6Horse Interact'
+      name: '&6Tương Tác Với Ngựa'
       lore:
-        - '&7Access to interact with horses inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với ngựa trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1147,22 +1147,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: CREEPER_SPAWN_EGG
-      name: '&6Ignite Creepers'
+      name: '&6Kích Nổ Creeper'
       lore:
-        - '&7Access to ignite creepers with flint and steel inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền kích nổ creeper bằng đá lửa trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: CREEPER_SPAWN_EGG
-      name: '&6Ignite Creepers'
+      name: '&6Kích Nổ Creeper'
       lore:
-        - '&7Access to ignite creepers with flint and steel inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền kích nổ creeper bằng đá lửa trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: CREEPER_SPAWN_EGG
-      name: '&6Ignite Creepers'
+      name: '&6Kích Nổ Creeper'
       lore:
-        - '&7Access to ignite creepers with flint and steel inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền kích nổ creeper bằng đá lửa trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1180,22 +1180,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: PISTON
-      name: '&6Interact'
+      name: '&6Tương Tác'
       lore:
-        - '&7Access to interact with blocks inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với khối trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: PISTON
-      name: '&6Interact'
+      name: '&6Tương Tác'
       lore:
-        - '&7Access to interact with blocks inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với khối trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: PISTON
-      name: '&6Interact'
+      name: '&6Tương Tác'
       lore:
-        - '&7Access to interact with blocks inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với khối trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1214,22 +1214,22 @@ permissions:
     permission-enabled:
       type: PLAYER_HEAD
       data: 3
-      name: '&6Invite Member'
+      name: '&6Mời Thành Viên'
       lore:
-        - '&7Access to invite new members to the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền mời thành viên mới vào đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: PLAYER_HEAD
-      name: '&6Invite Member'
+      name: '&6Mời Thành Viên'
       lore:
-        - '&7Access to invite new members to the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền mời thành viên mới vào đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: PLAYER_HEAD
-      name: '&6Invite Member'
+      name: '&6Mời Thành Viên'
       lore:
-        - '&7Access to invite new members to the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền mời thành viên mới vào đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1247,22 +1247,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ENDER_CHEST
-      name: '&6Community Chest'
+      name: '&6Rương Chung'
       lore:
-        - '&7Access to the community chest of the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền truy cập rương chung của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ENDER_CHEST
-      name: '&6Community Chest'
+      name: '&6Rương Chung'
       lore:
-        - '&7Access to the community chest of the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền truy cập rương chung của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ENDER_CHEST
-      name: '&6Community Chest'
+      name: '&6Rương Chung'
       lore:
-        - '&7Access to the community chest of the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền truy cập rương chung của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1280,22 +1280,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ITEM_FRAME
-      name: '&6Item Frame'
+      name: '&6Khung Trưng Bày'
       lore:
-        - '&7Access to interact with item frames inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với khung trưng bày trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ITEM_FRAME
-      name: '&6Item Frame'
+      name: '&6Khung Trưng Bày'
       lore:
-        - '&7Access to interact with item frames inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với khung trưng bày trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ITEM_FRAME
-      name: '&6Item Frame'
+      name: '&6Khung Trưng Bày'
       lore:
-        - '&7Access to interact with item frames inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với khung trưng bày trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1313,22 +1313,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SKELETON_SKULL
-      name: '&6Kick Member'
+      name: '&6Đuổi Thành Viên'
       lore:
-        - '&7Access to kick members from the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đuổi thành viên khỏi đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SKELETON_SKULL
-      name: '&6Kick Member'
+      name: '&6Đuổi Thành Viên'
       lore:
-        - '&7Access to kick members from the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đuổi thành viên khỏi đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SKELETON_SKULL
-      name: '&6Kick Member'
+      name: '&6Đuổi Thành Viên'
       lore:
-        - '&7Access to kick members from the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đuổi thành viên khỏi đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1346,22 +1346,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: LEAD
-      name: '&6Leash Mobs'
+      name: '&6Dắt Quái Vật'
       lore:
-        - '&7Access to leash mobs inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền dắt quái vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: LEAD
-      name: '&6Leash Mobs'
+      name: '&6Dắt Quái Vật'
       lore:
-        - '&7Access to leash mobs inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền dắt quái vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: LEAD
-      name: '&6Leash Mobs'
+      name: '&6Dắt Quái Vật'
       lore:
-        - '&7Access to leash mobs inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền dắt quái vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1379,22 +1379,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: TNT_MINECART
-      name: '&6Minecart Damage'
+      name: '&6Phá Hủy Xe Đò'
       lore:
-        - '&7Access to damage minecarts inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền phá hủy xe đò trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: TNT_MINECART
-      name: '&6Minecart Damage'
+      name: '&6Phá Hủy Xe Đò'
       lore:
-        - '&7Access to damage minecarts inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền phá hủy xe đò trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: TNT_MINECART
-      name: '&6Minecart Damage'
+      name: '&6Phá Hủy Xe Đò'
       lore:
-        - '&7Access to damage minecarts inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền phá hủy xe đò trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1412,22 +1412,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: HOPPER_MINECART
-      name: '&6Minecart Enter'
+      name: '&6Lên Xe Đò'
       lore:
-        - '&7Access to enter minecarts inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền lên xe đò trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: HOPPER_MINECART
-      name: '&6Minecart Enter'
+      name: '&6Lên Xe Đò'
       lore:
-        - '&7Access to enter minecarts inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền lên xe đò trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: HOPPER_MINECART
-      name: '&6Minecart Enter'
+      name: '&6Lên Xe Đò'
       lore:
-        - '&7Access to enter minecarts inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền lên xe đò trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1445,22 +1445,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: CHEST_MINECART
-      name: '&6Minecart Open'
+      name: '&6Mở Xe Đò'
       lore:
-        - '&7Access to open minecarts inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền mở xe đò trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: CHEST_MINECART
-      name: '&6Minecart Open'
+      name: '&6Mở Xe Đò'
       lore:
-        - '&7Access to open minecarts inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền mở xe đò trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: CHEST_MINECART
-      name: '&6Minecart Open'
+      name: '&6Mở Xe Đò'
       lore:
-        - '&7Access to open minecarts inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền mở xe đò trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1478,22 +1478,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: MINECART
-      name: '&6Minecart Place'
+      name: '&6Đặt Xe Đò'
       lore:
-        - '&7Access to place minecarts inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đặt xe đò trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: MINECART
-      name: '&6Minecart Place'
+      name: '&6Đặt Xe Đò'
       lore:
-        - '&7Access to place minecarts inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đặt xe đò trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: MINECART
-      name: '&6Minecart Place'
+      name: '&6Đặt Xe Đò'
       lore:
-        - '&7Access to place minecarts inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đặt xe đò trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1511,22 +1511,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ZOMBIE_HEAD
-      name: '&6Monster Damage'
+      name: '&6Tấn Công Quái Vật'
       lore:
-        - '&7Access to damage monsters inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tấn công quái vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ZOMBIE_HEAD
-      name: '&6Monster Damage'
+      name: '&6Tấn Công Quái Vật'
       lore:
-        - '&7Access to damage monsters inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tấn công quái vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ZOMBIE_HEAD
-      name: '&6Monster Damage'
+      name: '&6Tấn Công Quái Vật'
       lore:
-        - '&7Access to damage monsters inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tấn công quái vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1544,22 +1544,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: CAVE_SPIDER_SPAWN_EGG
-      name: '&6Monster Spawn'
+      name: '&6Triệu Hồi Quái Vật'
       lore:
-        - '&7Access to spawn monsters inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền triệu hồi quái vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: CAVE_SPIDER_SPAWN_EGG
-      name: '&6Monster Spawn'
+      name: '&6Triệu Hồi Quái Vật'
       lore:
-        - '&7Access to spawn monsters inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền triệu hồi quái vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: CAVE_SPIDER_SPAWN_EGG
-      name: '&6Monster Spawn'
+      name: '&6Triệu Hồi Quái Vật'
       lore:
-        - '&7Access to spawn monsters inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền triệu hồi quái vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1577,22 +1577,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: NAUTILUS_SHELL
-      name: '&6Nautilus Interact'
+      name: '&6Tương Tác Với Nautilus'
       lore:
-        - '&7Access to interact with nautiluses inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với nautilus trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: NAUTILUS_SHELL
-      name: '&6Nautilus Interact'
+      name: '&6Tương Tác Với Nautilus'
       lore:
-        - '&7Access to interact with nautiluses inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với nautilus trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: NAUTILUS_SHELL
-      name: '&6Nautilus Interact'
+      name: '&6Tương Tác Với Nautilus'
       lore:
-        - '&7Access to interact with nautiluses inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với nautilus trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1610,22 +1610,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: NAME_TAG
-      name: '&6Name Entity'
+      name: '&6Đặt Tên Sinh Vật'
       lore:
-        - '&7Access to name-tag entities inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đặt tên sinh vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: NAME_TAG
-      name: '&6Name Entity'
+      name: '&6Đặt Tên Sinh Vật'
       lore:
-        - '&7Access to name-tag entities inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đặt tên sinh vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: NAME_TAG
-      name: '&6Name Entity'
+      name: '&6Đặt Tên Sinh Vật'
       lore:
-        - '&7Access to name-tag entities inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đặt tên sinh vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1643,22 +1643,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: REDSTONE_TORCH
-      name: '&6Open Island'
+      name: '&6Mở Đảo'
       lore:
-        - '&7Access to open the island to the public.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền mở đảo cho công chúng.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: REDSTONE_TORCH
-      name: '&6Open Island'
+      name: '&6Mở Đảo'
       lore:
-        - '&7Access to open the island to the public.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền mở đảo cho công chúng.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: REDSTONE_TORCH
-      name: '&6Open Island'
+      name: '&6Mở Đảo'
       lore:
-        - '&7Access to open the island to the public.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền mở đảo cho công chúng.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1676,22 +1676,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: PAINTING
-      name: '&6Painting'
+      name: '&6Bức Tranh'
       lore:
-        - '&7Access to interact with paintings inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với tranh trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: PAINTING
-      name: '&6Painting'
+      name: '&6Bức Tranh'
       lore:
-        - '&7Access to interact with paintings inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với tranh trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: PAINTING
-      name: '&6Painting'
+      name: '&6Bức Tranh'
       lore:
-        - '&7Access to interact with paintings inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với tranh trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1709,22 +1709,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: BLUE_WOOL
-      name: '&6Paypal Show'
+      name: '&6Xem Paypal'
       lore:
-        - '&7Access to check the island''s linked paypal.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền xem Paypal liên kết với đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BLUE_WOOL
-      name: '&6Paypal Show'
+      name: '&6Xem Paypal'
       lore:
-        - '&7Access to check the island''s linked paypal.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền xem Paypal liên kết với đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BLUE_WOOL
-      name: '&6Paypal Show'
+      name: '&6Xem Paypal'
       lore:
-        - '&7Access to check the island''s linked paypal.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền xem Paypal liên kết với đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1742,22 +1742,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: AXOLOTL_SPAWN_EGG
-      name: '&6Pickup Axolotls'
+      name: '&6Bắt Axolotl'
       lore:
-        - '&7Access to pickup axolotls using a water bucket inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền bắt axolotl bằng xô nước trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: AXOLOTL_SPAWN_EGG
-      name: '&6Pickup Axolotls'
+      name: '&6Bắt Axolotl'
       lore:
-        - '&7Access to pickup axolotls using a water bucket inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền bắt axolotl bằng xô nước trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: AXOLOTL_SPAWN_EGG
-      name: '&6Pickup Axolotls'
+      name: '&6Bắt Axolotl'
       lore:
-        - '&7Access to pickup axolotls using a water bucket inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền bắt axolotl bằng xô nước trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1775,22 +1775,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: HOPPER
-      name: '&6Pickup Drops'
+      name: '&6Nhặt Đồ'
       lore:
-        - '&7Access to pickup items inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền nhặt đồ trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: HOPPER
-      name: '&6Pickup Drops'
+      name: '&6Nhặt Đồ'
       lore:
-        - '&7Access to pickup items inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền nhặt đồ trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: HOPPER
-      name: '&6Pickup Drops'
+      name: '&6Nhặt Đồ'
       lore:
-        - '&7Access to pickup items inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền nhặt đồ trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1808,22 +1808,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: COD
-      name: '&6Pickup Fish'
+      name: '&6Bắt Cá'
       lore:
-        - '&7Access to pickup fish using buckets inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền bắt cá bằng xô trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: COD
-      name: '&6Pickup Fish'
+      name: '&6Bắt Cá'
       lore:
-        - '&7Access to pickup fish using buckets inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền bắt cá bằng xô trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: COD
-      name: '&6Pickup Fish'
+      name: '&6Bắt Cá'
       lore:
-        - '&7Access to pickup fish using buckets inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền bắt cá bằng xô trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1841,22 +1841,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: LECTERN
-      name: '&6Pickup Lectern Book'
+      name: '&6Lấy Sách Khung Đọc'
       lore:
-        - '&7Access to pickup books out of lecterns inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền lấy sách khỏi khung đọc sách trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: LECTERN
-      name: '&6Pickup Lectern Book'
+      name: '&6Lấy Sách Khung Đọc'
       lore:
-        - '&7Access to pickup books out of lecterns inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền lấy sách khỏi khung đọc sách trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: LECTERN
-      name: '&6Pickup Lectern Book'
+      name: '&6Lấy Sách Khung Đọc'
       lore:
-        - '&7Access to pickup books out of lecterns inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền lấy sách khỏi khung đọc sách trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1874,22 +1874,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: DIAMOND
-      name: '&6Promote Members'
+      name: '&6Thăng Vai Trò Thành Viên'
       lore:
-        - '&7Access to promote members inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền thăng vai trò của thành viên trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: DIAMOND
-      name: '&6Promote Members'
+      name: '&6Thăng Vai Trò Thành Viên'
       lore:
-        - '&7Access to promote members inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền thăng vai trò của thành viên trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: DIAMOND
-      name: '&6Promote Members'
+      name: '&6Thăng Vai Trò Thành Viên'
       lore:
-        - '&7Access to promote members inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền thăng vai trò của thành viên trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1907,22 +1907,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: GOLD_INGOT
-      name: '&6Upgrades Rankup'
+      name: '&6Nâng Cấp Đảo'
       lore:
-        - '&7Access to rankup island''s upgrades.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền nâng cấp các nâng cấp của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: GOLD_INGOT
-      name: '&6Upgrades Rankup'
+      name: '&6Nâng Cấp Đảo'
       lore:
-        - '&7Access to rankup island''s upgrades.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền nâng cấp các nâng cấp của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: GOLD_INGOT
-      name: '&6Upgrades Rankup'
+      name: '&6Nâng Cấp Đảo'
       lore:
-        - '&7Access to rankup island''s upgrades.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền nâng cấp các nâng cấp của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1940,22 +1940,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: NETHER_STAR
-      name: '&6Ratings Show'
+      name: '&6Xem Đánh Giá'
       lore:
-        - '&7Access to see all island''s ratings.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền xem mọi đánh giá của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: NETHER_STAR
-      name: '&6Ratings Show'
+      name: '&6Xem Đánh Giá'
       lore:
-        - '&7Access to see all island''s ratings.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền xem mọi đánh giá của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: NETHER_STAR
-      name: '&6Ratings Show'
+      name: '&6Xem Đánh Giá'
       lore:
-        - '&7Access to see all island''s ratings.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền xem mọi đánh giá của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -1973,22 +1973,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SADDLE
-      name: '&6Saddle Entity'
+      name: '&6Đeo Yên Sinh Vật'
       lore:
-        - '&7Access to add saddle to entities inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đeo yên cho sinh vật trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SADDLE
-      name: '&6Saddle Entity'
+      name: '&6Đeo Yên Sinh Vật'
       lore:
-        - '&7Access to add saddle to entities inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đeo yên cho sinh vật trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SADDLE
-      name: '&6Saddle Entity'
+      name: '&6Đeo Yên Sinh Vật'
       lore:
-        - '&7Access to add saddle to entities inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đeo yên cho sinh vật trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2006,22 +2006,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SCULK_SENSOR
-      name: '&6Sculk Sensor'
+      name: '&6Cảm Biến Sculk'
       lore:
-        - '&7Access to trigger sculk sensors inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền kích hoạt cảm biến sculk trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: SCULK_SENSOR
-      name: '&6Sculk Sensor'
+      name: '&6Cảm Biến Sculk'
       lore:
-        - '&7Access to trigger sculk sensors inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền kích hoạt cảm biến sculk trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: SCULK_SENSOR
-      name: '&6Sculk Sensor'
+      name: '&6Cảm Biến Sculk'
       lore:
-        - '&7Access to trigger sculk sensors inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền kích hoạt cảm biến sculk trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2039,22 +2039,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: GRASS_BLOCK
-      name: '&6Set Biome'
+      name: '&6Đặt Biome'
       lore:
-        - '&7Access to change the island''s biome.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi biome của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: GRASS_BLOCK
-      name: '&6Set Biome'
+      name: '&6Đặt Biome'
       lore:
-        - '&7Access to change the island''s biome.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi biome của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: GRASS_BLOCK
-      name: '&6Set Biome'
+      name: '&6Đặt Biome'
       lore:
-        - '&7Access to change the island''s biome.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi biome của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2072,22 +2072,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Set Discord'
+      name: '&6Đặt Discord'
       lore:
-        - '&7Access to change the discord linked to the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi Discord liên kết với đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Set Discord'
+      name: '&6Đặt Discord'
       lore:
-        - '&7Access to change the discord linked to the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi Discord liên kết với đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: LIGHT_BLUE_TERRACOTTA
-      name: '&6Set Discord'
+      name: '&6Đặt Discord'
       lore:
-        - '&7Access to change the discord linked to the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi Discord liên kết với đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2105,22 +2105,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: RED_BED
-      name: '&6Set Home'
+      name: '&6Đặt Home'
       lore:
-        - '&7Access to change the home location of the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi vị trí home của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: RED_BED
-      name: '&6Set Home'
+      name: '&6Đặt Home'
       lore:
-        - '&7Access to change the home location of the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi vị trí home của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: RED_BED
-      name: '&6Set Home'
+      name: '&6Đặt Home'
       lore:
-        - '&7Access to change the home location of the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi vị trí home của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2138,22 +2138,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: BLUE_WOOL
-      name: '&6Set Paypal'
+      name: '&6Đặt Paypal'
       lore:
-        - '&7Access to change the paypal linked to the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi Paypal liên kết với đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BLUE_WOOL
-      name: '&6Set Paypal'
+      name: '&6Đặt Paypal'
       lore:
-        - '&7Access to change the paypal linked to the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi Paypal liên kết với đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BLUE_WOOL
-      name: '&6Set Paypal'
+      name: '&6Đặt Paypal'
       lore:
-        - '&7Access to change the paypal linked to the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi Paypal liên kết với đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2171,22 +2171,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: REPEATER
-      name: '&6Set Permission'
+      name: '&6Đặt Quyền'
       lore:
-        - '&7Access to change permissions for island members.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi quyền của thành viên đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: REPEATER
-      name: '&6Set Permission'
+      name: '&6Đặt Quyền'
       lore:
-        - '&7Access to change permissions for island members.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi quyền của thành viên đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: REPEATER
-      name: '&6Set Permission'
+      name: '&6Đặt Quyền'
       lore:
-        - '&7Access to change permissions for island members.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi quyền của thành viên đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2204,26 +2204,26 @@ permissions:
     display-menu: true
     permission-enabled:
       type: DIAMOND_CHESTPLATE
-      name: '&6Set Role'
+      name: '&6Đặt Vai Trò'
       lore:
-        - '&7Access to change roles for island members.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi vai trò của thành viên đảo.'
+        - '&7Hiện đang &aBẬT&7.'
       flags:
         - HIDE_ATTRIBUTES
     permission-disabled:
       type: DIAMOND_CHESTPLATE
-      name: '&6Set Role'
+      name: '&6Đặt Vai Trò'
       lore:
-        - '&7Access to change roles for island members.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi vai trò của thành viên đảo.'
+        - '&7Hiện đang &cTẮT&7.'
       flags:
         - HIDE_ATTRIBUTES
     role-permission:
       type: DIAMOND_CHESTPLATE
-      name: '&6Set Role'
+      name: '&6Đặt Vai Trò'
       lore:
-        - '&7Access to change roles for island members.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi vai trò của thành viên đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
       flags:
@@ -2243,22 +2243,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: LEVER
-      name: '&6Set Settings'
+      name: '&6Đặt Cài Đặt'
       lore:
-        - '&7Access to change settings for islands.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đổi cài đặt của đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: LEVER
-      name: '&6Set Settings'
+      name: '&6Đặt Cài Đặt'
       lore:
-        - '&7Access to change settings for islands.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đổi cài đặt của đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: LEVER
-      name: '&6Set Settings'
+      name: '&6Đặt Cài Đặt'
       lore:
-        - '&7Access to change settings for islands.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đổi cài đặt của đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2276,22 +2276,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: ENDER_EYE
-      name: '&6Set Warp'
+      name: '&6Đặt Warp'
       lore:
-        - '&7Access to set new warps for the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền đặt warp mới cho đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: ENDER_EYE
-      name: '&6Set Warp'
+      name: '&6Đặt Warp'
       lore:
-        - '&7Access to set new warps for the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền đặt warp mới cho đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: ENDER_EYE
-      name: '&6Set Warp'
+      name: '&6Đặt Warp'
       lore:
-        - '&7Access to set new warps for the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền đặt warp mới cho đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2309,22 +2309,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: OAK_SIGN
-      name: '&6Sign Interact'
+      name: '&6Tương Tác Bảng Hiệu'
       lore:
-        - '&7Access to interact with signs inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tương tác với bảng hiệu trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: OAK_SIGN
-      name: '&6Sign Interact'
+      name: '&6Tương Tác Bảng Hiệu'
       lore:
-        - '&7Access to interact with signs inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tương tác với bảng hiệu trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: OAK_SIGN
-      name: '&6Sign Interact'
+      name: '&6Tương Tác Bảng Hiệu'
       lore:
-        - '&7Access to interact with signs inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tương tác với bảng hiệu trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2342,26 +2342,26 @@ permissions:
     display-menu: true
     permission-enabled:
       type: SPAWNER
-      name: '&6Spawner Break'
+      name: '&6Phá Spawner'
       lore:
-        - '&7Access to break spawners inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền phá spawner trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
       flags:
         - HIDE_ADDITIONAL_TOOLTIP
     permission-disabled:
       type: SPAWNER
-      name: '&6Spawner Break'
+      name: '&6Phá Spawner'
       lore:
-        - '&7Access to break spawners inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền phá spawner trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
       flags:
         - HIDE_ADDITIONAL_TOOLTIP
     role-permission:
       type: SPAWNER
-      name: '&6Spawner Break'
+      name: '&6Phá Spawner'
       lore:
-        - '&7Access to break spawners inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền phá spawner trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
       flags:
@@ -2381,22 +2381,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: TURTLE_EGG
-      name: '&6Turtle Eggs Tramping'
+      name: '&6Dẫm Trứng Rùa'
       lore:
-        - '&7Access to tramp turtle eggs inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền dẫm lên trứng rùa trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: TURTLE_EGG
-      name: '&6Turtle Eggs Tramping'
+      name: '&6Dẫm Trứng Rùa'
       lore:
-        - '&7Access to tramp turtle eggs inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền dẫm lên trứng rùa trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: TURTLE_EGG
-      name: '&6Turtle Eggs Tramping'
+      name: '&6Dẫm Trứng Rùa'
       lore:
-        - '&7Access to tramp turtle eggs inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền dẫm lên trứng rùa trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2414,22 +2414,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: BONE
-      name: '&6Tamed Animal Damage'
+      name: '&6Tấn Công Thú Nuôi'
       lore:
-        - '&7Access to damage tamed animals inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền tấn công thú đã thuần trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: BONE
-      name: '&6Tamed Animal Damage'
+      name: '&6Tấn Công Thú Nuôi'
       lore:
-        - '&7Access to damage tamed animals inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền tấn công thú đã thuần trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: BONE
-      name: '&6Tamed Animal Damage'
+      name: '&6Tấn Công Thú Nuôi'
       lore:
-        - '&7Access to damage tamed animals inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền tấn công thú đã thuần trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2447,22 +2447,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: GOLDEN_APPLE
-      name: '&6Uncoop Member'
+      name: '&6Xóa Co-op'
       lore:
-        - '&7Access to remove co-op members from the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền xóa thành viên co-op khỏi đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: GOLDEN_APPLE
-      name: '&6Uncoop Member'
+      name: '&6Xóa Co-op'
       lore:
-        - '&7Access to remove co-op members from the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền xóa thành viên co-op khỏi đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: GOLDEN_APPLE
-      name: '&6Uncoop Member'
+      name: '&6Xóa Co-op'
       lore:
-        - '&7Access to remove co-op members from the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền xóa thành viên co-op khỏi đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2480,22 +2480,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: STONE_BUTTON
-      name: '&6Use'
+      name: '&6Sử Dụng'
       lore:
-        - '&7Access to use different blocks inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền sử dụng các khối trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: STONE_BUTTON
-      name: '&6Use'
+      name: '&6Sử Dụng'
       lore:
-        - '&7Access to use different blocks inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền sử dụng các khối trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: STONE_BUTTON
-      name: '&6Use'
+      name: '&6Sử Dụng'
       lore:
-        - '&7Access to use different blocks inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền sử dụng các khối trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2513,22 +2513,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: GOLD_INGOT
-      name: '&6Valuable Blocks Break'
+      name: '&6Phá Khối Quý'
       lore:
-        - '&7Access to break valuable blocks inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền phá khối quý trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: GOLD_INGOT
-      name: '&6Valuable Blocks Break'
+      name: '&6Phá Khối Quý'
       lore:
-        - '&7Access to break valuable blocks inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền phá khối quý trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: GOLD_INGOT
-      name: '&6Valuable Blocks Break'
+      name: '&6Phá Khối Quý'
       lore:
-        - '&7Access to break valuable blocks inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền phá khối quý trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2547,24 +2547,24 @@ permissions:
     permission-enabled:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFiODMwZWI0MDgyYWNlYzgzNmJjODM1ZTQwYTExMjgyYmI1MTE5MzMxNWY5MTE4NDMzN2U4ZDM1NTU1ODMifX19'
-      name: '&6Villagers Trading'
+      name: '&6Giao Dịch Dân Làng'
       lore:
-        - '&7Access to trade with villagers inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền giao dịch với dân làng trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFiODMwZWI0MDgyYWNlYzgzNmJjODM1ZTQwYTExMjgyYmI1MTE5MzMxNWY5MTE4NDMzN2U4ZDM1NTU1ODMifX19'
-      name: '&6Villagers Trading'
+      name: '&6Giao Dịch Dân Làng'
       lore:
-        - '&7Access to trade with villagers inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền giao dịch với dân làng trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: PLAYER_HEAD
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFiODMwZWI0MDgyYWNlYzgzNmJjODM1ZTQwYTExMjgyYmI1MTE5MzMxNWY5MTE4NDMzN2U4ZDM1NTU1ODMifX19'
-      name: '&6Villagers Trading'
+      name: '&6Giao Dịch Dân Làng'
       lore:
-        - '&7Access to trade with villagers inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền giao dịch với dân làng trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2582,22 +2582,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: WIND_CHARGE
-      name: '&6Wind Charge'
+      name: '&6Phong Kích'
       lore:
-        - '&7Access to use wind charges inside the island.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền sử dụng wind charge trong đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: WIND_CHARGE
-      name: '&6Wind Charge'
+      name: '&6Phong Kích'
       lore:
-        - '&7Access to use wind charges inside the island.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền sử dụng wind charge trong đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: WIND_CHARGE
-      name: '&6Wind Charge'
+      name: '&6Phong Kích'
       lore:
-        - '&7Access to use wind charges inside the island.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền sử dụng wind charge trong đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:
@@ -2615,22 +2615,22 @@ permissions:
     display-menu: true
     permission-enabled:
       type: EMERALD
-      name: '&6Withdraw Money'
+      name: '&6Rút Tiền'
       lore:
-        - '&7Access to withdraw money from the island''s bank.'
-        - '&7Currently &aENABLED&7.'
+        - '&7Quyền rút tiền khỏi ngân hàng đảo.'
+        - '&7Hiện đang &aBẬT&7.'
     permission-disabled:
       type: EMERALD
-      name: '&6Withdraw Money'
+      name: '&6Rút Tiền'
       lore:
-        - '&7Access to withdraw money from the island''s bank.'
-        - '&7Currently &cDISABLED&7.'
+        - '&7Quyền rút tiền khỏi ngân hàng đảo.'
+        - '&7Hiện đang &cTẮT&7.'
     role-permission:
       type: EMERALD
-      name: '&6Withdraw Money'
+      name: '&6Rút Tiền'
       lore:
-        - '&7Access to withdraw money from the island''s bank.'
-        - '&7Role: &e{}&7.'
+        - '&7Quyền rút tiền khỏi ngân hàng đảo.'
+        - '&7Vai trò: &e{}&7.'
         - ''
         - '{0}'
     has-access:

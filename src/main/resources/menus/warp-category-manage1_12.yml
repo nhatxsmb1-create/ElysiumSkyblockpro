@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lCategory: {0}'
+title: '&lDanh Mục: {0}'
 previous-menu: true
 
 pattern:
@@ -25,26 +25,26 @@ category-warps: '$'
 items:
   '!':
     type: BOOK
-    name: '&6Rename Category'
+    name: '&6Đổi Tên Danh Mục'
     lore:
       - '&f '
       - '&f '
-      - '&7&o(( &f&oClick &7&oto rename the category. ))'
+      - '&7&o(( &f&oNhấp &7&ođể đổi tên danh mục. ))'
   '~':
     type: STONE
     lore:
       - '&f '
       - '&f '
-      - '&7&oYou can use the following placeholders:'
-      - '&7&o{0} is used for the warp''s name.'
-      - '&7&o{1} is used for the warp''s location.'
-      - '&7&o{2} is used for the warp''s public status.'
-      - '&7&o(( &f&oRight-Click &7&oto edit the icon. ))'
-      - '&7&o(( &f&oLeft-Click &7&oto edit the category''s slot. ))'
+      - '&7&oBạn có thể dùng các placeholder sau:'
+      - '&7&o{0} được dùng cho tên warp.'
+      - '&7&o{1} được dùng cho vị trí warp.'
+      - '&7&o{2} được dùng cho trạng thái công khai của warp.'
+      - '&7&o(( &f&oChuột Phải &7&ođể chỉnh sửa biểu tượng. ))'
+      - '&7&o(( &f&oChuột Trái &7&ođể chỉnh sửa ô của danh mục. ))'
   '$':
     type: ENDER_PEARL
-    name: '&6Island Warps'
+    name: '&6Warp Đảo'
     lore:
       - '&f '
       - '&f '
-      - '&7&o(( &f&oClick &7&oto edit the category warps. ))'
+      - '&7&o(( &f&oNhấp &7&ođể chỉnh sửa warp của danh mục. ))'

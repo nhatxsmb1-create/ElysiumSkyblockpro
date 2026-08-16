@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Chest'
+title: '&lRương Đảo'
 previous-menu: true
 
 pattern:
@@ -25,23 +25,23 @@ items:
   '@':
     valid-page:
       type: CHEST_MINECART
-      name: '&ePage #{0}'
+      name: '&eTrang #{0}'
       lore:
-        - '&eSize: &7{1}'
+        - '&eKích Thước: &7{1}'
     invalid-page:
       type: MINECART
       name: '&f '
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '#':
     type: RAIL
     name: '&f '

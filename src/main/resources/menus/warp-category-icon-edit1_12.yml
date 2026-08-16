@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lCategory: {0}'
+title: '&lDanh Mục: {0}'
 previous-menu: true
 
 pattern:
@@ -24,32 +24,32 @@ icon-slots: '^'
 items:
   '!':
     type: DIAMOND
-    name: '&6Set Type'
+    name: '&6Đặt Loại'
     lore:
       - '&f '
       - '&f '
-      - '&7&o(( &f&oClick &7&oto edit the item type. ))'
+      - '&7&o(( &f&oNhấp &7&ođể chỉnh sửa loại vật phẩm. ))'
   '~':
     type: ANVIL
-    name: '&6Set Name'
+    name: '&6Đặt Tên'
     lore:
       - '&f '
       - '&f '
-      - '&7&o(( &f&oClick &7&oto edit the item name. ))'
+      - '&7&o(( &f&oNhấp &7&ođể chỉnh sửa tên vật phẩm. ))'
   '$':
     type: PAPER
-    name: '&6Set Lore'
+    name: '&6Đặt Mô Tả'
     lore:
       - '&f '
       - '&f '
-      - '&7&o(( &f&oClick &7&oto edit the item lore. ))'
+      - '&7&o(( &f&oNhấp &7&ođể chỉnh sửa mô tả vật phẩm. ))'
   '%':
     type: EMERALD
-    name: '&6Confirm Changes'
+    name: '&6Xác Nhận Thay Đổi'
     lore:
       - '&f '
       - '&f '
-      - '&7&o(( &f&oClick &7&oto confirm all changes. ))'
+      - '&7&o(( &f&oNhấp &7&ođể xác nhận tất cả thay đổi. ))'
   '^':
     type: STONE
 

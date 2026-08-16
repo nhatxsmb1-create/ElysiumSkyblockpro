@@ -1,0 +1,190 @@
+&lIsland Panel	&lBảng Điều Khiển Đảo
+&lIsland Bank	&lNgân Hàng Đảo
+&eTeleport	&eDịch Chuyển
+&7Teleport back to your island.	&7Dịch chuyển về đảo của bạn.
+&eIsland Settings	&eCài Đặt Đảo
+&7Manage settings regarding your island.	&7Quản lý các cài đặt của đảo bạn.
+&eIsland Permissions	&eQuyền Hạn Đảo
+&7Manage permissions in your island.	&7Quản lý quyền hạn trong đảo của bạn.
+&eIsland Biomes	&eSinh Quản Đảo
+&7Change the biome of your island.	&7Thay đổi sinh quản của đảo bạn.
+&eIsland Bank	&eNgân Hàng Đảo
+&7Open the bank of your island.	&7Mở ngân hàng của đảo bạn.
+&eIsland Upgrades	&eNâng Cấp Đảo
+&7Upgrade your island statistics!	&7Nâng cấp chỉ số đảo của bạn!
+&eTop Islands	&eBảng Xếp Hạng Đảo
+&7Check which island is the best on the server!	&7Xem đảo nào là tốt nhất trên máy chủ!
+&eIsland Missions	&eNhiệm Vụ Đảo
+&7Complete missions and get rewarded!	&7Hoàn thành nhiệm vụ và nhận phần thưởng!
+&eIsland Counts	&eSố Lượng Khối Đảo
+&7See all the blocks on your island!	&7Xem tất cả các khối trên đảo của bạn!
+&eIsland Disband	&eGiải Tán Đảo
+&7Disband your island.	&7Giải tán đảo của bạn.
+&cThis action cannot be restored!	&cHành động này không thể khôi phục!
+&eIsland Chest	&eRương Đảo
+&7Open the community chest of the island.	&7Mở rương chung của đảo.
+&eIsland Visitors	&eKhách Thăm Đảo
+&7Check all the visitors of the island.	&7Xem tất cả khách thăm của đảo.
+&eIsland Members	&eThành Viên Đảo
+&7Manage the members of the island.	&7Quản lý thành viên của đảo.
+&aDeposit Half Money	&aGửi Một Nửa Tiền
+&7Deposit half of your money into the bank.	&7Gửi một nửa số tiền của bạn vào ngân hàng.
+&aDeposit Money	&aGửi Tiền
+&7Deposit money into the bank.	&7Gửi tiền vào ngân hàng.
+&aDeposit All Money	&aGửi Tất Cả Tiền
+&7Deposit all of your money into the bank.	&7Gửi tất cả tiền của bạn vào ngân hàng.
+&aWithdraw Half Money	&aRút Một Nửa Tiền
+&7Withdraw half of the money from the bank.	&7Rút một nửa tiền từ ngân hàng.
+&aWithdraw Money	&aRút Tiền
+&7Withdraw money from the bank.	&7Rút tiền từ ngân hàng.
+&aWithdraw All Money	&aRút Tất Cả Tiền
+&7Withdraw all of the money from the bank.	&7Rút tất cả tiền từ ngân hàng.
+&6Balance	&6Số Dư
+&7Your bank currently has ${2}	&7Ngân hàng của bạn hiện có ${2}
+&7Next interest on {7}	&7Lãi suất tiếp theo vào {7}
+&6Transaction Logs	&6Nhật Ký Giao Dịch
+&lTransaction Logs &r{0}	&lNhật Ký Giao Dịch &r{0}
+&eTransaction #{0}	&eGiao Dịch #{0}
+&7Amount: ${4}	&7Số Tiền: ${4}
+&7Time: {3}	&7Thời Gian: {3}
+&7Status: {2}	&7Trạng Thái: {2}
+&7Click to filter transactions by this player.	&7Nhấp để lọc giao dịch theo người chơi này.
+&7Player: {1}	&7Người Chơi: {1}
+&6Sort by creation time	&6Sắp xếp theo thời gian tạo
+&6Sort by money	&6Sắp xếp theo tiền
+&6Switch Sorting Type	&6Đổi Kiểu Sắp Xếp
+&7Sorting Type: &e{1}&7.	&7Kiểu Sắp Xếp: &e{1}&7.
+&l      Confirm Transfer	&l      Xác Nhận Chuyển Chủ Đảo
+&l      Confirm Disband	&l      Xác Nhận Giải Tán Đảo
+&l      Confirm Kick	&l      Xác Nhận Đuổi
+&l      Confirm Leave	&l      Xác Nhận Rời Đảo
+&l      Confirm Ban	&l      Xác Nhận Cấm
+&c&lConfirm Ban	&c&lXác Nhận Cấm
+&c&lConfirm Disband	&c&lXác Nhận Giải Tán Đảo
+&c&lConfirm Kick	&c&lXác Nhận Đuổi
+&c&lConfirm Leave	&c&lXác Nhận Rời Đảo
+&c&lConfirm Transfer	&c&lXác Nhận Chuyển Chủ Đảo
+&4Cancel	&4Hủy
+&aConfirm	&aXác Nhận
+&7Are you sure you want to ban that player?	&7Bạn có chắc muốn cấm người chơi đó?
+&7Are you sure you want to delete your island?	&7Bạn có chắc muốn xóa đảo của bạn?
+&7Are you sure you want to kick that player?	&7Bạn có chắc muốn đuổi người chơi đó?
+&7Are you sure you want to leave your island?	&7Bạn có chắc muốn rời đảo của bạn?
+&7Are you sure you want to transfer your island?	&7Bạn có chắc muốn chuyển chủ đảo của bạn?
+&l        Border Color	&l        Màu Biên Giới
+&aEnable Border	&aBật Biên Giới
+&cDisable Border	&cTắt Biên Giới
+&aGreen Color	&aMàu Xanh Lá
+&bBlue Color	&bMàu Xanh Dương
+&cRed Color	&cMàu Đỏ
+&ePlayer Role	&eVai Trò Người Chơi
+&eLeader	&eChủ Đảo
+&eAdmin	&eQuản Trị Viên
+&eModerator	&eĐiều Phối Viên
+&eMember	&eThành Viên
+&7Click to edit player''s role.	&7Nhấp để chỉnh sửa vai trò của người chơi.
+&eRole: &7{1}	&eVai Trò: &7{1}
+&e{0}''s Island	&eĐảo của {0}
+&7Island Owner: {1}	&7Chủ Đảo: {1}
+&7Last Time Joined: {3}	&7Lần Cuối Tham Gia: {3}
+&eBan Player	&eCấm Người Chơi
+&7Click to ban the player from the island.	&7Nhấp để cấm người chơi khỏi đảo.
+&eKick Player	&eĐuổi Người Chơi
+&7Click to kick the player from the island.	&7Nhấp để đuổi người chơi khỏi đảo.
+&7Click to set player''s role to admin.	&7Nhấp để đặt vai trò người chơi thành quản trị viên.
+&7Click to set player''s role to member.	&7Nhấp để đặt vai trò người chơi thành thành viên.
+&7Click to set player''s role to moderator.	&7Nhấp để đặt vai trò người chơi thành điều phối viên.
+&7Click to transfer leadership to player.	&7Nhấp để chuyển quyền chủ đảo cho người chơi.
+&7Left-Click to expel the player.	&7Chuột Trái để trục xuất người chơi.
+&7Right-Click to invite the player.	&7Chuột Phải để mời người chơi.
+&7Click to unban the player.	&7Nhấp để bỏ cấm người chơi.
+&7Click to uncoop the player.	&7Nhấp để gỡ hợp tác với người chơi.
+&lIsland Members ({0}/{1})	&lThành Viên Đảo ({0}/{1})
+&lIsland Banned Players ({0})	&lNgười Chơi Bị Cấm ({0})
+&lIsland Coop Players ({0}/{1})	&lNgười Chơi Hợp Tác Đảo ({0}/{1})
+&lMissions	&lNhiệm Vụ
+&l{0} Missions	&lNhiệm Vụ {0}
+&eFarmer Missions	&eNhiệm Vụ Nông Dân
+&eFisherman Missions	&eNhiệm Vụ Ngư Dân
+&eMiner Missions	&eNhiệm Vụ Thợ Mỏ
+&eSlayer Missions	&eNhiệm Vụ Sát Thủy
+&eExplorer Missions	&eNhiệm Vụ Nhà Thám Hiểm
+&7Click to start your adventure as a Farmer.	&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Nông Dân.
+&7Click to start your adventure as a Fisherman.	&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Ngư Dân.
+&7Click to start your adventure as a Miner.	&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Thợ Mỏ.
+&7Click to start your adventure as a Slayer.	&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Sát Thủy.
+&7Click to start your adventure as an Explorer.	&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Nhà Thám Hiểm.
+&6&l* &e&lQuantity &fx{1}	&6&l* &e&lSố Lượng &fx{1}
+&6Island Warps	&6Điểm Dịch Chuyển Đảo
+&lIsland Warps	&lĐiểm Dịch Chuyển Đảo
+&lWarp Categories	&lDanh Mục Điểm Dịch Chuyển
+&lWarp: {0}	&lĐiểm Dịch Chuyển: {0}
+&lCategory: {0}	&lDanh Mục: {0}
+&6Private Warp	&6Điểm Dịch Chuyển Riêng Tư
+&6Rename Category	&6Đổi Tên Danh Mục
+&6Rename Warp	&6Đổi Tên Điểm Dịch Chuyển
+&6Set Lore	&6Đặt Mô Tả
+&6Set Name	&6Đặt Tên
+&6Set Type	&6Đặt Loại
+&6Warp Location	&6Vị Trí Điểm Dịch Chuyển
+&6Confirm Changes	&6Xác Nhận Thay Đổi
+&7Click to see all warps of this island.	&7Nhấp để xem tất cả điểm dịch chuyển của đảo này.
+&7&o(( &f&oClick &7&oto toggle warp to the public. ))	&7&o(( &f&oNhấp &7&ođể chuyển điểm dịch chuyển sang công khai. ))
+&7&o(( &f&oClick &7&oto update the warp location. ))	&7&o(( &f&oNhấp &7&ođể cập nhật vị trí điểm dịch chuyển. ))
+&7&o(( &f&oClick &7&oto edit the category warps. ))	&7&o(( &f&oNhấp &7&ođể chỉnh sửa điểm dịch chuyển của danh mục. ))
+&7&o(( &f&oClick &7&oto edit the icon. ))	&7&o(( &f&oNhấp &7&ođể chỉnh sửa biểu tượng. ))
+&7&o(( &f&oClick &7&oto edit the item lore. ))	&7&o(( &f&oNhấp &7&ođể chỉnh sửa mô tả vật phẩm. ))
+&7&o(( &f&oClick &7&oto edit the item name. ))	&7&o(( &f&oNhấp &7&ođể chỉnh sửa tên vật phẩm. ))
+&7&o(( &f&oClick &7&oto edit the item type. ))	&7&o(( &f&oNhấp &7&ođể chỉnh sửa loại vật phẩm. ))
+&7&o(( &f&oClick &7&oto rename the category. ))	&7&o(( &f&oNhấp &7&ođể đổi tên danh mục. ))
+&7&o(( &f&oClick &7&oto rename the warp. ))	&7&o(( &f&oNhấp &7&ođể đổi tên điểm dịch chuyển. ))
+&7&o(( &f&oClick &7&oto confirm all changes. ))	&7&o(( &f&oNhấp &7&ođể xác nhận tất cả thay đổi. ))
+&7&o(( &f&oLeft-Click &7&oto see island warps. ))	&7&o(( &f&oChuột Trái &7&ođể xem điểm dịch chuyển đảo. ))
+&7&o(( &f&oLeft-Click &7&oto view their items. ))	&7&o(( &f&oChuột Trái &7&ođể xem vật phẩm của họ. ))
+&7&o(( &f&oLeft-Click &7&oto warp to the location. ))	&7&o(( &f&oChuột Trái &7&ođể dịch chuyển đến vị trí. ))
+&7&o(( &f&oLeft-Click &7&oto edit the category''s slot. ))	&7&o(( &f&oChuột Trái &7&ođể chỉnh sửa ô của danh mục. ))
+&7&o(( &f&oRight-Click &7&oto edit the category. ))	&7&o(( &f&oChuột Phải &7&ođể chỉnh sửa danh mục. ))
+&7&o(( &f&oRight-Click &7&oto edit the icon. ))	&7&o(( &f&oChuột Phải &7&ođể chỉnh sửa biểu tượng. ))
+&7&o(( &f&oRight-Click &7&oto edit warp. ))	&7&o(( &f&oChuột Phải &7&ođể chỉnh sửa điểm dịch chuyển. ))
+&7&o(( &f&oRight-Click &7&oto teleport to island warp. ))	&7&o(( &f&oChuột Phải &7&ođể dịch chuyển đến điểm dịch chuyển đảo. ))
+&7&o{0} is used for the warp''s name.	&7&o{0} được dùng cho tên điểm dịch chuyển.
+&7&o{1} is used for the warp''s location.	&7&o{1} được dùng cho vị trí điểm dịch chuyển.
+&7&o{2} is used for the warp''s public status.	&7&o{2} được dùng cho trạng thái công khai của điểm dịch chuyển.
+&7&oYou can use the following placeholders:	&7&oBạn có thể dùng các placeholder sau:
+&7Located at {1}.	&7Nằm tại {1}.
+&8>> &7This island has {2} warps.	&8>> &7Đảo này có {2} điểm dịch chuyển.
+&lIsland Visitors ({0})	&lKhách Thăm Đảo ({0})
+&lIsland Unique Visitors ({0})	&lKhách Thăm Đảo Duy Nhất ({0})
+&eUnique Visitors	&eKhách Thăm Duy Nhất
+&7Click to open all-time visitors menu.	&7Nhấp để mở menu khách thăm mọi thời điểm.
+&lTop Islands	&lBảng Xếp Hạng Đảo
+&6&l* &e&lPlace &7#{1}	&6&l* &e&lHạng &7#{1}
+&6&l* &e&lBank &7${11}	&6&l* &e&lNgân Hàng &7${11}
+&6&l* &e&lLevel: &7{2}	&6&l* &e&lCấp Độ: &7{2}
+&6&l* &e&lLevel: &f${3}	&6&l* &e&lCấp Độ: &f${3}
+&6&l* &e&lMembers:	&6&l* &e&lThành Viên:
+&6&l* &e&lPlayers &7{10}	&6&l* &e&lNgười Chơi &7{10}
+&6&l* &e&lRating {8} &7({9})	&6&l* &e&lĐánh Giá {8} &7({9})
+&6&l* &e&lWorth &7${3}	&6&l* &e&lGiá Trị &7${3}
+&6&l* &e&lWorth: &f${2}	&6&l* &e&lGiá Trị: &f${2}
+&7Switch top islands sorting type.	&7Đổi kiểu sắp xếp bảng xếp hạng đảo.
+&e&l[!] Island: &6&n{0}&7 (#{1})	&e&l[!] Đảo: &6&n{0}&7 (#{1})
+&lRate Island	&lĐánh Giá Đảo
+&5Fabulous (5/5)	&5Tuyệt Vời (5/5)
+&2Beautiful (4/5)	&2Đẹp (4/5)
+&aGood (3/5)	&aTốt (3/5)
+&eNice (2/5)	&eKhá (2/5)
+&6Ugly (1/5)	&6Xấu (1/5)
+&4Horrible (0/5)	&4Rất Tệ (0/5)
+&lIsland Ratings ({0}/5)	&lĐánh Giá Đảo ({0}/5)
+&cPrevious Page	&cTrang Trước
+&cNext Page	&cTrang Sau
+{0}Previous Page	{0}Trang Trước
+{0}Next Page	{0}Trang Sau
+&aCurrent Page	&aTrang Hiện Tại
+&7Page {0}	&7Trang {0}
+&7Page 1	&7Trang 1
+&ePage #{0}	&eTrang #{0}
+&lIsland Block Counts	&lSố Khối Trên Đảo
+&eSize: &7{1}	&eKích Thước: &7{1}
+&lIsland Chest	&lRương Đảo

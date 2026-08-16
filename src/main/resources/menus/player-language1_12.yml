@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lSelect Language...'
+title: '&lChọn Ngôn Ngữ...'
 previous-menu: true
 
 pattern:
@@ -20,105 +20,105 @@ items:
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGNhYzk3NzRkYTEyMTcyNDg1MzJjZTE0N2Y3ODMxZjY3YTEyZmRjY2ExY2YwY2I0YjM4NDhkZTZiYzk0YjQifX19'
-    name: '&eEnglish'
+    name: '&eTiếng Anh'
     lore:
-      - '&7Change language to English.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Anh.'
   '%':
     language: 'iw-IL'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWJhMDg2YTJjYzcyNzJjZjViYTQ5YzgwMjQ4NTQ2YzIyZTVlZjFiYWI1NDEyMGU4YThlNWQ5ZTc1YjZhIn19fQ=='
-    name: '&eHebrew'
+    name: '&eTiếng Do Thái'
     lore:
-      - '&7Change language to Hebrew.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Do Thái.'
   '*':
     language: 'vi-VN'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGE1N2I5ZDdkZDA0MTY5NDc4Y2ZkYjhkMGI2ZmQwYjhjODJiNjU2NmJiMjgzNzFlZTlhN2M3YzE2NzFhZDBiYiJ9fX0='
-    name: '&eVietnamese'
+    name: '&eTiếng Việt'
     lore:
-      - '&7Change language to Vietnamese.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Việt.'
   '+':
     language: 'pl-PL'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTIxYjJhZjhkMjMyMjI4MmZjZTRhMWFhNGYyNTdhNTJiNjhlMjdlYjMzNGY0YTE4MWZkOTc2YmFlNmQ4ZWIifX19'
-    name: '&ePolish'
+    name: '&eTiếng Ba Lan'
     lore:
-      - '&7Change language to Polish.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Ba Lan.'
   '2':
     language: 'pt-BR'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWE0NjQ3NWQ1ZGNjODE1ZjZjNWYyODU5ZWRiYjEwNjExZjNlODYxYzBlYjE0ZjA4ODE2MWIzYzBjY2IyYjBkOSJ9fX0='
-    name: '&eBrazilian Portuguese'
+    name: '&eTiếng Bồ Đào Nha (Brazil)'
     lore:
-      - '&7Change language to Brazilian Portuguese.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Bồ Đào Nha (Brazil).'
   '^':
     language: 'it-IT'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODVjZTg5MjIzZmE0MmZlMDZhZDY1ZDhkNDRjYTQxMmFlODk5YzgzMTMwOWQ2ODkyNGRmZTBkMTQyZmRiZWVhNCJ9fX0='
-    name: '&eItalian'
+    name: '&eTiếng Ý'
     lore:
-      - '&7Change language to Italian.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Ý.'
   '~':
     language: 'zh-CN'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Y5YmMwMzVjZGM4MGYxYWI1ZTExOThmMjlmM2FkM2ZkZDJiNDJkOWE2OWFlYjY0ZGU5OTA2ODE4MDBiOThkYyJ9fX0='
-    name: '&eSimplified Chinese'
+    name: '&eTiếng Trung (Giản Thể)'
     lore:
-      - '&7Change language to Simplified Chinese.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Trung (Giản Thể).'
   '1':
     language: 'ru-RU'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTZlYWZlZjk4MGQ2MTE3ZGFiZTg5ODJhYzRiNDUwOTg4N2UyYzQ2MjFmNmE4ZmU1YzliNzM1YTgzZDc3NWFkIn19fQ=='
-    name: '&eRussian'
+    name: '&eTiếng Nga'
     lore:
-      - '&7Change language to Russian.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Nga.'
   '-':
     language: 'fr-FR'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTEyNjlhMDY3ZWUzN2U2MzYzNWNhMWU3MjNiNjc2ZjEzOWRjMmRiZGRmZjk2YmJmZWY5OWQ4YjM1Yzk5NmJjIn19fQ=='
-    name: '&eFrench'
+    name: '&eTiếng Pháp'
     lore:
-      - '&7Change language to French.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Pháp.'
   '=':
     language: 'es-ES'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzJiZDQ1MjE5ODMzMDllMGFkNzZjMWVlMjk4NzQyODc5NTdlYzNkOTZmOGQ4ODkzMjRkYThjODg3ZTQ4NWVhOCJ9fX0='
-    name: '&eSpanish'
+    name: '&eTiếng Tây Ban Nha'
     lore:
-      - '&7Change language to Spanish.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Tây Ban Nha.'
   '!':
     language: 'de-DE'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWU3ODk5YjQ4MDY4NTg2OTdlMjgzZjA4NGQ5MTczZmU0ODc4ODY0NTM3NzQ2MjZiMjRiZDhjZmVjYzc3YjNmIn19fQ=='
-    name: '&eGerman'
+    name: '&eTiếng Đức'
     lore:
-      - '&7Change language to German.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Đức.'
   '3':
     language: 'tr-TR'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmJiZWFmNTJlMWM0YmZjZDhhMWY0YzY5MTMyMzRiODQwMjQxYWE0ODgyOWMxNWFiYzZmZjhmZGY5MmNkODllIn19fQ=='
-    name: '&eTurkish'
+    name: '&eTiếng Thổ Nhĩ Kỳ'
     lore:
-      - '&7Change language to Turkish.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Thổ Nhĩ Kỳ.'
   '4':
     language: 'hu-HU'
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmJjZjkyODUwODQyNzM5ZTA5YzJjYTkyOGY5MTJjNTJmM2VmYjkzY2QyNmU2YmUwZmU1MzI4MmMwMmJmNTc4MCJ9fX0='
-    name: '&eHungarian'
+    name: '&eTiếng Hungary'
     lore:
-      - '&7Change language to Hungarian.'
+      - '&7Chuyển ngôn ngữ sang Tiếng Hungary.'
 
 sounds:
   '#':

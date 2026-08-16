@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lMissions'
+title: '&lNhiệm Vụ'
 previous-menu: true
 
 pattern:
@@ -22,32 +22,32 @@ items:
     name: '&f'
   '#':
     type: DIAMOND_PICKAXE
-    name: '&eMiner Missions'
+    name: '&eNhiệm Vụ Thợ Mỏ'
     lore:
-      - '&7Click to start your adventure as a Miner.'
+      - '&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Thợ Mỏ.'
     flags:
       - HIDE_ATTRIBUTES
   '@':
     type: SKULL_ITEM
     data: 2
-    name: '&eSlayer Missions'
+    name: '&eNhiệm Vụ Sát Thủy'
     lore:
-      - '&7Click to start your adventure as a Slayer.'
+      - '&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Sát Thủy.'
   '%':
     type: WHEAT
-    name: '&eFarmer Missions'
+    name: '&eNhiệm Vụ Nông Dân'
     lore:
-      - '&7Click to start your adventure as a Farmer.'
+      - '&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Nông Dân.'
   '^':
     type: FISHING_ROD
-    name: '&eFisherman Missions'
+    name: '&eNhiệm Vụ Ngư Dân'
     lore:
-      - '&7Click to start your adventure as a Fisherman.'
+      - '&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Ngư Dân.'
   '&':
     type: MAP
-    name: '&eExplorer Missions'
+    name: '&eNhiệm Vụ Nhà Thám Hiểm'
     lore:
-      - '&7Click to start your adventure as an Explorer.'
+      - '&7Nhấp để bắt đầu cuộc phiêu lưu với tư cách Nhà Thám Hiểm.'
 
 sounds:
   '#':

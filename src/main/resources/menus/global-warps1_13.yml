@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&lIsland Warps'
+title: '&lWarp Đảo'
 previous-menu: true
 
 pattern:
@@ -28,21 +28,21 @@ visitor-warps: false
 items:
   '@':
     type: PLAYER_HEAD
-    name: '&e{0}''s Island'
+    name: '&eĐảo của {0}'
     lore:
-      - '&7Click to see all warps of this island.'
-      - '&8>> &7This island has {2} warps.'
+      - '&7Nhấp để xem tất cả warp của đảo này.'
+      - '&8>> &7Đảo này có {2} warp.'
   '%':
     type: PAPER
-    name: '{0}Previous Page'
+    name: '{0}Trang Trước'
   '*':
     type: SUNFLOWER
-    name: '&aCurrent Page'
+    name: '&aTrang Hiện Tại'
     lore:
-      - '&7Page {0}'
+      - '&7Trang {0}'
   '^':
     type: PAPER
-    name: '{0}Next Page'
+    name: '{0}Trang Sau'
   '$':
     type: BLACK_STAINED_GLASS_PANE
     name: '&f'

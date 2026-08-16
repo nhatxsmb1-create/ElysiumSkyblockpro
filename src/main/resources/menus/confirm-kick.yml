@@ -5,7 +5,7 @@
 ##                                                  ##
 ######################################################
 
-title: '&l      Confirm Kick'
+title: '&l      Xác Nhận Đuổi'
 previous-menu: true
 type: HOPPER
 
@@ -24,14 +24,14 @@ items:
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzc0NzJkNjA4ODIxZjQ1YTg4MDUzNzZlYzBjNmZmY2I3ODExNzgyOWVhNWY5NjAwNDFjMmEwOWQxMGUwNGNiNCJ9fX0='
-    name: '&aConfirm'
+    name: '&aXác Nhận'
     lore:
-      - '&7Are you sure you want to kick that player?'
+      - '&7Bạn có chắc muốn đuổi người chơi này khỏi đảo?'
   '^':
     type: SKULL_ITEM
     data: 3
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjk1M2IxMmEwOTQ2YjYyOWI0YzA4ODlkNDFmZDI2ZWQyNmZiNzI5ZDRkNTE0YjU5NzI3MTI0YzM3YmI3MGQ4ZCJ9fX0='
-    name: '&4Cancel'
+    name: '&4Hủy'
 
 sounds:
   '@':
