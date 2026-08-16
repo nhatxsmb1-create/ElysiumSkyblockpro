@@ -903,7 +903,7 @@ upgrades:
           volume: 0.2
           pitch: 0.2
   generator-rates:
-    item: REDSTONE
+    item: '+'
     '1':
       has-next-level:
         type: COBBLESTONE
