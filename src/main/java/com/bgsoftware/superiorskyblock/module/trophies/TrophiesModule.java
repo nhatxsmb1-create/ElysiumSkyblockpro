@@ -246,17 +246,37 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
         private static PotionEffect parseEffect(String raw) {
             // Format: EFFECT_NAME:level
             String[] parts = raw.split(":");
-            PotionEffectType type;
-            try {
-                type = PotionEffectType.getByName(parts[0]);
-            } catch (Exception error) {
-                type = null;
+            PotionEffectType type = null;
+            for (String alias : effectAliases(parts[0])) {
+                try {
+                    type = PotionEffectType.getByName(alias);
+                } catch (Exception error) {
+                    type = null;
+                }
+                if (type != null)
+                    break;
             }
             if (type == null)
                 return null;
             int amplifier = parts.length > 1 ? Integer.parseInt(parts[1]) - 1 : 0;
             // 20 seconds so the 8-second refresh cycle never lets it flicker
             return new PotionEffect(type, 20 * 20, Math.max(0, amplifier), true, false);
+        }
+
+        /**
+         * Effect names changed between versions - resolve both spellings.
+         */
+        private static String[] effectAliases(String name) {
+            switch (name.toUpperCase(java.util.Locale.ENGLISH)) {
+                case "FAST_DIGGING":
+                case "HASTE":
+                    return new String[]{"FAST_DIGGING", "HASTE"};
+                case "SLOW":
+                case "SLOWNESS":
+                    return new String[]{"SLOW", "SLOWNESS"};
+                default:
+                    return new String[]{name};
+            }
         }
 
     }

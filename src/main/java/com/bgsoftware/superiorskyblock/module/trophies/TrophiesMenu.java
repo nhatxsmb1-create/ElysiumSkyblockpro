@@ -60,9 +60,11 @@ public class TrophiesMenu implements InventoryHolder {
             }
 
             if (!has) {
-                // Grey out missing trophies (legacy 1.8 material: stained glass pane, data 7)
-                item.setType(Material.STAINED_GLASS_PANE);
-                item.setDurability((short) 7);
+                // Grey out missing trophies; try modern material first, fall back to legacy 1.8
+                Material grayPane = matchMaterial("GRAY_STAINED_GLASS_PANE", "STAINED_GLASS_PANE");
+                item.setType(grayPane);
+                if (grayPane.name().equals("STAINED_GLASS_PANE"))
+                    item.setDurability((short) 7);
                 ItemMeta grayMeta = item.getItemMeta();
                 if (grayMeta != null) {
                     grayMeta.setDisplayName("§7" + info.getName());
@@ -91,7 +93,9 @@ public class TrophiesMenu implements InventoryHolder {
         }
         inventory.setItem(4, info);
 
-        ItemStack filler = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 15);
+        ItemStack filler = new ItemStack(matchMaterial("BLACK_STAINED_GLASS_PANE", "STAINED_GLASS_PANE"));
+        if (filler.getType().name().equals("STAINED_GLASS_PANE"))
+            filler.setDurability((short) 15);
         ItemMeta fillerMeta = filler.getItemMeta();
         if (fillerMeta != null) {
             fillerMeta.setDisplayName("§f");
@@ -101,6 +105,21 @@ public class TrophiesMenu implements InventoryHolder {
             if (inventory.getItem(i) == null)
                 inventory.setItem(i, filler);
         }
+    }
+
+    /**
+     * Resolves a material across server versions - modern name first, legacy fallback second.
+     */
+    private static Material matchMaterial(String... names) {
+        for (String name : names) {
+            try {
+                Material material = Material.matchMaterial(name);
+                if (material != null)
+                    return material;
+            } catch (Exception ignored) {
+            }
+        }
+        return Material.BOOK;
     }
 
     private String describeEffects() {

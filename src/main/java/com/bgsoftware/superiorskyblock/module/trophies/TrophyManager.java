@@ -55,14 +55,20 @@ public class TrophyManager {
         try {
             item = new ItemStack(Material.valueOf(info.getMaterial()));
         } catch (IllegalArgumentException error) {
-            item = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+            // Modern name first, legacy fallback for old servers
+            Material skull = Material.matchMaterial("PLAYER_HEAD");
+            if (skull == null)
+                skull = Material.matchMaterial("SKULL_ITEM");
+            if (skull == null)
+                skull = Material.BOOK;
+            item = new ItemStack(skull);
+            if (skull.name().equals("SKULL_ITEM"))
+                item.setDurability((short) 3);
         }
 
         if (item.getType().name().contains("SKULL") || item.getType().name().contains("HEAD")) {
-            try {
+            if (item.getType().name().equals("SKULL_ITEM"))
                 item.setDurability((short) 3);
-            } catch (Exception ignored) {
-            }
             if (!info.getTexture().isEmpty())
                 item = ItemSkulls.getPlayerHead(item, info.getTexture());
         }

@@ -106,7 +106,50 @@ public class UpgradesModule extends BuiltinModule<UpgradesModule.Configuration> 
             updatedConfig = true;
         }
 
+        updatedConfig |= migrateMissingGeneratorLevels(plugin, config);
+
         return updatedConfig;
+    }
+
+    /**
+     * The "upgrades" section is ignored when syncing configs, so old server
+     * installations keep their original generator-rates levels forever.
+     * This heals them by copying any missing generator-rates levels from the
+     * bundled default config - existing customized levels are never touched.
+     */
+    private static boolean migrateMissingGeneratorLevels(SuperiorSkyblockPlugin plugin, CommentedConfiguration config) {
+        try {
+            java.io.InputStream resource = com.bgsoftware.superiorskyblock.core.io.Resources.getResource(
+                    "modules/upgrades/config.yml");
+            if (resource == null)
+                return false;
+
+            org.bukkit.configuration.file.YamlConfiguration defaults =
+                    org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(
+                            new java.io.InputStreamReader(resource, "UTF-8"));
+
+            ConfigurationSection defaultGeneratorRates = defaults.getConfigurationSection("upgrades.generator-rates");
+            if (defaultGeneratorRates == null)
+                return false;
+
+            ConfigurationSection currentGeneratorRates = config.getConfigurationSection("upgrades.generator-rates");
+            if (currentGeneratorRates == null) {
+                config.set("upgrades.generator-rates", defaultGeneratorRates);
+                return true;
+            }
+
+            boolean updated = false;
+            for (String level : defaultGeneratorRates.getKeys(false)) {
+                if (!currentGeneratorRates.contains(level)) {
+                    config.set("upgrades.generator-rates." + level, defaultGeneratorRates.getConfigurationSection(level));
+                    updated = true;
+                }
+            }
+
+            return updated;
+        } catch (Exception error) {
+            return false;
+        }
     }
 
     @Override
