@@ -159,6 +159,7 @@ public class CelestialEvent extends IslandWorldEvent {
                         broadcast("§d✦ §lPhần thưởng đặc biệt! §r§dLõi Thiên Hà đã rơi!");
                     }
                     broadcast("§a✦ Ác Thú Sao đã bị đánh bại!");
+                    dropTrophy(d, "celestial");
                     sound(center, 1f, 1.4f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }

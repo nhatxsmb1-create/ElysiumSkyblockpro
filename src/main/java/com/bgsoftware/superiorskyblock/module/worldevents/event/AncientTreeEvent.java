@@ -96,6 +96,7 @@ public class AncientTreeEvent extends IslandWorldEvent {
                         broadcast("§a🌳 §lPhần thưởng đặc biệt! §r§aPhước Lành Dryad đã rơi!");
                     }
                     broadcast("§a🌳 Dryad Cổ Đại đã bị đánh bại!");
+                    dropTrophy(d, "ancient-tree");
                     sound(center, 1f, 1.6f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }

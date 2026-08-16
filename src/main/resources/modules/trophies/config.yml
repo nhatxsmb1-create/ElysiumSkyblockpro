@@ -1,0 +1,69 @@
+######################################################
+##                                                  ##
+##                SuperiorSkyblock 2                ##
+##              Trophy Hall - Elysium               ##
+##                                                  ##
+######################################################
+
+# Trophy Hall: Mini Boss của Island Event có tỉ lệ rơi Trophy.
+# Đặt trophy lên đảo để trưng bày - bộ sưu tập càng đủ, buff càng mạnh.
+# Tháo trophy xuống sẽ mất buff ngay lập tức.
+
+enabled: true
+
+# Tỉ lệ rơi trophy khi đánh bại Mini Boss (%).
+drop-chance: 35.0
+
+# Hiệu ứng thuốc áp cho người chơi đang ở trên đảo, theo số loại trophy đã đặt.
+# Định dạng: TÊN_HIỆU_ỨNG:cấp (FAST_DIGGING = Haste).
+potions:
+  '3':
+    - 'FAST_DIGGING:1'
+  '5':
+    - 'SPEED:1'
+  '7':
+    - 'FAST_DIGGING:2'
+    - 'NIGHT_VISION:1'
+
+# Buff nhân thêm cho đảo theo số loại trophy đã đặt.
+# Ví dụ crop-growth '5': 0.05 -> đặt đủ 5 loại được +5% tốc độ phát triển cây trồng.
+bonuses:
+  crop-growth:
+    '5': 0.05
+    '7': 0.10
+  mob-drops:
+    '7': 0.05
+
+# Danh sách trophy - mỗi event một loại.
+# material: vật phẩm hiển thị (nên dùng PLAYER_HEAD).
+# texture: (tùy chọn) base64 texture cho đầu custom - bỏ trống để dùng đầu thường.
+# Bạn có thể thêm trophy mới tại đây, mục này sẽ không bị ghi đè khi reload.
+trophies:
+  tornado:
+    name: 'Lốc Xoáy Tán Phá'
+    material: 'PLAYER_HEAD'
+    texture: ''
+  volcano:
+    name: 'Trái Tim Núi Lửa'
+    material: 'PLAYER_HEAD'
+    texture: ''
+  ancient-tree:
+    name: 'Dryad Cổ Đại'
+    material: 'PLAYER_HEAD'
+    texture: ''
+  celestial:
+    name: 'Mảnh Thiên Thể'
+    material: 'PLAYER_HEAD'
+    texture: ''
+  invasion:
+    name: 'Kẻ Xâm Lược'
+    material: 'PLAYER_HEAD'
+    texture: ''
+  meteor-shower:
+    name: 'Thiên Thạch Rực Cháy'
+    material: 'PLAYER_HEAD'
+    texture: ''
+  space-rift:
+    name: 'Cổng Không Gian'
+    material: 'PLAYER_HEAD'
+    texture: ''

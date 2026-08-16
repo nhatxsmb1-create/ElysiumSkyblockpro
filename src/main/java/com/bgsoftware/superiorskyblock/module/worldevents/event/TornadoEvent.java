@@ -163,6 +163,7 @@ public class TornadoEvent extends IslandWorldEvent {
                     if (hasLootBonus())
                         world.dropItemNaturally(boss.getLocation(), named(Material.GOLD_INGOT, "§b§lMảnh Sét"));
                     broadcast("§a🌪 Hồn Bão đã bị tiêu diệt! §eLõi Bão §ađã rơi xuống!");
+                    dropTrophy(boss.getLocation(), "tornado");
                     sound(center, 1f, 1.5f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }

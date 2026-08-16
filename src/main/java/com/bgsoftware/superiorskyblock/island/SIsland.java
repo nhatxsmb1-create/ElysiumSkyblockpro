@@ -3099,7 +3099,8 @@ public class SIsland implements Island {
 
     @Override
     public double getCropGrowthMultiplier() {
-        return this.cropGrowth.readAndGet(DoubleValue::get);
+        return this.cropGrowth.readAndGet(DoubleValue::get) *
+                com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule.getBonusMultiplier(this, "crop-growth");
     }
 
     @Override
@@ -3152,7 +3153,8 @@ public class SIsland implements Island {
 
     @Override
     public double getMobDropsMultiplier() {
-        return this.mobDrops.readAndGet(DoubleValue::get);
+        return this.mobDrops.readAndGet(DoubleValue::get) *
+                com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule.getBonusMultiplier(this, "mob-drops");
     }
 
     @Override

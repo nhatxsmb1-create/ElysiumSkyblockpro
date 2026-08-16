@@ -220,6 +220,7 @@ public class SpaceRiftEvent extends IslandWorldEvent {
                         broadcast("§d🌀 §lPhần thưởng đặc biệt! §r§dTinh Chất Hư Vô đã rơi!");
                     }
                     broadcast("§a🌀 Cổng Không Gian đã đóng lại!");
+                    dropTrophy(drop, "space-rift");
                     sound(rift, 1f, 1.2f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }

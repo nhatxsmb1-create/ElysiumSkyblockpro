@@ -130,6 +130,7 @@ public class VolcanoEvent extends IslandWorldEvent {
                         broadcast("§6🌋 §lPhần thưởng đặc biệt! §r§6Bảo Ngọc Địa Ngục đã rơi!");
                     }
                     broadcast("§a🌋 Golem Lửa đã bị tiêu diệt!");
+                    dropTrophy(d, "volcano");
                     sound(center, 1f, 0.8f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");
                     logResult("HOÀN THÀNH"); onFinish.run(); return;
                 }

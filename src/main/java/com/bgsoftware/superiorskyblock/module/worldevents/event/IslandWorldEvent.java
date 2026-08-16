@@ -343,6 +343,26 @@ public abstract class IslandWorldEvent {
         return item;
     }
 
+    /**
+     * Rolls a trophy drop from the trophies module (if enabled) and
+     * drops it at the given location. Called when a Mini Boss dies.
+     */
+    protected void dropTrophy(Location location, String trophyId) {
+        try {
+            com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule module =
+                    com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule.get();
+            if (module == null || !module.isEnabled() || !module.getTrophyManager().shouldDropTrophy())
+                return;
+
+            org.bukkit.inventory.ItemStack trophyItem = module.getTrophyManager().createTrophyItem(trophyId);
+            if (trophyItem != null) {
+                location.getWorld().dropItemNaturally(location, trophyItem);
+                broadcast("§6🏆 §eMột Trophy đã rơi ra! Đặt nó lên đảo để mở Trophy Hall!");
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
     private WorldEventsModule getModule() {
         return (WorldEventsModule) plugin.getModules().getModule("worldevents");
     }

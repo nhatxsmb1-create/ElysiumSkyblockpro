@@ -52,6 +52,7 @@ public class ModulesManagerImpl extends Manager implements ModulesManager {
         registerModule(BuiltinModules.UPGRADES);
         registerModule(BuiltinModules.WORLD_EVENTS);
         registerModule(BuiltinModules.ORE_STORAGE);
+        registerModule(BuiltinModules.TROPHIES);
         registerExternalModules();
     }
 

@@ -32,6 +32,7 @@ public class MeteorShowerEvent extends IslandWorldEvent {
                 if (n >= COUNT) {
                     cancel();
                     broadcast("§e☄ Mưa Thiên Thạch đã kết thúc.");
+                    dropTrophy(getPlayerNearbySpawn(10), "meteor-shower");
                     logResult("HOÀN THÀNH");
                     onFinish.run();
                     return;

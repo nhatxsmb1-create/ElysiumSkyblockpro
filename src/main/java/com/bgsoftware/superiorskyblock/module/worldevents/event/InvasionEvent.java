@@ -34,6 +34,7 @@ public class InvasionEvent extends IslandWorldEvent {
                 broadcast("§c👹 §lPhần thưởng đặc biệt! §r§cKim Cương Chỉ Huy đã rơi!");
             }
             broadcast("§a👹 Quân xâm lược đã bị đẩy lui!");
+            dropTrophy(drop, "invasion");
             sound(center, 1f, 1f, "LEVEL_UP", "ENTITY_PLAYER_LEVELUP");
             logResult("HOÀN THÀNH"); onFinish.run(); return;
         }

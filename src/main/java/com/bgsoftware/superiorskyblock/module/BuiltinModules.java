@@ -17,6 +17,7 @@ public class BuiltinModules {
     public static final UpgradesModule UPGRADES = new UpgradesModule();
     public static final WorldEventsModule WORLD_EVENTS = new WorldEventsModule();
     public static final com.bgsoftware.superiorskyblock.module.orestorage.OreStorageModule ORE_STORAGE = new com.bgsoftware.superiorskyblock.module.orestorage.OreStorageModule();
+    public static final com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule TROPHIES = new com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule();
 
     private BuiltinModules() {
 
@@ -36,6 +37,8 @@ public class BuiltinModules {
                 return WORLD_EVENTS;
             case "orestorage":
                 return ORE_STORAGE;
+            case "trophies":
+                return TROPHIES;
             default:
                 return null;
         }
