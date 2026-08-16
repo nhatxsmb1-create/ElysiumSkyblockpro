@@ -60,8 +60,9 @@ public class TrophiesMenu implements InventoryHolder {
             }
 
             if (!has) {
-                // Grey out missing trophies
-                item.setType(Material.GRAY_STAINED_GLASS_PANE);
+                // Grey out missing trophies (legacy 1.8 material: stained glass pane, data 7)
+                item.setType(Material.STAINED_GLASS_PANE);
+                item.setDurability((short) 7);
                 ItemMeta grayMeta = item.getItemMeta();
                 if (grayMeta != null) {
                     grayMeta.setDisplayName("§7" + info.getName());

@@ -168,7 +168,7 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
             this.enabled = config.getBoolean("enabled", true);
             this.dropChance = config.getDouble("drop-chance", 35.0);
 
-            CommentedConfiguration trophiesSection = config.getConfigurationSection("trophies");
+            org.bukkit.configuration.ConfigurationSection trophiesSection = config.getConfigurationSection("trophies");
             if (trophiesSection != null) {
                 for (String id : trophiesSection.getKeys(false)) {
                     trophies.put(id.toLowerCase(), new TrophyInfo(
@@ -179,7 +179,7 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
                 }
             }
 
-            CommentedConfiguration effectsSection = config.getConfigurationSection("potions");
+            org.bukkit.configuration.ConfigurationSection effectsSection = config.getConfigurationSection("potions");
             if (effectsSection != null) {
                 for (String key : effectsSection.getKeys(false)) {
                     try {
@@ -197,7 +197,7 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
                 }
             }
 
-            CommentedConfiguration cropSection = config.getConfigurationSection("bonuses.crop-growth");
+            org.bukkit.configuration.ConfigurationSection cropSection = config.getConfigurationSection("bonuses.crop-growth");
             if (cropSection != null) {
                 for (String key : cropSection.getKeys(false)) {
                     try {
@@ -207,7 +207,7 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
                 }
             }
 
-            CommentedConfiguration mobSection = config.getConfigurationSection("bonuses.mob-drops");
+            org.bukkit.configuration.ConfigurationSection mobSection = config.getConfigurationSection("bonuses.mob-drops");
             if (mobSection != null) {
                 for (String key : mobSection.getKeys(false)) {
                     try {

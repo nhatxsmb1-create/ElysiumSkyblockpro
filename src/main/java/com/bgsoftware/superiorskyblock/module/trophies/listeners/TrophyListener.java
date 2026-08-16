@@ -56,8 +56,10 @@ public class TrophyListener implements Listener {
         if (trophyId == null)
             return;
 
-        // Drop the actual trophy item instead of the plain block
-        e.setDropItems(false);
+        // Cancel the vanilla break and remove the block manually so only the
+        // trophy item is dropped (BlockBreakEvent#setDropItems doesn't exist in 1.8)
+        e.setCancelled(true);
+        block.setType(org.bukkit.Material.AIR);
         ItemStack trophyItem = module.getTrophyManager().createTrophyItem(trophyId);
         if (trophyItem != null)
             block.getWorld().dropItemNaturally(block.getLocation().add(0.5, 0.5, 0.5), trophyItem);
