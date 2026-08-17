@@ -213,7 +213,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 80
+          STONE: 80
           COAL_ORE: 12
           IRON_ORE: 8
       commands:
@@ -224,7 +224,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 70
+          STONE: 70
           COAL_ORE: 13
           IRON_ORE: 12
           REDSTONE_ORE: 5
@@ -236,7 +236,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 60
+          STONE: 60
           COAL_ORE: 14
           IRON_ORE: 15
           REDSTONE_ORE: 7
@@ -249,7 +249,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 50
+          STONE: 50
           COAL_ORE: 15
           IRON_ORE: 18
           REDSTONE_ORE: 8
@@ -263,8 +263,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 40
-          STONE: 10
+          STONE: 50
           COAL_ORE: 15
           IRON_ORE: 20
           REDSTONE_ORE: 9
@@ -279,8 +278,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 30
-          STONE: 15
+          STONE: 45
           COAL_ORE: 14
           IRON_ORE: 20
           REDSTONE_ORE: 10
@@ -296,8 +294,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 20
-          STONE: 20
+          STONE: 40
           COAL_ORE: 12
           IRON_ORE: 20
           REDSTONE_ORE: 11
@@ -314,8 +311,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 15
-          STONE: 20
+          STONE: 35
           COAL_ORE: 10
           IRON_ORE: 18
           REDSTONE_ORE: 12
@@ -332,8 +328,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 10
-          STONE: 25
+          STONE: 35
           COAL_ORE: 8
           IRON_ORE: 16
           REDSTONE_ORE: 13
@@ -350,8 +345,7 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          COBBLESTONE: 5
-          STONE: 30
+          STONE: 35
           COAL_ORE: 5
           IRON_ORE: 15
           REDSTONE_ORE: 15

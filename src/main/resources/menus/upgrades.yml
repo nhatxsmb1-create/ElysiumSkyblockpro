@@ -883,116 +883,21 @@ upgrades:
           pitch: 0.2
     '4':
       has-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 5'
-        lore:
-          - '&7Nâng cấp máy tạo quặng lên cấp 5.'
-          - '&7Tăng tỉ lệ ra quặng quý.'
-        sound:
-          type: ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_BLOCK
+        type: BARRIER
         name: '&c&lCẤP TỐI ĐA'
         lore:
           - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của máy tạo quặng!'
+          - '&7của kích thước ranh giới!'
         sound:
           type: ANVIL_LAND
           volume: 0.2
           pitch: 0.2
-    '5':
-      has-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 6'
-        lore:
-          - '&6Cấp 5: 55% Đá, 15% Than, 12% Sắt, 8% Đá, 5% Redstone, 3% Lapis, 2% Kim Cương.'
-        sound:
-          type: ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
       no-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 6 (Không đủ tiền)'
+        type: BARRIER
+        name: '&c&lCẤP TỐI ĐA'
         lore:
-          - '&7Bạn chưa có đủ tiền để nâng cấp.'
-        sound:
-          type: ANVIL_LAND
-          volume: 0.2
-          pitch: 0.2
-    '6':
-      has-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 7'
-        lore:
-          - '&7Nâng cấp máy tạo quặng lên cấp 7.'
-        sound:
-          type: ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 7 (Không đủ tiền)'
-        lore:
-          - '&7Bạn chưa có đủ tiền để nâng cấp.'
-        sound:
-          type: ANVIL_LAND
-          volume: 0.2
-          pitch: 0.2
-    '7':
-      has-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 8'
-        lore:
-          - '&7Nâng cấp máy tạo quặng lên cấp 8.'
-        sound:
-          type: ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 8 (Không đủ tiền)'
-        lore:
-          - '&7Bạn chưa có đủ tiền để nâng cấp.'
-        sound:
-          type: ANVIL_LAND
-          volume: 0.2
-          pitch: 0.2
-    '8':
-      has-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 9'
-        lore:
-          - '&7Nâng cấp máy tạo quặng lên cấp 9.'
-        sound:
-          type: ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_ORE
-        name: '&c&lCẤP 9 (Không đủ tiền)'
-        lore:
-          - '&7Bạn chưa có đủ tiền để nâng cấp.'
-        sound:
-          type: ANVIL_LAND
-          volume: 0.2
-          pitch: 0.2
-    '9':
-      has-next-level:
-        type: DIAMOND_BLOCK
-        name: '&c&lCẤP 10'
-        lore:
-          - '&7Nâng cấp máy tạo quặng lên cấp 10.'
-        sound:
-          type: ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_BLOCK
-        name: '&c&lCẤP 10 (Không đủ tiền)'
-        lore:
-          - '&7Bạn chưa có đủ tiền để nâng cấp.'
+          - '&7Bạn đã đạt cấp độ tối đa'
+          - '&7của kích thước ranh giới!'
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1001,7 +906,7 @@ upgrades:
     item: REDSTONE
     '1':
       has-next-level:
-        type: COBBLESTONE
+        type: STONE
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
@@ -1024,7 +929,7 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: COBBLESTONE
+        type: STONE
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
