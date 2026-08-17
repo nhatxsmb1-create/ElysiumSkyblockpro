@@ -883,27 +883,122 @@ upgrades:
           pitch: 0.2
     '4':
       has-next-level:
-        type: BARRIER
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 5'
+        lore:
+          - '&7Nâng cấp máy tạo quặng lên cấp 5.'
+          - '&7Tăng tỉ lệ ra quặng quý.'
+        sound:
+          type: ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_BLOCK
         name: '&c&lCẤP TỐI ĐA'
         lore:
           - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của kích thước ranh giới!'
+          - '&7của máy tạo quặng!'
         sound:
           type: ANVIL_LAND
           volume: 0.2
           pitch: 0.2
-      no-next-level:
-        type: BARRIER
-        name: '&c&lCẤP TỐI ĐA'
+    '5':
+      has-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 6'
         lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của kích thước ranh giới!'
+          - '&6Cấp 5: 55% Đá, 15% Than, 12% Sắt, 8% Đá, 5% Redstone, 3% Lapis, 2% Kim Cương.'
+        sound:
+          type: ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 6 (Không đủ tiền)'
+        lore:
+          - '&7Bạn chưa có đủ tiền để nâng cấp.'
+        sound:
+          type: ANVIL_LAND
+          volume: 0.2
+          pitch: 0.2
+    '6':
+      has-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 7'
+        lore:
+          - '&7Nâng cấp máy tạo quặng lên cấp 7.'
+        sound:
+          type: ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 7 (Không đủ tiền)'
+        lore:
+          - '&7Bạn chưa có đủ tiền để nâng cấp.'
+        sound:
+          type: ANVIL_LAND
+          volume: 0.2
+          pitch: 0.2
+    '7':
+      has-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 8'
+        lore:
+          - '&7Nâng cấp máy tạo quặng lên cấp 8.'
+        sound:
+          type: ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 8 (Không đủ tiền)'
+        lore:
+          - '&7Bạn chưa có đủ tiền để nâng cấp.'
+        sound:
+          type: ANVIL_LAND
+          volume: 0.2
+          pitch: 0.2
+    '8':
+      has-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 9'
+        lore:
+          - '&7Nâng cấp máy tạo quặng lên cấp 9.'
+        sound:
+          type: ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_ORE
+        name: '&c&lCẤP 9 (Không đủ tiền)'
+        lore:
+          - '&7Bạn chưa có đủ tiền để nâng cấp.'
+        sound:
+          type: ANVIL_LAND
+          volume: 0.2
+          pitch: 0.2
+    '9':
+      has-next-level:
+        type: DIAMOND_BLOCK
+        name: '&c&lCẤP 10'
+        lore:
+          - '&7Nâng cấp máy tạo quặng lên cấp 10.'
+        sound:
+          type: ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_BLOCK
+        name: '&c&lCẤP 10 (Không đủ tiền)'
+        lore:
+          - '&7Bạn chưa có đủ tiền để nâng cấp.'
         sound:
           type: ANVIL_LAND
           volume: 0.2
           pitch: 0.2
   generator-rates:
-    item: '+'
+    item: REDSTONE
     '1':
       has-next-level:
         type: COBBLESTONE
@@ -917,7 +1012,7 @@ upgrades:
           - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f80% Sỏi'
+          - ' &7 - &f80% Đá'
           - ' &7 - &f12% Than'
           - ' &7 - &f8% Sắt'
           - '&7'
@@ -940,7 +1035,7 @@ upgrades:
           - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f80% Sỏi'
+          - ' &7 - &f80% Đá'
           - ' &7 - &f12% Than'
           - ' &7 - &f8% Sắt'
           - '&7'
@@ -960,10 +1055,10 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e3'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f70% Sỏi'
-          - ' &7 - &f13% Than'
-          - ' &7 - &f12% Sắt'
-          - ' &7 - &f5% Redstone'
+          - ' &7 - &f65% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f6% Redstone'
           - '&7'
           - '&3Giá: &f$150,000'
           - '&7'
@@ -980,10 +1075,10 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e3'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f70% Sỏi'
-          - ' &7 - &f13% Than'
-          - ' &7 - &f12% Sắt'
-          - ' &7 - &f5% Redstone'
+          - ' &7 - &f65% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f6% Redstone'
           - '&7'
           - '&3Giá: &f$150,000'
           - '&7'
@@ -1001,11 +1096,11 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e4'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f60% Sỏi'
-          - ' &7 - &f14% Than'
-          - ' &7 - &f15% Sắt'
-          - ' &7 - &f7% Redstone'
-          - ' &7 - &f4% Lapis'
+          - ' &7 - &f50% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f11% Redstone'
+          - ' &7 - &f8% Lapis'
           - '&7'
           - '&3Giá: &f$300,000'
           - '&7'
@@ -1022,11 +1117,11 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e4'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f60% Sỏi'
-          - ' &7 - &f14% Than'
-          - ' &7 - &f15% Sắt'
-          - ' &7 - &f7% Redstone'
-          - ' &7 - &f4% Lapis'
+          - ' &7 - &f50% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f11% Redstone'
+          - ' &7 - &f8% Lapis'
           - '&7'
           - '&3Giá: &f$300,000'
           - '&7'
@@ -1044,12 +1139,12 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e5'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f50% Sỏi'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f18% Sắt'
-          - ' &7 - &f8% Redstone'
-          - ' &7 - &f6% Lapis'
-          - ' &7 - &f3% Vàng'
+          - ' &7 - &f40% Đá'
+          - ' &7 - &f13% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f12% Redstone'
+          - ' &7 - &f10% Lapis'
+          - ' &7 - &f8% Vàng'
           - '&7'
           - '&3Giá: &f$600,000'
           - '&7'
@@ -1066,12 +1161,12 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e5'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f50% Sỏi'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f18% Sắt'
-          - ' &7 - &f8% Redstone'
-          - ' &7 - &f6% Lapis'
-          - ' &7 - &f3% Vàng'
+          - ' &7 - &f40% Đá'
+          - ' &7 - &f13% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f12% Redstone'
+          - ' &7 - &f10% Lapis'
+          - ' &7 - &f8% Vàng'
           - '&7'
           - '&3Giá: &f$600,000'
           - '&7'
@@ -1089,15 +1184,15 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e6'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f40% Sỏi + &f10% Đá'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f20% Sắt'
-          - ' &7 - &f9% Redstone'
-          - ' &7 - &f8% Lapis'
-          - ' &7 - &f5% Vàng'
-          - ' &7 - &b3% Kim Cương'
+          - ' &7 - &f30% Đá'
+          - ' &7 - &f12% Than'
+          - ' &7 - &f18% Sắt'
+          - ' &7 - &f13% Redstone'
+          - ' &7 - &f12% Lapis'
+          - ' &7 - &f10% Vàng'
+          - ' &7 - &b5% Kim Cương'
           - '&7'
-          - '&3Giá: &f$1,200,000'
+          - '&3Giá: &f$1,500,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1112,15 +1207,15 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e6'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f40% Sỏi + &f10% Đá'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f20% Sắt'
-          - ' &7 - &f9% Redstone'
-          - ' &7 - &f8% Lapis'
-          - ' &7 - &f5% Vàng'
-          - ' &7 - &b3% Kim Cương'
+          - ' &7 - &f30% Đá'
+          - ' &7 - &f12% Than'
+          - ' &7 - &f18% Sắt'
+          - ' &7 - &f13% Redstone'
+          - ' &7 - &f12% Lapis'
+          - ' &7 - &f10% Vàng'
+          - ' &7 - &b5% Kim Cương'
           - '&7'
-          - '&3Giá: &f$1,200,000'
+          - '&3Giá: &f$1,500,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1129,23 +1224,23 @@ upgrades:
           pitch: 0.2
     '6':
       has-next-level:
-        type: EMERALD_ORE
+        type: DIAMOND_ORE
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e7'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f30% Sỏi + &f15% Đá'
-          - ' &7 - &f14% Than'
-          - ' &7 - &f20% Sắt'
-          - ' &7 - &f10% Redstone'
-          - ' &7 - &f10% Lapis'
-          - ' &7 - &f6% Vàng'
-          - ' &7 - &b4% Kim Cương'
-          - ' &7 - &a1% Ngọc Lục Bảo'
+          - ' &7 - &f25% Đá'
+          - ' &7 - &f10% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f14% Redstone'
+          - ' &7 - &f13% Lapis'
+          - ' &7 - &f12% Vàng'
+          - ' &7 - &b7% Kim Cương'
+          - ' &7 - &a2% Ngọc Lục Bảo'
           - '&7'
-          - '&3Giá: &f$2,500,000'
+          - '&3Giá: &f$3,500,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1153,23 +1248,23 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: EMERALD_ORE
+        type: DIAMOND_ORE
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e7'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f30% Sỏi + &f15% Đá'
-          - ' &7 - &f14% Than'
-          - ' &7 - &f20% Sắt'
-          - ' &7 - &f10% Redstone'
-          - ' &7 - &f10% Lapis'
-          - ' &7 - &f6% Vàng'
-          - ' &7 - &b4% Kim Cương'
-          - ' &7 - &a1% Ngọc Lục Bảo'
+          - ' &7 - &f25% Đá'
+          - ' &7 - &f10% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f14% Redstone'
+          - ' &7 - &f13% Lapis'
+          - ' &7 - &f12% Vàng'
+          - ' &7 - &b7% Kim Cương'
+          - ' &7 - &a2% Ngọc Lục Bảo'
           - '&7'
-          - '&3Giá: &f$2,500,000'
+          - '&3Giá: &f$3,500,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1178,24 +1273,24 @@ upgrades:
           pitch: 0.2
     '7':
       has-next-level:
-        type: EMERALD_ORE
+        type: DIAMOND_ORE
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e8'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f20% Sỏi + &f20% Đá'
-          - ' &7 - &f12% Than'
-          - ' &7 - &f20% Sắt'
-          - ' &7 - &f11% Redstone'
-          - ' &7 - &f12% Lapis'
-          - ' &7 - &f7% Vàng'
-          - ' &7 - &b5% Kim Cương'
-          - ' &7 - &a2% Ngọc Lục Bảo'
+          - ' &7 - &f20% Đá'
+          - ' &7 - &f8% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f15% Redstone'
+          - ' &7 - &f14% Lapis'
+          - ' &7 - &f13% Vàng'
+          - ' &7 - &b9% Kim Cương'
+          - ' &7 - &a3% Ngọc Lục Bảo'
           - ' &7 - &41% Mảnh Netherite'
           - '&7'
-          - '&3Giá: &f$5,000,000'
+          - '&3Giá: &f$7,000,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1203,24 +1298,24 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: EMERALD_ORE
+        type: DIAMOND_ORE
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e8'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f20% Sỏi + &f20% Đá'
-          - ' &7 - &f12% Than'
-          - ' &7 - &f20% Sắt'
-          - ' &7 - &f11% Redstone'
-          - ' &7 - &f12% Lapis'
-          - ' &7 - &f7% Vàng'
-          - ' &7 - &b5% Kim Cương'
-          - ' &7 - &a2% Ngọc Lục Bảo'
+          - ' &7 - &f20% Đá'
+          - ' &7 - &f8% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f15% Redstone'
+          - ' &7 - &f14% Lapis'
+          - ' &7 - &f13% Vàng'
+          - ' &7 - &b9% Kim Cương'
+          - ' &7 - &a3% Ngọc Lục Bảo'
           - ' &7 - &41% Mảnh Netherite'
           - '&7'
-          - '&3Giá: &f$5,000,000'
+          - '&3Giá: &f$7,000,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1236,17 +1331,17 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e9'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f15% Sỏi + &f20% Đá'
-          - ' &7 - &f10% Than'
-          - ' &7 - &f18% Sắt'
-          - ' &7 - &f12% Redstone'
-          - ' &7 - &f13% Lapis'
-          - ' &7 - &f9% Vàng'
-          - ' &7 - &b6% Kim Cương'
-          - ' &7 - &a3% Ngọc Lục Bảo'
-          - ' &7 - &42% Mảnh Netherite'
+          - ' &7 - &f15% Đá'
+          - ' &7 - &f7% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f16% Redstone'
+          - ' &7 - &f15% Lapis'
+          - ' &7 - &f14% Vàng'
+          - ' &7 - &b10% Kim Cương'
+          - ' &7 - &a4% Ngọc Lục Bảo'
+          - ' &7 - &43% Mảnh Netherite'
           - '&7'
-          - '&3Giá: &f$10,000,000'
+          - '&3Giá: &f$12,000,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1261,17 +1356,17 @@ upgrades:
           - '&3Cấp Tiếp Theo: &e9'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f15% Sỏi + &f20% Đá'
-          - ' &7 - &f10% Than'
-          - ' &7 - &f18% Sắt'
-          - ' &7 - &f12% Redstone'
-          - ' &7 - &f13% Lapis'
-          - ' &7 - &f9% Vàng'
-          - ' &7 - &b6% Kim Cương'
-          - ' &7 - &a3% Ngọc Lục Bảo'
-          - ' &7 - &42% Mảnh Netherite'
+          - ' &7 - &f15% Đá'
+          - ' &7 - &f7% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f16% Redstone'
+          - ' &7 - &f15% Lapis'
+          - ' &7 - &f14% Vàng'
+          - ' &7 - &b10% Kim Cương'
+          - ' &7 - &a4% Ngọc Lục Bảo'
+          - ' &7 - &43% Mảnh Netherite'
           - '&7'
-          - '&3Giá: &f$10,000,000'
+          - '&3Giá: &f$12,000,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1280,22 +1375,22 @@ upgrades:
           pitch: 0.2
     '9':
       has-next-level:
-        type: DIAMOND_ORE
+        type: DIAMOND_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e10'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f10% Sỏi + &f25% Đá'
-          - ' &7 - &f8% Than'
-          - ' &7 - &f16% Sắt'
-          - ' &7 - &f13% Redstone'
-          - ' &7 - &f14% Lapis'
-          - ' &7 - &f10% Vàng'
-          - ' &7 - &b8% Kim Cương'
-          - ' &7 - &a4% Ngọc Lục Bảo'
-          - ' &7 - &43% Mảnh Netherite'
+          - ' &7 - &f10% Đá'
+          - ' &7 - &f5% Than'
+          - ' &7 - &f15% Sắt'
+          - ' &7 - &f17% Redstone'
+          - ' &7 - &f16% Lapis'
+          - ' &7 - &f15% Vàng'
+          - ' &7 - &b12% Kim Cương'
+          - ' &7 - &a5% Ngọc Lục Bảo'
+          - ' &7 - &45% Mảnh Netherite'
           - '&7'
           - '&3Giá: &f$25,000,000'
           - '&7'
@@ -1305,22 +1400,22 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_ORE
+        type: DIAMOND_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e10'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f10% Sỏi + &f25% Đá'
-          - ' &7 - &f8% Than'
-          - ' &7 - &f16% Sắt'
-          - ' &7 - &f13% Redstone'
-          - ' &7 - &f14% Lapis'
-          - ' &7 - &f10% Vàng'
-          - ' &7 - &b8% Kim Cương'
-          - ' &7 - &a4% Ngọc Lục Bảo'
-          - ' &7 - &43% Mảnh Netherite'
+          - ' &7 - &f10% Đá'
+          - ' &7 - &f5% Than'
+          - ' &7 - &f15% Sắt'
+          - ' &7 - &f17% Redstone'
+          - ' &7 - &f16% Lapis'
+          - ' &7 - &f15% Vàng'
+          - ' &7 - &b12% Kim Cương'
+          - ' &7 - &a5% Ngọc Lục Bảo'
+          - ' &7 - &45% Mảnh Netherite'
           - '&7'
           - '&3Giá: &f$25,000,000'
           - '&7'
@@ -1338,14 +1433,14 @@ upgrades:
           - '&7của máy tạo quặng!'
           - '&7'
           - '&3Tỉ lệ hiện tại:'
-          - ' &7 - &f5% Sỏi + &f30% Đá'
-          - ' &7 - &f5% Than'
-          - ' &7 - &f15% Sắt'
-          - ' &7 - &f15% Redstone'
-          - ' &7 - &f15% Lapis'
-          - ' &7 - &f12% Vàng'
-          - ' &7 - &b10% Kim Cương'
-          - ' &7 - &a5% Ngọc Lục Bảo'
+          - ' &7 - &f5% Đá'
+          - ' &7 - &f3% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f18% Redstone'
+          - ' &7 - &f17% Lapis'
+          - ' &7 - &f16% Vàng'
+          - ' &7 - &b15% Kim Cương'
+          - ' &7 - &a7% Ngọc Lục Bảo'
           - ' &7 - &45% Mảnh Netherite'
         sound:
           type: ANVIL_LAND
@@ -1359,14 +1454,14 @@ upgrades:
           - '&7của máy tạo quặng!'
           - '&7'
           - '&3Tỉ lệ hiện tại:'
-          - ' &7 - &f5% Sỏi + &f30% Đá'
-          - ' &7 - &f5% Than'
-          - ' &7 - &f15% Sắt'
-          - ' &7 - &f15% Redstone'
-          - ' &7 - &f15% Lapis'
-          - ' &7 - &f12% Vàng'
-          - ' &7 - &b10% Kim Cương'
-          - ' &7 - &a5% Ngọc Lục Bảo'
+          - ' &7 - &f5% Đá'
+          - ' &7 - &f3% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f18% Redstone'
+          - ' &7 - &f17% Lapis'
+          - ' &7 - &f16% Vàng'
+          - ' &7 - &b15% Kim Cương'
+          - ' &7 - &a7% Ngọc Lục Bảo'
           - ' &7 - &45% Mảnh Netherite'
         sound:
           type: ANVIL_LAND
