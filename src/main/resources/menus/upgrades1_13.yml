@@ -142,738 +142,6 @@ upgrades:
           pitch: 0.2
     '4':
       has-next-level:
-        type: HOPPER
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của giới hạn hopper!'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: HOPPER
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của giới hạn hopper!'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-  crop-growth:
-    item: '%'
-    '1':
-      has-next-level:
-        type: DIAMOND_HOE
-        name: '&e&lTốc Độ Phát Triển Cây Trồng &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&eCấp Tiếp Theo: &e2'
-          - '&7'
-          - '&7Mua nâng cấp này giúp mọi'
-          - '&7cây trồng trên đảo bạn'
-          - '&7phát triển nhanh hơn.'
-          - '&7'
-          - '&eTốc Độ: &fx2 Tốc Độ'
-          - '&eGiá: &f$100,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_HOE
-        name: '&e&lTốc Độ Phát Triển Cây Trồng &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&eCấp Tiếp Theo: &e2'
-          - '&7'
-          - '&7Mua nâng cấp này giúp mọi'
-          - '&7cây trồng trên đảo bạn'
-          - '&7phát triển nhanh hơn.'
-          - '&7'
-          - '&eTốc Độ: &fx2 Tốc Độ'
-          - '&eGiá: &f$100,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '2':
-      has-next-level:
-        type: DIAMOND_HOE
-        name: '&e&lTốc Độ Phát Triển Cây Trồng &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&eCấp Tiếp Theo: &e3'
-          - '&7'
-          - '&7Mua nâng cấp này giúp mọi'
-          - '&7cây trồng trên đảo bạn'
-          - '&7phát triển nhanh hơn.'
-          - '&7'
-          - '&eTốc Độ: &fx3 Tốc Độ'
-          - '&eGiá: &f$500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_HOE
-        name: '&e&lTốc Độ Phát Triển Cây Trồng &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&eCấp Tiếp Theo: &e3'
-          - '&7'
-          - '&7Mua nâng cấp này giúp mọi'
-          - '&7cây trồng trên đảo bạn'
-          - '&7phát triển nhanh hơn.'
-          - '&7'
-          - '&eTốc Độ: &fx3 Tốc Độ'
-          - '&eGiá: &f$500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '3':
-      has-next-level:
-        type: DIAMOND_HOE
-        name: '&e&lTốc Độ Phát Triển Cây Trồng &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&eCấp Tiếp Theo: &e4'
-          - '&7'
-          - '&7Mua nâng cấp này giúp mọi'
-          - '&7cây trồng trên đảo bạn'
-          - '&7phát triển nhanh hơn.'
-          - '&7'
-          - '&eTốc Độ: &fx4 Tốc Độ'
-          - '&eGiá: &f$1,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_HOE
-        name: '&e&lTốc Độ Phát Triển Cây Trồng &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&eCấp Tiếp Theo: &e4'
-          - '&7'
-          - '&7Mua nâng cấp này giúp mọi'
-          - '&7cây trồng trên đảo bạn'
-          - '&7phát triển nhanh hơn.'
-          - '&7'
-          - '&eTốc Độ: &fx4 Tốc Độ'
-          - '&eGiá: &f$1,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '4':
-      has-next-level:
-        type: DIAMOND_HOE
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của tăng trưởng cây trồng!'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: DIAMOND_HOE
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của tăng trưởng cây trồng!'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-  spawner-rates:
-    item: '^'
-    '1':
-      has-next-level:
-        type: SPAWNER
-        name: '&b&lTốc Độ Spawner &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&bCấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp spawner'
-          - '&7giúp mọi spawner trên đảo bạn'
-          - '&7sinh quái nhanh hơn.'
-          - '&7'
-          - '&bTăng Tốc: &fx2 Tốc Độ'
-          - '&bGiá: &f$500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: SPAWNER
-        name: '&b&lTốc Độ Spawner &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&bCấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp spawner'
-          - '&7giúp mọi spawner trên đảo bạn'
-          - '&7sinh quái nhanh hơn.'
-          - '&7'
-          - '&bTăng Tốc: &fx2 Tốc Độ'
-          - '&bGiá: &f$500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '2':
-      has-next-level:
-        type: SPAWNER
-        name: '&b&lTốc Độ Spawner &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&bCấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp spawner'
-          - '&7giúp mọi spawner trên đảo bạn'
-          - '&7sinh quái nhanh hơn.'
-          - '&7'
-          - '&bTăng Tốc: &fx3 Tốc Độ'
-          - '&bGiá: &f$1,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: SPAWNER
-        name: '&b&lTốc Độ Spawner &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&bCấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp spawner'
-          - '&7giúp mọi spawner trên đảo bạn'
-          - '&7sinh quái nhanh hơn.'
-          - '&7'
-          - '&bTăng Tốc: &fx3 Tốc Độ'
-          - '&bGiá: &f$1,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '3':
-      has-next-level:
-        type: SPAWNER
-        name: '&b&lTốc Độ Spawner &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&bCấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp spawner'
-          - '&7giúp mọi spawner trên đảo bạn'
-          - '&7sinh quái nhanh hơn.'
-          - '&7'
-          - '&bTăng Tốc: &fx4 Tốc Độ'
-          - '&bGiá: &f$2,500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: SPAWNER
-        name: '&b&lTốc Độ Spawner &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&bCấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp spawner'
-          - '&7giúp mọi spawner trên đảo bạn'
-          - '&7sinh quái nhanh hơn.'
-          - '&7'
-          - '&bTăng Tốc: &fx4 Tốc Độ'
-          - '&bGiá: &f$2,500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '4':
-      has-next-level:
-        type: SPAWNER
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của tốc độ spawner!'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: SPAWNER
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của tốc độ spawner!'
-        flags:
-          - HIDE_ATTRIBUTES
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-  mob-drops:
-    item: '*'
-    '1':
-      has-next-level:
-        type: ROTTEN_FLESH
-        name: '&4&lVật Phẩm Rơi Từ Quái &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&4Cấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp vật phẩm rơi'
-          - '&7giúp mọi quái vật trên đảo bạn'
-          - '&7rơi nhiều chiến lợi phẩm hơn.'
-          - '&7'
-          - '&4Số lượng: &fx2 Vật Phẩm Rơi'
-          - '&4Giá: &f$1,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: ROTTEN_FLESH
-        name: '&4&lVật Phẩm Rơi Từ Quái &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&4Cấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp vật phẩm rơi'
-          - '&7giúp mọi quái vật trên đảo bạn'
-          - '&7rơi nhiều chiến lợi phẩm hơn.'
-          - '&7'
-          - '&4Số lượng: &fx2 Vật Phẩm Rơi'
-          - '&4Giá: &f$1,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '2':
-      has-next-level:
-        type: ROTTEN_FLESH
-        name: '&4&lVật Phẩm Rơi Từ Quái &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&4Cấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp vật phẩm rơi'
-          - '&7giúp mọi quái vật trên đảo bạn'
-          - '&7rơi nhiều chiến lợi phẩm hơn.'
-          - '&7'
-          - '&4Số lượng: &fx3 Vật Phẩm Rơi'
-          - '&4Giá: &f$2,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: ROTTEN_FLESH
-        name: '&4&lVật Phẩm Rơi Từ Quái &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&4Cấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp vật phẩm rơi'
-          - '&7giúp mọi quái vật trên đảo bạn'
-          - '&7rơi nhiều chiến lợi phẩm hơn.'
-          - '&7'
-          - '&4Số lượng: &fx3 Vật Phẩm Rơi'
-          - '&4Giá: &f$2,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '3':
-      has-next-level:
-        type: ROTTEN_FLESH
-        name: '&4&lVật Phẩm Rơi Từ Quái &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&4Cấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp vật phẩm rơi'
-          - '&7giúp mọi quái vật trên đảo bạn'
-          - '&7rơi nhiều chiến lợi phẩm hơn.'
-          - '&7'
-          - '&4Số lượng: &fx4 Vật Phẩm Rơi'
-          - '&4Giá: &f$5,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: ROTTEN_FLESH
-        name: '&4&lVật Phẩm Rơi Từ Quái &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&4Cấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp vật phẩm rơi'
-          - '&7giúp mọi quái vật trên đảo bạn'
-          - '&7rơi nhiều chiến lợi phẩm hơn.'
-          - '&7'
-          - '&4Số lượng: &fx4 Vật Phẩm Rơi'
-          - '&4Giá: &f$5,000,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '4':
-      has-next-level:
-        type: ROTTEN_FLESH
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của vật phẩm rơi từ quái vật!'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: ROTTEN_FLESH
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của vật phẩm rơi từ quái vật!'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-  members-limit:
-    item: '~'
-    '1':
-      has-next-level:
-        type: PLAYER_HEAD
-        name: '&2&lSố Thành Viên &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&2Cấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp thành viên'
-          - '&7sẽ tăng số lượng tối đa'
-          - '&7thành viên trên đảo bạn.'
-          - '&7'
-          - '&2Số lượng: &f8 Thành Viên'
-          - '&2Giá: &f$100,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: PLAYER_HEAD
-        name: '&2&lSố Thành Viên &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&2Cấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp thành viên'
-          - '&7sẽ tăng số lượng tối đa'
-          - '&7thành viên trên đảo bạn.'
-          - '&7'
-          - '&2Số lượng: &f8 Thành Viên'
-          - '&2Giá: &f$100,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '2':
-      has-next-level:
-        type: PLAYER_HEAD
-        name: '&2&lSố Thành Viên &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&2Cấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp thành viên'
-          - '&7sẽ tăng số lượng tối đa'
-          - '&7thành viên trên đảo bạn.'
-          - '&7'
-          - '&2Số lượng: &f16 Thành Viên'
-          - '&2Giá: &f$300,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: PLAYER_HEAD
-        name: '&2&lSố Thành Viên &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&2Cấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp thành viên'
-          - '&7sẽ tăng số lượng tối đa'
-          - '&7thành viên trên đảo bạn.'
-          - '&7'
-          - '&2Số lượng: &f16 Thành Viên'
-          - '&2Giá: &f$300,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '3':
-      has-next-level:
-        type: PLAYER_HEAD
-        name: '&2&lSố Thành Viên &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&2Cấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp thành viên'
-          - '&7sẽ tăng số lượng tối đa'
-          - '&7thành viên trên đảo bạn.'
-          - '&7'
-          - '&2Số lượng: &f32 Thành Viên'
-          - '&2Giá: &f$500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: PLAYER_HEAD
-        name: '&2&lSố Thành Viên &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&2Cấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp thành viên'
-          - '&7sẽ tăng số lượng tối đa'
-          - '&7thành viên trên đảo bạn.'
-          - '&7'
-          - '&2Số lượng: &f32 Thành Viên'
-          - '&2Giá: &f$500,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '4':
-      has-next-level:
-        type: PLAYER_HEAD
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của giới hạn thành viên!'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: PLAYER_HEAD
-        name: '&c&lCẤP TỐI ĐA'
-        lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của giới hạn thành viên!'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-  border-size:
-    item: '!'
-    '1':
-      has-next-level:
-        type: BARRIER
-        name: '&9&lKích Thước Ranh Giới &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&9Cấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp ranh giới'
-          - '&7sẽ tăng bán kính'
-          - '&7của đảo bạn.'
-          - '&7'
-          - '&9Bán kính: &f50 Khối'
-          - '&9Giá: &f$30,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: BARRIER
-        name: '&9&lKích Thước Ranh Giới &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&9Cấp Tiếp Theo:&e2'
-          - '&7'
-          - '&7Mua nâng cấp ranh giới'
-          - '&7sẽ tăng bán kính'
-          - '&7của đảo bạn.'
-          - '&7'
-          - '&9Bán kính: &f50 Khối'
-          - '&9Giá: &f$30,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '2':
-      has-next-level:
-        type: BARRIER
-        name: '&9&lKích Thước Ranh Giới &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&9Cấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp ranh giới'
-          - '&7sẽ tăng bán kính'
-          - '&7của đảo bạn.'
-          - '&7'
-          - '&9Bán kính: &f75 Khối'
-          - '&9Giá: &f$80,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: BARRIER
-        name: '&9&lKích Thước Ranh Giới &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&9Cấp Tiếp Theo:&e3'
-          - '&7'
-          - '&7Mua nâng cấp ranh giới'
-          - '&7sẽ tăng bán kính'
-          - '&7của đảo bạn.'
-          - '&7'
-          - '&9Bán kính: &f75 Khối'
-          - '&9Giá: &f$80,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '3':
-      has-next-level:
-        type: BARRIER
-        name: '&9&lKích Thước Ranh Giới &a(Có thể mua)'
-        lore:
-          - '&7'
-          - '&9Cấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp ranh giới'
-          - '&7sẽ tăng bán kính'
-          - '&7của đảo bạn.'
-          - '&7'
-          - '&9Bán kính: &f125 Khối'
-          - '&9Giá: &f$150,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: ENTITY_EXPERIENCE_ORB_PICKUP
-          volume: 0.2
-          pitch: 0.2
-      no-next-level:
-        type: BARRIER
-        name: '&9&lKích Thước Ranh Giới &c(Không thể mua)'
-        lore:
-          - '&7'
-          - '&9Cấp Tiếp Theo:&e4'
-          - '&7'
-          - '&7Mua nâng cấp ranh giới'
-          - '&7sẽ tăng bán kính'
-          - '&7của đảo bạn.'
-          - '&7'
-          - '&9Bán kính: &f125 Khối'
-          - '&9Giá: &f$150,000'
-          - '&7'
-          - '&aNhấp để mua nâng cấp.'
-        sound:
-          type: BLOCK_ANVIL_PLACE
-          volume: 0.2
-          pitch: 0.2
-    '4':
-      has-next-level:
         type: BARRIER
         name: '&c&lCẤP TỐI ĐA'
         lore:
@@ -897,176 +165,532 @@ upgrades:
     item: '+'
     '1':
       has-next-level:
-        type: COBBLESTONE
+        type: STONE
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
-          - '&3Cấp Tiếp Theo:&e2'
+          - '&3Cấp Tiếp Theo: &e2'
           - '&7'
-          - '&7Mua nâng cấp máy tạo quặng'
-          - '&7sẽ tăng tỉ lệ ra quặng từ'
-          - '&7máy tạo đá trong đảo của bạn.'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f92% Đá'
-          - ' &7 - &f5% Quặng Than'
-          - ' &7 - &f3% Quặng Redstone'
+          - ' &7 - &f80% Đá'
+          - ' &7 - &f12% Than'
+          - ' &7 - &f8% Sắt'
           - '&7'
-          - '&3Giá: &f$25,000'
+          - '&3Giá: &f$50,000'
           - '&7'
-          - '&aNhấp để mua nâng cấp.'
+          - '&aNhấp để nâng cấp.'
         sound:
           type: ENTITY_EXPERIENCE_ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: COBBLESTONE
-        name: '&3&lNâng Cấp Máy Quặng &c(Không thể mua)'
+        type: STONE
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
-          - '&3Cấp Tiếp Theo:&e2'
+          - '&3Cấp Tiếp Theo: &e2'
           - '&7'
-          - '&7Mua nâng cấp máy tạo quặng'
-          - '&7sẽ tăng tỉ lệ ra quặng từ'
-          - '&7máy tạo đá trong đảo của bạn.'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f92% Đá'
-          - ' &7 - &f5% Quặng Than'
-          - ' &7 - &f3% Quặng Redstone'
+          - ' &7 - &f80% Đá'
+          - ' &7 - &f12% Than'
+          - ' &7 - &f8% Sắt'
           - '&7'
-          - '&3Giá: &f$25,000'
+          - '&3Giá: &f$50,000'
           - '&7'
-          - '&aNhấp để mua nâng cấp.'
+          - '&cBạn không đủ tiền.'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
           pitch: 0.2
     '2':
       has-next-level:
-        type: COBBLESTONE
+        type: IRON_ORE
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
-          - '&3Cấp Tiếp Theo:&e3'
+          - '&3Cấp Tiếp Theo: &e3'
           - '&7'
-          - '&7Mua nâng cấp máy tạo quặng'
-          - '&7sẽ tăng tỉ lệ ra quặng từ'
-          - '&7máy tạo đá trong đảo của bạn.'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f80% Đá'
-          - ' &7 - &f8% Quặng Than'
-          - ' &7 - &f6% Quặng Redstone'
-          - ' &7 - &f4% Quặng Lapis'
-          - ' &7 - &f2% Quặng Sắt'
+          - ' &7 - &f65% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f6% Redstone'
           - '&7'
-          - '&3Giá: &f$75,000'
+          - '&3Giá: &f$150,000'
           - '&7'
-          - '&aNhấp để mua nâng cấp.'
+          - '&aNhấp để nâng cấp.'
         sound:
           type: ENTITY_EXPERIENCE_ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: COBBLESTONE
-        name: '&3&lNâng Cấp Máy Quặng &c(Không thể mua)'
+        type: IRON_ORE
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
-          - '&3Cấp Tiếp Theo:&e3'
+          - '&3Cấp Tiếp Theo: &e3'
           - '&7'
-          - '&7Mua nâng cấp máy tạo quặng'
-          - '&7sẽ tăng tỉ lệ ra quặng từ'
-          - '&7máy tạo đá trong đảo của bạn.'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f80% Đá'
-          - ' &7 - &f8% Quặng Than'
-          - ' &7 - &f6% Quặng Redstone'
-          - ' &7 - &f4% Quặng Lapis'
-          - ' &7 - &f2% Quặng Sắt'
+          - ' &7 - &f65% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f6% Redstone'
           - '&7'
-          - '&3Giá: &f$75,000'
+          - '&3Giá: &f$150,000'
           - '&7'
-          - '&aNhấp để mua nâng cấp.'
+          - '&cBạn không đủ tiền.'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
           pitch: 0.2
     '3':
       has-next-level:
-        type: COBBLESTONE
+        type: LAPIS_ORE
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
-          - '&3Cấp Tiếp Theo:&e4'
+          - '&3Cấp Tiếp Theo: &e4'
           - '&7'
-          - '&7Mua nâng cấp máy tạo quặng'
-          - '&7sẽ tăng tỉ lệ ra quặng từ'
-          - '&7máy tạo đá trong đảo của bạn.'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f65% Đá'
-          - ' &7 - &f10% Quặng Than'
-          - ' &7 - &f9% Quặng Redstone'
-          - ' &7 - &f6% Quặng Lapis'
-          - ' &7 - &f4% Quặng Sắt'
-          - ' &7 - &f3% Quặng Vàng'
-          - ' &7 - &f2% Quặng Kim Cương'
-          - ' &7 - &f1% Quặng Ngọc Lục Bảo'
+          - ' &7 - &f50% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f11% Redstone'
+          - ' &7 - &f8% Lapis'
           - '&7'
-          - '&3Giá: &f$150,000'
+          - '&3Giá: &f$300,000'
           - '&7'
-          - '&aNhấp để mua nâng cấp.'
+          - '&aNhấp để nâng cấp.'
         sound:
           type: ENTITY_EXPERIENCE_ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: COBBLESTONE
-        name: '&3&lNâng Cấp Máy Quặng &c(Không thể mua)'
+        type: LAPIS_ORE
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
-          - '&3Cấp Tiếp Theo:&e4'
+          - '&3Cấp Tiếp Theo: &e4'
           - '&7'
-          - '&7Mua nâng cấp máy tạo quặng'
-          - '&7sẽ tăng tỉ lệ ra quặng từ'
-          - '&7máy tạo đá trong đảo của bạn.'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f65% Đá'
-          - ' &7 - &f10% Quặng Than'
-          - ' &7 - &f9% Quặng Redstone'
-          - ' &7 - &f6% Quặng Lapis'
-          - ' &7 - &f4% Quặng Sắt'
-          - ' &7 - &f3% Quặng Vàng'
-          - ' &7 - &f2% Quặng Kim Cương'
-          - ' &7 - &f1% Quặng Ngọc Lục Bảo'
+          - ' &7 - &f50% Đá'
+          - ' &7 - &f15% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f11% Redstone'
+          - ' &7 - &f8% Lapis'
           - '&7'
-          - '&3Giá: &f$150,000'
+          - '&3Giá: &f$300,000'
           - '&7'
-          - '&aNhấp để mua nâng cấp.'
+          - '&cBạn không đủ tiền.'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
           pitch: 0.2
     '4':
       has-next-level:
-        type: COBBLESTONE
+        type: GOLD_ORE
+        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e5'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f40% Đá'
+          - ' &7 - &f13% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f12% Redstone'
+          - ' &7 - &f10% Lapis'
+          - ' &7 - &f8% Vàng'
+          - '&7'
+          - '&3Giá: &f$600,000'
+          - '&7'
+          - '&aNhấp để nâng cấp.'
+        sound:
+          type: ENTITY_EXPERIENCE_ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: GOLD_ORE
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e5'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f40% Đá'
+          - ' &7 - &f13% Than'
+          - ' &7 - &f17% Sắt'
+          - ' &7 - &f12% Redstone'
+          - ' &7 - &f10% Lapis'
+          - ' &7 - &f8% Vàng'
+          - '&7'
+          - '&3Giá: &f$600,000'
+          - '&7'
+          - '&cBạn không đủ tiền.'
+        sound:
+          type: BLOCK_ANVIL_PLACE
+          volume: 0.2
+          pitch: 0.2
+    '5':
+      has-next-level:
+        type: DIAMOND_ORE
+        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e6'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f30% Đá'
+          - ' &7 - &f12% Than'
+          - ' &7 - &f18% Sắt'
+          - ' &7 - &f13% Redstone'
+          - ' &7 - &f12% Lapis'
+          - ' &7 - &f10% Vàng'
+          - ' &7 - &b5% Kim Cương'
+          - '&7'
+          - '&3Giá: &f$1,500,000'
+          - '&7'
+          - '&aNhấp để nâng cấp.'
+        sound:
+          type: ENTITY_EXPERIENCE_ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: DIAMOND_ORE
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e6'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f30% Đá'
+          - ' &7 - &f12% Than'
+          - ' &7 - &f18% Sắt'
+          - ' &7 - &f13% Redstone'
+          - ' &7 - &f12% Lapis'
+          - ' &7 - &f10% Vàng'
+          - ' &7 - &b5% Kim Cương'
+          - '&7'
+          - '&3Giá: &f$1,500,000'
+          - '&7'
+          - '&cBạn không đủ tiền.'
+        sound:
+          type: BLOCK_ANVIL_PLACE
+          volume: 0.2
+          pitch: 0.2
+    '6':
+      has-next-level:
+        type: EMERALD_ORE
+        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e7'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f20% Đá'
+          - ' &7 - &f10% Than'
+          - ' &7 - &f18% Sắt'
+          - ' &7 - &f14% Redstone'
+          - ' &7 - &f14% Lapis'
+          - ' &7 - &f12% Vàng'
+          - ' &7 - &b10% Kim Cương'
+          - ' &7 - &a2% Ngọc Lục Bảo'
+          - '&7'
+          - '&3Giá: &f$2,500,000'
+          - '&7'
+          - '&aNhấp để nâng cấp.'
+        sound:
+          type: ENTITY_EXPERIENCE_ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: EMERALD_ORE
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e7'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f20% Đá'
+          - ' &7 - &f10% Than'
+          - ' &7 - &f18% Sắt'
+          - ' &7 - &f14% Redstone'
+          - ' &7 - &f14% Lapis'
+          - ' &7 - &f12% Vàng'
+          - ' &7 - &b10% Kim Cương'
+          - ' &7 - &a2% Ngọc Lục Bảo'
+          - '&7'
+          - '&3Giá: &f$2,500,000'
+          - '&7'
+          - '&cBạn không đủ tiền.'
+        sound:
+          type: BLOCK_ANVIL_PLACE
+          volume: 0.2
+          pitch: 0.2
+    '7':
+      has-next-level:
+        type: ANCIENT_DEBRIS
+        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e8'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f15% Đá'
+          - ' &7 - &f8% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f15% Redstone'
+          - ' &7 - &f15% Lapis'
+          - ' &7 - &f14% Vàng'
+          - ' &7 - &b12% Kim Cương'
+          - ' &7 - &a3% Ngọc Lục Bảo'
+          - ' &7 - &42% Mảnh Netherite'
+          - '&7'
+          - '&3Giá: &f$5,000,000'
+          - '&7'
+          - '&aNhấp để nâng cấp.'
+        sound:
+          type: ENTITY_EXPERIENCE_ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: ANCIENT_DEBRIS
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e8'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f15% Đá'
+          - ' &7 - &f8% Than'
+          - ' &7 - &f16% Sắt'
+          - ' &7 - &f15% Redstone'
+          - ' &7 - &f15% Lapis'
+          - ' &7 - &f14% Vàng'
+          - ' &7 - &b12% Kim Cương'
+          - ' &7 - &a3% Ngọc Lục Bảo'
+          - ' &7 - &42% Mảnh Netherite'
+          - '&7'
+          - '&3Giá: &f$5,000,000'
+          - '&7'
+          - '&cBạn không đủ tiền.'
+        sound:
+          type: BLOCK_ANVIL_PLACE
+          volume: 0.2
+          pitch: 0.2
+    '8':
+      has-next-level:
+        type: NETHERITE_BLOCK
+        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e9'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f10% Đá'
+          - ' &7 - &f5% Than'
+          - ' &7 - &f15% Sắt'
+          - ' &7 - &f16% Redstone'
+          - ' &7 - &f16% Lapis'
+          - ' &7 - &f15% Vàng'
+          - ' &7 - &b14% Kim Cương'
+          - ' &7 - &a5% Ngọc Lục Bảo'
+          - ' &7 - &44% Mảnh Netherite'
+          - '&7'
+          - '&3Giá: &f$10,000,000'
+          - '&7'
+          - '&aNhấp để nâng cấp.'
+        sound:
+          type: ENTITY_EXPERIENCE_ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: NETHERITE_BLOCK
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e9'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f10% Đá'
+          - ' &7 - &f5% Than'
+          - ' &7 - &f15% Sắt'
+          - ' &7 - &f16% Redstone'
+          - ' &7 - &f16% Lapis'
+          - ' &7 - &f15% Vàng'
+          - ' &7 - &b14% Kim Cương'
+          - ' &7 - &a5% Ngọc Lục Bảo'
+          - ' &7 - &44% Mảnh Netherite'
+          - '&7'
+          - '&3Giá: &f$10,000,000'
+          - '&7'
+          - '&cBạn không đủ tiền.'
+        sound:
+          type: BLOCK_ANVIL_PLACE
+          volume: 0.2
+          pitch: 0.2
+    '9':
+      has-next-level:
+        type: BEACON
+        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e10'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f5% Đá'
+          - ' &7 - &f4% Than'
+          - ' &7 - &f15% Sắt'
+          - ' &7 - &f17% Redstone'
+          - ' &7 - &f17% Lapis'
+          - ' &7 - &f16% Vàng'
+          - ' &7 - &b15% Kim Cương'
+          - ' &7 - &a6% Ngọc Lục Bảo'
+          - ' &7 - &45% Mảnh Netherite'
+          - '&7'
+          - '&3Giá: &f$25,000,000'
+          - '&7'
+          - '&aNhấp để nâng cấp.'
+        sound:
+          type: ENTITY_EXPERIENCE_ORB_PICKUP
+          volume: 0.2
+          pitch: 0.2
+      no-next-level:
+        type: BEACON
+        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        lore:
+          - '&7'
+          - '&3Cấp Tiếp Theo: &e10'
+          - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f5% Đá'
+          - ' &7 - &f4% Than'
+          - ' &7 - &f15% Sắt'
+          - ' &7 - &f17% Redstone'
+          - ' &7 - &f17% Lapis'
+          - ' &7 - &f16% Vàng'
+          - ' &7 - &b15% Kim Cương'
+          - ' &7 - &a6% Ngọc Lục Bảo'
+          - ' &7 - &45% Mảnh Netherite'
+          - '&7'
+          - '&3Giá: &f$25,000,000'
+          - '&7'
+          - '&cBạn không đủ tiền.'
+        sound:
+          type: BLOCK_ANVIL_PLACE
+          volume: 0.2
+          pitch: 0.2
+    '10':
+      has-next-level:
+        type: DIAMOND_BLOCK
         name: '&c&lCẤP TỐI ĐA'
         lore:
           - '&7Bạn đã đạt cấp độ tối đa'
           - '&7của máy tạo quặng!'
+          - '&7'
+          - '&3Tỉ lệ hiện tại:'
+          - ' &7 - &f5% Đá'
+          - ' &7 - &f3% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f18% Redstone'
+          - ' &7 - &f17% Lapis'
+          - ' &7 - &f16% Vàng'
+          - ' &7 - &b15% Kim Cương'
+          - ' &7 - &a7% Ngọc Lục Bảo'
+          - ' &7 - &45% Mảnh Netherite'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: COBBLESTONE
+        type: DIAMOND_BLOCK
         name: '&c&lCẤP TỐI ĐA'
         lore:
           - '&7Bạn đã đạt cấp độ tối đa'
           - '&7của máy tạo quặng!'
+          - '&7'
+          - '&3Tỉ lệ hiện tại:'
+          - ' &7 - &f5% Đá'
+          - ' &7 - &f3% Than'
+          - ' &7 - &f14% Sắt'
+          - ' &7 - &f18% Redstone'
+          - ' &7 - &f17% Lapis'
+          - ' &7 - &f16% Vàng'
+          - ' &7 - &b15% Kim Cương'
+          - ' &7 - &a7% Ngọc Lục Bảo'
+          - ' &7 - &45% Mảnh Netherite'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
