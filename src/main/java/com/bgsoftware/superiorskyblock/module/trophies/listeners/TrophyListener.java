@@ -4,6 +4,7 @@ import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule;
 import com.bgsoftware.superiorskyblock.module.trophies.TrophiesMenu;
+import com.bgsoftware.superiorskyblock.module.trophies.AdminTrophiesMenu;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -42,9 +43,9 @@ public class TrophyListener implements Listener {
         module.getTrophyManager().addPlacedTrophy(island, trophyId, block.getLocation());
 
         int count = module.getTrophyManager().getPlacedTrophyCount(island);
-        e.getPlayer().sendMessage("§6🏆 §eĐã trưng bày trophy §6" +
+        e.getPlayer().sendMessage("\u00a76\ud83c\udfc6 \u00a7eĐã trưng bày trophy \u00a76" +
                 module.getTrophyManager().getTrophies().get(trophyId).getName() +
-                " §7(" + count + "/" + module.getTrophyManager().getTrophies().size() + " loại)");
+                " \u00a77(" + count + "/" + module.getTrophyManager().getTrophies().size() + " loại)");
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -67,7 +68,7 @@ public class TrophyListener implements Listener {
             block.getWorld().dropItemNaturally(block.getLocation().add(0.5, 0.5, 0.5), trophyItem);
 
         Player player = e.getPlayer();
-        player.sendMessage("§6🏆 §cĐã tháo trophy khỏi Trophy Hall. Buff của đảo đã được tính lại.");
+        player.sendMessage("\u00a76\ud83c\udfc6 \u00a7cĐã tháo trophy khỏi Trophy Hall. Buff của đảo đã được tính lại.");
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -84,6 +85,17 @@ public class TrophyListener implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         if (e.getInventory().getHolder() instanceof TrophiesMenu) {
             e.setCancelled(true);
+        } else if (e.getInventory().getHolder() instanceof AdminTrophiesMenu) {
+            e.setCancelled(true);
+            
+            ItemStack clicked = e.getCurrentItem();
+            String trophyId = module.getTrophyManager().getTrophyId(clicked);
+            if (trophyId != null) {
+                Player player = (Player) e.getWhoClicked();
+                ItemStack trophyItem = module.getTrophyManager().createTrophyItem(trophyId);
+                player.getInventory().addItem(trophyItem);
+                player.sendMessage("\u00a76\ud83c\udfc6 \u00a7eBạn đã lấy 1 " + trophyItem.getItemMeta().getDisplayName());
+            }
         }
     }
 
