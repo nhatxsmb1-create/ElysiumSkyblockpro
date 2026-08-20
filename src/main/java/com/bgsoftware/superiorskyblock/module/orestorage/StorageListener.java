@@ -35,7 +35,7 @@ public class StorageListener implements Listener {
             "COAL", "DIAMOND", "EMERALD",
             "LAPIS_LAZULI", "REDSTONE", "OBSIDIAN",
             "IRON_INGOT", "GOLD_INGOT",
-            "IRON_BLOCK", "GOLD_BLOCK", "DIAMOND_BLOCK", "EMERALD_BLOCK",
+            "IRON_BLOCK", "GOLD_BLOCK", "DIAMOND_BLOCK", "EMERALD_BLOCK", "WHEAT", "CARROT", "POTATO", "SUGAR_CANE", "NETHER_WART", "MELON", "PUMPKIN", "CACTUS",
             // 1.17+
             "RAW_IRON", "RAW_GOLD", "RAW_COPPER", "COPPER_INGOT",
             "AMETHYST_SHARD", "NETHER_QUARTZ"

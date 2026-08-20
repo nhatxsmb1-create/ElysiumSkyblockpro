@@ -1,0 +1,24 @@
+######################################################
+##                                                  ##
+##                SuperiorSkyblock 2                ##
+##              Spirits - Elysium                   ##
+##                                                  ##
+######################################################
+
+enabled: true
+
+# Danh sách Tinh Linh
+spirits:
+  miner:
+    name: '&b&lTinh Linh Thợ Mỏ'
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDRiNWI0NGM4YzVlMThkNTJkYTMwNjY2MzgzMGE1MzNlYWZhNTFiMzg5NjFkZTNmOWI2MmY0NzNkMmE3NzU1NiJ9fX0='
+    particle: 'CLOUD'
+    # Thời gian (ticks) giữa mỗi lần Tinh Linh hoạt động (20 ticks = 1 giây)
+    interval-ticks: 60
+    radius: 0
+  farmer:
+    name: '&a&lTinh Linh Nông Dân'
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTY3N2I4NjI4ZmRlZjY2ZTQzNjE1NGJlM2IzODFkMWRkYWRkZjlmMTllY2FlNThiZjgzYWRmNjYzMWZjYjE3In19fQ=='
+    particle: 'HAPPY_VILLAGER'
+    interval-ticks: 100
+    radius: 0
