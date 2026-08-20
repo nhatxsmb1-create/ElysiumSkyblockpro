@@ -1,4 +1,4 @@
-﻿package com.bgsoftware.superiorskyblock.module.trophies;
+package com.bgsoftware.superiorskyblock.module.trophies;
 
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.api.persistence.PersistentDataType;
