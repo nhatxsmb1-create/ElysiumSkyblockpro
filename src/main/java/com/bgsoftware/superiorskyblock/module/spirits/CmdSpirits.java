@@ -26,7 +26,7 @@ public class CmdSpirits implements SuperiorCommand {
 
     @Override
     public String getPermission() {
-        return "superiorskyblock.spirit";
+        return "";
     }
 
     @Override
