@@ -15,7 +15,7 @@ trophies:
   tornado:
     name: '&3&lLốc Xoáy Tàn Phá'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTM4NjdkMGIyMDBiZjkxMmJlMDBlNzg0MzM3MWRlYjllNGFkZTdjNWFmNmE1MzcwNWEwMmMzMzBjZTMzNmZhYSJ9fX0='
     particle: 'CLOUD'
     buffs:
       potions:
@@ -24,7 +24,7 @@ trophies:
   volcano:
     name: '&c&lTrái Tim Núi Lửa'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTRhYjAxNTE4ZTM4MTFlYTgyZTI4MTMzYjNhY2QwODcxOGYxOGRmZTQ5NGFhYzVlMDVhNGQ2MWNmZDYyZjA1NSJ9fX0='
     particle: 'FLAME'
     buffs:
       potions:
@@ -35,7 +35,7 @@ trophies:
   ancient-tree:
     name: '&a&lDryad Cổ Đại'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTg4ZTMyNWNiYWJmMDE0NzZlN2I2YTI2NjAyOWYyNDQxMzcyZjEyYjhhNzQ1NjZlOWRmNWFjZDAxNzhjNDIwZCJ9fX0='
     particle: 'HAPPY_VILLAGER'
     buffs:
       potions:
@@ -45,7 +45,7 @@ trophies:
   celestial:
     name: '&b&lMảnh Thiên Thể'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDcxNWY5ZjBlYTgyYzlhMTJmOWQ0N2M2NjhjYjA5MTU4YTk1YTc2NWZjNzc0ZDM3OWNmNTRkMmZlZWIzZDUwYyJ9fX0='
     particle: 'END_ROD'
     buffs:
       potions:
@@ -54,7 +54,7 @@ trophies:
   invasion:
     name: '&5&lKẻ Xâm Lược'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc5ODIzNmQ0NTI4ZWU1MzQxMjBiMDBhZDY2MjE5MmU2OTI5NWE4MDE3YjE1ZmJlZThmYjAzNDFhMWIwNzRiNSJ9fX0='
     particle: 'LARGE_SMOKE'
     buffs:
       potions:
@@ -64,7 +64,7 @@ trophies:
   meteor-shower:
     name: '&6&lThiên Thạch Rực Cháy'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTE3NDFmMzhhZTNmZTU3Y2U3MTY4NjYwZjI1NjA1ZDhmOGQzMzcxZmQwYTljZjA2OTA1NDJiMjVmMGEwNTYzOCJ9fX0='
     particle: 'LAVA'
     buffs:
       potions:
@@ -73,7 +73,7 @@ trophies:
   space-rift:
     name: '&d&lCổng Không Gian'
     material: 'PLAYER_HEAD'
-    texture: ''
+    texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTYxMDVhNTU3YWY1YzNiMDE5Y2U2YjE2ODJkOThlOGZmNDgwZDkwM2M5MGE2YTk0N2Q4NzM4ZjI4YTE5NTdjYSJ9fX0='
     particle: 'PORTAL'
     buffs:
       potions:
