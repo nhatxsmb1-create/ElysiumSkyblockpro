@@ -1,6 +1,16 @@
 import os
 import re
 
+def to_unicode_escape(s):
+    # Convert non-ascii characters to \uXXXX
+    res = ""
+    for c in s:
+        if ord(c) > 127:
+            res += f"\\u{ord(c):04x}"
+        else:
+            res += c
+    return res
+
 rates = [
     ("IRON_BLOCK", [("60% Block Than", "f", "COAL_BLOCK", 60), ("40% Block Sắt", "f", "IRON_BLOCK", 40)], "50,000"),
     ("LAPIS_BLOCK", [("40% Block Than", "f", "COAL_BLOCK", 40), ("40% Block Sắt", "f", "IRON_BLOCK", 40), ("20% Block Redstone", "f", "REDSTONE_BLOCK", 20)], "150,000"),
@@ -14,148 +24,107 @@ rates = [
 ]
 max_rate = [("5% Block Than", "f", "COAL_BLOCK", 5), ("5% Block Sắt", "f", "IRON_BLOCK", 5), ("10% Block Redstone", "f", "REDSTONE_BLOCK", 10), ("10% Block Lapis", "f", "LAPIS_BLOCK", 10), ("15% Block Vàng", "f", "GOLD_BLOCK", 15), ("25% Block Kim Cương", "b", "DIAMOND_BLOCK", 25), ("15% Block Ngọc Lục Bảo", "a", "EMERALD_BLOCK", 15), ("15% Block Netherite", "4", "NETHERITE_BLOCK", 15)]
 
-def update_config_yml():
-    filepath = 'src/main/resources/modules/upgrades/config.yml'
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    generator_rates = ""
-    prices = [50000, 150000, 300000, 600000, 1500000, 2500000, 5000000, 10000000, 15000000, 0]
-    
-    for i in range(1, 11):
-        chances = rates[i-1][1] if i < 10 else max_rate
-        price = float(prices[i-1])
-        
-        generator_rates += f"""    '{i}':
-      price: {price}
-      price-type: "Money"
-      generator-rates:
-        normal:
-"""
-        for _, _, block, chance in chances:
-            generator_rates += f"          {block}: {chance}\n"
-            
-        generator_rates += f"""      commands:
-"""
-        if i < 10:
-            generator_rates += f"""        - 'island admin setupgrade %player% generator-rates {i+1}'
-        - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level {i}!'\n"""
-        else:
-            generator_rates += f"""        - 'island admin msg %player% &e&lUpgrades | &7You have reached the maximum upgrade for generator.'\n"""
-
-    new_content = re.sub(r'(?s)  generator-rates:\r?\n.*?  minecarts-limit:', '  generator-rates:\n' + generator_rates + '  minecarts-limit:', content)
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(new_content)
-    print("Updated config.yml")
-
-
 def build_menu_yaml(is_new_sounds=False):
-    generator_rates = b"  generator-rates:\n    item: '+'\n"
-    sound_buy = b"ENTITY_EXPERIENCE_ORB_PICKUP" if is_new_sounds else b"ORB_PICKUP"
-    sound_fail = b"BLOCK_ANVIL_PLACE" if is_new_sounds else b"ANVIL_LAND"
+    generator_rates = "  generator-rates:\n    item: '+'\n"
+    sound_buy = "ENTITY_EXPERIENCE_ORB_PICKUP" if is_new_sounds else "ORB_PICKUP"
+    sound_fail = "BLOCK_ANVIL_PLACE" if is_new_sounds else "ANVIL_LAND"
 
     for i in range(1, 10):
         mat, chances, price = rates[i-1]
-        mat_b = mat.encode('utf-8')
-        price_b = price.encode('utf-8')
         
-        generator_rates += b"    '" + str(i).encode() + b"':\n"
-        generator_rates += b"      has-next-level:\n"
-        generator_rates += b"        type: " + mat_b + b"\n"
-        generator_rates += b"        name: '&3&lN\xc3\xa2ng C\xc3\xa1p M\xc3\xa1y Qu\xe1\xb7\xb7ng &a(C\xc3\xb3 th\xe1\xbb\x83 mua)'\n" # We'll just encode standard text as utf-8 below
-        
-        generator_rates += b"        name: '" + "&3&lN\xc3\xa2ng C\xc3\xa1p M\xc3\xa1y Qu\xe1\xb7\xb7ng &a(C\xc3\xb3 th\xe1\xbb\x83 mua)".encode('utf-8') + b"'\n" # Wait, manual bytes is bad.
-
-        # LET'S JUST BUILD A PYTHON STRING AND ENCODE ENTIRE THING AS UTF-8!
         block_content = f"""    '{i}':
       has-next-level:
         type: {mat}
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "{to_unicode_escape('&3&lNâng Cấp Máy Quặng &a(Có thể mua)')}"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e{i+1}'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
+          - "&7"
+          - "{to_unicode_escape('&3Cấp Tiếp Theo: &e' + str(i+1))}"
+          - "&7"
+          - "{to_unicode_escape('&7Nâng cấp máy tạo quặng sẽ')}"
+          - "{to_unicode_escape('&7tăng tỉ lệ ra block quặng')}"
+          - "{to_unicode_escape('&7từ máy tạo quặng của đảo bạn.')}"
+          - "&7"
+          - "{to_unicode_escape('&3Tỉ lệ:')}"
 """
         for chance_str, color, _, _ in chances:
-            block_content += f"          - ' &7 - &{color}{chance_str}'\n"
+            block_content += f"""          - "{to_unicode_escape(' &7 - &' + color + chance_str)}"
+"""
             
-        block_content += f"""          - '&7'
-          - '&3Giá: &f${price}'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+        block_content += f"""          - "&7"
+          - "&3Gi\\u00e1: &f${price}"
+          - "&7"
+          - "{to_unicode_escape('&aNhấp để nâng cấp.')}"
         sound:
-          type: {sound_buy.decode()}
+          type: {sound_buy}
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: {mat}
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "{to_unicode_escape('&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)')}"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e{i+1}'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
+          - "&7"
+          - "{to_unicode_escape('&3Cấp Tiếp Theo: &e' + str(i+1))}"
+          - "&7"
+          - "{to_unicode_escape('&7Nâng cấp máy tạo quặng sẽ')}"
+          - "{to_unicode_escape('&7tăng tỉ lệ ra block quặng')}"
+          - "{to_unicode_escape('&7từ máy tạo quặng của đảo bạn.')}"
+          - "&7"
+          - "{to_unicode_escape('&3Tỉ lệ:')}"
 """
         for chance_str, color, _, _ in chances:
-            block_content += f"          - ' &7 - &{color}{chance_str}'\n"
+            block_content += f"""          - "{to_unicode_escape(' &7 - &' + color + chance_str)}"
+"""
             
-        block_content += f"""          - '&7'
-          - '&3Giá: &f${price}'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+        block_content += f"""          - "&7"
+          - "&3Gi\\u00e1: &f${price}"
+          - "&7"
+          - "{to_unicode_escape('&cBạn không đủ tiền.')}"
         sound:
-          type: {sound_fail.decode()}
+          type: {sound_fail}
           volume: 0.2
           pitch: 0.2
 """
-        generator_rates += block_content.encode('utf-8')
+        generator_rates += block_content
 
     # Max level
     block_content = f"""    '10':
       has-next-level:
         type: BEACON
-        name: '&c&lCẤP TỐI ĐA'
+        name: "{to_unicode_escape('&c&lCẤP TỐI ĐA')}"
         lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của máy tạo quặng!'
-          - '&7'
-          - '&3Tỉ lệ hiện tại:'
+          - "{to_unicode_escape('&7Bạn đã đạt cấp độ tối đa')}"
+          - "{to_unicode_escape('&7của máy tạo quặng!')}"
+          - "&7"
+          - "{to_unicode_escape('&3Tỉ lệ hiện tại:')}"
 """
     for chance_str, color, _, _ in max_rate:
-        block_content += f"          - ' &7 - &{color}{chance_str}'\n"
+        block_content += f"""          - "{to_unicode_escape(' &7 - &' + color + chance_str)}"
+"""
         
     block_content += f"""        sound:
-          type: {sound_fail.decode()}
+          type: {sound_fail}
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: BEACON
-        name: '&c&lCẤP TỐI ĐA'
+        name: "{to_unicode_escape('&c&lCẤP TỐI ĐA')}"
         lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của máy tạo quặng!'
-          - '&7'
-          - '&3Tỉ lệ hiện tại:'
+          - "{to_unicode_escape('&7Bạn đã đạt cấp độ tối đa')}"
+          - "{to_unicode_escape('&7của máy tạo quặng!')}"
+          - "&7"
+          - "{to_unicode_escape('&3Tỉ lệ hiện tại:')}"
 """
     for chance_str, color, _, _ in max_rate:
-        block_content += f"          - ' &7 - &{color}{chance_str}'\n"
+        block_content += f"""          - "{to_unicode_escape(' &7 - &' + color + chance_str)}"
+"""
         
     block_content += f"""        sound:
-          type: {sound_fail.decode()}
+          type: {sound_fail}
           volume: 0.2
           pitch: 0.2
 """
-    generator_rates += block_content.encode('utf-8')
-    return generator_rates
+    generator_rates += block_content
+    return generator_rates.encode('ascii')
 
 
 def patch_menu_file(filepath, is_new_sounds=False):
@@ -180,7 +149,6 @@ def patch_menu_file(filepath, is_new_sounds=False):
     print(f"Updated {filepath}")
 
 
-update_config_yml()
 patch_menu_file('src/main/resources/menus/upgrades.yml', False)
 patch_menu_file('src/main/resources/menus/upgrades1_12.yml', False)
 patch_menu_file('src/main/resources/menus/upgrades1_13.yml', True)

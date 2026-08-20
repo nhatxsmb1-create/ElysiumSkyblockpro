@@ -907,49 +907,44 @@ upgrades:
     '1':
       has-next-level:
         type: IRON_BLOCK
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '1':
-      has-next-level:
-        type: IRON_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e2'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f60% Block Than'
-          - ' &7 - &f40% Block Sắt'
-          - '&7'
-          - '&3Giá: &f$50,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e2"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f60% Block Than"
+          - " &7 - &f40% Block S\u1eaft"
+          - "&7"
+          - "&3Gi\u00e1: &f$50,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: IRON_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e2'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f60% Block Than'
-          - ' &7 - &f40% Block Sắt'
-          - '&7'
-          - '&3Giá: &f$50,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e2"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f60% Block Than"
+          - " &7 - &f40% Block S\u1eaft"
+          - "&7"
+          - "&3Gi\u00e1: &f$50,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -957,51 +952,46 @@ upgrades:
     '2':
       has-next-level:
         type: LAPIS_BLOCK
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '2':
-      has-next-level:
-        type: LAPIS_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e3'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f40% Block Than'
-          - ' &7 - &f40% Block Sắt'
-          - ' &7 - &f20% Block Redstone'
-          - '&7'
-          - '&3Giá: &f$150,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e3"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f40% Block Than"
+          - " &7 - &f40% Block S\u1eaft"
+          - " &7 - &f20% Block Redstone"
+          - "&7"
+          - "&3Gi\u00e1: &f$150,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: LAPIS_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e3'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f40% Block Than'
-          - ' &7 - &f40% Block Sắt'
-          - ' &7 - &f20% Block Redstone'
-          - '&7'
-          - '&3Giá: &f$150,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e3"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f40% Block Than"
+          - " &7 - &f40% Block S\u1eaft"
+          - " &7 - &f20% Block Redstone"
+          - "&7"
+          - "&3Gi\u00e1: &f$150,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1009,53 +999,48 @@ upgrades:
     '3':
       has-next-level:
         type: GOLD_BLOCK
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '3':
-      has-next-level:
-        type: GOLD_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e4'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f30% Block Than'
-          - ' &7 - &f30% Block Sắt'
-          - ' &7 - &f25% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - '&7'
-          - '&3Giá: &f$300,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e4"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f30% Block Than"
+          - " &7 - &f30% Block S\u1eaft"
+          - " &7 - &f25% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - "&7"
+          - "&3Gi\u00e1: &f$300,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: GOLD_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e4'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f30% Block Than'
-          - ' &7 - &f30% Block Sắt'
-          - ' &7 - &f25% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - '&7'
-          - '&3Giá: &f$300,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e4"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f30% Block Than"
+          - " &7 - &f30% Block S\u1eaft"
+          - " &7 - &f25% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - "&7"
+          - "&3Gi\u00e1: &f$300,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1063,55 +1048,50 @@ upgrades:
     '4':
       has-next-level:
         type: DIAMOND_BLOCK
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '4':
-      has-next-level:
-        type: DIAMOND_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e5'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f25% Block Than'
-          - ' &7 - &f25% Block Sắt'
-          - ' &7 - &f20% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - '&7'
-          - '&3Giá: &f$600,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e5"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f25% Block Than"
+          - " &7 - &f25% Block S\u1eaft"
+          - " &7 - &f20% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - "&7"
+          - "&3Gi\u00e1: &f$600,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: DIAMOND_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e5'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f25% Block Than'
-          - ' &7 - &f25% Block Sắt'
-          - ' &7 - &f20% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - '&7'
-          - '&3Giá: &f$600,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e5"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f25% Block Than"
+          - " &7 - &f25% Block S\u1eaft"
+          - " &7 - &f20% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - "&7"
+          - "&3Gi\u00e1: &f$600,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1119,57 +1099,52 @@ upgrades:
     '5':
       has-next-level:
         type: EMERALD_BLOCK
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '5':
-      has-next-level:
-        type: EMERALD_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e6'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f20% Block Than'
-          - ' &7 - &f20% Block Sắt'
-          - ' &7 - &f20% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b10% Block Kim Cương'
-          - '&7'
-          - '&3Giá: &f$1,500,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e6"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f20% Block Than"
+          - " &7 - &f20% Block S\u1eaft"
+          - " &7 - &f20% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b10% Block Kim C\u01b0\u01a1ng"
+          - "&7"
+          - "&3Gi\u00e1: &f$1,500,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: EMERALD_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e6'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f20% Block Than'
-          - ' &7 - &f20% Block Sắt'
-          - ' &7 - &f20% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b10% Block Kim Cương'
-          - '&7'
-          - '&3Giá: &f$1,500,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e6"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f20% Block Than"
+          - " &7 - &f20% Block S\u1eaft"
+          - " &7 - &f20% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b10% Block Kim C\u01b0\u01a1ng"
+          - "&7"
+          - "&3Gi\u00e1: &f$1,500,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1177,59 +1152,54 @@ upgrades:
     '6':
       has-next-level:
         type: NETHERITE_BLOCK
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '6':
-      has-next-level:
-        type: NETHERITE_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e7'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f15% Block Than'
-          - ' &7 - &f20% Block Sắt'
-          - ' &7 - &f15% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b15% Block Kim Cương'
-          - ' &7 - &a5% Block Ngọc Lục Bảo'
-          - '&7'
-          - '&3Giá: &f$2,500,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e7"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f15% Block Than"
+          - " &7 - &f20% Block S\u1eaft"
+          - " &7 - &f15% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b15% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a5% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - "&7"
+          - "&3Gi\u00e1: &f$2,500,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: NETHERITE_BLOCK
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e7'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f15% Block Than'
-          - ' &7 - &f20% Block Sắt'
-          - ' &7 - &f15% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b15% Block Kim Cương'
-          - ' &7 - &a5% Block Ngọc Lục Bảo'
-          - '&7'
-          - '&3Giá: &f$2,500,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e7"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f15% Block Than"
+          - " &7 - &f20% Block S\u1eaft"
+          - " &7 - &f15% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b15% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a5% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - "&7"
+          - "&3Gi\u00e1: &f$2,500,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1237,61 +1207,56 @@ upgrades:
     '7':
       has-next-level:
         type: BEACON
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '7':
-      has-next-level:
-        type: BEACON
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e8'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f10% Block Than'
-          - ' &7 - &f15% Block Sắt'
-          - ' &7 - &f15% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b15% Block Kim Cương'
-          - ' &7 - &a10% Block Ngọc Lục Bảo'
-          - ' &7 - &45% Block Netherite'
-          - '&7'
-          - '&3Giá: &f$5,000,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e8"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f10% Block Than"
+          - " &7 - &f15% Block S\u1eaft"
+          - " &7 - &f15% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b15% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a10% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &45% Block Netherite"
+          - "&7"
+          - "&3Gi\u00e1: &f$5,000,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: BEACON
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e8'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f10% Block Than'
-          - ' &7 - &f15% Block Sắt'
-          - ' &7 - &f15% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b15% Block Kim Cương'
-          - ' &7 - &a10% Block Ngọc Lục Bảo'
-          - ' &7 - &45% Block Netherite'
-          - '&7'
-          - '&3Giá: &f$5,000,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e8"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f10% Block Than"
+          - " &7 - &f15% Block S\u1eaft"
+          - " &7 - &f15% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b15% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a10% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &45% Block Netherite"
+          - "&7"
+          - "&3Gi\u00e1: &f$5,000,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1299,61 +1264,56 @@ upgrades:
     '8':
       has-next-level:
         type: BEACON
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '8':
-      has-next-level:
-        type: BEACON
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e9'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f5% Block Than'
-          - ' &7 - &f10% Block Sắt'
-          - ' &7 - &f15% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b20% Block Kim Cương'
-          - ' &7 - &a10% Block Ngọc Lục Bảo'
-          - ' &7 - &410% Block Netherite'
-          - '&7'
-          - '&3Giá: &f$10,000,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e9"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f5% Block Than"
+          - " &7 - &f10% Block S\u1eaft"
+          - " &7 - &f15% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b20% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a10% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &410% Block Netherite"
+          - "&7"
+          - "&3Gi\u00e1: &f$10,000,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: BEACON
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e9'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f5% Block Than'
-          - ' &7 - &f10% Block Sắt'
-          - ' &7 - &f15% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b20% Block Kim Cương'
-          - ' &7 - &a10% Block Ngọc Lục Bảo'
-          - ' &7 - &410% Block Netherite'
-          - '&7'
-          - '&3Giá: &f$10,000,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e9"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f5% Block Than"
+          - " &7 - &f10% Block S\u1eaft"
+          - " &7 - &f15% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b20% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a10% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &410% Block Netherite"
+          - "&7"
+          - "&3Gi\u00e1: &f$10,000,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1361,61 +1321,56 @@ upgrades:
     '9':
       has-next-level:
         type: BEACON
-        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
-        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
-    '9':
-      has-next-level:
-        type: BEACON
-        name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &a(C\u00f3 th\u1ec3 mua)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e10'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f5% Block Than'
-          - ' &7 - &f10% Block Sắt'
-          - ' &7 - &f10% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b20% Block Kim Cương'
-          - ' &7 - &a15% Block Ngọc Lục Bảo'
-          - ' &7 - &410% Block Netherite'
-          - '&7'
-          - '&3Giá: &f$15,000,000'
-          - '&7'
-          - '&aNhấp để nâng cấp.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e10"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f5% Block Than"
+          - " &7 - &f10% Block S\u1eaft"
+          - " &7 - &f10% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b20% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a15% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &410% Block Netherite"
+          - "&7"
+          - "&3Gi\u00e1: &f$15,000,000"
+          - "&7"
+          - "&aNh\u1ea5p \u0111\u1ec3 n\u00e2ng c\u1ea5p."
         sound:
           type: ORB_PICKUP
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: BEACON
-        name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
+        name: "&3&lN\u00e2ng C\u1ea5p M\u00e1y Qu\u1eb7ng &c(Kh\u00f4ng \u0111\u1ee7 \u0111i\u1ec1u ki\u1ec7n)"
         lore:
-          - '&7'
-          - '&3Cấp Tiếp Theo: &e10'
-          - '&7'
-          - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra block quặng'
-          - '&7từ máy tạo quặng của đảo bạn.'
-          - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f5% Block Than'
-          - ' &7 - &f10% Block Sắt'
-          - ' &7 - &f10% Block Redstone'
-          - ' &7 - &f15% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b20% Block Kim Cương'
-          - ' &7 - &a15% Block Ngọc Lục Bảo'
-          - ' &7 - &410% Block Netherite'
-          - '&7'
-          - '&3Giá: &f$15,000,000'
-          - '&7'
-          - '&cBạn không đủ tiền.'
+          - "&7"
+          - "&3C\u1ea5p Ti\u1ebfp Theo: &e10"
+          - "&7"
+          - "&7N\u00e2ng c\u1ea5p m\u00e1y t\u1ea1o qu\u1eb7ng s\u1ebd"
+          - "&7t\u0103ng t\u1ec9 l\u1ec7 ra block qu\u1eb7ng"
+          - "&7t\u1eeb m\u00e1y t\u1ea1o qu\u1eb7ng c\u1ee7a \u0111\u1ea3o b\u1ea1n."
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7:"
+          - " &7 - &f5% Block Than"
+          - " &7 - &f10% Block S\u1eaft"
+          - " &7 - &f10% Block Redstone"
+          - " &7 - &f15% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b20% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a15% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &410% Block Netherite"
+          - "&7"
+          - "&3Gi\u00e1: &f$15,000,000"
+          - "&7"
+          - "&cB\u1ea1n kh\u00f4ng \u0111\u1ee7 ti\u1ec1n."
         sound:
           type: ANVIL_LAND
           volume: 0.2
@@ -1423,40 +1378,40 @@ upgrades:
     '10':
       has-next-level:
         type: BEACON
-        name: '&c&lCẤP TỐI ĐA'
+        name: "&c&lC\u1ea4P T\u1ed0I \u0110A"
         lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của máy tạo quặng!'
-          - '&7'
-          - '&3Tỉ lệ hiện tại:'
-          - ' &7 - &f5% Block Than'
-          - ' &7 - &f5% Block Sắt'
-          - ' &7 - &f10% Block Redstone'
-          - ' &7 - &f10% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b25% Block Kim Cương'
-          - ' &7 - &a15% Block Ngọc Lục Bảo'
-          - ' &7 - &415% Block Netherite'
+          - "&7B\u1ea1n \u0111\u00e3 \u0111\u1ea1t c\u1ea5p \u0111\u1ed9 t\u1ed1i \u0111a"
+          - "&7c\u1ee7a m\u00e1y t\u1ea1o qu\u1eb7ng!"
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7 hi\u1ec7n t\u1ea1i:"
+          - " &7 - &f5% Block Than"
+          - " &7 - &f5% Block S\u1eaft"
+          - " &7 - &f10% Block Redstone"
+          - " &7 - &f10% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b25% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a15% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &415% Block Netherite"
         sound:
           type: ANVIL_LAND
           volume: 0.2
           pitch: 0.2
       no-next-level:
         type: BEACON
-        name: '&c&lCẤP TỐI ĐA'
+        name: "&c&lC\u1ea4P T\u1ed0I \u0110A"
         lore:
-          - '&7Bạn đã đạt cấp độ tối đa'
-          - '&7của máy tạo quặng!'
-          - '&7'
-          - '&3Tỉ lệ hiện tại:'
-          - ' &7 - &f5% Block Than'
-          - ' &7 - &f5% Block Sắt'
-          - ' &7 - &f10% Block Redstone'
-          - ' &7 - &f10% Block Lapis'
-          - ' &7 - &f15% Block Vàng'
-          - ' &7 - &b25% Block Kim Cương'
-          - ' &7 - &a15% Block Ngọc Lục Bảo'
-          - ' &7 - &415% Block Netherite'
+          - "&7B\u1ea1n \u0111\u00e3 \u0111\u1ea1t c\u1ea5p \u0111\u1ed9 t\u1ed1i \u0111a"
+          - "&7c\u1ee7a m\u00e1y t\u1ea1o qu\u1eb7ng!"
+          - "&7"
+          - "&3T\u1ec9 l\u1ec7 hi\u1ec7n t\u1ea1i:"
+          - " &7 - &f5% Block Than"
+          - " &7 - &f5% Block S\u1eaft"
+          - " &7 - &f10% Block Redstone"
+          - " &7 - &f10% Block Lapis"
+          - " &7 - &f15% Block V\u00e0ng"
+          - " &7 - &b25% Block Kim C\u01b0\u01a1ng"
+          - " &7 - &a15% Block Ng\u1ecdc L\u1ee5c B\u1ea3o"
+          - " &7 - &415% Block Netherite"
         sound:
           type: ANVIL_LAND
           volume: 0.2
