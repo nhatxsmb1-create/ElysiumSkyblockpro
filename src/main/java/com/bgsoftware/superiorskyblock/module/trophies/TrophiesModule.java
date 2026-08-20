@@ -4,8 +4,8 @@ import com.bgsoftware.common.config.CommentedConfiguration;
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
 import com.bgsoftware.superiorskyblock.api.island.Island;
-import com.bgsoftware.superiorskyblock.api.modules.BuiltinModule;
-import com.bgsoftware.superiorskyblock.api.modules.IModuleConfiguration;
+import com.bgsoftware.superiorskyblock.module.BuiltinModule;
+import com.bgsoftware.superiorskyblock.module.IModuleConfiguration;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -277,3 +277,4 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
         }
     }
 }
+
