@@ -91,10 +91,12 @@ public class TrophyListener implements Listener {
             ItemStack clicked = e.getCurrentItem();
             String trophyId = module.getTrophyManager().getTrophyId(clicked);
             if (trophyId != null) {
-                Player player = (Player) e.getWhoClicked();
                 ItemStack trophyItem = module.getTrophyManager().createTrophyItem(trophyId);
-                player.getInventory().addItem(trophyItem);
-                player.sendMessage("\u00a76\ud83c\udfc6 \u00a7eBạn đã lấy 1 " + trophyItem.getItemMeta().getDisplayName());
+                if (trophyItem != null) {
+                    Player player = (Player) e.getWhoClicked();
+                    player.getInventory().addItem(trophyItem);
+                    player.sendMessage("\u00a76\ud83c\udfc6 \u00a7eBạn đã lấy 1 " + trophyItem.getItemMeta().getDisplayName());
+                }
             }
         }
     }

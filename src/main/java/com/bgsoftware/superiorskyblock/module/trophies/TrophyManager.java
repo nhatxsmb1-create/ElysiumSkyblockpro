@@ -24,7 +24,7 @@ public class TrophyManager {
     private static final String ENTRY_SEPARATOR = "|";
     private static final String FIELD_SEPARATOR = ",";
     private static final String ITEM_PREFIX = "\u00a76\u00a7l\ud83c\udfc6 Trophy: ";
-    private static final String HIDDEN_PREFIX = "\u00a70\u00a7t\u00a7r\u00a7o"; // Hidden prefix to identify trophies
+    private static final String HIDDEN_PREFIX = "\u00a7f\u00a7f\u00a7f"; // Hidden prefix to identify trophies
 
     private final TrophiesModule module;
     private final Random random = new Random();
@@ -245,18 +245,29 @@ public class TrophyManager {
     private String encodeHiddenString(String str) {
         StringBuilder sb = new StringBuilder(HIDDEN_PREFIX);
         for (char c : str.toCharArray()) {
-            sb.append('\u00a7').append(c);
+            String hex = Integer.toHexString(c);
+            for (char h : hex.toCharArray()) {
+                sb.append('\u00a7').append(h);
+            }
+            sb.append('\u00a7').append('k'); // separator
         }
         return sb.toString();
     }
 
     private String decodeHiddenString(String hidden) {
         if (!hidden.startsWith(HIDDEN_PREFIX)) return null;
+        String stripped = hidden.replace("\u00a7", "");
+        if (!stripped.startsWith("fff")) return null;
+        stripped = stripped.substring(3);
+        String[] parts = stripped.split("k");
         StringBuilder sb = new StringBuilder();
-        for (int i = HIDDEN_PREFIX.length(); i < hidden.length(); i += 2) {
-            if (i + 1 < hidden.length()) {
-                sb.append(hidden.charAt(i + 1));
-            }
+        for (String part : parts) {
+            if (part.isEmpty()) continue;
+            try {
+                part = part.replaceAll("[^0-9a-fA-F]", ""); // Clean up any trailing Spigot formatting chars
+                if (part.isEmpty()) continue;
+                sb.append((char) Integer.parseInt(part, 16));
+            } catch (Exception ignored) {}
         }
         return sb.toString();
     }
