@@ -3,8 +3,8 @@ package com.bgsoftware.superiorskyblock.module.spirits;
 import com.bgsoftware.common.config.CommentedConfiguration;
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
-import com.bgsoftware.superiorskyblock.api.modules.BuiltinModule;
-import com.bgsoftware.superiorskyblock.api.modules.IModuleConfiguration;
+import com.bgsoftware.superiorskyblock.module.BuiltinModule;
+import com.bgsoftware.superiorskyblock.module.IModuleConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.potion.PotionEffectType;
 

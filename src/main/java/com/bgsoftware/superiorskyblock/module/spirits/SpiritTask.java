@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.math.BigInteger;
@@ -44,7 +45,8 @@ public class SpiritTask extends BukkitRunnable {
 
         Set<Island> activeIslands = new HashSet<>();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            Island island = plugin.getGrid().getIsland(p);
+            SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(p.getUniqueId());
+            Island island = sp.getIsland();
             if (island != null) {
                 activeIslands.add(island);
             }

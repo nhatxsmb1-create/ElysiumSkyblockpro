@@ -5,6 +5,7 @@ import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 
 import java.util.Collections;
 import java.util.List;
@@ -61,7 +62,8 @@ public class CmdSpirits implements SuperiorCommand {
     @Override
     public void execute(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
         Player player = (Player) sender;
-        Island island = plugin.getGrid().getIsland(player);
+        SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(player.getUniqueId());
+        Island island = sp.getIsland();
         if (island == null) {
             player.sendMessage("\u00a7cB\u1ea1n ph\u1ea3i c\u00f3 \u0111\u1ea3o \u0111\u1ec3 d\u00f9ng l\u1ec7nh n\u00e0y!");
             return;
