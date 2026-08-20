@@ -5,69 +5,78 @@
 ##                                                  ##
 ######################################################
 
-# Trophy Hall: Mini Boss của Island Event có tỉ lệ rơi Trophy.
-# Đặt trophy lên đảo để trưng bày - mỗi trophy có một buff và bonus riêng!
-# Tháo trophy xuống sẽ mất buff của trophy đó ngay lập tức.
-
 enabled: true
 
 # Tỉ lệ rơi trophy khi đánh bại Mini Boss (%).
 drop-chance: 35.0
 
-# Danh sách trophy - mỗi event một loại.
-# material: vật phẩm hiển thị (nên dùng PLAYER_HEAD).
-# texture: (tùy chọn) base64 texture cho đầu custom - bỏ trống để dùng đầu thường.
-# buffs.potions: Hiệu ứng thuốc áp cho người chơi đang ở trên đảo (Định dạng: TÊN_HIỆU_ỨNG:cấp).
-# buffs.bonuses: Buff nhân thêm cho đảo (ví dụ crop-growth, mob-drops).
+# particle: Loại hiệu ứng Particle bao quanh trophy (vd: FLAME, PORTAL, CLOUD, END_ROD)
 trophies:
   tornado:
     name: 'Lốc Xoáy Tàn Phá'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'CLOUD'
     buffs:
       potions:
-        - 'FAST_DIGGING:1'
+        - 'FAST_DIGGING:2'
+        - 'SPEED:1'
   volcano:
     name: 'Trái Tim Núi Lửa'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'FLAME'
     buffs:
       potions:
         - 'FIRE_RESISTANCE:1'
+        - 'DAMAGE_RESISTANCE:1'
+      bonuses:
+        mob-drops: 0.05
   ancient-tree:
     name: 'Dryad Cổ Đại'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'VILLAGER_HAPPY'
     buffs:
+      potions:
+        - 'REGENERATION:1'
       bonuses:
-        crop-growth: 0.05
+        crop-growth: 0.1
   celestial:
     name: 'Mảnh Thiên Thể'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'END_ROD'
     buffs:
       potions:
         - 'NIGHT_VISION:1'
+        - 'JUMP:2'
   invasion:
     name: 'Kẻ Xâm Lược'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'SMOKE_LARGE'
     buffs:
+      potions:
+        - 'INCREASE_DAMAGE:1'
       bonuses:
-        mob-drops: 0.05
+        mob-drops: 0.1
   meteor-shower:
     name: 'Thiên Thạch Rực Cháy'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'DRIP_LAVA'
     buffs:
       potions:
-        - 'FAST_DIGGING:2'
+        - 'FAST_DIGGING:3'
+        - 'FIRE_RESISTANCE:1'
   space-rift:
     name: 'Cổng Không Gian'
     material: 'PLAYER_HEAD'
     texture: ''
+    particle: 'PORTAL'
     buffs:
       potions:
-        - 'SPEED:1'
+        - 'SPEED:2'
       bonuses:
         crop-growth: 0.05

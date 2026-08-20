@@ -1,4 +1,4 @@
-package com.bgsoftware.superiorskyblock.module.trophies;
+﻿package com.bgsoftware.superiorskyblock.module.trophies;
 
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.api.persistence.PersistentDataType;
@@ -24,7 +24,7 @@ public class TrophyManager {
     private static final String ENTRY_SEPARATOR = "|";
     private static final String FIELD_SEPARATOR = ",";
     private static final String ITEM_PREFIX = "\u00a76\u00a7l\ud83c\udfc6 Trophy: ";
-    private static final String AUTHENTIC_LORE = "Mỗi Trophy mang lại một buff riêng biệt";
+    private static final String AUTHENTIC_LORE = "Má»—i Trophy mang láº¡i má»™t buff riĂªng biá»‡t";
 
     private final TrophiesModule module;
     private final Random random = new Random();
@@ -79,9 +79,9 @@ public class TrophyManager {
         if (meta != null) {
             meta.setDisplayName(ITEM_PREFIX + info.getName());
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Phần thưởng từ Island Event.");
-            lore.add("\u00a77Đặt lên đảo để trưng bày trong");
-            lore.add("\u00a77Trophy Hall và nhận buff!");
+            lore.add("\u00a77Pháº§n thÆ°á»Ÿng tá»« Island Event.");
+            lore.add("\u00a77Äáº·t lĂªn Ä‘áº£o Ä‘á»ƒ trÆ°ng bĂ y trong");
+            lore.add("\u00a77Trophy Hall vĂ  nháº­n buff!");
             lore.add("");
             lore.add("\u00a7e" + AUTHENTIC_LORE + ".");
             
@@ -132,7 +132,9 @@ public class TrophyManager {
         return random.nextDouble() * 100.0 < module.getConfiguration().getDropChance();
     }
 
-    // ── Placed trophies storage (island PersistentDataContainer) ──
+    // â”€â”€ Placed trophies storage (island PersistentDataContainer) â”€â”€
+
+    public java.util.Map<Location, String> getPlacedTrophyLocations(Island island) { java.util.Map<Location, String> locs = new java.util.HashMap<>(); for (String entry : getPlacedTrophies(island)) { String[] parts = entry.split(FIELD_SEPARATOR); if (parts.length >= 4) { org.bukkit.World world = org.bukkit.Bukkit.getWorld(parts[1]); if (world != null) { try { int x = Integer.parseInt(parts[2]); int y = Integer.parseInt(parts[3]); int z = Integer.parseInt(parts[4]); locs.put(new Location(world, x, y, z), parts[0]); } catch (Exception ignored) {} } } } return locs; }
 
     public List<String> getPlacedTrophies(Island island) {
         return placedTrophiesCache.computeIfAbsent(island, this::loadPlacedTrophies);
@@ -258,3 +260,4 @@ public class TrophyManager {
     }
 
 }
+
