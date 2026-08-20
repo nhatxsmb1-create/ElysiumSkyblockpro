@@ -61,6 +61,12 @@ public class SpiritManager {
             List<String> lore = new ArrayList<>();
             lore.add("\u00a77Tr\u1ee3 th\u1ee7 \u0111\u1eafc l\u1ef1c gi\u00fap \u0111\u1ea3o ph\u00e1t tri\u1ec3n.");
             lore.add("\u00a77\u0110\u1eb7t xu\u1ed1ng \u0111\u1ea3o \u0111\u1ec3 kích ho\u1ea1t.");
+            if (info.getDescription() != null && !info.getDescription().isEmpty()) {
+                lore.add("");
+                for (String descLine : info.getDescription()) {
+                    lore.add(org.bukkit.ChatColor.translateAlternateColorCodes('&', descLine));
+                }
+            }
             lore.add("");
             lore.add("\u00a7e" + AUTHENTIC_LORE + ".");
             meta.setLore(lore);

@@ -2,11 +2,14 @@ package com.bgsoftware.superiorskyblock.module.spirits;
 
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
+import com.bgsoftware.superiorskyblock.api.world.Dimension;
+import com.bgsoftware.superiorskyblock.world.Dimensions;
 import com.bgsoftware.superiorskyblock.module.BuiltinModules;
 import com.bgsoftware.superiorskyblock.module.spirits.SpiritsModule.SpiritConfigInfo;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -25,11 +28,6 @@ public class SpiritTask extends BukkitRunnable {
     
     private int tickCounter = 0;
 
-    private static final Material[] MINER_DROPS = {
-            Material.COBBLESTONE, Material.COBBLESTONE, Material.COBBLESTONE,
-            Material.COAL, Material.IRON_INGOT, Material.GOLD_INGOT, Material.DIAMOND
-    };
-    
     private static final Material[] FARMER_DROPS = {
             Material.WHEAT, Material.CARROT, Material.POTATO, Material.SUGAR_CANE, Material.MELON
     };
@@ -80,7 +78,35 @@ public class SpiritTask extends BukkitRunnable {
     private void performSpiritAction(Island island, String type) {
         Material drop = null;
         if (type.equalsIgnoreCase("miner")) {
-            drop = MINER_DROPS[random.nextInt(MINER_DROPS.length)];
+            Dimension dim = Dimensions.fromEnvironment(World.Environment.NORMAL);
+            Map<String, Integer> amounts = island.getGeneratorAmounts(dim);
+            
+            if (amounts != null && !amounts.isEmpty()) {
+                int totalWeight = 0;
+                for (Integer weight : amounts.values()) {
+                    totalWeight += weight;
+                }
+                
+                if (totalWeight > 0) {
+                    int rand = random.nextInt(totalWeight);
+                    int current = 0;
+                    for (Map.Entry<String, Integer> entry : amounts.entrySet()) {
+                        current += entry.getValue();
+                        if (rand < current) {
+                            try {
+                                drop = Material.matchMaterial(entry.getKey());
+                            } catch (Exception ignored) {
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (drop == null) {
+                drop = Material.COBBLESTONE; // fallback
+            }
+            
         } else if (type.equalsIgnoreCase("farmer")) {
             drop = FARMER_DROPS[random.nextInt(FARMER_DROPS.length)];
         }

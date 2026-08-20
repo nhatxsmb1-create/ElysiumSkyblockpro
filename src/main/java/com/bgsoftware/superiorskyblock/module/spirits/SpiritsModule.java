@@ -83,14 +83,16 @@ public class SpiritsModule extends BuiltinModule<SpiritsModule.Configuration> {
         private final String name;
         private final String texture;
         private final String particle;
+        private final java.util.List<String> description;
         private final int actionIntervalTicks;
         private final int actionRadius;
 
-        public SpiritConfigInfo(String type, String name, String texture, String particle, int actionIntervalTicks, int actionRadius) {
+        public SpiritConfigInfo(String type, String name, String texture, String particle, int actionIntervalTicks, int actionRadius, java.util.List<String> description) {
             this.type = type;
             this.name = name;
             this.texture = texture;
             this.particle = particle;
+            this.description = description;
             this.actionIntervalTicks = actionIntervalTicks;
             this.actionRadius = actionRadius;
         }
@@ -99,6 +101,7 @@ public class SpiritsModule extends BuiltinModule<SpiritsModule.Configuration> {
         public String getName() { return name; }
         public String getTexture() { return texture; }
         public String getParticle() { return particle; }
+        public java.util.List<String> getDescription() { return description; }
         public int getActionIntervalTicks() { return actionIntervalTicks; }
         public int getActionRadius() { return actionRadius; }
     }
@@ -121,7 +124,8 @@ public class SpiritsModule extends BuiltinModule<SpiritsModule.Configuration> {
                             sec.getString(path + "texture", ""),
                             sec.getString(path + "particle", "HAPPY_VILLAGER"),
                             sec.getInt(path + "interval-ticks", 40),
-                            sec.getInt(path + "radius", 3)
+                            sec.getInt(path + "radius", 3),
+                            sec.getStringList(path + "description")
                     ));
                 }
             }
