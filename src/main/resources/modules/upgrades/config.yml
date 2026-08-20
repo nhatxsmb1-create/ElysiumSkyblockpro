@@ -213,9 +213,8 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 80
-          COAL_ORE: 12
-          IRON_ORE: 8
+          COAL_BLOCK: 60
+          IRON_BLOCK: 40
       commands:
         - 'island admin setupgrade %player% generator-rates 2'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 1!'
@@ -224,10 +223,9 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 70
-          COAL_ORE: 13
-          IRON_ORE: 12
-          REDSTONE_ORE: 5
+          COAL_BLOCK: 40
+          IRON_BLOCK: 40
+          REDSTONE_BLOCK: 20
       commands:
         - 'island admin setupgrade %player% generator-rates 3'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 2!'
@@ -236,11 +234,10 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 60
-          COAL_ORE: 14
-          IRON_ORE: 15
-          REDSTONE_ORE: 7
-          LAPIS_ORE: 4
+          COAL_BLOCK: 30
+          IRON_BLOCK: 30
+          REDSTONE_BLOCK: 25
+          LAPIS_BLOCK: 15
       commands:
         - 'island admin setupgrade %player% generator-rates 4'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 3!'
@@ -249,27 +246,25 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 50
-          COAL_ORE: 15
-          IRON_ORE: 18
-          REDSTONE_ORE: 8
-          LAPIS_ORE: 6
-          GOLD_ORE: 3
+          COAL_BLOCK: 25
+          IRON_BLOCK: 25
+          REDSTONE_BLOCK: 20
+          LAPIS_BLOCK: 15
+          GOLD_BLOCK: 15
       commands:
         - 'island admin setupgrade %player% generator-rates 5'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 4!'
     '5':
-      price: 1200000.0
+      price: 1500000.0
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 50
-          COAL_ORE: 15
-          IRON_ORE: 20
-          REDSTONE_ORE: 9
-          LAPIS_ORE: 8
-          GOLD_ORE: 5
-          DIAMOND_ORE: 3
+          COAL_BLOCK: 20
+          IRON_BLOCK: 20
+          REDSTONE_BLOCK: 20
+          LAPIS_BLOCK: 15
+          GOLD_BLOCK: 15
+          DIAMOND_BLOCK: 10
       commands:
         - 'island admin setupgrade %player% generator-rates 6'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 5!'
@@ -278,14 +273,13 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 45
-          COAL_ORE: 14
-          IRON_ORE: 20
-          REDSTONE_ORE: 10
-          LAPIS_ORE: 10
-          GOLD_ORE: 6
-          DIAMOND_ORE: 4
-          EMERALD_ORE: 1
+          COAL_BLOCK: 15
+          IRON_BLOCK: 20
+          REDSTONE_BLOCK: 15
+          LAPIS_BLOCK: 15
+          GOLD_BLOCK: 15
+          DIAMOND_BLOCK: 15
+          EMERALD_BLOCK: 5
       commands:
         - 'island admin setupgrade %player% generator-rates 7'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 6!'
@@ -294,15 +288,14 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 40
-          COAL_ORE: 12
-          IRON_ORE: 20
-          REDSTONE_ORE: 11
-          LAPIS_ORE: 12
-          GOLD_ORE: 7
-          DIAMOND_ORE: 5
-          EMERALD_ORE: 2
-          ANCIENT_DEBRIS: 1
+          COAL_BLOCK: 10
+          IRON_BLOCK: 15
+          REDSTONE_BLOCK: 15
+          LAPIS_BLOCK: 15
+          GOLD_BLOCK: 15
+          DIAMOND_BLOCK: 15
+          EMERALD_BLOCK: 10
+          NETHERITE_BLOCK: 5
       commands:
         - 'island admin setupgrade %player% generator-rates 8'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 7!'
@@ -311,32 +304,30 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 35
-          COAL_ORE: 10
-          IRON_ORE: 18
-          REDSTONE_ORE: 12
-          LAPIS_ORE: 13
-          GOLD_ORE: 9
-          DIAMOND_ORE: 6
-          EMERALD_ORE: 3
-          ANCIENT_DEBRIS: 2
+          COAL_BLOCK: 5
+          IRON_BLOCK: 10
+          REDSTONE_BLOCK: 15
+          LAPIS_BLOCK: 15
+          GOLD_BLOCK: 15
+          DIAMOND_BLOCK: 20
+          EMERALD_BLOCK: 10
+          NETHERITE_BLOCK: 10
       commands:
         - 'island admin setupgrade %player% generator-rates 9'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 8!'
     '9':
-      price: 25000000.0
+      price: 15000000.0
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 35
-          COAL_ORE: 8
-          IRON_ORE: 16
-          REDSTONE_ORE: 13
-          LAPIS_ORE: 14
-          GOLD_ORE: 10
-          DIAMOND_ORE: 8
-          EMERALD_ORE: 4
-          ANCIENT_DEBRIS: 3
+          COAL_BLOCK: 5
+          IRON_BLOCK: 10
+          REDSTONE_BLOCK: 10
+          LAPIS_BLOCK: 15
+          GOLD_BLOCK: 15
+          DIAMOND_BLOCK: 20
+          EMERALD_BLOCK: 15
+          NETHERITE_BLOCK: 10
       commands:
         - 'island admin setupgrade %player% generator-rates 10'
         - 'island admin msgall %player% &e&lUpgrades | &7Your generator was upgraded to level 9!'
@@ -345,15 +336,14 @@ upgrades:
       price-type: "Money"
       generator-rates:
         normal:
-          STONE: 35
-          COAL_ORE: 5
-          IRON_ORE: 15
-          REDSTONE_ORE: 15
-          LAPIS_ORE: 15
-          GOLD_ORE: 12
-          DIAMOND_ORE: 10
-          EMERALD_ORE: 5
-          ANCIENT_DEBRIS: 5
+          COAL_BLOCK: 5
+          IRON_BLOCK: 5
+          REDSTONE_BLOCK: 10
+          LAPIS_BLOCK: 10
+          GOLD_BLOCK: 15
+          DIAMOND_BLOCK: 25
+          EMERALD_BLOCK: 15
+          NETHERITE_BLOCK: 15
       commands:
         - 'island admin msg %player% &e&lUpgrades | &7You have reached the maximum upgrade for generator.'
   minecarts-limit:

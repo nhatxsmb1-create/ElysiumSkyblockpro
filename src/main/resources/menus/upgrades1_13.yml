@@ -897,20 +897,24 @@ upgrades:
     item: '+'
     '1':
       has-next-level:
-        type: STONE
+        type: IRON_BLOCK
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '1':
+      has-next-level:
+        type: IRON_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e2'
           - '&7'
           - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7tăng tỉ lệ ra block quặng'
           - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f80% Đá'
-          - ' &7 - &f12% Than'
-          - ' &7 - &f8% Sắt'
+          - ' &7 - &f60% Block Than'
+          - ' &7 - &f40% Block Sắt'
           - '&7'
           - '&3Giá: &f$50,000'
           - '&7'
@@ -920,20 +924,19 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: STONE
+        type: IRON_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e2'
           - '&7'
           - '&7Nâng cấp máy tạo quặng sẽ'
-          - '&7tăng tỉ lệ ra quặng quý'
+          - '&7tăng tỉ lệ ra block quặng'
           - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f80% Đá'
-          - ' &7 - &f12% Than'
-          - ' &7 - &f8% Sắt'
+          - ' &7 - &f60% Block Than'
+          - ' &7 - &f40% Block Sắt'
           - '&7'
           - '&3Giá: &f$50,000'
           - '&7'
@@ -944,17 +947,25 @@ upgrades:
           pitch: 0.2
     '2':
       has-next-level:
-        type: IRON_ORE
+        type: LAPIS_BLOCK
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '2':
+      has-next-level:
+        type: LAPIS_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e3'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f65% Đá'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f14% Sắt'
-          - ' &7 - &f6% Redstone'
+          - ' &7 - &f40% Block Than'
+          - ' &7 - &f40% Block Sắt'
+          - ' &7 - &f20% Block Redstone'
           - '&7'
           - '&3Giá: &f$150,000'
           - '&7'
@@ -964,17 +975,20 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: IRON_ORE
+        type: LAPIS_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e3'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f65% Đá'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f14% Sắt'
-          - ' &7 - &f6% Redstone'
+          - ' &7 - &f40% Block Than'
+          - ' &7 - &f40% Block Sắt'
+          - ' &7 - &f20% Block Redstone'
           - '&7'
           - '&3Giá: &f$150,000'
           - '&7'
@@ -985,18 +999,26 @@ upgrades:
           pitch: 0.2
     '3':
       has-next-level:
-        type: LAPIS_ORE
+        type: GOLD_BLOCK
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '3':
+      has-next-level:
+        type: GOLD_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e4'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f50% Đá'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f16% Sắt'
-          - ' &7 - &f11% Redstone'
-          - ' &7 - &f8% Lapis'
+          - ' &7 - &f30% Block Than'
+          - ' &7 - &f30% Block Sắt'
+          - ' &7 - &f25% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
           - '&7'
           - '&3Giá: &f$300,000'
           - '&7'
@@ -1006,18 +1028,21 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: LAPIS_ORE
+        type: GOLD_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e4'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f50% Đá'
-          - ' &7 - &f15% Than'
-          - ' &7 - &f16% Sắt'
-          - ' &7 - &f11% Redstone'
-          - ' &7 - &f8% Lapis'
+          - ' &7 - &f30% Block Than'
+          - ' &7 - &f30% Block Sắt'
+          - ' &7 - &f25% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
           - '&7'
           - '&3Giá: &f$300,000'
           - '&7'
@@ -1028,19 +1053,27 @@ upgrades:
           pitch: 0.2
     '4':
       has-next-level:
-        type: GOLD_ORE
+        type: DIAMOND_BLOCK
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '4':
+      has-next-level:
+        type: DIAMOND_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e5'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f40% Đá'
-          - ' &7 - &f13% Than'
-          - ' &7 - &f17% Sắt'
-          - ' &7 - &f12% Redstone'
-          - ' &7 - &f10% Lapis'
-          - ' &7 - &f8% Vàng'
+          - ' &7 - &f25% Block Than'
+          - ' &7 - &f25% Block Sắt'
+          - ' &7 - &f20% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
           - '&7'
           - '&3Giá: &f$600,000'
           - '&7'
@@ -1050,19 +1083,22 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: GOLD_ORE
+        type: DIAMOND_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e5'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f40% Đá'
-          - ' &7 - &f13% Than'
-          - ' &7 - &f17% Sắt'
-          - ' &7 - &f12% Redstone'
-          - ' &7 - &f10% Lapis'
-          - ' &7 - &f8% Vàng'
+          - ' &7 - &f25% Block Than'
+          - ' &7 - &f25% Block Sắt'
+          - ' &7 - &f20% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
           - '&7'
           - '&3Giá: &f$600,000'
           - '&7'
@@ -1073,20 +1109,28 @@ upgrades:
           pitch: 0.2
     '5':
       has-next-level:
-        type: DIAMOND_ORE
+        type: EMERALD_BLOCK
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '5':
+      has-next-level:
+        type: EMERALD_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e6'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f30% Đá'
-          - ' &7 - &f12% Than'
-          - ' &7 - &f18% Sắt'
-          - ' &7 - &f13% Redstone'
-          - ' &7 - &f12% Lapis'
-          - ' &7 - &f10% Vàng'
-          - ' &7 - &b5% Kim Cương'
+          - ' &7 - &f20% Block Than'
+          - ' &7 - &f20% Block Sắt'
+          - ' &7 - &f20% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b10% Block Kim Cương'
           - '&7'
           - '&3Giá: &f$1,500,000'
           - '&7'
@@ -1096,20 +1140,23 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_ORE
+        type: EMERALD_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e6'
           - '&7'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
+          - '&7'
           - '&3Tỉ lệ:'
-          - ' &7 - &f30% Đá'
-          - ' &7 - &f12% Than'
-          - ' &7 - &f18% Sắt'
-          - ' &7 - &f13% Redstone'
-          - ' &7 - &f12% Lapis'
-          - ' &7 - &f10% Vàng'
-          - ' &7 - &b5% Kim Cương'
+          - ' &7 - &f20% Block Than'
+          - ' &7 - &f20% Block Sắt'
+          - ' &7 - &f20% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b10% Block Kim Cương'
           - '&7'
           - '&3Giá: &f$1,500,000'
           - '&7'
@@ -1120,23 +1167,31 @@ upgrades:
           pitch: 0.2
     '6':
       has-next-level:
-        type: DIAMOND_ORE
+        type: NETHERITE_BLOCK
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '6':
+      has-next-level:
+        type: NETHERITE_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e7'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f25% Đá'
-          - ' &7 - &f10% Than'
-          - ' &7 - &f17% Sắt'
-          - ' &7 - &f14% Redstone'
-          - ' &7 - &f13% Lapis'
-          - ' &7 - &f12% Vàng'
-          - ' &7 - &b7% Kim Cương'
-          - ' &7 - &a2% Ngọc Lục Bảo'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$3,500,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f15% Block Than'
+          - ' &7 - &f20% Block Sắt'
+          - ' &7 - &f15% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b15% Block Kim Cương'
+          - ' &7 - &a5% Block Ngọc Lục Bảo'
+          - '&7'
+          - '&3Giá: &f$2,500,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1144,23 +1199,26 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_ORE
+        type: NETHERITE_BLOCK
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e7'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f25% Đá'
-          - ' &7 - &f10% Than'
-          - ' &7 - &f17% Sắt'
-          - ' &7 - &f14% Redstone'
-          - ' &7 - &f13% Lapis'
-          - ' &7 - &f12% Vàng'
-          - ' &7 - &b7% Kim Cương'
-          - ' &7 - &a2% Ngọc Lục Bảo'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$3,500,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f15% Block Than'
+          - ' &7 - &f20% Block Sắt'
+          - ' &7 - &f15% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b15% Block Kim Cương'
+          - ' &7 - &a5% Block Ngọc Lục Bảo'
+          - '&7'
+          - '&3Giá: &f$2,500,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1169,24 +1227,32 @@ upgrades:
           pitch: 0.2
     '7':
       has-next-level:
-        type: DIAMOND_ORE
+        type: BEACON
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '7':
+      has-next-level:
+        type: BEACON
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e8'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f20% Đá'
-          - ' &7 - &f8% Than'
-          - ' &7 - &f17% Sắt'
-          - ' &7 - &f15% Redstone'
-          - ' &7 - &f14% Lapis'
-          - ' &7 - &f13% Vàng'
-          - ' &7 - &b9% Kim Cương'
-          - ' &7 - &a3% Ngọc Lục Bảo'
-          - ' &7 - &41% Mảnh Netherite'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$7,000,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f10% Block Than'
+          - ' &7 - &f15% Block Sắt'
+          - ' &7 - &f15% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b15% Block Kim Cương'
+          - ' &7 - &a10% Block Ngọc Lục Bảo'
+          - ' &7 - &45% Block Netherite'
+          - '&7'
+          - '&3Giá: &f$5,000,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1194,24 +1260,27 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_ORE
+        type: BEACON
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e8'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f20% Đá'
-          - ' &7 - &f8% Than'
-          - ' &7 - &f17% Sắt'
-          - ' &7 - &f15% Redstone'
-          - ' &7 - &f14% Lapis'
-          - ' &7 - &f13% Vàng'
-          - ' &7 - &b9% Kim Cương'
-          - ' &7 - &a3% Ngọc Lục Bảo'
-          - ' &7 - &41% Mảnh Netherite'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$7,000,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f10% Block Than'
+          - ' &7 - &f15% Block Sắt'
+          - ' &7 - &f15% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b15% Block Kim Cương'
+          - ' &7 - &a10% Block Ngọc Lục Bảo'
+          - ' &7 - &45% Block Netherite'
+          - '&7'
+          - '&3Giá: &f$5,000,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1220,24 +1289,32 @@ upgrades:
           pitch: 0.2
     '8':
       has-next-level:
-        type: DIAMOND_ORE
+        type: BEACON
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '8':
+      has-next-level:
+        type: BEACON
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e9'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f15% Đá'
-          - ' &7 - &f7% Than'
-          - ' &7 - &f16% Sắt'
-          - ' &7 - &f16% Redstone'
-          - ' &7 - &f15% Lapis'
-          - ' &7 - &f14% Vàng'
-          - ' &7 - &b10% Kim Cương'
-          - ' &7 - &a4% Ngọc Lục Bảo'
-          - ' &7 - &43% Mảnh Netherite'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$12,000,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f5% Block Than'
+          - ' &7 - &f10% Block Sắt'
+          - ' &7 - &f15% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b20% Block Kim Cương'
+          - ' &7 - &a10% Block Ngọc Lục Bảo'
+          - ' &7 - &410% Block Netherite'
+          - '&7'
+          - '&3Giá: &f$10,000,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1245,24 +1322,27 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_ORE
+        type: BEACON
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e9'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f15% Đá'
-          - ' &7 - &f7% Than'
-          - ' &7 - &f16% Sắt'
-          - ' &7 - &f16% Redstone'
-          - ' &7 - &f15% Lapis'
-          - ' &7 - &f14% Vàng'
-          - ' &7 - &b10% Kim Cương'
-          - ' &7 - &a4% Ngọc Lục Bảo'
-          - ' &7 - &43% Mảnh Netherite'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$12,000,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f5% Block Than'
+          - ' &7 - &f10% Block Sắt'
+          - ' &7 - &f15% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b20% Block Kim Cương'
+          - ' &7 - &a10% Block Ngọc Lục Bảo'
+          - ' &7 - &410% Block Netherite'
+          - '&7'
+          - '&3Giá: &f$10,000,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1271,24 +1351,32 @@ upgrades:
           pitch: 0.2
     '9':
       has-next-level:
-        type: DIAMOND_BLOCK
+        type: BEACON
+        name: '&3&lNâng Cáp Máy Qu᷷ng &a(Có thể mua)'
+        name: '&3&lNÃ¢ng CÃ¡p MÃ¡y Quá··ng &a(CÃ³ thá» mua)'
+    '9':
+      has-next-level:
+        type: BEACON
         name: '&3&lNâng Cấp Máy Quặng &a(Có thể mua)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e10'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f10% Đá'
-          - ' &7 - &f5% Than'
-          - ' &7 - &f15% Sắt'
-          - ' &7 - &f17% Redstone'
-          - ' &7 - &f16% Lapis'
-          - ' &7 - &f15% Vàng'
-          - ' &7 - &b12% Kim Cương'
-          - ' &7 - &a5% Ngọc Lục Bảo'
-          - ' &7 - &45% Mảnh Netherite'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$25,000,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f5% Block Than'
+          - ' &7 - &f10% Block Sắt'
+          - ' &7 - &f10% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b20% Block Kim Cương'
+          - ' &7 - &a15% Block Ngọc Lục Bảo'
+          - ' &7 - &410% Block Netherite'
+          - '&7'
+          - '&3Giá: &f$15,000,000'
           - '&7'
           - '&aNhấp để nâng cấp.'
         sound:
@@ -1296,24 +1384,27 @@ upgrades:
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_BLOCK
+        type: BEACON
         name: '&3&lNâng Cấp Máy Quặng &c(Không đủ điều kiện)'
         lore:
           - '&7'
           - '&3Cấp Tiếp Theo: &e10'
           - '&7'
-          - '&3Tỉ lệ:'
-          - ' &7 - &f10% Đá'
-          - ' &7 - &f5% Than'
-          - ' &7 - &f15% Sắt'
-          - ' &7 - &f17% Redstone'
-          - ' &7 - &f16% Lapis'
-          - ' &7 - &f15% Vàng'
-          - ' &7 - &b12% Kim Cương'
-          - ' &7 - &a5% Ngọc Lục Bảo'
-          - ' &7 - &45% Mảnh Netherite'
+          - '&7Nâng cấp máy tạo quặng sẽ'
+          - '&7tăng tỉ lệ ra block quặng'
+          - '&7từ máy tạo quặng của đảo bạn.'
           - '&7'
-          - '&3Giá: &f$25,000,000'
+          - '&3Tỉ lệ:'
+          - ' &7 - &f5% Block Than'
+          - ' &7 - &f10% Block Sắt'
+          - ' &7 - &f10% Block Redstone'
+          - ' &7 - &f15% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b20% Block Kim Cương'
+          - ' &7 - &a15% Block Ngọc Lục Bảo'
+          - ' &7 - &410% Block Netherite'
+          - '&7'
+          - '&3Giá: &f$15,000,000'
           - '&7'
           - '&cBạn không đủ tiền.'
         sound:
@@ -1322,43 +1413,41 @@ upgrades:
           pitch: 0.2
     '10':
       has-next-level:
-        type: DIAMOND_BLOCK
+        type: BEACON
         name: '&c&lCẤP TỐI ĐA'
         lore:
           - '&7Bạn đã đạt cấp độ tối đa'
           - '&7của máy tạo quặng!'
           - '&7'
           - '&3Tỉ lệ hiện tại:'
-          - ' &7 - &f5% Đá'
-          - ' &7 - &f3% Than'
-          - ' &7 - &f14% Sắt'
-          - ' &7 - &f18% Redstone'
-          - ' &7 - &f17% Lapis'
-          - ' &7 - &f16% Vàng'
-          - ' &7 - &b15% Kim Cương'
-          - ' &7 - &a7% Ngọc Lục Bảo'
-          - ' &7 - &45% Mảnh Netherite'
+          - ' &7 - &f5% Block Than'
+          - ' &7 - &f5% Block Sắt'
+          - ' &7 - &f10% Block Redstone'
+          - ' &7 - &f10% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b25% Block Kim Cương'
+          - ' &7 - &a15% Block Ngọc Lục Bảo'
+          - ' &7 - &415% Block Netherite'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
           pitch: 0.2
       no-next-level:
-        type: DIAMOND_BLOCK
+        type: BEACON
         name: '&c&lCẤP TỐI ĐA'
         lore:
           - '&7Bạn đã đạt cấp độ tối đa'
           - '&7của máy tạo quặng!'
           - '&7'
           - '&3Tỉ lệ hiện tại:'
-          - ' &7 - &f5% Đá'
-          - ' &7 - &f3% Than'
-          - ' &7 - &f14% Sắt'
-          - ' &7 - &f18% Redstone'
-          - ' &7 - &f17% Lapis'
-          - ' &7 - &f16% Vàng'
-          - ' &7 - &b15% Kim Cương'
-          - ' &7 - &a7% Ngọc Lục Bảo'
-          - ' &7 - &45% Mảnh Netherite'
+          - ' &7 - &f5% Block Than'
+          - ' &7 - &f5% Block Sắt'
+          - ' &7 - &f10% Block Redstone'
+          - ' &7 - &f10% Block Lapis'
+          - ' &7 - &f15% Block Vàng'
+          - ' &7 - &b25% Block Kim Cương'
+          - ' &7 - &a15% Block Ngọc Lục Bảo'
+          - ' &7 - &415% Block Netherite'
         sound:
           type: BLOCK_ANVIL_PLACE
           volume: 0.2
