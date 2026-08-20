@@ -38,12 +38,12 @@ public class TrophiesMainMenu implements InventoryHolder {
         ItemStack placedBtn = new ItemStack(matchMaterial("GOLD_BLOCK", "GOLD_BLOCK"));
         ItemMeta placedMeta = placedBtn.getItemMeta();
         if (placedMeta != null) {
-            placedMeta.setDisplayName("\u00a76\u00a7lTrophy Trên Đảo");
+            placedMeta.setDisplayName("\u00a76\u00a7lTrophy Tr\u00ean \u0110\u1ea3o");
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Xem các Trophy đang được");
-            lore.add("\u00a77trưng bày trên đảo của bạn.");
+            lore.add("\u00a77Xem c\u00e1c Trophy \u0111ang \u0111\u01b0\u1ee3c");
+            lore.add("\u00a77tr\u01b0ng b\u00e0y tr\u00ean \u0111\u1ea3o c\u1ee7a b\u1ea1n.");
             lore.add("");
-            lore.add("\u00a7e\u25b6 Nhấn để mở!");
+            lore.add("\u00a7e\u25b6 Nh\u1ea5n \u0111\u1ec3 m\u1edf!");
             placedMeta.setLore(lore);
             placedBtn.setItemMeta(placedMeta);
         }
@@ -53,12 +53,12 @@ public class TrophiesMainMenu implements InventoryHolder {
         ItemStack collectionBtn = new ItemStack(matchMaterial("BOOK", "BOOK"));
         ItemMeta collectionMeta = collectionBtn.getItemMeta();
         if (collectionMeta != null) {
-            collectionMeta.setDisplayName("\u00a7b\u00a7lBộ Sưu Tập Trophy");
+            collectionMeta.setDisplayName("\u00a7b\u00a7lB\u1ed9 S\u01b0u T\u1eadp Trophy");
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Xem toàn bộ danh sách");
-            lore.add("\u00a77Trophy có trong máy chủ.");
+            lore.add("\u00a77Xem to\u00e0n b\u1ed9 danh s\u00e1ch");
+            lore.add("\u00a77Trophy c\u00f3 trong m\u00e1y ch\u1ee7.");
             lore.add("");
-            lore.add("\u00a7e\u25b6 Nhấn để mở!");
+            lore.add("\u00a7e\u25b6 Nh\u1ea5n \u0111\u1ec3 m\u1edf!");
             collectionMeta.setLore(lore);
             collectionBtn.setItemMeta(collectionMeta);
         }

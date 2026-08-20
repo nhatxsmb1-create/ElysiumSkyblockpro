@@ -23,8 +23,8 @@ public class TrophyManager {
     private static final String PDC_KEY = "trophies-placed";
     private static final String ENTRY_SEPARATOR = "|";
     private static final String FIELD_SEPARATOR = ",";
-    private static final String ITEM_PREFIX = "\u00a76\u00a7l\ud83c\udfc6 Trophy: ";
-    private static final String AUTHENTIC_LORE = "Má»—i Trophy mang láº¡i má»™t buff riĂªng biá»‡t";
+    private static final String ITEM_PREFIX = "\u00a7f\ud83c\udfc6 Trophy: ";
+    private static final String AUTHENTIC_LORE = "M\u1ed7i Trophy mang l\u1ea1i m\u1ed9t buff ri\u00eang bi\u1ec7t";
 
     private final TrophiesModule module;
     private final Random random = new Random();
@@ -77,11 +77,11 @@ public class TrophyManager {
 
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(ITEM_PREFIX + info.getName());
+            meta.setDisplayName(ITEM_PREFIX + org.bukkit.ChatColor.translateAlternateColorCodes('&', info.getName()));
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Pháº§n thÆ°á»Ÿng tá»« Island Event.");
-            lore.add("\u00a77Äáº·t lĂªn Ä‘áº£o Ä‘á»ƒ trÆ°ng bĂ y trong");
-            lore.add("\u00a77Trophy Hall vĂ  nháº­n buff!");
+            lore.add("\u00a77Ph\u1ea7n th\u01b0\u1edfng t\u1eeb Island Event.");
+            lore.add("\u00a77\u0110\u1eb7t l\u00ean \u0111\u1ea3o \u0111\u1ec3 tr\u01b0ng b\u00e0y trong");
+            lore.add("\u00a77Trophy Hall v\u00e0 nh\u1eadn buff!");
             lore.add("");
             lore.add("\u00a7e" + AUTHENTIC_LORE + ".");
             
@@ -92,10 +92,6 @@ public class TrophyManager {
         return item;
     }
 
-    /**
-     * Identifies a trophy item securely without relying on formatting codes
-     * that can be stripped by Paper's Component serializer.
-     */
     public String getTrophyId(ItemStack item) {
         if (item == null || !item.hasItemMeta())
             return null;
@@ -103,8 +99,6 @@ public class TrophyManager {
         if (meta == null || !meta.hasDisplayName() || !meta.hasLore())
             return null;
             
-        // 1. Verify it has the authentic lore to prevent anvil spoofing.
-        // Players cannot modify lore in vanilla anvils.
         boolean isAuthentic = false;
         for (String line : meta.getLore()) {
             if (line.contains(AUTHENTIC_LORE)) {
@@ -116,10 +110,9 @@ public class TrophyManager {
         if (!isAuthentic)
             return null;
             
-        // 2. Match the display name to find the Trophy ID
         String displayName = meta.getDisplayName();
         for (Map.Entry<String, TrophyInfo> entry : getTrophies().entrySet()) {
-            String expectedName = ITEM_PREFIX + entry.getValue().getName();
+            String expectedName = ITEM_PREFIX + org.bukkit.ChatColor.translateAlternateColorCodes('&', entry.getValue().getName());
             if (displayName.equals(expectedName)) {
                 return entry.getKey();
             }
@@ -132,9 +125,24 @@ public class TrophyManager {
         return random.nextDouble() * 100.0 < module.getConfiguration().getDropChance();
     }
 
-    // â”€â”€ Placed trophies storage (island PersistentDataContainer) â”€â”€
-
-    public java.util.Map<Location, String> getPlacedTrophyLocations(Island island) { java.util.Map<Location, String> locs = new java.util.HashMap<>(); for (String entry : getPlacedTrophies(island)) { String[] parts = entry.split(FIELD_SEPARATOR); if (parts.length >= 4) { org.bukkit.World world = org.bukkit.Bukkit.getWorld(parts[1]); if (world != null) { try { int x = Integer.parseInt(parts[2]); int y = Integer.parseInt(parts[3]); int z = Integer.parseInt(parts[4]); locs.put(new Location(world, x, y, z), parts[0]); } catch (Exception ignored) {} } } } return locs; }
+    public java.util.Map<Location, String> getPlacedTrophyLocations(Island island) { 
+        java.util.Map<Location, String> locs = new java.util.HashMap<>(); 
+        for (String entry : getPlacedTrophies(island)) { 
+            String[] parts = entry.split(FIELD_SEPARATOR); 
+            if (parts.length >= 4) { 
+                org.bukkit.World world = org.bukkit.Bukkit.getWorld(parts[1]); 
+                if (world != null) { 
+                    try { 
+                        int x = Integer.parseInt(parts[2]); 
+                        int y = Integer.parseInt(parts[3]); 
+                        int z = Integer.parseInt(parts[4]); 
+                        locs.put(new Location(world, x, y, z), parts[0]); 
+                    } catch (Exception ignored) {} 
+                } 
+            } 
+        } 
+        return locs; 
+    }
 
     public List<String> getPlacedTrophies(Island island) {
         return placedTrophiesCache.computeIfAbsent(island, this::loadPlacedTrophies);
@@ -155,7 +163,6 @@ public class TrophyManager {
     private void setPlacedTrophies(Island island, List<String> entries) {
         island.getPersistentDataContainer().put(PDC_KEY, PersistentDataType.STRING,
                 String.join(ENTRY_SEPARATOR, entries));
-        // Clear caches so they update on next tick
         effectsCache.remove(island);
         placedTrophiesCache.put(island, new ArrayList<>(entries));
     }
@@ -166,10 +173,6 @@ public class TrophyManager {
         setPlacedTrophies(island, entries);
     }
 
-    /**
-     * Removes the placed trophy entry matching the location and returns
-     * the trophy id that was removed, or null if nothing matched.
-     */
     public String removePlacedTrophy(Island island, Location location) {
         List<String> entries = new ArrayList<>(getPlacedTrophies(island));
         String locationKey = locationKey(location);
@@ -206,9 +209,6 @@ public class TrophyManager {
                 FIELD_SEPARATOR + location.getBlockY() + FIELD_SEPARATOR + location.getBlockZ();
     }
 
-    /**
-     * Number of distinct trophy types currently placed on the island.
-     */
     public int getPlacedTrophyCount(Island island) {
         Set<String> distinct = new HashSet<>();
         for (String entry : getPlacedTrophies(island)) {
@@ -229,9 +229,6 @@ public class TrophyManager {
         return count;
     }
 
-    /**
-     * Distinct trophy ids currently placed on the island.
-     */
     public Set<String> getPlacedTrophyIds(Island island) {
         Set<String> distinct = new HashSet<>();
         for (String entry : getPlacedTrophies(island)) {
@@ -242,10 +239,6 @@ public class TrophyManager {
         return distinct;
     }
 
-    /**
-     * Potion effects granted by the placed trophies.
-     * Heavily optimized with caching to prevent lag from 8-second loops.
-     */
     public List<PotionEffect> getEffectsForIsland(Island island) {
         if (!effectsCache.containsKey(island)) {
             List<PotionEffect> result = new ArrayList<>();
@@ -258,6 +251,4 @@ public class TrophyManager {
         }
         return effectsCache.get(island);
     }
-
 }
-

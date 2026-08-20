@@ -13,7 +13,7 @@ drop-chance: 35.0
 # particle: Loại hiệu ứng Particle bao quanh trophy (vd: FLAME, PORTAL, CLOUD, END_ROD)
 trophies:
   tornado:
-    name: 'Lốc Xoáy Tàn Phá'
+    name: '&3&lLốc Xoáy Tàn Phá'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'CLOUD'
@@ -22,7 +22,7 @@ trophies:
         - 'FAST_DIGGING:2'
         - 'SPEED:1'
   volcano:
-    name: 'Trái Tim Núi Lửa'
+    name: '&c&lTrái Tim Núi Lửa'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'FLAME'
@@ -33,7 +33,7 @@ trophies:
       bonuses:
         mob-drops: 0.05
   ancient-tree:
-    name: 'Dryad Cổ Đại'
+    name: '&a&lDryad Cổ Đại'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'VILLAGER_HAPPY'
@@ -43,7 +43,7 @@ trophies:
       bonuses:
         crop-growth: 0.1
   celestial:
-    name: 'Mảnh Thiên Thể'
+    name: '&b&lMảnh Thiên Thể'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'END_ROD'
@@ -52,7 +52,7 @@ trophies:
         - 'NIGHT_VISION:1'
         - 'JUMP:2'
   invasion:
-    name: 'Kẻ Xâm Lược'
+    name: '&5&lKẻ Xâm Lược'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'SMOKE_LARGE'
@@ -62,7 +62,7 @@ trophies:
       bonuses:
         mob-drops: 0.1
   meteor-shower:
-    name: 'Thiên Thạch Rực Cháy'
+    name: '&6&lThiên Thạch Rực Cháy'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'DRIP_LAVA'
@@ -71,7 +71,7 @@ trophies:
         - 'FAST_DIGGING:3'
         - 'FIRE_RESISTANCE:1'
   space-rift:
-    name: 'Cổng Không Gian'
+    name: '&d&lCổng Không Gian'
     material: 'PLAYER_HEAD'
     texture: ''
     particle: 'PORTAL'

@@ -27,7 +27,7 @@ public class TrophiesPlacedMenu implements InventoryHolder {
         this.module = module;
         this.island = island;
         this.player = player;
-        this.inventory = Bukkit.createInventory(this, 54, "\u00a78\ud83c\udfc6 Trophy \u00a78\u25b6 Trên Đảo");
+        this.inventory = Bukkit.createInventory(this, 54, "\u00a78\ud83c\udfc6 Trophy \u00a78\u25b6 Tr\u00ean \u0110\u1ea3o");
         refresh();
     }
 
@@ -60,10 +60,10 @@ public class TrophiesPlacedMenu implements InventoryHolder {
                 List<String> lore = meta.getLore();
                 if (lore == null) lore = new ArrayList<>();
                 lore.add("");
-                lore.add("\u00a7a\u25b6 Đang trưng bày: \u00a7e" + count);
+                lore.add("\u00a7a\u25b6 \u0110ang tr\u01b0ng b\u00e0y: \u00a7e" + count);
                 
                 if (!info.getPotions().isEmpty()) {
-                    lore.add("\u00a7d\u25b6 Buff nhận được:");
+                    lore.add("\u00a7d\u25b6 Buff nh\u1eadn \u0111\u01b0\u1ee3c:");
                     for (PotionEffect effect : info.getPotions()) {
                         String typeName = effect.getType().getName();
                         int level = effect.getAmplifier() + 1;
@@ -72,7 +72,7 @@ public class TrophiesPlacedMenu implements InventoryHolder {
                 }
                 
                 if (!info.getBonuses().isEmpty()) {
-                    lore.add("\u00a7b\u25b6 Buff thưởng thêm:");
+                    lore.add("\u00a7b\u25b6 Buff th\u01b0\u1edfng th\u00eam:");
                     for (Map.Entry<String, Double> bonus : info.getBonuses().entrySet()) {
                         lore.add("  \u00a77- \u00a7f" + bonus.getKey() + ": \u00a7a+" + (bonus.getValue() * 100) + "%");
                     }
@@ -91,7 +91,7 @@ public class TrophiesPlacedMenu implements InventoryHolder {
         ItemStack backBtn = new ItemStack(matchMaterial("ARROW", "ARROW"));
         ItemMeta backMeta = backBtn.getItemMeta();
         if (backMeta != null) {
-            backMeta.setDisplayName("\u00a7c\u00a7lQuay Lại");
+            backMeta.setDisplayName("\u00a7c\u00a7lQuay L\u1ea1i");
             backBtn.setItemMeta(backMeta);
         }
         inventory.setItem(49, backBtn);

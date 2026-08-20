@@ -45,9 +45,9 @@ public class TrophyListener implements Listener {
         module.getTrophyManager().addPlacedTrophy(island, trophyId, block.getLocation());
 
         int count = module.getTrophyManager().getPlacedTrophyCount(island);
-        e.getPlayer().sendMessage("\u00a76\ud83c\udfc6 \u00a7eĐã trưng bày trophy \u00a76" +
+        e.getPlayer().sendMessage("\u00a76\ud83c\udfc6 \u00a7e\u0110\u00e3 tr\u01b0ng b\u00e0y trophy \u00a76" +
                 module.getTrophyManager().getTrophies().get(trophyId).getName() +
-                " \u00a77(" + count + "/" + module.getTrophyManager().getTrophies().size() + " loại)");
+                " \u00a77(" + count + "/" + module.getTrophyManager().getTrophies().size() + " lo\u1ea1i)");
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -68,7 +68,7 @@ public class TrophyListener implements Listener {
             block.getWorld().dropItemNaturally(block.getLocation().add(0.5, 0.5, 0.5), trophyItem);
 
         Player player = e.getPlayer();
-        player.sendMessage("\u00a76\ud83c\udfc6 \u00a7cĐã tháo trophy khỏi Trophy Hall. Buff của đảo đã được tính lại.");
+        player.sendMessage("\u00a76\ud83c\udfc6 \u00a7c\u0110\u00e3 th\u00e1o trophy kh\u1ecfi Trophy Hall. Buff c\u1ee7a \u0111\u1ea3o \u0111\u00e3 \u0111\u01b0\u1ee3c t\u00ednh l\u1ea1i.");
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -112,7 +112,7 @@ public class TrophyListener implements Listener {
                 if (trophyItem != null) {
                     Player player = (Player) e.getWhoClicked();
                     player.getInventory().addItem(trophyItem);
-                    player.sendMessage("\u00a76\ud83c\udfc6 \u00a7eBạn đã lấy 1 " + trophyItem.getItemMeta().getDisplayName());
+                    player.sendMessage("\u00a76\ud83c\udfc6 \u00a7eB\u1ea1n \u0111\u00e3 l\u1ea5y 1 " + trophyItem.getItemMeta().getDisplayName());
                 }
             }
         }
