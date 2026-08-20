@@ -24,7 +24,7 @@ public class TrophyManager {
     private static final String ENTRY_SEPARATOR = "|";
     private static final String FIELD_SEPARATOR = ",";
     private static final String ITEM_PREFIX = "\u00a76\u00a7l\ud83c\udfc6 Trophy: ";
-    private static final String HIDDEN_PREFIX = "\u200B\u200C\u200D\u200E\u200F"; // Zero-width characters
+    private static final String AUTHENTIC_LORE = "Mỗi Trophy mang lại một buff riêng biệt";
 
     private final TrophiesModule module;
     private final Random random = new Random();
@@ -83,8 +83,7 @@ public class TrophyManager {
             lore.add("\u00a77Đặt lên đảo để trưng bày trong");
             lore.add("\u00a77Trophy Hall và nhận buff!");
             lore.add("");
-            // Append the zero-width hidden ID to the last visible line
-            lore.add("\u00a7eMỗi Trophy mang lại một buff riêng biệt." + encodeHiddenString(info.getId()));
+            lore.add("\u00a7e" + AUTHENTIC_LORE + ".");
             
             meta.setLore(lore);
             item.setItemMeta(meta);
@@ -94,20 +93,38 @@ public class TrophyManager {
     }
 
     /**
-     * Identifies a trophy item by its exact hidden ID.
+     * Identifies a trophy item securely without relying on formatting codes
+     * that can be stripped by Paper's Component serializer.
      */
     public String getTrophyId(ItemStack item) {
         if (item == null || !item.hasItemMeta())
             return null;
         ItemMeta meta = item.getItemMeta();
-        if (meta == null || !meta.hasLore())
+        if (meta == null || !meta.hasDisplayName() || !meta.hasLore())
             return null;
             
+        // 1. Verify it has the authentic lore to prevent anvil spoofing.
+        // Players cannot modify lore in vanilla anvils.
+        boolean isAuthentic = false;
         for (String line : meta.getLore()) {
-            if (line.contains(HIDDEN_PREFIX)) {
-                return decodeHiddenString(line);
+            if (line.contains(AUTHENTIC_LORE)) {
+                isAuthentic = true;
+                break;
             }
         }
+        
+        if (!isAuthentic)
+            return null;
+            
+        // 2. Match the display name to find the Trophy ID
+        String displayName = meta.getDisplayName();
+        for (Map.Entry<String, TrophyInfo> entry : getTrophies().entrySet()) {
+            String expectedName = ITEM_PREFIX + entry.getValue().getName();
+            if (displayName.equals(expectedName)) {
+                return entry.getKey();
+            }
+        }
+        
         return null;
     }
 
@@ -238,46 +255,6 @@ public class TrophyManager {
             effectsCache.put(island, result);
         }
         return effectsCache.get(island);
-    }
-
-    private String encodeHiddenString(String str) {
-        StringBuilder sb = new StringBuilder(HIDDEN_PREFIX);
-        for (char c : str.toCharArray()) {
-            for (int i = 0; i < 16; i++) {
-                if ((c & (1 << i)) != 0) {
-                    sb.append('\u200C'); // 1
-                } else {
-                    sb.append('\u200B'); // 0
-                }
-            }
-        }
-        return sb.toString();
-    }
-
-    private String decodeHiddenString(String hidden) {
-        int idx = hidden.indexOf(HIDDEN_PREFIX);
-        if (idx == -1) return null;
-        
-        String data = hidden.substring(idx + HIDDEN_PREFIX.length());
-        StringBuilder sb = new StringBuilder();
-        
-        char c = 0;
-        int bitPos = 0;
-        for (char d : data.toCharArray()) {
-            if (d == '\u200C') {
-                c |= (1 << bitPos);
-                bitPos++;
-            } else if (d == '\u200B') {
-                bitPos++;
-            }
-            
-            if (bitPos == 16) {
-                sb.append(c);
-                c = 0;
-                bitPos = 0;
-            }
-        }
-        return sb.toString();
     }
 
 }

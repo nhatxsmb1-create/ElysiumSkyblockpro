@@ -1,0 +1,141 @@
+package com.bgsoftware.superiorskyblock.module.trophies;
+
+import com.bgsoftware.superiorskyblock.api.island.Island;
+import com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule.TrophyInfo;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+public class TrophiesPlacedMenu implements InventoryHolder {
+
+    private final Inventory inventory;
+    private final TrophiesModule module;
+    private final Island island;
+    private final Player player;
+
+    public TrophiesPlacedMenu(TrophiesModule module, Island island, Player player) {
+        this.module = module;
+        this.island = island;
+        this.player = player;
+        this.inventory = Bukkit.createInventory(this, 54, "\u00a78\ud83c\udfc6 Trophy \u00a78\u25b6 Trên Đảo");
+        refresh();
+    }
+
+    public void open() {
+        player.openInventory(inventory);
+    }
+
+    public void refresh() {
+        inventory.clear();
+
+        Set<String> placedIds = module.getTrophyManager().getPlacedTrophyIds(island);
+        
+        int rowStart = 20; 
+        int slot = rowStart;
+        if (placedIds.size() <= 7) {
+            slot = 22 - (placedIds.size() / 2); 
+        }
+
+        for (String id : placedIds) {
+            TrophyInfo info = module.getTrophyManager().getTrophies().get(id);
+            if (info == null) continue;
+
+            ItemStack item = module.getTrophyManager().createTrophyItem(id);
+            if (item == null) continue;
+
+            int count = module.getTrophyManager().getPlacedTrophyCount(island, id);
+
+            ItemMeta meta = item.getItemMeta();
+            if (meta != null) {
+                List<String> lore = meta.getLore();
+                if (lore == null) lore = new ArrayList<>();
+                lore.add("");
+                lore.add("\u00a7a\u25b6 Đang trưng bày: \u00a7e" + count);
+                
+                if (!info.getPotions().isEmpty()) {
+                    lore.add("\u00a7d\u25b6 Buff nhận được:");
+                    for (PotionEffect effect : info.getPotions()) {
+                        String typeName = effect.getType().getName();
+                        int level = effect.getAmplifier() + 1;
+                        lore.add("  \u00a77- \u00a7f" + typeName + " " + level);
+                    }
+                }
+                
+                if (info.getBonusMultiplier() > 0) {
+                    lore.add("\u00a7b\u25b6 Tăng trưởng: \u00a7a+" + (info.getBonusMultiplier() * 100) + "%");
+                }
+                
+                meta.setLore(lore);
+                item.setItemMeta(meta);
+            }
+
+            inventory.setItem(slot++, item);
+            if (slot % 9 == 8) 
+                slot += 2;
+        }
+
+        // Back button
+        ItemStack backBtn = new ItemStack(matchMaterial("ARROW", "ARROW"));
+        ItemMeta backMeta = backBtn.getItemMeta();
+        if (backMeta != null) {
+            backMeta.setDisplayName("\u00a7c\u00a7lQuay Lại");
+            backBtn.setItemMeta(backMeta);
+        }
+        inventory.setItem(49, backBtn);
+
+        ItemStack filler = new ItemStack(matchMaterial("YELLOW_STAINED_GLASS_PANE", "STAINED_GLASS_PANE"));
+        if (filler.getType().name().equals("STAINED_GLASS_PANE"))
+            filler.setDurability((short) 4);
+        ItemMeta fillerMeta = filler.getItemMeta();
+        if (fillerMeta != null) {
+            fillerMeta.setDisplayName("\u00a7f");
+            filler.setItemMeta(fillerMeta);
+        }
+        
+        for (int i = 0; i < inventory.getSize(); i++) {
+            if (inventory.getItem(i) == null) {
+                if (i < 9 || i >= 45 || i % 9 == 0 || i % 9 == 8) {
+                    inventory.setItem(i, filler);
+                }
+            }
+        }
+    }
+
+    private static Material matchMaterial(String... names) {
+        for (String name : names) {
+            try {
+                Material material = Material.matchMaterial(name);
+                if (material != null)
+                    return material;
+            } catch (Exception ignored) {
+            }
+        }
+        return Material.STONE;
+    }
+
+    public TrophiesModule getModule() {
+        return module;
+    }
+
+    public Island getIsland() {
+        return island;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    @Override
+    public Inventory getInventory() {
+        return inventory;
+    }
+}

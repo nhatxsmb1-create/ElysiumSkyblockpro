@@ -3,7 +3,9 @@ package com.bgsoftware.superiorskyblock.module.trophies.listeners;
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule;
-import com.bgsoftware.superiorskyblock.module.trophies.TrophiesMenu;
+import com.bgsoftware.superiorskyblock.module.trophies.TrophiesMainMenu;
+import com.bgsoftware.superiorskyblock.module.trophies.TrophiesPlacedMenu;
+import com.bgsoftware.superiorskyblock.module.trophies.TrophiesCollectionMenu;
 import com.bgsoftware.superiorskyblock.module.trophies.AdminTrophiesMenu;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -59,8 +61,6 @@ public class TrophyListener implements Listener {
         if (trophyId == null)
             return;
 
-        // Cancel the vanilla break and remove the block manually so only the
-        // trophy item is dropped (BlockBreakEvent#setDropItems doesn't exist in 1.8)
         e.setCancelled(true);
         block.setType(org.bukkit.Material.AIR);
         ItemStack trophyItem = module.getTrophyManager().createTrophyItem(trophyId);
@@ -83,11 +83,28 @@ public class TrophyListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getInventory().getHolder() instanceof TrophiesMenu) {
+        if (e.getInventory().getHolder() instanceof TrophiesMainMenu) {
             e.setCancelled(true);
+            TrophiesMainMenu menu = (TrophiesMainMenu) e.getInventory().getHolder();
+            if (e.getRawSlot() == 11) {
+                new TrophiesPlacedMenu(menu.getModule(), menu.getIsland(), menu.getPlayer()).open();
+            } else if (e.getRawSlot() == 15) {
+                new TrophiesCollectionMenu(menu.getModule(), menu.getIsland(), menu.getPlayer()).open();
+            }
+        } else if (e.getInventory().getHolder() instanceof TrophiesPlacedMenu) {
+            e.setCancelled(true);
+            TrophiesPlacedMenu menu = (TrophiesPlacedMenu) e.getInventory().getHolder();
+            if (e.getRawSlot() == 49) {
+                new TrophiesMainMenu(menu.getModule(), menu.getIsland(), menu.getPlayer()).open();
+            }
+        } else if (e.getInventory().getHolder() instanceof TrophiesCollectionMenu) {
+            e.setCancelled(true);
+            TrophiesCollectionMenu menu = (TrophiesCollectionMenu) e.getInventory().getHolder();
+            if (e.getRawSlot() == 49) {
+                new TrophiesMainMenu(menu.getModule(), menu.getIsland(), menu.getPlayer()).open();
+            }
         } else if (e.getInventory().getHolder() instanceof AdminTrophiesMenu) {
             e.setCancelled(true);
-            
             ItemStack clicked = e.getCurrentItem();
             String trophyId = module.getTrophyManager().getTrophyId(clicked);
             if (trophyId != null) {

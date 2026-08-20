@@ -74,7 +74,7 @@ public class CmdTrophies implements SuperiorCommand {
             return;
         }
 
-        new TrophiesMenu(module, island, player).open(player);
+        new TrophiesMainMenu(module, island, player).open();
     }
 
     @Override
