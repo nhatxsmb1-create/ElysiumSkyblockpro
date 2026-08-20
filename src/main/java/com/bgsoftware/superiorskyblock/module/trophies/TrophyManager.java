@@ -24,7 +24,7 @@ public class TrophyManager {
     private static final String ENTRY_SEPARATOR = "|";
     private static final String FIELD_SEPARATOR = ",";
     private static final String ITEM_PREFIX = "\u00a76\u00a7l\ud83c\udfc6 Trophy: ";
-    private static final String HIDDEN_PREFIX = "\u00a7f\u00a7f\u00a7f"; // Hidden prefix to identify trophies
+    private static final String HIDDEN_PREFIX = "\u200B\u200C\u200D\u200E\u200F"; // Zero-width characters
 
     private final TrophiesModule module;
     private final Random random = new Random();
@@ -83,10 +83,8 @@ public class TrophyManager {
             lore.add("\u00a77Đặt lên đảo để trưng bày trong");
             lore.add("\u00a77Trophy Hall và nhận buff!");
             lore.add("");
-            lore.add("\u00a7eMỗi Trophy mang lại một buff riêng biệt.");
-            
-            // Add hidden ID to prevent anvil renaming exploits
-            lore.add(encodeHiddenString(info.getId()));
+            // Append the zero-width hidden ID to the last visible line
+            lore.add("\u00a7eMỗi Trophy mang lại một buff riêng biệt." + encodeHiddenString(info.getId()));
             
             meta.setLore(lore);
             item.setItemMeta(meta);
@@ -106,7 +104,7 @@ public class TrophyManager {
             return null;
             
         for (String line : meta.getLore()) {
-            if (line.startsWith(HIDDEN_PREFIX)) {
+            if (line.contains(HIDDEN_PREFIX)) {
                 return decodeHiddenString(line);
             }
         }
@@ -245,29 +243,39 @@ public class TrophyManager {
     private String encodeHiddenString(String str) {
         StringBuilder sb = new StringBuilder(HIDDEN_PREFIX);
         for (char c : str.toCharArray()) {
-            String hex = Integer.toHexString(c);
-            for (char h : hex.toCharArray()) {
-                sb.append('\u00a7').append(h);
+            for (int i = 0; i < 16; i++) {
+                if ((c & (1 << i)) != 0) {
+                    sb.append('\u200C'); // 1
+                } else {
+                    sb.append('\u200B'); // 0
+                }
             }
-            sb.append('\u00a7').append('k'); // separator
         }
         return sb.toString();
     }
 
     private String decodeHiddenString(String hidden) {
-        if (!hidden.startsWith(HIDDEN_PREFIX)) return null;
-        String stripped = hidden.replace("\u00a7", "");
-        if (!stripped.startsWith("fff")) return null;
-        stripped = stripped.substring(3);
-        String[] parts = stripped.split("k");
+        int idx = hidden.indexOf(HIDDEN_PREFIX);
+        if (idx == -1) return null;
+        
+        String data = hidden.substring(idx + HIDDEN_PREFIX.length());
         StringBuilder sb = new StringBuilder();
-        for (String part : parts) {
-            if (part.isEmpty()) continue;
-            try {
-                part = part.replaceAll("[^0-9a-fA-F]", ""); // Clean up any trailing Spigot formatting chars
-                if (part.isEmpty()) continue;
-                sb.append((char) Integer.parseInt(part, 16));
-            } catch (Exception ignored) {}
+        
+        char c = 0;
+        int bitPos = 0;
+        for (char d : data.toCharArray()) {
+            if (d == '\u200C') {
+                c |= (1 << bitPos);
+                bitPos++;
+            } else if (d == '\u200B') {
+                bitPos++;
+            }
+            
+            if (bitPos == 16) {
+                sb.append(c);
+                c = 0;
+                bitPos = 0;
+            }
         }
         return sb.toString();
     }
