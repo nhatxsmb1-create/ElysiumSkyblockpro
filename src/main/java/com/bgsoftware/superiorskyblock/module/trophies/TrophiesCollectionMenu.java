@@ -68,8 +68,11 @@ public class TrophiesCollectionMenu implements InventoryHolder {
                     }
                 }
                 
-                if (info.getBonusMultiplier() > 0) {
-                    lore.add("\u00a7b\u25b6 Tăng trưởng: \u00a7a+" + (info.getBonusMultiplier() * 100) + "%");
+                if (!info.getBonuses().isEmpty()) {
+                    lore.add("\u00a7b\u25b6 Buff thưởng thêm:");
+                    for (Map.Entry<String, Double> bonus : info.getBonuses().entrySet()) {
+                        lore.add("  \u00a77- \u00a7f" + bonus.getKey() + ": \u00a7a+" + (bonus.getValue() * 100) + "%");
+                    }
                 }
                 
                 meta.setLore(lore);
