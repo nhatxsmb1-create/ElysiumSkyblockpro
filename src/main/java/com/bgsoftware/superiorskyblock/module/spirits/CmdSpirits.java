@@ -3,9 +3,9 @@ package com.bgsoftware.superiorskyblock.module.spirits;
 import com.bgsoftware.superiorskyblock.api.SuperiorSkyblock;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
 import com.bgsoftware.superiorskyblock.api.island.Island;
+import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 
 import java.util.Collections;
 import java.util.List;
@@ -41,12 +41,12 @@ public class CmdSpirits implements SuperiorCommand {
 
     @Override
     public int getMinArgs() {
-        return 0;
+        return 1; // args[0] = "spirit"
     }
 
     @Override
     public int getMaxArgs() {
-        return 0;
+        return 1;
     }
 
     @Override

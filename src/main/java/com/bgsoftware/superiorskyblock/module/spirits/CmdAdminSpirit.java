@@ -42,12 +42,12 @@ public class CmdAdminSpirit implements SuperiorCommand {
 
     @Override
     public int getMinArgs() {
-        return 0;
+        return 2; // args[0] = "admin", args[1] = "spirit"
     }
 
     @Override
     public int getMaxArgs() {
-        return 2;
+        return 4; // args[0] = "admin", args[1] = "spirit", args[2] = "<player>", args[3] = "<type>"
     }
 
     @Override
@@ -62,7 +62,7 @@ public class CmdAdminSpirit implements SuperiorCommand {
 
     @Override
     public void execute(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
-        if (args.length == 0) {
+        if (args.length <= 2) {
             if (sender instanceof Player) {
                 new AdminSpiritsMenu(module).open((Player) sender);
             } else {
@@ -71,14 +71,14 @@ public class CmdAdminSpirit implements SuperiorCommand {
             return;
         }
 
-        if (args.length == 2) {
-            Player target = Bukkit.getPlayer(args[0]);
+        if (args.length == 4) {
+            Player target = Bukkit.getPlayer(args[2]);
             if (target == null) {
                 sender.sendMessage("\u00a7cKh\u00f4ng t\u00ecm th\u1ea5y ng\u01b0\u1eddi ch\u01a1i.");
                 return;
             }
 
-            String type = args[1].toLowerCase();
+            String type = args[3].toLowerCase();
             SpiritConfigInfo info = module.getConfiguration().getSpirits().get(type);
             if (info == null) {
                 sender.sendMessage("\u00a7cKh\u00f4ng t\u00ecm th\u1ea5y Tinh Linh " + type);
@@ -98,9 +98,9 @@ public class CmdAdminSpirit implements SuperiorCommand {
 
     @Override
     public List<String> tabComplete(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
-        if (args.length == 1) {
+        if (args.length == 3) {
             return null; // players
-        } else if (args.length == 2) {
+        } else if (args.length == 4) {
             return new ArrayList<>(module.getConfiguration().getSpirits().keySet());
         }
         return java.util.Collections.emptyList();
