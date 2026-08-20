@@ -36,7 +36,7 @@ trophies:
     name: '&a&lDryad Cổ Đại'
     material: 'PLAYER_HEAD'
     texture: ''
-    particle: 'VILLAGER_HAPPY'
+    particle: 'HAPPY_VILLAGER'
     buffs:
       potions:
         - 'REGENERATION:1'
@@ -55,7 +55,7 @@ trophies:
     name: '&5&lKẻ Xâm Lược'
     material: 'PLAYER_HEAD'
     texture: ''
-    particle: 'SMOKE_LARGE'
+    particle: 'LARGE_SMOKE'
     buffs:
       potions:
         - 'INCREASE_DAMAGE:1'
@@ -65,7 +65,7 @@ trophies:
     name: '&6&lThiên Thạch Rực Cháy'
     material: 'PLAYER_HEAD'
     texture: ''
-    particle: 'DRIP_LAVA'
+    particle: 'LAVA'
     buffs:
       potions:
         - 'FAST_DIGGING:3'

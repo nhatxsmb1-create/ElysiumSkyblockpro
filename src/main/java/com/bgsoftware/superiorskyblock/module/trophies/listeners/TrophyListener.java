@@ -7,6 +7,7 @@ import com.bgsoftware.superiorskyblock.module.trophies.TrophiesMainMenu;
 import com.bgsoftware.superiorskyblock.module.trophies.TrophiesPlacedMenu;
 import com.bgsoftware.superiorskyblock.module.trophies.TrophiesCollectionMenu;
 import com.bgsoftware.superiorskyblock.module.trophies.AdminTrophiesMenu;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -45,8 +46,8 @@ public class TrophyListener implements Listener {
         module.getTrophyManager().addPlacedTrophy(island, trophyId, block.getLocation());
 
         int count = module.getTrophyManager().getPlacedTrophyCount(island);
-        e.getPlayer().sendMessage("\u00a76\ud83c\udfc6 \u00a7e\u0110\u00e3 tr\u01b0ng b\u00e0y trophy \u00a76" +
-                module.getTrophyManager().getTrophies().get(trophyId).getName() +
+        e.getPlayer().sendMessage("\u00a76\ud83c\udfc6 \u00a7e\u0110\u00e3 tr\u01b0ng b\u00e0y trophy \u00a7f" +
+                org.bukkit.ChatColor.translateAlternateColorCodes('&', module.getTrophyManager().getTrophies().get(trophyId).getName()) +
                 " \u00a77(" + count + "/" + module.getTrophyManager().getTrophies().size() + " lo\u1ea1i)");
     }
 
@@ -62,7 +63,9 @@ public class TrophyListener implements Listener {
             return;
 
         e.setCancelled(true);
-        block.setType(org.bukkit.Material.AIR);
+        // Clear the block type safely on the next tick to avoid chunk saving bugs in 1.21+ Paper
+        Bukkit.getScheduler().runTask(plugin, () -> block.setType(org.bukkit.Material.AIR));
+
         ItemStack trophyItem = module.getTrophyManager().createTrophyItem(trophyId);
         if (trophyItem != null)
             block.getWorld().dropItemNaturally(block.getLocation().add(0.5, 0.5, 0.5), trophyItem);

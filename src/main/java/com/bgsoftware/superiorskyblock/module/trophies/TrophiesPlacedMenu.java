@@ -65,16 +65,16 @@ public class TrophiesPlacedMenu implements InventoryHolder {
                 if (!info.getPotions().isEmpty()) {
                     lore.add("\u00a7d\u25b6 Buff nh\u1eadn \u0111\u01b0\u1ee3c:");
                     for (PotionEffect effect : info.getPotions()) {
-                        String typeName = effect.getType().getName();
+                        String typeName = translatePotion(effect.getType().getName());
                         int level = effect.getAmplifier() + 1;
-                        lore.add("  \u00a77- \u00a7f" + typeName + " " + level);
+                        lore.add("  \u00a77- \u00a7f" + typeName + " " + toRoman(level));
                     }
                 }
                 
                 if (!info.getBonuses().isEmpty()) {
                     lore.add("\u00a7b\u25b6 Buff th\u01b0\u1edfng th\u00eam:");
                     for (Map.Entry<String, Double> bonus : info.getBonuses().entrySet()) {
-                        lore.add("  \u00a77- \u00a7f" + bonus.getKey() + ": \u00a7a+" + (bonus.getValue() * 100) + "%");
+                        lore.add("  \u00a77- \u00a7f" + translateBonus(bonus.getKey()) + ": \u00a7a+" + (bonus.getValue() * 100) + "%");
                     }
                 }
                 
@@ -87,7 +87,6 @@ public class TrophiesPlacedMenu implements InventoryHolder {
                 slot += 2;
         }
 
-        // Back button
         ItemStack backBtn = new ItemStack(matchMaterial("ARROW", "ARROW"));
         ItemMeta backMeta = backBtn.getItemMeta();
         if (backMeta != null) {
@@ -111,6 +110,63 @@ public class TrophiesPlacedMenu implements InventoryHolder {
                     inventory.setItem(i, filler);
                 }
             }
+        }
+    }
+
+    private String translatePotion(String name) {
+        switch (name.toUpperCase()) {
+            case "FAST_DIGGING": return "\u0110\u00e0o Nhanh";
+            case "SPEED": return "T\u1ed1c \u0110\u1ed9";
+            case "FIRE_RESISTANCE": return "Kh\u00e1ng L\u1eeda";
+            case "DAMAGE_RESISTANCE": return "Kh\u00e1ng C\u1ef1";
+            case "INCREASE_DAMAGE": return "S\u1ee9c M\u1ea1nh";
+            case "REGENERATION": return "H\u1ed3i M\u00e1u";
+            case "NIGHT_VISION": return "Nh\u00ecn Trong \u0110\u00eam";
+            case "JUMP": return "Nh\u1ea3y Cao";
+            case "SLOW_FALLING": return "R\u01a1i Ch\u1eadm";
+            case "WATER_BREATHING": return "Th\u1edf D\u01b0\u1edbi N\u01b0\u1edbc";
+            case "INVISIBILITY": return "T\u00e0ng H\u00ecnh";
+            case "BLINDNESS": return "M\u00f9 L\u00f2a";
+            case "SLOW": return "Ch\u1eadm Ch\u1ea1p";
+            case "GLOWING": return "Ph\u00e1t S\u00e1ng";
+            case "HEAL": return "H\u1ed3i Má\u00e1u T\u1ee9c Th\u1eddi";
+            case "HARM": return "S\u00e1t Th\u01b0\u01a1ng";
+            case "POISON": return "Tr\u00fang \u0110\u1ed9c";
+            case "WITHER": return "H\u00e9o \u00dana";
+            case "HEALTH_BOOST": return "T\u0103ng M\u00e1u T\u1ed1i \u0110a";
+            case "ABSORPTION": return "H\u1ea5p Th\u1ee5";
+            case "SATURATION": return "No B\u1ee5ng";
+            case "LEVITATION": return "Bay L\u01a1 L\u1eedng";
+            case "CONDUIT_POWER": return "S\u1ee9c M\u1ea1nh \u0110\u1ea1i D\u01b0\u01a1ng";
+            case "DOLPHINS_GRACE": return "S\u1ee9c M\u1ea1nh C\u00e1 Heo";
+            case "BAD_OMEN": return "Đi\u1ec1m X\u1ea5u";
+            case "HERO_OF_THE_VILLAGE": return "Anh H\u00f9ng L\u00e0ng";
+            default: return name;
+        }
+    }
+
+    private String translateBonus(String name) {
+        switch (name.toLowerCase()) {
+            case "crop-growth": return "T\u1ed1c \u0111\u1ed9 m\u1ecdc c\u00e2y";
+            case "mob-drops": return "T\u1ec9 l\u1ec7 r\u1edbt \u0111\u1ed3";
+            case "spawner-rates": return "T\u1ed1c \u0111\u1ed9 Spawner";
+            default: return name;
+        }
+    }
+
+    private String toRoman(int num) {
+        switch (num) {
+            case 1: return "I";
+            case 2: return "II";
+            case 3: return "III";
+            case 4: return "IV";
+            case 5: return "V";
+            case 6: return "VI";
+            case 7: return "VII";
+            case 8: return "VIII";
+            case 9: return "IX";
+            case 10: return "X";
+            default: return String.valueOf(num);
         }
     }
 
