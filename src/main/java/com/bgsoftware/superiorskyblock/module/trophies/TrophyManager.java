@@ -11,35 +11,37 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 public class TrophyManager {
 
     private static final String PDC_KEY = "trophies-placed";
     private static final String ENTRY_SEPARATOR = "|";
     private static final String FIELD_SEPARATOR = ",";
-    private static final String ITEM_PREFIX = "§6§l🏆 Trophy: ";
+    private static final String ITEM_PREFIX = "Ă‚Â§6Ă‚Â§lÄ‘Å¸Ââ€  Trophy: ";
+    private static final String HIDDEN_PREFIX = "Ă‚Â§0Ă‚Â§tĂ‚Â§rĂ‚Â§o"; // Hidden prefix to identify trophies
 
     private final TrophiesModule module;
     private final Random random = new Random();
 
-    // display name -> trophyId (identification is done by exact item name,
-    // following the same pattern used by StackedBlocksListener)
-    private final Map<String, String> reverseTrophies = new HashMap<>();
+    // Cache for island potion effects to avoid heavy PDC reads every 8 seconds
+    private final Map<Island, List<PotionEffect>> effectsCache = new WeakHashMap<>();
+    
+    // Cache for parsed PDC entries to optimize explosion events and loops
+    private final Map<Island, List<String>> placedTrophiesCache = new WeakHashMap<>();
 
     public TrophyManager(TrophiesModule module) {
         this.module = module;
     }
 
     public void load() {
-        reverseTrophies.clear();
-        for (TrophyInfo info : module.getConfiguration().getTrophies().values())
-            reverseTrophies.put(ITEM_PREFIX + info.getName(), info.getId());
+        effectsCache.clear();
+        placedTrophiesCache.clear();
     }
 
     public Map<String, TrophyInfo> getTrophies() {
@@ -77,11 +79,15 @@ public class TrophyManager {
         if (meta != null) {
             meta.setDisplayName(ITEM_PREFIX + info.getName());
             List<String> lore = new ArrayList<>();
-            lore.add("§7Phần thưởng từ Island Event.");
-            lore.add("§7Đặt lên đảo để trưng bày trong");
-            lore.add("§7Trophy Hall và nhận buff!");
+            lore.add("Ă‚Â§7PhĂ¡ÂºÂ§n thĂ†Â°Ă¡Â»Å¸ng tĂ¡Â»Â« Island Event.");
+            lore.add("Ă‚Â§7Ă„ÂĂ¡ÂºÂ·t lÄ‚Âªn Ă„â€˜Ă¡ÂºÂ£o Ă„â€˜Ă¡Â»Æ’ trĂ†Â°ng bÄ‚Â y trong");
+            lore.add("Ă‚Â§7Trophy Hall vÄ‚Â  nhĂ¡ÂºÂ­n buff!");
             lore.add("");
-            lore.add("§eBộ sưu tập càng đủ, buff càng mạnh.");
+            lore.add("Ă‚Â§eBĂ¡Â»â„¢ sĂ†Â°u tĂ¡ÂºÂ­p cÄ‚Â ng Ă„â€˜Ă¡Â»Â§, buff cÄ‚Â ng mĂ¡ÂºÂ¡nh.");
+            
+            // Add hidden ID to prevent anvil renaming exploits
+            lore.add(encodeHiddenString(info.getId()));
+            
             meta.setLore(lore);
             item.setItemMeta(meta);
         }
@@ -90,24 +96,34 @@ public class TrophyManager {
     }
 
     /**
-     * Identifies a trophy item by its exact display name.
+     * Identifies a trophy item by its exact hidden ID.
      */
     public String getTrophyId(ItemStack item) {
         if (item == null || !item.hasItemMeta())
             return null;
         ItemMeta meta = item.getItemMeta();
-        if (meta == null || !meta.hasDisplayName())
+        if (meta == null || !meta.hasLore())
             return null;
-        return reverseTrophies.get(meta.getDisplayName());
+            
+        for (String line : meta.getLore()) {
+            if (line.startsWith(HIDDEN_PREFIX)) {
+                return decodeHiddenString(line);
+            }
+        }
+        return null;
     }
 
     public boolean shouldDropTrophy() {
         return random.nextDouble() * 100.0 < module.getConfiguration().getDropChance();
     }
 
-    // ── Placed trophies storage (island PersistentDataContainer) ──
+    // Ă¢â€â‚¬Ă¢â€â‚¬ Placed trophies storage (island PersistentDataContainer) Ă¢â€â‚¬Ă¢â€â‚¬
 
     public List<String> getPlacedTrophies(Island island) {
+        return placedTrophiesCache.computeIfAbsent(island, this::loadPlacedTrophies);
+    }
+
+    private List<String> loadPlacedTrophies(Island island) {
         String data = island.getPersistentDataContainer().get(PDC_KEY, PersistentDataType.STRING);
         List<String> entries = new ArrayList<>();
         if (data != null && !data.isEmpty()) {
@@ -122,10 +138,13 @@ public class TrophyManager {
     private void setPlacedTrophies(Island island, List<String> entries) {
         island.getPersistentDataContainer().put(PDC_KEY, PersistentDataType.STRING,
                 String.join(ENTRY_SEPARATOR, entries));
+        // Clear caches so they update on next tick
+        effectsCache.remove(island);
+        placedTrophiesCache.put(island, new ArrayList<>(entries));
     }
 
     public void addPlacedTrophy(Island island, String trophyId, Location location) {
-        List<String> entries = getPlacedTrophies(island);
+        List<String> entries = new ArrayList<>(getPlacedTrophies(island));
         entries.add(trophyId + FIELD_SEPARATOR + locationKey(location));
         setPlacedTrophies(island, entries);
     }
@@ -135,7 +154,7 @@ public class TrophyManager {
      * the trophy id that was removed, or null if nothing matched.
      */
     public String removePlacedTrophy(Island island, Location location) {
-        List<String> entries = getPlacedTrophies(island);
+        List<String> entries = new ArrayList<>(getPlacedTrophies(island));
         String locationKey = locationKey(location);
 
         for (int i = 0; i < entries.size(); i++) {
@@ -173,7 +192,7 @@ public class TrophyManager {
     /**
      * Number of distinct trophy types currently placed on the island.
      */
-    public int getPlacedTrophyCount(Island island) {
+    public int getPlacedTrophyCount(Island island, String trophyId) { int count = 0; for (String entry : getPlacedTrophies(island)) { int splitIndex = entry.indexOf(FIELD_SEPARATOR); if (splitIndex > 0 && entry.substring(0, splitIndex).equals(trophyId)) count++; } return count; } public int getPlacedTrophyCount(Island island) {
         Set<String> distinct = new HashSet<>();
         for (String entry : getPlacedTrophies(island)) {
             int splitIndex = entry.indexOf(FIELD_SEPARATOR);
@@ -198,15 +217,38 @@ public class TrophyManager {
 
     /**
      * Potion effects granted by the current collection tier.
+     * Heavily optimized with caching to prevent lag from 8-second loops.
      */
     public List<PotionEffect> getEffectsForIsland(Island island) {
-        int count = getPlacedTrophyCount(island);
-        List<PotionEffect> result = new ArrayList<>();
-        for (Map.Entry<Integer, List<PotionEffect>> entry : module.getConfiguration().getEffectTiers().entrySet()) {
-            if (count >= entry.getKey())
-                result.addAll(entry.getValue());
+        if (!effectsCache.containsKey(island)) {
+            int count = getPlacedTrophyCount(island);
+            List<PotionEffect> result = new ArrayList<>();
+            for (String trophyId : getPlacedTrophyIds(island)) {
+                TrophyInfo info = module.getConfiguration().getTrophies().get(trophyId); if (info != null)
+                    result.addAll(info.getPotions());
+            }
+            effectsCache.put(island, result);
         }
-        return result;
+        return effectsCache.get(island);
+    }
+
+    private String encodeHiddenString(String str) {
+        StringBuilder sb = new StringBuilder(HIDDEN_PREFIX);
+        for (char c : str.toCharArray()) {
+            sb.append('Ă‚Â§').append(c);
+        }
+        return sb.toString();
+    }
+
+    private String decodeHiddenString(String hidden) {
+        if (!hidden.startsWith(HIDDEN_PREFIX)) return null;
+        StringBuilder sb = new StringBuilder();
+        for (int i = HIDDEN_PREFIX.length(); i < hidden.length(); i += 2) {
+            if (i + 1 < hidden.length()) {
+                sb.append(hidden.charAt(i + 1));
+            }
+        }
+        return sb.toString();
     }
 
 }

@@ -3,6 +3,7 @@ package com.bgsoftware.superiorskyblock.module.trophies.listeners;
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule;
+import com.bgsoftware.superiorskyblock.module.trophies.TrophiesMenu;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -13,6 +14,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class TrophyListener implements Listener {
@@ -76,6 +78,13 @@ public class TrophyListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityExplode(EntityExplodeEvent e) {
         e.blockList().removeIf(block -> isTrophyBlock(block.getLocation()));
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onInventoryClick(InventoryClickEvent e) {
+        if (e.getInventory().getHolder() instanceof TrophiesMenu) {
+            e.setCancelled(true);
+        }
     }
 
     private boolean isTrophyBlock(Location location) {

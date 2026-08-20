@@ -14,7 +14,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +100,7 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
 
     /**
      * Bonus multiplier for island crop growth / mob drops based on the
-     * placed trophies. Returns 1.0 when the module is disabled
+     * placed trophy collection. Returns 1.0 when the module is disabled
      * or not yet initialized.
      */
     public static double getBonusMultiplier(Island island, String bonusKey) {
@@ -110,12 +109,14 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
             if (module == null || !module.isEnabled() || module.trophyManager == null)
                 return 1.0;
 
+            int distinctTrophies = module.trophyManager.getPlacedTrophyCount(island);
+            TreeMap<Integer, Double> tiers = "crop-growth".equals(bonusKey) ?
+                    module.getConfiguration().getCropGrowthTiers() : module.getConfiguration().getMobDropsTiers();
+
             double bonus = 0.0;
-            for (String trophyId : module.trophyManager.getPlacedTrophyIds(island)) {
-                TrophyInfo info = module.getConfiguration().getTrophies().get(trophyId);
-                if (info != null && info.getBonuses().containsKey(bonusKey)) {
-                    bonus += info.getBonuses().get(bonusKey);
-                }
+            for (Map.Entry<Integer, Double> entry : tiers.entrySet()) {
+                if (distinctTrophies >= entry.getKey())
+                    bonus = Math.max(bonus, entry.getValue());
             }
 
             return 1.0 + bonus;
@@ -129,16 +130,12 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
         private final String name;
         private final String material;
         private final String texture;
-        private final List<PotionEffect> potions = new ArrayList<>();
-        private final Map<String, Double> bonuses = new HashMap<>();
 
-        TrophyInfo(String id, String name, String material, String texture, List<PotionEffect> potions, Map<String, Double> bonuses) {
+        TrophyInfo(String id, String name, String material, String texture) {
             this.id = id;
             this.name = name;
             this.material = material;
             this.texture = texture;
-            if (potions != null) this.potions.addAll(potions);
-            if (bonuses != null) this.bonuses.putAll(bonuses);
         }
 
         public String getId() {
@@ -156,14 +153,6 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
         public String getTexture() {
             return texture;
         }
-
-        public List<PotionEffect> getPotions() {
-            return potions;
-        }
-
-        public Map<String, Double> getBonuses() {
-            return bonuses;
-        }
     }
 
     public static class Configuration implements IModuleConfiguration {
@@ -171,6 +160,9 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
         private final boolean enabled;
         private final double dropChance;
         private final Map<String, TrophyInfo> trophies = new LinkedHashMap<>();
+        private final TreeMap<Integer, List<PotionEffect>> effectTiers = new TreeMap<>();
+        private final TreeMap<Integer, Double> cropGrowthTiers = new TreeMap<>();
+        private final TreeMap<Integer, Double> mobDropsTiers = new TreeMap<>();
 
         Configuration(CommentedConfiguration config) {
             this.enabled = config.getBoolean("enabled", true);
@@ -179,34 +171,49 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
             org.bukkit.configuration.ConfigurationSection trophiesSection = config.getConfigurationSection("trophies");
             if (trophiesSection != null) {
                 for (String id : trophiesSection.getKeys(false)) {
-                    String path = id + ".";
-                    
-                    // Parse potions
-                    List<PotionEffect> effects = new ArrayList<>();
-                    if (trophiesSection.isList(path + "buffs.potions")) {
-                        for (String raw : trophiesSection.getStringList(path + "buffs.potions")) {
+                    trophies.put(id.toLowerCase(), new TrophyInfo(
+                            id.toLowerCase(),
+                            trophiesSection.getString(id + ".name", id),
+                            trophiesSection.getString(id + ".material", "PLAYER_HEAD"),
+                            trophiesSection.getString(id + ".texture", "")));
+                }
+            }
+
+            org.bukkit.configuration.ConfigurationSection effectsSection = config.getConfigurationSection("potions");
+            if (effectsSection != null) {
+                for (String key : effectsSection.getKeys(false)) {
+                    try {
+                        int threshold = Integer.parseInt(key);
+                        List<PotionEffect> effects = new ArrayList<>();
+                        for (String raw : effectsSection.getStringList(key)) {
                             PotionEffect effect = parseEffect(raw);
                             if (effect != null)
                                 effects.add(effect);
                         }
+                        if (!effects.isEmpty())
+                            this.effectTiers.put(threshold, effects);
+                    } catch (NumberFormatException ignored) {
                     }
-                    
-                    // Parse bonuses
-                    Map<String, Double> bonuses = new HashMap<>();
-                    org.bukkit.configuration.ConfigurationSection bonusSection = trophiesSection.getConfigurationSection(path + "buffs.bonuses");
-                    if (bonusSection != null) {
-                        for (String key : bonusSection.getKeys(false)) {
-                            bonuses.put(key, bonusSection.getDouble(key));
-                        }
-                    }
+                }
+            }
 
-                    trophies.put(id.toLowerCase(), new TrophyInfo(
-                            id.toLowerCase(),
-                            trophiesSection.getString(path + "name", id),
-                            trophiesSection.getString(path + "material", "PLAYER_HEAD"),
-                            trophiesSection.getString(path + "texture", ""),
-                            effects,
-                            bonuses));
+            org.bukkit.configuration.ConfigurationSection cropSection = config.getConfigurationSection("bonuses.crop-growth");
+            if (cropSection != null) {
+                for (String key : cropSection.getKeys(false)) {
+                    try {
+                        this.cropGrowthTiers.put(Integer.parseInt(key), cropSection.getDouble(key));
+                    } catch (NumberFormatException ignored) {
+                    }
+                }
+            }
+
+            org.bukkit.configuration.ConfigurationSection mobSection = config.getConfigurationSection("bonuses.mob-drops");
+            if (mobSection != null) {
+                for (String key : mobSection.getKeys(false)) {
+                    try {
+                        this.mobDropsTiers.put(Integer.parseInt(key), mobSection.getDouble(key));
+                    } catch (NumberFormatException ignored) {
+                    }
                 }
             }
         }
@@ -217,6 +224,18 @@ public class TrophiesModule extends BuiltinModule<TrophiesModule.Configuration> 
 
         public Map<String, TrophyInfo> getTrophies() {
             return trophies;
+        }
+
+        public TreeMap<Integer, List<PotionEffect>> getEffectTiers() {
+            return effectTiers;
+        }
+
+        public TreeMap<Integer, Double> getCropGrowthTiers() {
+            return cropGrowthTiers;
+        }
+
+        public TreeMap<Integer, Double> getMobDropsTiers() {
+            return mobDropsTiers;
         }
 
         @Override

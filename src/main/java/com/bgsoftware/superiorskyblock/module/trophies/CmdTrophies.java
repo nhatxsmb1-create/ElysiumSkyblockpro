@@ -37,7 +37,7 @@ public class CmdTrophies implements SuperiorCommand {
 
     @Override
     public String getDescription(Locale locale) {
-        return "Xem Trophy Hall của đảo.";
+        return "Xem Trophy Hall cá»§a Ä‘áº£o.";
     }
 
     @Override
@@ -70,11 +70,11 @@ public class CmdTrophies implements SuperiorCommand {
         Island island = sp.getIsland();
 
         if (island == null) {
-            player.sendMessage("§cBạn phải có đảo mới dùng được tính năng này!");
+            player.sendMessage("Â§cBáº¡n pháº£i cĂ³ Ä‘áº£o má»›i dĂ¹ng Ä‘Æ°á»£c tĂ­nh nÄƒng nĂ y!");
             return;
         }
 
-        new TrophiesMenu(module, island).open(player);
+        new TrophiesMenu(module, island, player).open(player);
     }
 
     @Override
