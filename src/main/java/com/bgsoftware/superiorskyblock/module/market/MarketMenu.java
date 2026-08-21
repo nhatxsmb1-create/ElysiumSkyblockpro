@@ -46,7 +46,12 @@ public class MarketMenu implements Listener {
         inventory.clear();
         
         // Setup border with glass panes
-        ItemStack border = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        ItemStack border;
+        try {
+            border = new ItemStack(Material.valueOf("BLACK_STAINED_GLASS_PANE"));
+        } catch (Exception ex) {
+            border = new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1, (short) 15);
+        }
         ItemMeta borderMeta = border.getItemMeta();
         if (borderMeta != null) {
             borderMeta.setDisplayName(" ");
@@ -134,7 +139,7 @@ public class MarketMenu implements Listener {
         if (e.getCurrentItem() == null) return;
         Material clickedMat = e.getCurrentItem().getType();
         
-        if (clickedMat == Material.BLACK_STAINED_GLASS_PANE || clickedMat == Material.BOOK) {
+        if (clickedMat.name().contains("GLASS_PANE") || clickedMat == Material.BOOK) {
             return;
         }
         if (clickedMat == Material.BARRIER) {
