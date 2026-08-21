@@ -229,6 +229,55 @@ org.bukkit.configuration.ConfigurationSection section = config.getConfigurationS
 
     public static String getVietnameseName(Material mat) {
         switch (mat.name()) {
+            case "DIAMOND_ORE": return "Quặng Kim Cương";
+            case "DIAMOND": return "Kim Cương";
+            case "DIAMOND_BLOCK": return "Khối Kim Cương";
+            case "EMERALD_ORE": return "Quặng Lục Bảo";
+            case "EMERALD": return "Ngọc Lục Bảo";
+            case "EMERALD_BLOCK": return "Khối Lục Bảo";
+            case "GOLD_ORE": return "Quặng Vàng";
+            case "GOLD_INGOT": return "Thỏi Vàng";
+            case "GOLD_BLOCK": return "Khối Vàng";
+            case "IRON_ORE": return "Quặng Sắt";
+            case "IRON_INGOT": return "Thỏi Sắt";
+            case "IRON_BLOCK": return "Khối Sắt";
+            case "COAL_ORE": return "Quặng Than";
+            case "COAL": return "Than";
+            case "COAL_BLOCK": return "Khối Than";
+            case "LAPIS_ORE": return "Quặng Lapis";
+            case "LAPIS_LAZULI": return "Lapis Lazuli";
+            case "LAPIS_BLOCK": return "Khối Lapis";
+            case "REDSTONE_ORE": return "Quặng Redstone";
+            case "REDSTONE": return "Redstone";
+            case "REDSTONE_BLOCK": return "Khối Redstone";
+            case "NETHER_QUARTZ_ORE": return "Quặng Thạch Anh";
+            case "QUARTZ": return "Thạch Anh";
+            case "QUARTZ_BLOCK": return "Khối Thạch Anh";
+            case "NETHERITE_INGOT": return "Phôi Netherite";
+            case "NETHERITE_BLOCK": return "Khối Netherite";
+            case "NETHERITE_SCRAP": return "Mảnh Netherite";
+            case "ANCIENT_DEBRIS": return "Mảnh Vỡ Cổ Đại";
+            case "WHEAT": return "Lúa Mì";
+            case "CARROT": return "Cà Rốt";
+            case "POTATO": return "Khoai Tây";
+            case "BEETROOT": return "Củ Cải Đường";
+            case "SUGAR_CANE": return "Mía";
+            case "MELON": return "Dưa Hấu";
+            case "PUMPKIN": return "Bí Ngô";
+            case "CACTUS": return "Xương Rồng";
+            case "NETHER_WART": return "Bướu Nether";
+            case "DIRT": return "Đất";
+            case "COBBLESTONE": return "Đá Cuội";
+            case "OAK_LOG": return "Gỗ Sồi";
+            case "GLASS": return "Kính";
+            case "STONE_BRICKS": return "Gạch Đá";
+            case "SEA_LANTERN": return "Đèn Biển";
+            case "GLOWSTONE": return "Đá Phát Sáng";
+            case "OAK_LEAVES": return "Lá Cây";
+            case "ELYTRA": return "Cánh Elytra";
+            case "TOTEM_OF_UNDYING": return "Totem Bất Tử";
+            case "NETHER_STAR": return "Sao Nether";
+            case "SPONGE": return "Mút Xốp";
             case "STONE": return "Đá";
             case "GRANITE": return "Đá Granite";
             case "DIORITE": return "Đá Diorite";
@@ -284,51 +333,21 @@ org.bukkit.configuration.ConfigurationSection section = config.getConfigurationS
             case "ENCHANTED_GOLDEN_APPLE": return "Táo Vàng Phù Phép";
             case "HEART_OF_THE_SEA": return "Trái Tim Của Biển";
             case "ECHO_SHARD": return "Mảnh Vỡ Tiếng Vang";
-            case "NETHERITE_INGOT": return "Phôi Netherite";
-            case "NETHERITE_BLOCK": return "Khối Netherite";
-            case "NETHERITE_SCRAP": return "Mảnh Netherite";
-            case "ANCIENT_DEBRIS": return "Mảnh Vỡ Cổ Đại";
-            case "DIRT": return "Đất";
-            case "OAK_LOG": return "Gỗ Sồi";
-            case "GLASS": return "Kính";
-            case "STONE_BRICKS": return "Gạch Đá";
-            case "SEA_LANTERN": return "Đèn Biển";
-            case "GLOWSTONE": return "Đá Phát Sáng";
-            case "QUARTZ_BLOCK": return "Khối Thạch Anh";
-            case "OAK_LEAVES": return "Lá Cây";
-            case "ELYTRA": return "Cánh Elytra";
-            case "TOTEM_OF_UNDYING": return "Totem Bất Tử";
-            case "NETHER_STAR": return "Sao Nether";
-            case "SPONGE": return "Mút Xốp";
-            case "DIAMOND_BLOCK": return "Kh\u1ed1i Kim C\u01b0\u01a1ng";
-            case "IRON_BLOCK": return "Kh\u1ed1i S\u1eaft";
-            case "GOLD_BLOCK": return "Kh\u1ed1i V\u00e0ng";
-            case "EMERALD_BLOCK": return "Kh\u1ed1i Ng\u1ecdc L\u1ee5c B\u1ea3o";
-            case "COAL_BLOCK": return "Kh\u1ed1i Than";
-            case "REDSTONE_BLOCK": return "Kh\u1ed1i \u0110\u00e1 \u0110\u1ecf";
-            case "LAPIS_BLOCK": return "Kh\u1ed1i L\u01b0u Ly";
-            case "NETHERITE_BLOCK": return "Kh\u1ed1i Netherite";
-            case "HAY_BLOCK": return "Kh\u1ed1i R\u01a1m";
-            case "MELON": return "D\u01b0a H\u1ea5u";
-            case "PUMPKIN": return "B\u00ed Ng\u00f4";
-            case "WHEAT": return "L\u00faa M\u00ec";
-            case "CARROT": return "C\u00e0 R\u1ed1t";
-            case "POTATO": return "Khoai T\u00e2y";
-            case "SUGAR_CANE": return "M\u00eda";
-            case "COBBLESTONE": return "\u0110\u00e1 Cu\u1ed9i";
-            case "STONE": return "\u0110\u00e1";
-            case "IRON_INGOT": return "Ph\u00f4i S\u1eaft";
-            case "GOLD_INGOT": return "Ph\u00f4i V\u00e0ng";
-            case "DIAMOND": return "Kim C\u01b0\u01a1ng";
-            case "EMERALD": return "Ng\u1ecdc L\u1ee5c B\u1ea3o";
-            case "COAL": return "Than";
             default:
-                String[] parts = mat.name().toLowerCase().split("_");
+                String[] words = mat.name().split("_");
                 StringBuilder sb = new StringBuilder();
-                for (String p : parts) {
-                    if (p.length() > 0) {
-                        sb.append(Character.toUpperCase(p.charAt(0))).append(p.substring(1)).append(" ");
+                for (String word : words) {
+                    if (word.length() > 0) {
+                        sb.append(Character.toUpperCase(word.charAt(0)));
+                        if (word.length() > 1) {
+                            sb.append(word.substring(1).toLowerCase());
+                        }
+                        sb.append(" ");
                     }
+                }
+                return sb.toString().trim();
+        }
+    }
                 }
                 return sb.toString().trim();
         }
