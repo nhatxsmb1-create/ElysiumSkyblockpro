@@ -77,7 +77,7 @@ public class CmdAdminSpirit implements SuperiorCommand {
         if (args.length >= 4 && args[2].equalsIgnoreCase("simulate")) {
             Player target = Bukkit.getPlayer(args[3]);
             if (target == null) {
-                sender.sendMessage("§cKhông tìm thấy người chơi.");
+                sender.sendMessage("\u00a7cKhông tìm thấy người chơi.");
                 return;
             }
             long minutes = 60;
@@ -85,7 +85,7 @@ public class CmdAdminSpirit implements SuperiorCommand {
                 try { minutes = Long.parseLong(args[4]); } catch (Exception ignored) {}
             }
             long ticks = minutes * TICKS_PER_MINUTE;
-            sender.sendMessage("§aMô phỏng " + minutes + " phút offline cho " + target.getName() + "...");
+            sender.sendMessage("\u00a7aMô phỏng " + minutes + " phút offline cho " + target.getName() + "...");
             module.getSpiritTask().simulateOffline(target, ticks);
             return;
         }

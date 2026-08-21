@@ -25,10 +25,16 @@ public class SpiritTask extends BukkitRunnable {
     public void simulateOffline(Player player, long ticks) {
         SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(player.getUniqueId());
         Island island = sp.getIsland();
-        if (island == null) return;
+                if (island == null) {
+            player.sendMessage("§cĐảo không tồn tại hoặc chưa có đảo!");
+            return;
+        }
         
         Map<Location, PlacedSpirit> spirits = module.getSpiritManager().getPlacedSpiritLocations(island);
-        if (spirits.isEmpty()) return;
+        if (spirits.isEmpty()) {
+            player.sendMessage("§cKhông có Tinh Linh nào được đặt trên đảo!");
+            return;
+        }
 
         Map<Material, Integer> totalDrops = new java.util.HashMap<>();
 
@@ -83,7 +89,7 @@ public class SpiritTask extends BukkitRunnable {
             }
         }
 
-        if (totalDrops.isEmpty()) return;
+        if (totalDrops.isEmpty()) { player.sendMessage("§cKhông có vật phẩm nào được tạo ra!"); return; }
 
         for (Map.Entry<Material, Integer> drop : totalDrops.entrySet()) {
             BuiltinModules.ORE_STORAGE.getStorageManager().addAmount(island.getUniqueId(), drop.getKey(), BigInteger.valueOf(drop.getValue()));
