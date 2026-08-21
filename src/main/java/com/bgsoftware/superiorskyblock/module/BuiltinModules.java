@@ -19,6 +19,7 @@ public class BuiltinModules {
     public static final com.bgsoftware.superiorskyblock.module.orestorage.OreStorageModule ORE_STORAGE = new com.bgsoftware.superiorskyblock.module.orestorage.OreStorageModule();
     public static final com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule TROPHIES = new com.bgsoftware.superiorskyblock.module.trophies.TrophiesModule();
     public static final com.bgsoftware.superiorskyblock.module.spirits.SpiritsModule SPIRITS = new com.bgsoftware.superiorskyblock.module.spirits.SpiritsModule();
+    public static final com.bgsoftware.superiorskyblock.module.market.MarketModule MARKET = new com.bgsoftware.superiorskyblock.module.market.MarketModule();
 
     private BuiltinModules() {
 
@@ -42,6 +43,8 @@ public class BuiltinModules {
                 return TROPHIES;
             case "spirits":
                 return SPIRITS;
+            case "market":
+                return MARKET;
             default:
                 return null;
         }

@@ -1,0 +1,61 @@
+items:
+  COAL:
+    base-price: 2.0
+    min-price: 0.5
+    max-price: 5.0
+    drop-rate: 0.0001
+    recovery-rate: 100
+  IRON_INGOT:
+    base-price: 10.0
+    min-price: 2.0
+    max-price: 25.0
+    drop-rate: 0.001
+    recovery-rate: 50
+  GOLD_INGOT:
+    base-price: 15.0
+    min-price: 5.0
+    max-price: 40.0
+    drop-rate: 0.001
+    recovery-rate: 50
+  DIAMOND:
+    base-price: 50.0
+    min-price: 15.0
+    max-price: 150.0
+    drop-rate: 0.005
+    recovery-rate: 20
+  EMERALD:
+    base-price: 80.0
+    min-price: 20.0
+    max-price: 200.0
+    drop-rate: 0.005
+    recovery-rate: 20
+  WHEAT:
+    base-price: 3.0
+    min-price: 1.0
+    max-price: 10.0
+    drop-rate: 0.0005
+    recovery-rate: 100
+  CARROT:
+    base-price: 4.0
+    min-price: 1.0
+    max-price: 12.0
+    drop-rate: 0.0005
+    recovery-rate: 100
+  POTATO:
+    base-price: 4.0
+    min-price: 1.0
+    max-price: 12.0
+    drop-rate: 0.0005
+    recovery-rate: 100
+  MELON:
+    base-price: 6.0
+    min-price: 2.0
+    max-price: 15.0
+    drop-rate: 0.0005
+    recovery-rate: 100
+  SUGAR_CANE:
+    base-price: 5.0
+    min-price: 1.5
+    max-price: 15.0
+    drop-rate: 0.0005
+    recovery-rate: 100
