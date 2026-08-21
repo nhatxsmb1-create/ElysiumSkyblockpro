@@ -196,133 +196,110 @@ items:
     recovery-rate: 60
 
 buy-shop:
-  # --- GLASS BLOCKS ---
-  WHITE_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  ORANGE_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  MAGENTA_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  LIGHT_BLUE_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  YELLOW_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  LIME_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  PINK_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  GRAY_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  LIGHT_GRAY_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  CYAN_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  PURPLE_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  BLUE_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  BROWN_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  GREEN_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  RED_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-  BLACK_STAINED_GLASS:
-    buy-price: 25.0
-    category: BUILDING
-    
-  # --- CONCRETE BLOCKS ---
-  WHITE_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  ORANGE_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  MAGENTA_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  LIGHT_BLUE_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  YELLOW_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  LIME_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  PINK_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  GRAY_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  LIGHT_GRAY_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  CYAN_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  PURPLE_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  BLUE_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  BROWN_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  GREEN_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  RED_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-  BLACK_CONCRETE:
-    buy-price: 35.0
-    category: BUILDING
-
-  # === BUILDING BLOCKS ===
   STONE:
-    buy-price: 15.0
+    buy-price: 25.0
     category: BUILDING
   GRANITE:
-    buy-price: 15.0
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_GRANITE:
+    buy-price: 25.0
     category: BUILDING
   DIORITE:
-    buy-price: 15.0
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_DIORITE:
+    buy-price: 25.0
     category: BUILDING
   ANDESITE:
-    buy-price: 15.0
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_ANDESITE:
+    buy-price: 25.0
     category: BUILDING
   DEEPSLATE:
-    buy-price: 20.0
+    buy-price: 25.0
+    category: BUILDING
+  COBBLED_DEEPSLATE:
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_DEEPSLATE:
+    buy-price: 25.0
+    category: BUILDING
+  DEEPSLATE_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  DEEPSLATE_TILES:
+    buy-price: 25.0
     category: BUILDING
   TUFF:
-    buy-price: 20.0
+    buy-price: 25.0
+    category: BUILDING
+  TUFF_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  DRIPSTONE_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  DIRT:
+    buy-price: 25.0
+    category: BUILDING
+  GRASS_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  PODZOL:
+    buy-price: 25.0
+    category: BUILDING
+  MYCELIUM:
+    buy-price: 25.0
+    category: BUILDING
+  ROOTED_DIRT:
+    buy-price: 25.0
+    category: BUILDING
+  MUD:
+    buy-price: 25.0
+    category: BUILDING
+  PACKED_MUD:
+    buy-price: 25.0
+    category: BUILDING
+  MUD_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  COBBLESTONE:
+    buy-price: 25.0
+    category: BUILDING
+  MOSSY_COBBLESTONE:
+    buy-price: 25.0
     category: BUILDING
   SAND:
-    buy-price: 10.0
+    buy-price: 25.0
     category: BUILDING
   RED_SAND:
-    buy-price: 15.0
+    buy-price: 25.0
     category: BUILDING
   GRAVEL:
-    buy-price: 10.0
+    buy-price: 25.0
+    category: BUILDING
+  SANDSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  CHISELED_SANDSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  CUT_SANDSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  RED_SANDSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  CHISELED_RED_SANDSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  CUT_RED_SANDSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  OAK_LOG:
+    buy-price: 25.0
     category: BUILDING
   SPRUCE_LOG:
     buy-price: 25.0
@@ -339,56 +316,717 @@ buy-shop:
   DARK_OAK_LOG:
     buy-price: 25.0
     category: BUILDING
-  CHERRY_LOG:
-    buy-price: 30.0
-    category: BUILDING
   MANGROVE_LOG:
-    buy-price: 30.0
+    buy-price: 25.0
+    category: BUILDING
+  CHERRY_LOG:
+    buy-price: 25.0
+    category: BUILDING
+  OAK_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  SPRUCE_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  BIRCH_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  JUNGLE_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  ACACIA_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  DARK_OAK_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  MANGROVE_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  CHERRY_PLANKS:
+    buy-price: 25.0
     category: BUILDING
   BAMBOO_BLOCK:
-    buy-price: 20.0
+    buy-price: 25.0
+    category: BUILDING
+  BAMBOO_PLANKS:
+    buy-price: 25.0
+    category: BUILDING
+  BAMBOO_MOSAIC:
+    buy-price: 25.0
+    category: BUILDING
+  BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  BOOKSHELF:
+    buy-price: 25.0
+    category: BUILDING
+  CHISELED_BOOKSHELF:
+    buy-price: 25.0
+    category: BUILDING
+  NETHERRACK:
+    buy-price: 25.0
+    category: BUILDING
+  CRIMSON_NYLIUM:
+    buy-price: 25.0
+    category: BUILDING
+  WARPED_NYLIUM:
+    buy-price: 25.0
+    category: BUILDING
+  BASALT:
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_BASALT:
+    buy-price: 25.0
+    category: BUILDING
+  SMOOTH_BASALT:
+    buy-price: 25.0
+    category: BUILDING
+  BLACKSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_BLACKSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  POLISHED_BLACKSTONE_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  GILDED_BLACKSTONE:
+    buy-price: 25.0
+    category: BUILDING
+  NETHER_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  RED_NETHER_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  CHISELED_NETHER_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  QUARTZ_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  SMOOTH_QUARTZ:
+    buy-price: 25.0
+    category: BUILDING
+  CHISELED_QUARTZ_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  QUARTZ_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  QUARTZ_PILLAR:
+    buy-price: 25.0
+    category: BUILDING
+  END_STONE:
+    buy-price: 25.0
+    category: BUILDING
+  END_STONE_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  PURPUR_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  PURPUR_PILLAR:
+    buy-price: 25.0
+    category: BUILDING
+  PRISMARINE:
+    buy-price: 25.0
+    category: BUILDING
+  PRISMARINE_BRICKS:
+    buy-price: 25.0
+    category: BUILDING
+  DARK_PRISMARINE:
+    buy-price: 25.0
     category: BUILDING
   OBSIDIAN:
-    buy-price: 150.0
+    buy-price: 25.0
     category: BUILDING
   CRYING_OBSIDIAN:
-    buy-price: 250.0
+    buy-price: 25.0
     category: BUILDING
-  # === DECORATION ===
+  ICE:
+    buy-price: 25.0
+    category: BUILDING
+  PACKED_ICE:
+    buy-price: 25.0
+    category: BUILDING
+  BLUE_ICE:
+    buy-price: 25.0
+    category: BUILDING
+  SNOW_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  CLAY:
+    buy-price: 25.0
+    category: BUILDING
+  BONE_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  MAGMA_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  SLIME_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  HONEY_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  HAY_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  COPPER_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  EXPOSED_COPPER:
+    buy-price: 25.0
+    category: BUILDING
+  WEATHERED_COPPER:
+    buy-price: 25.0
+    category: BUILDING
+  OXIDIZED_COPPER:
+    buy-price: 25.0
+    category: BUILDING
+  AMETHYST_BLOCK:
+    buy-price: 25.0
+    category: BUILDING
+  CALCITE:
+    buy-price: 25.0
+    category: BUILDING
+  TINTED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  WHITE_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  WHITE_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  WHITE_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  ORANGE_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  ORANGE_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  ORANGE_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  MAGENTA_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  MAGENTA_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  MAGENTA_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  LIGHT_BLUE_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  LIGHT_BLUE_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  LIGHT_BLUE_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  YELLOW_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  YELLOW_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  YELLOW_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  LIME_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  LIME_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  LIME_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  PINK_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  PINK_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  PINK_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  GRAY_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  GRAY_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  GRAY_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  LIGHT_GRAY_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  LIGHT_GRAY_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  LIGHT_GRAY_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  CYAN_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  CYAN_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  CYAN_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  PURPLE_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  PURPLE_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  PURPLE_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  BLUE_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  BLUE_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  BLUE_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  BROWN_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  BROWN_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  BROWN_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  GREEN_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  GREEN_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  GREEN_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  RED_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  RED_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  RED_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  BLACK_STAINED_GLASS:
+    buy-price: 25.0
+    category: BUILDING
+  BLACK_CONCRETE:
+    buy-price: 25.0
+    category: BUILDING
+  BLACK_TERRACOTTA:
+    buy-price: 25.0
+    category: BUILDING
+  TORCH:
+    buy-price: 20.0
+    category: DECORATION
+  SOUL_TORCH:
+    buy-price: 20.0
+    category: DECORATION
   LANTERN:
-    buy-price: 45.0
+    buy-price: 20.0
     category: DECORATION
   SOUL_LANTERN:
-    buy-price: 65.0
+    buy-price: 20.0
     category: DECORATION
   CAMPFIRE:
-    buy-price: 50.0
+    buy-price: 20.0
     category: DECORATION
   SOUL_CAMPFIRE:
-    buy-price: 70.0
+    buy-price: 20.0
     category: DECORATION
-  BOOKSHELF:
-    buy-price: 80.0
+  CHAIN:
+    buy-price: 20.0
     category: DECORATION
-  CHISELED_BOOKSHELF:
-    buy-price: 120.0
+  END_ROD:
+    buy-price: 20.0
     category: DECORATION
-  PAINTING:
-    buy-price: 40.0
+  IRON_BARS:
+    buy-price: 20.0
     category: DECORATION
-  ITEM_FRAME:
-    buy-price: 30.0
+  BELL:
+    buy-price: 20.0
     category: DECORATION
-  GLOW_ITEM_FRAME:
-    buy-price: 60.0
+  OAK_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  SPRUCE_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  BIRCH_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  JUNGLE_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  ACACIA_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  DARK_OAK_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  MANGROVE_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  CHERRY_LEAVES:
+    buy-price: 20.0
+    category: DECORATION
+  OAK_SAPLING:
+    buy-price: 20.0
+    category: DECORATION
+  SPRUCE_SAPLING:
+    buy-price: 20.0
+    category: DECORATION
+  BIRCH_SAPLING:
+    buy-price: 20.0
+    category: DECORATION
+  JUNGLE_SAPLING:
+    buy-price: 20.0
+    category: DECORATION
+  ACACIA_SAPLING:
+    buy-price: 20.0
+    category: DECORATION
+  DARK_OAK_SAPLING:
+    buy-price: 20.0
+    category: DECORATION
+  MANGROVE_PROPAGULE:
+    buy-price: 20.0
+    category: DECORATION
+  CHERRY_SAPLING:
+    buy-price: 20.0
     category: DECORATION
   FLOWER_POT:
     buy-price: 20.0
     category: DECORATION
-  BELL:
-    buy-price: 500.0
+  PAINTING:
+    buy-price: 20.0
     category: DECORATION
-  # === TOOLS ===
+  ITEM_FRAME:
+    buy-price: 20.0
+    category: DECORATION
+  GLOW_ITEM_FRAME:
+    buy-price: 20.0
+    category: DECORATION
+  ARMOR_STAND:
+    buy-price: 20.0
+    category: DECORATION
+  DANDELION:
+    buy-price: 20.0
+    category: DECORATION
+  POPPY:
+    buy-price: 20.0
+    category: DECORATION
+  BLUE_ORCHID:
+    buy-price: 20.0
+    category: DECORATION
+  ALLIUM:
+    buy-price: 20.0
+    category: DECORATION
+  AZURE_BLUET:
+    buy-price: 20.0
+    category: DECORATION
+  RED_TULIP:
+    buy-price: 20.0
+    category: DECORATION
+  ORANGE_TULIP:
+    buy-price: 20.0
+    category: DECORATION
+  WHITE_TULIP:
+    buy-price: 20.0
+    category: DECORATION
+  PINK_TULIP:
+    buy-price: 20.0
+    category: DECORATION
+  OXEYE_DAISY:
+    buy-price: 20.0
+    category: DECORATION
+  CORNFLOWER:
+    buy-price: 20.0
+    category: DECORATION
+  LILY_OF_THE_VALLEY:
+    buy-price: 20.0
+    category: DECORATION
+  WITHER_ROSE:
+    buy-price: 20.0
+    category: DECORATION
+  SUNFLOWER:
+    buy-price: 20.0
+    category: DECORATION
+  LILAC:
+    buy-price: 20.0
+    category: DECORATION
+  ROSE_BUSH:
+    buy-price: 20.0
+    category: DECORATION
+  PEONY:
+    buy-price: 20.0
+    category: DECORATION
+  BROWN_MUSHROOM:
+    buy-price: 20.0
+    category: DECORATION
+  RED_MUSHROOM:
+    buy-price: 20.0
+    category: DECORATION
+  CRIMSON_FUNGUS:
+    buy-price: 20.0
+    category: DECORATION
+  WARPED_FUNGUS:
+    buy-price: 20.0
+    category: DECORATION
+  COBWEB:
+    buy-price: 20.0
+    category: DECORATION
+  LILY_PAD:
+    buy-price: 20.0
+    category: DECORATION
+  VINE:
+    buy-price: 20.0
+    category: DECORATION
+  GLOW_LICHEN:
+    buy-price: 20.0
+    category: DECORATION
+  SCULK_VEIN:
+    buy-price: 20.0
+    category: DECORATION
+  SEA_PICKLE:
+    buy-price: 20.0
+    category: DECORATION
+  GLOWSTONE:
+    buy-price: 20.0
+    category: DECORATION
+  SEA_LANTERN:
+    buy-price: 20.0
+    category: DECORATION
+  SHROOMLIGHT:
+    buy-price: 20.0
+    category: DECORATION
+  OCHRE_FROGLIGHT:
+    buy-price: 20.0
+    category: DECORATION
+  VERDANT_FROGLIGHT:
+    buy-price: 20.0
+    category: DECORATION
+  PEARLESCENT_FROGLIGHT:
+    buy-price: 20.0
+    category: DECORATION
+  WHITE_BED:
+    buy-price: 20.0
+    category: DECORATION
+  WHITE_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  WHITE_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  WHITE_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  ORANGE_BED:
+    buy-price: 20.0
+    category: DECORATION
+  ORANGE_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  ORANGE_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  ORANGE_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  MAGENTA_BED:
+    buy-price: 20.0
+    category: DECORATION
+  MAGENTA_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  MAGENTA_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  MAGENTA_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_BLUE_BED:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_BLUE_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_BLUE_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_BLUE_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  YELLOW_BED:
+    buy-price: 20.0
+    category: DECORATION
+  YELLOW_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  YELLOW_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  YELLOW_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  LIME_BED:
+    buy-price: 20.0
+    category: DECORATION
+  LIME_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  LIME_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  LIME_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  PINK_BED:
+    buy-price: 20.0
+    category: DECORATION
+  PINK_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  PINK_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  PINK_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  GRAY_BED:
+    buy-price: 20.0
+    category: DECORATION
+  GRAY_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  GRAY_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  GRAY_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_GRAY_BED:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_GRAY_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_GRAY_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  LIGHT_GRAY_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  CYAN_BED:
+    buy-price: 20.0
+    category: DECORATION
+  CYAN_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  CYAN_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  CYAN_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  PURPLE_BED:
+    buy-price: 20.0
+    category: DECORATION
+  PURPLE_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  PURPLE_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  PURPLE_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  BLUE_BED:
+    buy-price: 20.0
+    category: DECORATION
+  BLUE_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  BLUE_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  BLUE_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  BROWN_BED:
+    buy-price: 20.0
+    category: DECORATION
+  BROWN_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  BROWN_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  BROWN_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  GREEN_BED:
+    buy-price: 20.0
+    category: DECORATION
+  GREEN_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  GREEN_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  GREEN_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  RED_BED:
+    buy-price: 20.0
+    category: DECORATION
+  RED_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  RED_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  RED_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
+  BLACK_BED:
+    buy-price: 20.0
+    category: DECORATION
+  BLACK_CARPET:
+    buy-price: 20.0
+    category: DECORATION
+  BLACK_BANNER:
+    buy-price: 20.0
+    category: DECORATION
+  BLACK_STAINED_GLASS_PANE:
+    buy-price: 20.0
+    category: DECORATION
   IRON_PICKAXE:
     buy-price: 150.0
     category: TOOLS
@@ -396,112 +1034,233 @@ buy-shop:
     buy-price: 150.0
     category: TOOLS
   IRON_SHOVEL:
-    buy-price: 50.0
+    buy-price: 150.0
     category: TOOLS
   IRON_HOE:
-    buy-price: 100.0
+    buy-price: 150.0
+    category: TOOLS
+  DIAMOND_PICKAXE:
+    buy-price: 150.0
     category: TOOLS
   DIAMOND_AXE:
-    buy-price: 1500.0
+    buy-price: 150.0
     category: TOOLS
   DIAMOND_SHOVEL:
-    buy-price: 500.0
+    buy-price: 150.0
     category: TOOLS
   DIAMOND_HOE:
-    buy-price: 1000.0
+    buy-price: 150.0
     category: TOOLS
   NETHERITE_PICKAXE:
-    buy-price: 7500.0
+    buy-price: 150.0
+    category: TOOLS
+  NETHERITE_AXE:
+    buy-price: 150.0
+    category: TOOLS
+  NETHERITE_SHOVEL:
+    buy-price: 150.0
+    category: TOOLS
+  NETHERITE_HOE:
+    buy-price: 150.0
     category: TOOLS
   BUCKET:
-    buy-price: 50.0
+    buy-price: 150.0
     category: TOOLS
   WATER_BUCKET:
-    buy-price: 100.0
+    buy-price: 150.0
     category: TOOLS
   LAVA_BUCKET:
-    buy-price: 250.0
+    buy-price: 150.0
+    category: TOOLS
+  POWDER_SNOW_BUCKET:
+    buy-price: 150.0
     category: TOOLS
   FISHING_ROD:
-    buy-price: 80.0
+    buy-price: 150.0
     category: TOOLS
   FLINT_AND_STEEL:
-    buy-price: 60.0
+    buy-price: 150.0
     category: TOOLS
   SHEARS:
-    buy-price: 40.0
+    buy-price: 150.0
+    category: TOOLS
+  BRUSH:
+    buy-price: 150.0
     category: TOOLS
   NAME_TAG:
-    buy-price: 500.0
+    buy-price: 150.0
     category: TOOLS
   LEAD:
     buy-price: 150.0
     category: TOOLS
-  # === RARES ===
+  SADDLE:
+    buy-price: 150.0
+    category: TOOLS
+  SPYGLASS:
+    buy-price: 150.0
+    category: TOOLS
+  COMPASS:
+    buy-price: 150.0
+    category: TOOLS
+  RECOVERY_COMPASS:
+    buy-price: 150.0
+    category: TOOLS
+  CLOCK:
+    buy-price: 150.0
+    category: TOOLS
+  REDSTONE:
+    buy-price: 150.0
+    category: TOOLS
+  REPEATER:
+    buy-price: 150.0
+    category: TOOLS
+  COMPARATOR:
+    buy-price: 150.0
+    category: TOOLS
+  PISTON:
+    buy-price: 150.0
+    category: TOOLS
+  STICKY_PISTON:
+    buy-price: 150.0
+    category: TOOLS
+  SLIME_BLOCK:
+    buy-price: 150.0
+    category: TOOLS
+  HONEY_BLOCK:
+    buy-price: 150.0
+    category: TOOLS
+  OBSERVER:
+    buy-price: 150.0
+    category: TOOLS
+  HOPPER:
+    buy-price: 150.0
+    category: TOOLS
+  DISPENSER:
+    buy-price: 150.0
+    category: TOOLS
+  DROPPER:
+    buy-price: 150.0
+    category: TOOLS
+  DAYLIGHT_DETECTOR:
+    buy-price: 150.0
+    category: TOOLS
+  LEVER:
+    buy-price: 150.0
+    category: TOOLS
+  LIGHT_WEIGHTED_PRESSURE_PLATE:
+    buy-price: 150.0
+    category: TOOLS
+  HEAVY_WEIGHTED_PRESSURE_PLATE:
+    buy-price: 150.0
+    category: TOOLS
+  WHEAT_SEEDS:
+    buy-price: 150.0
+    category: TOOLS
+  PUMPKIN_SEEDS:
+    buy-price: 150.0
+    category: TOOLS
+  MELON_SEEDS:
+    buy-price: 150.0
+    category: TOOLS
+  BEETROOT_SEEDS:
+    buy-price: 150.0
+    category: TOOLS
+  COCOA_BEANS:
+    buy-price: 150.0
+    category: TOOLS
+  SUGAR_CANE:
+    buy-price: 150.0
+    category: TOOLS
+  CACTUS:
+    buy-price: 150.0
+    category: TOOLS
+  BAMBOO:
+    buy-price: 150.0
+    category: TOOLS
+  KELP:
+    buy-price: 150.0
+    category: TOOLS
+  SWEET_BERRIES:
+    buy-price: 150.0
+    category: TOOLS
+  GLOW_BERRIES:
+    buy-price: 150.0
+    category: TOOLS
+  BONE_MEAL:
+    buy-price: 150.0
+    category: TOOLS
   BEACON:
     buy-price: 15000.0
     category: RARES
   CONDUIT:
-    buy-price: 8500.0
+    buy-price: 15000.0
     category: RARES
   SHULKER_BOX:
-    buy-price: 5000.0
+    buy-price: 15000.0
     category: RARES
   DRAGON_EGG:
-    buy-price: 50000.0
+    buy-price: 15000.0
     category: RARES
   DRAGON_HEAD:
-    buy-price: 25000.0
+    buy-price: 15000.0
     category: RARES
   WITHER_SKELETON_SKULL:
-    buy-price: 2500.0
+    buy-price: 15000.0
+    category: RARES
+  ZOMBIE_HEAD:
+    buy-price: 15000.0
+    category: RARES
+  CREEPER_HEAD:
+    buy-price: 15000.0
+    category: RARES
+  PLAYER_HEAD:
+    buy-price: 15000.0
+    category: RARES
+  SKELETON_SKULL:
+    buy-price: 15000.0
     category: RARES
   ENCHANTED_GOLDEN_APPLE:
-    buy-price: 7500.0
+    buy-price: 15000.0
+    category: RARES
+  GOLDEN_APPLE:
+    buy-price: 15000.0
     category: RARES
   HEART_OF_THE_SEA:
-    buy-price: 6000.0
+    buy-price: 15000.0
     category: RARES
   ECHO_SHARD:
-    buy-price: 2000.0
+    buy-price: 15000.0
     category: RARES
-
-  DIRT:
-    category: "BUILDING"
-    buy-price: 5.0
-  COBBLESTONE:
-    category: "BUILDING"
-    buy-price: 10.0
-  OAK_LOG:
-    category: "BUILDING"
-    buy-price: 20.0
-  GLASS:
-    category: "BUILDING"
-    buy-price: 15.0
-  STONE_BRICKS:
-    category: "BUILDING"
-    buy-price: 15.0
-  SEA_LANTERN:
-    category: "DECORATION"
-    buy-price: 100.0
-  GLOWSTONE:
-    category: "DECORATION"
-    buy-price: 80.0
-  QUARTZ_BLOCK:
-    category: "DECORATION"
-    buy-price: 150.0
-  OAK_LEAVES:
-    category: "DECORATION"
-    buy-price: 5.0
-  ELYTRA:
-    category: "RARES"
-    buy-price: 10000.0
-  TOTEM_OF_UNDYING:
-    category: "RARES"
-    buy-price: 5000.0
   NETHER_STAR:
-    category: "RARES"
-    buy-price: 20000.0
+    buy-price: 15000.0
+    category: RARES
+  TOTEM_OF_UNDYING:
+    buy-price: 15000.0
+    category: RARES
+  TRIDENT:
+    buy-price: 15000.0
+    category: RARES
   SPONGE:
-    category: "RARES"
-    buy-price: 500.0
+    buy-price: 15000.0
+    category: RARES
+  EXPERIENCE_BOTTLE:
+    buy-price: 15000.0
+    category: RARES
+  SCULK_SENSOR:
+    buy-price: 15000.0
+    category: RARES
+  SCULK_SHRIEKER:
+    buy-price: 15000.0
+    category: RARES
+  SCULK_CATALYST:
+    buy-price: 15000.0
+    category: RARES
+  WARDEN_SPAWN_EGG:
+    buy-price: 15000.0
+    category: RARES
+  VILLAGER_SPAWN_EGG:
+    buy-price: 15000.0
+    category: RARES
+  ALLAY_SPAWN_EGG:
+    buy-price: 15000.0
+    category: RARES
