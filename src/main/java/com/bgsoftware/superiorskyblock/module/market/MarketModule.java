@@ -122,8 +122,7 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
             return items;
         }
 
-        @Override
-        public void removeInvalidBlocks() {}
+
     }
 
     public static class MarketItemInfo {
