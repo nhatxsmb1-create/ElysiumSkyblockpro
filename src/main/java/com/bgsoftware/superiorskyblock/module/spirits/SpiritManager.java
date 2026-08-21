@@ -170,14 +170,14 @@ public class SpiritManager {
 
         for (int i = 0; i < entries.size(); i++) {
             String entry = entries.get(i);
-            int splitIndex = entry.indexOf(FIELD_SEPARATOR);
-            if (splitIndex < 0) continue;
-            
-            if (entry.substring(splitIndex + 1).equals(locationKey)) {
-                String type = entry.substring(0, splitIndex);
-                entries.remove(i);
-                setPlacedSpirits(island, entries);
-                return type;
+            String[] parts = entry.split(FIELD_SEPARATOR);
+            if (parts.length >= 5) {
+                String entryLocKey = parts[1] + FIELD_SEPARATOR + parts[2] + FIELD_SEPARATOR + parts[3] + FIELD_SEPARATOR + parts[4];
+                if (entryLocKey.equals(locationKey)) {
+                    entries.remove(i);
+                    setPlacedSpirits(island, entries);
+                    return parts[0];
+                }
             }
         }
         return null;
@@ -186,10 +186,13 @@ public class SpiritManager {
     public boolean isPlacedSpiritAt(Island island, Location location) {
         String locationKey = locationKey(location);
         for (String entry : getPlacedSpirits(island)) {
-            int splitIndex = entry.indexOf(FIELD_SEPARATOR);
-            if (splitIndex < 0) continue;
-            if (entry.substring(splitIndex + 1).equals(locationKey))
-                return true;
+            String[] parts = entry.split(FIELD_SEPARATOR);
+            if (parts.length >= 5) {
+                String entryLocKey = parts[1] + FIELD_SEPARATOR + parts[2] + FIELD_SEPARATOR + parts[3] + FIELD_SEPARATOR + parts[4];
+                if (entryLocKey.equals(locationKey)) {
+                    return true;
+                }
+            }
         }
         return false;
     }

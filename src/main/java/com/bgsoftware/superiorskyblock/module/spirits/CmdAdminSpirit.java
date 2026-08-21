@@ -14,6 +14,8 @@ import java.util.Locale;
 
 public class CmdAdminSpirit implements SuperiorCommand {
 
+    private static final long TICKS_PER_MINUTE = 1200L;
+
     private final SpiritsModule module;
 
     public CmdAdminSpirit(SpiritsModule module) {
@@ -47,7 +49,7 @@ public class CmdAdminSpirit implements SuperiorCommand {
 
     @Override
     public int getMaxArgs() {
-        return 4; // args[0] = "admin", args[1] = "spirit", args[2] = "<player>", args[3] = "<type>"
+        return 5;
     }
 
     @Override
@@ -68,6 +70,23 @@ public class CmdAdminSpirit implements SuperiorCommand {
             } else {
                 sender.sendMessage("\u00a7cL\u1ec7nh n\u00e0y ch\u1ec9 d\u00e0nh cho ng\u01b0\u1eddi ch\u01a1i ho\u1eb7c ph\u1ea3i ghi \u0111\u1ea7y \u0111\u1ee7 <player> <type>.");
             }
+            return;
+        }
+
+
+        if (args.length >= 4 && args[2].equalsIgnoreCase("simulate")) {
+            Player target = Bukkit.getPlayer(args[3]);
+            if (target == null) {
+                sender.sendMessage("§cKhông tìm thấy người chơi.");
+                return;
+            }
+            long minutes = 60;
+            if (args.length == 5) {
+                try { minutes = Long.parseLong(args[4]); } catch (Exception ignored) {}
+            }
+            long ticks = minutes * TICKS_PER_MINUTE;
+            sender.sendMessage("§aMô phỏng " + minutes + " phút offline cho " + target.getName() + "...");
+            module.getSpiritTask().simulateOffline(target, ticks);
             return;
         }
 

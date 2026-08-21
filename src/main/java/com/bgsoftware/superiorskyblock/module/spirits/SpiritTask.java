@@ -22,6 +22,85 @@ import java.util.Random;
 import java.util.Set;
 
 public class SpiritTask extends BukkitRunnable {
+    public void simulateOffline(Player player, long ticks) {
+        SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(player.getUniqueId());
+        Island island = sp.getIsland();
+        if (island == null) return;
+        
+        Map<Location, PlacedSpirit> spirits = module.getSpiritManager().getPlacedSpiritLocations(island);
+        if (spirits.isEmpty()) return;
+
+        Map<Material, Integer> totalDrops = new java.util.HashMap<>();
+
+        for (Map.Entry<Location, PlacedSpirit> entry : spirits.entrySet()) {
+            String type = entry.getValue().getType();
+            int level = entry.getValue().getLevel();
+            SpiritConfigInfo info = module.getConfiguration().getSpirits().get(type);
+            if (info == null) continue;
+
+            int currentInterval = info.getActionIntervalTicks();
+            if (info.getUpgrades().containsKey(level)) {
+                currentInterval = info.getUpgrades().get(level).getIntervalTicks();
+            }
+
+            long actionsCount = ticks / currentInterval;
+            if (actionsCount <= 0) continue;
+
+            if (type.equalsIgnoreCase("miner")) {
+                Dimension dim = Dimensions.fromEnvironment(World.Environment.NORMAL);
+                Map<String, Integer> amounts = island.getGeneratorAmounts(dim);
+                if (amounts != null && !amounts.isEmpty()) {
+                    int totalWeight = 0;
+                    for (Integer weight : amounts.values()) {
+                        totalWeight += weight;
+                    }
+                    if (totalWeight > 0) {
+                        for (long i = 0; i < actionsCount; i++) {
+                            int rand = random.nextInt(totalWeight);
+                            int current = 0;
+                            Material drop = null;
+                            for (Map.Entry<String, Integer> amt : amounts.entrySet()) {
+                                current += amt.getValue();
+                                if (rand < current) {
+                                    try { drop = Material.matchMaterial(amt.getKey()); } catch (Exception ignored) {}
+                                    break;
+                                }
+                            }
+                            if (drop == null) drop = Material.COBBLESTONE;
+                            totalDrops.put(drop, totalDrops.getOrDefault(drop, 0) + 1);
+                        }
+                    } else {
+                        totalDrops.put(Material.COBBLESTONE, totalDrops.getOrDefault(Material.COBBLESTONE, 0) + (int)actionsCount);
+                    }
+                } else {
+                    totalDrops.put(Material.COBBLESTONE, totalDrops.getOrDefault(Material.COBBLESTONE, 0) + (int)actionsCount);
+                }
+            } else if (type.equalsIgnoreCase("farmer")) {
+                for (long i = 0; i < actionsCount; i++) {
+                    Material drop = FARMER_DROPS[random.nextInt(FARMER_DROPS.length)];
+                    totalDrops.put(drop, totalDrops.getOrDefault(drop, 0) + 1);
+                }
+            }
+        }
+
+        if (totalDrops.isEmpty()) return;
+
+        for (Map.Entry<Material, Integer> drop : totalDrops.entrySet()) {
+            BuiltinModules.ORE_STORAGE.getStorageManager().addAmount(island.getUniqueId(), drop.getKey(), BigInteger.valueOf(drop.getValue()));
+        }
+        
+        player.sendMessage("§b✨ §e§lBÁO CÁO NGOẠI TUYẾN");
+        player.sendMessage("§7Tinh linh của bạn đã làm việc chăm chỉ và đưa vào /is kho:");
+        for (Map.Entry<Material, Integer> drop : totalDrops.entrySet()) {
+            player.sendMessage("§a+ " + drop.getValue() + " §f" + drop.getKey().name());
+        }
+        try {
+            player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_PLAYER_LEVELUP"), 1f, 1f);
+        } catch (Exception ex) {
+            try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("LEVEL_UP"), 1f, 1f); } catch (Exception ignored) {}
+        }
+    }
+
 
     private final SuperiorSkyblockPlugin plugin;
     private final SpiritsModule module;
