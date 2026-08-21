@@ -74,18 +74,41 @@ public class CmdAdminSpirit implements SuperiorCommand {
         }
 
 
-        if (args.length >= 4 && args[2].equalsIgnoreCase("simulate")) {
-            Player target = Bukkit.getPlayer(args[3]);
-            if (target == null) {
-                sender.sendMessage("\u00a7cKhông tìm thấy người chơi.");
-                return;
-            }
+        if (args.length >= 3 && args[2].equalsIgnoreCase("simulate")) {
+            Player target = null;
             long minutes = 60;
-            if (args.length == 5) {
+            
+            if (args.length == 3) {
+                // /is admin spirit simulate
+                if (sender instanceof Player) {
+                    target = (Player) sender;
+                } else {
+                    sender.sendMessage("§cVui lòng nhập tên người chơi.");
+                    return;
+                }
+            } else if (args.length == 4) {
+                // /is admin spirit simulate <minutes> OR /is admin spirit simulate <player>
+                try {
+                    minutes = Long.parseLong(args[3]);
+                    if (sender instanceof Player) {
+                        target = (Player) sender;
+                    }
+                } catch (Exception e) {
+                    target = org.bukkit.Bukkit.getPlayer(args[3]);
+                }
+            } else if (args.length == 5) {
+                // /is admin spirit simulate <player> <minutes>
+                target = org.bukkit.Bukkit.getPlayer(args[3]);
                 try { minutes = Long.parseLong(args[4]); } catch (Exception ignored) {}
             }
+            
+            if (target == null) {
+                sender.sendMessage("§cKhông tìm thấy người chơi.");
+                return;
+            }
+            
             long ticks = minutes * TICKS_PER_MINUTE;
-            sender.sendMessage("\u00a7aMô phỏng " + minutes + " phút offline cho " + target.getName() + "...");
+            sender.sendMessage("§aMô phỏng " + minutes + " phút offline cho " + target.getName() + "...");
             module.getSpiritTask().simulateOffline(target, ticks);
             return;
         }
