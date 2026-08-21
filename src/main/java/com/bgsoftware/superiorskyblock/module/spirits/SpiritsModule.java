@@ -71,6 +71,10 @@ public class SpiritsModule extends BuiltinModule<SpiritsModule.Configuration> {
         return new String[]{"spirits"};
     }
 
+    public SpiritTask getSpiritTask() {
+        return spiritTask;
+    }
+
     public SpiritManager getSpiritManager() {
         return spiritManager;
     }

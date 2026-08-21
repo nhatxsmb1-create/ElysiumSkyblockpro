@@ -16,6 +16,8 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
+import com.bgsoftware.superiorskyblock.api.persistence.PersistentDataType;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryHolder;
@@ -28,22 +30,20 @@ public class SpiritsListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerQuit(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
-        player.getPersistentDataContainer().put(
-            new org.bukkit.NamespacedKey(plugin, "spirit_offline_time"),
-            org.bukkit.persistence.PersistentDataType.LONG,
-            System.currentTimeMillis()
-        );
+        SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(e.getPlayer().getUniqueId());
+        if (sp != null) {
+            sp.getPersistentDataContainer().put("spirit_offline_time", PersistentDataType.LONG, System.currentTimeMillis());
+        }
     }
     
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        org.bukkit.NamespacedKey key = new org.bukkit.NamespacedKey(plugin, "spirit_offline_time");
-        if (player.getPersistentDataContainer().has(key, org.bukkit.persistence.PersistentDataType.LONG)) {
-            long quitTime = player.getPersistentDataContainer().get(key, org.bukkit.persistence.PersistentDataType.LONG);
+        SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(player.getUniqueId());
+        if (sp != null && sp.getPersistentDataContainer().has("spirit_offline_time")) {
+            long quitTime = sp.getPersistentDataContainer().getOrDefault("spirit_offline_time", PersistentDataType.LONG, System.currentTimeMillis());
             long elapsed = System.currentTimeMillis() - quitTime;
-            player.getPersistentDataContainer().remove(key);
+            sp.getPersistentDataContainer().remove("spirit_offline_time");
             
             long maxElapsed = 8 * 3600000L; // 8 hours
             if (player.hasPermission("elysium.offline.vip2")) {
