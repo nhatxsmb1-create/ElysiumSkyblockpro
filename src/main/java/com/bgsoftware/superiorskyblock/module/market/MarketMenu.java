@@ -335,12 +335,12 @@ public class MarketMenu implements Listener {
         player.sendMessage("§a✔ Đã bán " + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " với giá " + String.format("$%.2f", totalMoney));
 
         if (amountToSell >= 10000 || totalMoney >= 100000) {
-            Bukkit.broadcastMessage("");
-            Bukkit.broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-            Bukkit.broadcastMessage("§c§l⚠ CẢNH BÁO CÁ MẬP XẢ HÀNG ⚠");
-            Bukkit.broadcastMessage("§eĐại gia §a" + player.getName() + " §evừa xả §f" + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " §evào thị trường!");
-            Bukkit.broadcastMessage("§7➤ Giá của " + MarketModule.getVietnameseName(mat) + " đang rớt thê thảm! Anh em cẩn thận!");
-            Bukkit.broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+            Bukkit.getServer().broadcastMessage("");
+            Bukkit.getServer().broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+            Bukkit.getServer().broadcastMessage("§c§l⚠ CẢNH BÁO CÁ MẬP XẢ HÀNG ⚠");
+            Bukkit.getServer().broadcastMessage("§eĐại gia §a" + player.getName() + " §evừa xả §f" + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " §evào thị trường!");
+            Bukkit.getServer().broadcastMessage("§7➤ Giá của " + MarketModule.getVietnameseName(mat) + " đang rớt thê thảm! Anh em cẩn thận!");
+            Bukkit.getServer().broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
             
             for (Player p : Bukkit.getOnlinePlayers()) {
                 try {
