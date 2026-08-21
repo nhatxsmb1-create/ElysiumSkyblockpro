@@ -230,17 +230,18 @@ public class MarketMenu implements Listener {
             lore.add("\u00a7eGi\u00e1 thu mua hi\u1ec7n t\u1ea1i: \u00a7a$" + String.format("%.2f", currentPrice) + " \u00a77/ c\u00e1i");
             lore.add("\u00a7bS\u1ed1 l\u01b0\u1ee3ng server \u0111\u00e3 b\u00e1n: \u00a7f" + info.getPoolSize());
             lore.add("");
-            lore.add("\u00a7d\u25bc Bi\u1ec3u \u0111\u1ed3 bi\u1ebfn \u0111\u1ed9ng gi\u00e1 \u25bc");
+            lore.add("§d▼ Biểu đồ biến động giá ▼");
             
             List<Double> hist = new ArrayList<>(info.getPriceHistory());
             hist.add(currentPrice);
             while (hist.size() < 15) { hist.add(0, info.getBasePrice()); }
             
-            int CHART_HEIGHT = 5;
-            int[] heights = new int[15];
             double min = info.getMinPrice();
             double max = info.getMaxPrice();
             double base = info.getBasePrice();
+            
+            StringBuilder sparkline = new StringBuilder("  ");
+            char[] blocks = new char[]{'_', '▁', '▂', '▃', '▄', '▅', '▆', '█'};
             
             for (int i = 0; i < 15; i++) {
                 double p = hist.get(i);
@@ -257,26 +258,19 @@ public class MarketMenu implements Listener {
                 if (normalized < 0) normalized = 0;
                 if (normalized > 1) normalized = 1;
                 
-                int h = (int) Math.round(normalized * (CHART_HEIGHT - 1)) + 1;
-                if (h > CHART_HEIGHT) h = CHART_HEIGHT;
-                if (h < 1) h = 1;
-                heights[i] = h;
+                String color = "§c";
+                if (p == base) color = "§e";
+                else if (p > base) color = "§a";
+                
+                int idx = (int) Math.round(normalized * 7);
+                if (idx < 0) idx = 0;
+                if (idx > 7) idx = 7;
+                
+                sparkline.append(color).append(blocks[idx]);
             }
-            for (int row = CHART_HEIGHT; row >= 1; row--) {
-                StringBuilder line = new StringBuilder("    ");
-                for (int col = 0; col < 15; col++) {
-                    if (heights[col] >= row) {
-                        String color = "\u00a7c";
-                        if (heights[col] >= 3) color = "\u00a7e";
-                        if (heights[col] == 5) color = "\u00a7a";
-                        line.append(color).append("\u2588");
-                    } else {
-                        line.append("\u00a78\u2591");
-                    }
-                }
-                lore.add(line.toString());
-            }
-            lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
+            lore.add(sparkline.toString());
+            
+            lore.add("§8▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
             meta.setLore(lore);
             center.setItemMeta(meta);
         }
@@ -380,7 +374,7 @@ public class MarketMenu implements Listener {
     private ItemStack getSellBtn(MarketModule.MarketItemInfo info, int amount, boolean fromKho) {
         Material icon = fromKho ? Material.ENDER_CHEST : Material.CHEST;
         String amountStr = amount == -1 ? "T\u1ea5t C\u1ea3" : "x" + amount;
-        String fromStr = fromKho ? "Kho \u1ea2o" : "T\u00fai \u0110\u1ed3";
+        String fromStr = fromKho ? "Kho \u0110\u1ea3o" : "T\u00fai \u0110\u1ed3";
         ItemStack item = new ItemStack(icon);
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
@@ -568,14 +562,14 @@ public class MarketMenu implements Listener {
                     if (amountToSell > 100000L) amountToSell = 100000L;
                 } else {
                     if (amountInKho.compareTo(BigInteger.valueOf(exactAmount)) < 0) {
-                        player.sendMessage("\u00a7cKho \u1ea2o c\u1ee7a b\u1ea1n kh\u00f4ng \u0111\u1ee7 " + exactAmount + "x " + MarketModule.getVietnameseName(mat) + "!");
+                        player.sendMessage("\u00a7cKho \u0110\u1ea3o c\u1ee7a b\u1ea1n kh\u00f4ng \u0111\u1ee7 " + exactAmount + "x " + MarketModule.getVietnameseName(mat) + "!");
                         return;
                     }
                     amountToSell = exactAmount;
                 }
                 BuiltinModules.ORE_STORAGE.getStorageManager().removeAmount(sp.getIsland().getUniqueId(), mat, BigInteger.valueOf(amountToSell));
             } else {
-                player.sendMessage("\u00a7cKho \u1ea2o c\u1ee7a b\u1ea1n kh\u00f4ng c\u00f2n " + MarketModule.getVietnameseName(mat) + "!");
+                player.sendMessage("\u00a7cKho \u0110\u1ea3o c\u1ee7a b\u1ea1n kh\u00f4ng c\u00f2n " + MarketModule.getVietnameseName(mat) + "!");
                 return;
             }
         }
