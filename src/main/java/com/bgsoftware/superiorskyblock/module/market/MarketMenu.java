@@ -350,7 +350,10 @@ public class MarketMenu implements Listener {
                 }
             }
             try {
-                player.getWorld().spawnParticle(org.bukkit.Particle.valueOf("TOTEM"), player.getLocation().add(0, 1, 0), 100, 0.5, 0.5, 0.5, 0.1);
+                Class<?> particleClass = Class.forName("org.bukkit.Particle");
+                Object totem = Enum.valueOf((Class<Enum>) particleClass, "TOTEM");
+                player.getWorld().getClass().getMethod("spawnParticle", particleClass, org.bukkit.Location.class, int.class, double.class, double.class, double.class, double.class)
+                    .invoke(player.getWorld(), totem, player.getLocation().add(0, 1, 0), 100, 0.5, 0.5, 0.5, 0.1);
             } catch (Exception ignored) {}
         } else {
             try {
