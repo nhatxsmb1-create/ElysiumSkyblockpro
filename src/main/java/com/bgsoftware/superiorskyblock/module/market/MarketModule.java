@@ -348,8 +348,4 @@ org.bukkit.configuration.ConfigurationSection section = config.getConfigurationS
                 return sb.toString().trim();
         }
     }
-                }
-                return sb.toString().trim();
-        }
-    }
 }
