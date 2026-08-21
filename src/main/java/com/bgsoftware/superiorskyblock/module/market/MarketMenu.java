@@ -201,6 +201,9 @@ public class MarketMenu implements Listener {
                     lore.add("\u00a77Tr\u1ea1ng th\u00e1i: " + status);
                     lore.add("\u00a7eGi\u00e1 thu mua: \u00a7a$" + String.format("%.2f", currentPrice));
                     lore.add("");
+                    lore.add("\u00a77\u2191 Gi\u00e1 Đ\u1ec9nh: \u00a7a$" + String.format("%.2f", info.getMaxPrice()));
+                    lore.add("\u00a77\u2193 Gi\u00e1 Đ\u00e1y: \u00a7c$" + String.format("%.2f", info.getMinPrice()));
+                    lore.add("");
                     lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 Xem bi\u1ec3u \u0111\u1ed3 & B\u00c1N");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
@@ -229,6 +232,9 @@ public class MarketMenu implements Listener {
             lore.add("");
             lore.add("\u00a7eGi\u00e1 thu mua hi\u1ec7n t\u1ea1i: \u00a7a$" + String.format("%.2f", currentPrice) + " \u00a77/ c\u00e1i");
             lore.add("\u00a7bS\u1ed1 l\u01b0\u1ee3ng server \u0111\u00e3 b\u00e1n: \u00a7f" + info.getPoolSize());
+            lore.add("");
+            lore.add("\u00a77\u2191 Gi\u00e1 Đ\u1ec9nh (Cao nh\u1ea5t): \u00a7a$" + String.format("%.2f", info.getMaxPrice()));
+            lore.add("\u00a77\u2193 Gi\u00e1 Đ\u00e1y (Th\u1ea5p nh\u1ea5t): \u00a7c$" + String.format("%.2f", info.getMinPrice()));
             lore.add("");
             lore.add("\u00a7d\u25bc Bi\u1ec3u \u0111\u1ed3 bi\u1ebfn \u0111\u1ed9ng gi\u00e1 \u25bc");
             
