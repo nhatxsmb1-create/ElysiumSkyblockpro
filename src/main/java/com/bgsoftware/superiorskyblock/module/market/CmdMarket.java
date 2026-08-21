@@ -34,7 +34,7 @@ public class CmdMarket implements SuperiorCommand {
 
     @Override
     public String getDescription(Locale locale) {
-        return "M\u1edf S\u00e0n Ch\u1ee9ng Kho\u00e1n T\u00e0i Nguy\u00ean";
+        return "M\u1edf Trung T\u00e2m Giao Th\u01b0\u01a1ng";
     }
 
     @Override
@@ -60,7 +60,16 @@ public class CmdMarket implements SuperiorCommand {
     @Override
     public void execute(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
         if (sender instanceof Player) {
-            new MarketMenu(module, plugin).open((Player) sender);
+            String cmd = args.length > 0 ? args[0].toLowerCase() : "";
+            MarketMenu menu = new MarketMenu(module, plugin);
+            if (cmd.equals("market")) {
+                menu.openBuyShop((Player) sender);
+            } else if (cmd.equals("chungkhoan")) {
+                menu.openMarket((Player) sender);
+            } else {
+                // Mặc định (/is shop) sẽ mở Menu Ở Giữa (Trade Center)
+                menu.open((Player) sender);
+            }
         }
     }
 

@@ -109,9 +109,46 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
         @Override
         public boolean isEnabled() { return true; }
         private final Map<String, MarketItemInfo> items = new LinkedHashMap<>();
+        private final Map<String, ShopItemInfo> shopItems = new LinkedHashMap<>();
+        
+        public Map<String, ShopItemInfo> getShopItems() {
+            return shopItems;
+        }
+
+        public static class ShopItemInfo {
+            private final String category;
+            private final String materialName;
+            private final double buyPrice;
+
+            public ShopItemInfo(String category, String materialName, double buyPrice) {
+                this.category = category;
+                this.materialName = materialName;
+                this.buyPrice = buyPrice;
+            }
+
+            public String getCategory() { return category; }
+            public double getBuyPrice() { return buyPrice; }
+            public Material getMaterial() {
+                try {
+                    return Material.valueOf(materialName);
+                } catch (Exception ex) {
+                    return Material.matchMaterial(materialName);
+                }
+            }
+        }
+
 
         public Configuration(CommentedConfiguration config) {
-            org.bukkit.configuration.ConfigurationSection section = config.getConfigurationSection("items");
+            
+            if (config.contains("buy-shop")) {
+                org.bukkit.configuration.ConfigurationSection shopSection = config.getConfigurationSection("buy-shop");
+                for (String key : shopSection.getKeys(false)) {
+                    String category = shopSection.getString(key + ".category", "BUILDING");
+                    double buyPrice = shopSection.getDouble(key + ".buy-price");
+                    shopItems.put(key, new ShopItemInfo(category, key, buyPrice));
+                }
+            }
+org.bukkit.configuration.ConfigurationSection section = config.getConfigurationSection("items");
             if (section != null) {
                 for (String key : section.getKeys(false)) {
                     String category = section.getString(key + ".category", "MINERAL");
@@ -192,6 +229,18 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
 
     public static String getVietnameseName(Material mat) {
         switch (mat.name()) {
+            case "DIRT": return "Đất";
+            case "OAK_LOG": return "Gỗ Sồi";
+            case "GLASS": return "Kính";
+            case "STONE_BRICKS": return "Gạch Đá";
+            case "SEA_LANTERN": return "Đèn Biển";
+            case "GLOWSTONE": return "Đá Phát Sáng";
+            case "QUARTZ_BLOCK": return "Khối Thạch Anh";
+            case "OAK_LEAVES": return "Lá Cây";
+            case "ELYTRA": return "Cánh Elytra";
+            case "TOTEM_OF_UNDYING": return "Totem Bất Tử";
+            case "NETHER_STAR": return "Sao Nether";
+            case "SPONGE": return "Mút Xốp";
             case "DIAMOND_BLOCK": return "Kh\u1ed1i Kim C\u01b0\u01a1ng";
             case "IRON_BLOCK": return "Kh\u1ed1i S\u1eaft";
             case "GOLD_BLOCK": return "Kh\u1ed1i V\u00e0ng";

@@ -8,11 +8,12 @@ exec_code = '''    public void execute(SuperiorSkyblock plugin, CommandSender se
         if (sender instanceof Player) {
             String cmd = args.length > 0 ? args[0].toLowerCase() : "";
             MarketMenu menu = new MarketMenu(module, plugin);
-            if (cmd.equals("market") || cmd.equals("chungkhoan")) {
-                menu.openMarket((Player) sender);
-            } else if (cmd.equals("shop")) {
+            if (cmd.equals("market")) {
                 menu.openBuyShop((Player) sender);
+            } else if (cmd.equals("chungkhoan")) {
+                menu.openMarket((Player) sender);
             } else {
+                // Mặc định (như /is shop) sẽ mở Menu Ở Giữa (Trade Center)
                 menu.open((Player) sender);
             }
         }
