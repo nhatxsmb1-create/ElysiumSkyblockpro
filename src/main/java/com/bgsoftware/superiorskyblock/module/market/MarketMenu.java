@@ -93,7 +93,7 @@ public class MarketMenu implements Listener {
         Material rMat = Material.NETHER_STAR;
         inventory.setItem(25, getCatBtn("RARES", rMat, "\u0110\u1ed3 Hi\u1ebfm"));
 
-        setupNavigationBar(inventory, 45, false, false);
+        setupNavigationBar(inventory, 45, false, false, false);
         player.openInventory(inventory);
     }
 
@@ -132,7 +132,7 @@ public class MarketMenu implements Listener {
             }
         }
 
-        setupNavigationBar(inventory, 54, page > 0, page < totalPages - 1);
+        setupNavigationBar(inventory, 54, page > 0, page < totalPages - 1, false);
         player.openInventory(inventory);
     }
 
@@ -150,7 +150,7 @@ public class MarketMenu implements Listener {
         inventory.setItem(32, getBuyBtn(info, 128));
         inventory.setItem(34, getBuyBtn(info, 192));
 
-        setupNavigationBar(inventory, 45, false, false);
+        setupNavigationBar(inventory, 45, false, false, false);
         player.openInventory(inventory);
     }
 
@@ -165,7 +165,7 @@ public class MarketMenu implements Listener {
         Material cMat = Material.WHEAT;
         inventory.setItem(24, getCatBtn("CROP", cMat, "S\u00e0n N\u00f4ng S\u1ea3n"));
 
-        setupNavigationBar(inventory, 45, false, false);
+        setupNavigationBar(inventory, 45, false, false, true);
         player.openInventory(inventory);
     }
 
@@ -209,7 +209,7 @@ public class MarketMenu implements Listener {
             }
         }
 
-        setupNavigationBar(inventory, 54, page > 0, page < totalPages - 1);
+        setupNavigationBar(inventory, 54, page > 0, page < totalPages - 1, true);
         player.openInventory(inventory);
     }
 
@@ -230,7 +230,7 @@ public class MarketMenu implements Listener {
             lore.add("\u00a7eGi\u00e1 thu mua hi\u1ec7n t\u1ea1i: \u00a7a$" + String.format("%.2f", currentPrice) + " \u00a77/ c\u00e1i");
             lore.add("\u00a7bS\u1ed1 l\u01b0\u1ee3ng server \u0111\u00e3 b\u00e1n: \u00a7f" + info.getPoolSize());
             lore.add("");
-            lore.add("§d▼ Biểu đồ biến động giá ▼");
+            lore.add("\u00a7d\u25bc Bi\u1ec3u \u0111\u1ed3 bi\u1ebfn \u0111\u1ed9ng gi\u00e1 \u25bc");
             
             List<Double> hist = new ArrayList<>(info.getPriceHistory());
             hist.add(currentPrice);
@@ -241,7 +241,7 @@ public class MarketMenu implements Listener {
             double base = info.getBasePrice();
             
             StringBuilder sparkline = new StringBuilder("  ");
-            char[] blocks = new char[]{'_', '▁', '▂', '▃', '▄', '▅', '▆', '█'};
+            char[] blocks = new char[]{'_', '\u2581', '\u2582', '\u2583', '\u2584', '\u2585', '\u2586', '\u2588'};
             
             for (int i = 0; i < 15; i++) {
                 double p = hist.get(i);
@@ -258,9 +258,9 @@ public class MarketMenu implements Listener {
                 if (normalized < 0) normalized = 0;
                 if (normalized > 1) normalized = 1;
                 
-                String color = "§c";
-                if (p == base) color = "§e";
-                else if (p > base) color = "§a";
+                String color = "\u00a7c";
+                if (p == base) color = "\u00a7e";
+                else if (p > base) color = "\u00a7a";
                 
                 int idx = (int) Math.round(normalized * 7);
                 if (idx < 0) idx = 0;
@@ -270,7 +270,7 @@ public class MarketMenu implements Listener {
             }
             lore.add(sparkline.toString());
             
-            lore.add("§8▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+            lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
             meta.setLore(lore);
             center.setItemMeta(meta);
         }
@@ -283,7 +283,7 @@ public class MarketMenu implements Listener {
         inventory.setItem(32, getSellBtn(info, 64, true));
         inventory.setItem(33, getSellBtn(info, -1, true));
 
-        setupNavigationBar(inventory, 54, false, false);
+        setupNavigationBar(inventory, 54, false, false, true);
         player.openInventory(inventory);
     }
 
@@ -298,7 +298,7 @@ public class MarketMenu implements Listener {
         }
     }
 
-    private void setupNavigationBar(Inventory inv, int size, boolean hasPrev, boolean hasNext) {
+    private void setupNavigationBar(Inventory inv, int size, boolean hasPrev, boolean hasNext, boolean isMarket) {
         int row = size / 9 - 1;
         int base = row * 9;
         
@@ -307,11 +307,19 @@ public class MarketMenu implements Listener {
             inv.setItem(base + i, border);
         }
         
-        if (hasPrev) inv.setItem(base + 0, getNavBtn("\u00a7e\u25c0 Trang Tr\u01b0\u1edbc", Material.PAPER));
-        inv.setItem(base + 2, getNavBtn("\u00a7a\u00a7l\u27A4 C\u1eecA H\u00c0NG", Material.CHEST));
+        // Pagination (Arrows)
+        if (hasPrev) inv.setItem(base + 2, getNavBtn("\u00a7e\u25c0 Trang Tr\u01b0\u1edbc", Material.ARROW));
+        if (hasNext) inv.setItem(base + 6, getNavBtn("\u00a7eTrang T\u1edbi \u25b6", Material.ARROW));
+        
+        // Back / Close
         inv.setItem(base + 4, getNavBtn("\u00a7c\u00a7l\u2716 TR\u1ede L\u1ea0I", Material.BARRIER));
-        inv.setItem(base + 6, getNavBtn("\u00a76\u00a7l\u27A4 CH\u1ee8NG KHO\u00c1N", Material.ENDER_CHEST));
-        if (hasNext) inv.setItem(base + 8, getNavBtn("\u00a7eTrang T\u1edbi \u25b6", Material.PAPER));
+        
+        // Tab Switcher (Paper at the corner)
+        if (isMarket) {
+            inv.setItem(base + 8, getNavBtn("\u00a7a\u00a7l\u21c4 Chuy\u1ec3n sang C\u1eecA H\u00c0NG", Material.PAPER));
+        } else {
+            inv.setItem(base + 8, getNavBtn("\u00a76\u00a7l\u21c4 Chuy\u1ec3n sang CH\u1ee8NG KHO\u00c1N", Material.PAPER));
+        }
     }
 
     private ItemStack getBorder(boolean accent) {
@@ -374,7 +382,7 @@ public class MarketMenu implements Listener {
     private ItemStack getSellBtn(MarketModule.MarketItemInfo info, int amount, boolean fromKho) {
         Material icon = fromKho ? Material.ENDER_CHEST : Material.CHEST;
         String amountStr = amount == -1 ? "T\u1ea5t C\u1ea3" : "x" + amount;
-        String fromStr = fromKho ? "Kho \u0110\u1ea3o" : "T\u00fai \u0110\u1ed3";
+        String fromStr = fromKho ? "Kho \u0110\u1ea3o (/is kho)" : "T\u00fai \u0110\u1ed3";
         ItemStack item = new ItemStack(icon);
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
@@ -408,8 +416,15 @@ public class MarketMenu implements Listener {
         int base = row * 9;
 
         // Global Navigation Bar Clicks
-        if (slot == base + 2 && clickedMat == Material.CHEST) { openShopCats(player); return; }
-        if (slot == base + 6 && clickedMat == Material.ENDER_CHEST) { openMarketCats(player); return; }
+        if (slot == base + 8 && clickedMat == Material.PAPER) {
+            if (currentState == State.SHOP_CATS || currentState == State.SHOP_ITEMS || currentState == State.SHOP_BUY) {
+                openMarketCats(player);
+            } else {
+                openShopCats(player);
+            }
+            return;
+        }
+        
         if (slot == base + 4 && clickedMat == Material.BARRIER) {
             if (currentState == State.SHOP_CATS || currentState == State.MARKET_CATS) openHub(player);
             else if (currentState == State.SHOP_ITEMS) openShopCats(player);
@@ -418,12 +433,14 @@ public class MarketMenu implements Listener {
             else if (currentState == State.MARKET_SELL) openMarketItems(player, currentCategory, currentPage);
             return;
         }
-        if (slot == base + 0 && clickedMat == Material.PAPER) {
+        
+        if (slot == base + 2 && clickedMat == Material.ARROW) {
             if (currentState == State.SHOP_ITEMS) openShopItems(player, currentCategory, currentPage - 1);
             if (currentState == State.MARKET_ITEMS) openMarketItems(player, currentCategory, currentPage - 1);
             return;
         }
-        if (slot == base + 8 && clickedMat == Material.PAPER) {
+        
+        if (slot == base + 6 && clickedMat == Material.ARROW) {
             if (currentState == State.SHOP_ITEMS) openShopItems(player, currentCategory, currentPage + 1);
             if (currentState == State.MARKET_ITEMS) openMarketItems(player, currentCategory, currentPage + 1);
             return;
