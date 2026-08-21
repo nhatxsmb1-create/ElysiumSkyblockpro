@@ -19,7 +19,7 @@ public class CmdMarket implements SuperiorCommand {
 
     @Override
     public List<String> getAliases() {
-        return java.util.Arrays.asList("market", "chungkhoan");
+        return java.util.Arrays.asList("shop", "market", "chungkhoan");
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CmdMarket implements SuperiorCommand {
 
     @Override
     public String getUsage(Locale locale) {
-        return "market";
+        return "shop";
     }
 
     @Override

@@ -41,11 +41,57 @@ public class MarketMenu implements Listener {
         player.openInventory(inventory);
     }
 
+
     private void update() {
         inventory.clear();
-        int slot = 0;
+        
+        // Setup border with glass panes
+        ItemStack border = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        ItemMeta borderMeta = border.getItemMeta();
+        if (borderMeta != null) {
+            borderMeta.setDisplayName(" ");
+            border.setItemMeta(borderMeta);
+        }
+        
+        for (int i = 0; i < 54; i++) {
+            if (i < 9 || i > 44 || i % 9 == 0 || i % 9 == 8) {
+                inventory.setItem(i, border);
+            }
+        }
+        
+        // Setup Info book at slot 4
+        ItemStack infoBook = new ItemStack(Material.BOOK);
+        ItemMeta infoMeta = infoBook.getItemMeta();
+        if (infoMeta != null) {
+            infoMeta.setDisplayName("§b§l✨ HƯỚNG DẪN SÀN CHỨNG KHOÁN ✨");
+            List<String> infoLore = new ArrayList<>();
+            infoLore.add("§7Đây là Sàn Giao Dịch Tài Nguyên mở của Server.");
+            infoLore.add("§7Giá của vật phẩm §akhông cố định§7, mà sẽ");
+            infoLore.add("§athay đổi liên tục §7dựa vào hành động của người chơi!");
+            infoLore.add("");
+            infoLore.add("§c⬇ Nếu nhiều người đổ xô bán§7, giá sẽ rớt thê thảm.");
+            infoLore.add("§a⬆ Nếu không ai bán§7, giá sẽ dần hồi phục lên đỉnh!");
+            infoLore.add("");
+            infoLore.add("§e➤ §eHãy trở thành con sói già phố Wall Bán đỉnh Mua đáy!");
+            infoMeta.setLore(infoLore);
+            infoBook.setItemMeta(infoMeta);
+        }
+        inventory.setItem(4, infoBook);
+        
+        // Setup Close button at slot 49
+        ItemStack closeBtn = new ItemStack(Material.BARRIER);
+        ItemMeta closeMeta = closeBtn.getItemMeta();
+        if (closeMeta != null) {
+            closeMeta.setDisplayName("§c§l✖ Đóng Giao Diện");
+            closeBtn.setItemMeta(closeMeta);
+        }
+        inventory.setItem(49, closeBtn);
+
+        int[] innerSlots = {10,11,12,13,14,15,16, 19,20,21,22,23,24,25, 28,29,30,31,32,33,34, 37,38,39,40,41,42,43};
+        int index = 0;
+        
         for (Map.Entry<String, MarketModule.MarketItemInfo> entry : module.getConfiguration().getItems().entrySet()) {
-            if (slot >= 54) break;
+            if (index >= innerSlots.length) break;
             MarketModule.MarketItemInfo info = entry.getValue();
             Material mat = info.getMaterial();
             if (mat == null) continue;
@@ -53,37 +99,48 @@ public class MarketMenu implements Listener {
             ItemStack item = new ItemStack(mat);
             ItemMeta meta = item.getItemMeta();
             if (meta != null) {
-                meta.setDisplayName("\u00a76\u00a7l" + MarketModule.getVietnameseName(mat));
+                meta.setDisplayName("§6§l" + MarketModule.getVietnameseName(mat));
                 List<String> lore = new ArrayList<>();
                 double currentPrice = info.getCurrentPrice();
-                String status = currentPrice >= info.getBasePrice() ? "\u00a7a\u2b06 \u0110ang c\u00f3 gi\u00e1" : "\u00a7c\u2b07 R\u1edbt gi\u00e1";
+                String status = currentPrice >= info.getBasePrice() ? "§a⬆ Đang có giá (Đỉnh)" : "§c⬇ Lạm phát (Rớt giá)";
                 
-                lore.add("\u00a77Tr\u1ea1ng th\u00e1i: " + status);
-                lore.add("\u00a7eGi\u00e1 b\u00e1n hi\u1ec7n t\u1ea1i: \u00a7a" + String.format("$%.2f", currentPrice) + " \u00a77/ 1 c\u00e1i");
+                lore.add("§8▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
                 lore.add("");
-                lore.add("\u00a78Gi\u00e1 g\u1ed1c: $" + info.getBasePrice());
-                lore.add("\u00a78Gi\u00e1 \u0111\u1ec9nh: $" + info.getMaxPrice());
-                lore.add("\u00a78Gi\u00e1 \u0111\u00e1y: $" + info.getMinPrice());
+                lore.add("§7Trạng thái: " + status);
+                lore.add("§eGiá thu mua hiện tại: §a$" + String.format("%.2f", currentPrice) + " §7/ cái");
                 lore.add("");
-                lore.add("\u00a7bS\u1ed1 l\u01b0\u1ee3ng server \u0111\u00e3 b\u00e1n h\u00f4m nay: \u00a7f" + info.getPoolSize());
+                lore.add("§7▶ Giá thị trường gốc: §f$" + info.getBasePrice());
+                lore.add("§7▶ Giá trần (Cao nhất): §a$" + info.getMaxPrice());
+                lore.add("§7▶ Giá sàn (Thấp nhất): §c$" + info.getMinPrice());
                 lore.add("");
-                lore.add("\u00a7a[\u25b6] Click Chu\u1ed9t Tr\u00e1i \u0111\u1ec3 b\u00e1n t\u1ea5t c\u1ea3 trong T\u00fai");
-                lore.add("\u00a7a[\u25b6] Click Chu\u1ed9t Ph\u1ea3i \u0111\u1ec3 b\u00e1n t\u1ea5t c\u1ea3 t\u1eeb /is kho");
+                lore.add("§bSố lượng server đã bán hôm nay: §f" + info.getPoolSize());
+                lore.add("");
+                lore.add("§8▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+                lore.add("");
+                lore.add("§a[▶] Click Chuột Trái để bán tất cả trong §6Túi");
+                lore.add("§a[▶] Click Chuột Phải để bán tất cả từ §e/is kho");
                 
                 meta.setLore(lore);
                 item.setItemMeta(meta);
             }
-            inventory.setItem(slot++, item);
+            inventory.setItem(innerSlots[index++], item);
         }
     }
-
-    @EventHandler
+@EventHandler
     public void onClick(InventoryClickEvent e) {
         if (!e.getInventory().equals(inventory)) return;
         e.setCancelled(true);
 
         if (e.getCurrentItem() == null) return;
         Material clickedMat = e.getCurrentItem().getType();
+        
+        if (clickedMat == Material.BLACK_STAINED_GLASS_PANE || clickedMat == Material.BOOK) {
+            return;
+        }
+        if (clickedMat == Material.BARRIER) {
+            e.getWhoClicked().closeInventory();
+            return;
+        }
         MarketModule.MarketItemInfo info = null;
 
         for (MarketModule.MarketItemInfo i : module.getConfiguration().getItems().values()) {
