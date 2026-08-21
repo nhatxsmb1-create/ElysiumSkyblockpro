@@ -20,6 +20,17 @@ spirits:
       - '&f▪ &7Tự động thu thập khoáng sản.'
       - '&f▪ &7Chất lượng quặng phụ thuộc vào'
       - '&f▪ &7cấp độ Máy Tạo Quặng của Đảo.'
+    upgrades:
+      2:
+        interval-ticks: 50
+        cost:
+          'DIAMOND': 64
+          'IRON_INGOT': 256
+      3:
+        interval-ticks: 40
+        cost:
+          'DIAMOND_BLOCK': 16
+          'EMERALD': 128
   farmer:
     name: '&a&lTinh Linh Nông Dân'
     texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGIwMWVkZTFkYTNlOWQzMGI5ZWQ0MWM3YjFjYWZhM2Q5MTBhMjQwODZhYTllYmJhM2M2YjBhMDFhZmFhNDliZiJ9fX0='
@@ -30,3 +41,14 @@ spirits:
       - '&f▪ &7Tự động thu hoạch nông sản.'
       - '&f▪ &7Sản lượng dựa theo tốc độ'
       - '&f▪ &7phát triển của Đảo.'
+    upgrades:
+      2:
+        interval-ticks: 80
+        cost:
+          'DIAMOND': 32
+          'WHEAT': 500
+      3:
+        interval-ticks: 60
+        cost:
+          'DIAMOND_BLOCK': 16
+          'GOLDEN_CARROT': 128

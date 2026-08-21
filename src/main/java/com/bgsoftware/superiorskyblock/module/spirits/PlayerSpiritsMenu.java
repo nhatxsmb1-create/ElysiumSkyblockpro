@@ -2,6 +2,7 @@ package com.bgsoftware.superiorskyblock.module.spirits;
 
 import com.bgsoftware.superiorskyblock.api.island.Island;
 import com.bgsoftware.superiorskyblock.module.spirits.SpiritsModule.SpiritConfigInfo;
+import com.bgsoftware.superiorskyblock.module.spirits.SpiritManager.PlacedSpirit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -35,12 +36,12 @@ public class PlayerSpiritsMenu implements InventoryHolder {
     public void refresh() {
         inventory.clear();
 
-        Map<Location, String> placed = module.getSpiritManager().getPlacedSpiritLocations(island);
+        Map<Location, PlacedSpirit> placed = module.getSpiritManager().getPlacedSpiritLocations(island);
         
         int slot = 10;
-        for (Map.Entry<Location, String> entry : placed.entrySet()) {
+        for (Map.Entry<Location, PlacedSpirit> entry : placed.entrySet()) {
             Location loc = entry.getKey();
-            String type = entry.getValue();
+            String type = entry.getValue().getType();
             SpiritConfigInfo info = module.getConfiguration().getSpirits().get(type);
             if (info == null) continue;
 
@@ -55,6 +56,7 @@ public class PlayerSpiritsMenu implements InventoryHolder {
                 lore.add("\u00a7a\u25b6 T\u1ecda \u0111\u1ed9:");
                 lore.add("  \u00a77X: \u00a7f" + loc.getBlockX());
                 lore.add("  \u00a77Y: \u00a7f" + loc.getBlockY());
+                lore.add("  \u00a7eC\u1ea5p \u0111\u1ed9: \u00a76" + entry.getValue().getLevel());
                 lore.add("  \u00a77Z: \u00a7f" + loc.getBlockZ());
                 lore.add("");
                 lore.add("\u00a7e\u25b6 \u0110ang ho\u1ea1t \u0111\u1ed9ng (" + (info.getActionIntervalTicks() / 20.0) + "s/l\u1ea7n)");

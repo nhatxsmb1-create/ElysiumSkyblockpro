@@ -18,6 +18,19 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 public class SpiritManager {
+    public static class PlacedSpirit {
+        private final String type;
+        private final int level;
+
+        public PlacedSpirit(String type, int level) {
+            this.type = type;
+            this.level = level;
+        }
+
+        public String getType() { return type; }
+        public int getLevel() { return level; }
+    }
+
 
     private static final String PDC_KEY = "spirits-placed";
     private static final String ENTRY_SEPARATOR = "|";
@@ -100,8 +113,8 @@ public class SpiritManager {
         return null;
     }
 
-    public Map<Location, String> getPlacedSpiritLocations(Island island) { 
-        Map<Location, String> locs = new HashMap<>(); 
+    public Map<Location, PlacedSpirit> getPlacedSpiritLocations(Island island) { 
+        Map<Location, PlacedSpirit> locs = new HashMap<>(); 
         for (String entry : getPlacedSpirits(island)) { 
             String[] parts = entry.split(FIELD_SEPARATOR); 
             if (parts.length >= 4) { 
@@ -111,7 +124,11 @@ public class SpiritManager {
                         int x = Integer.parseInt(parts[2]); 
                         int y = Integer.parseInt(parts[3]); 
                         int z = Integer.parseInt(parts[4]); 
-                        locs.put(new Location(world, x, y, z), parts[0]); 
+                        int level = 1;
+                        if (parts.length >= 6) {
+                            try { level = Integer.parseInt(parts[5]); } catch (Exception ignored) {}
+                        }
+                        locs.put(new Location(world, x, y, z), new PlacedSpirit(parts[0], level)); 
                     } catch (Exception ignored) {} 
                 } 
             } 
@@ -141,9 +158,9 @@ public class SpiritManager {
         placedSpiritsCache.put(island, new ArrayList<>(entries));
     }
 
-    public void addPlacedSpirit(Island island, String type, Location location) {
+    public void addPlacedSpirit(Island island, String type, int level, Location location) {
         List<String> entries = new ArrayList<>(getPlacedSpirits(island));
-        entries.add(type + FIELD_SEPARATOR + locationKey(location));
+        entries.add(type + FIELD_SEPARATOR + locationKey(location) + FIELD_SEPARATOR + level);
         setPlacedSpirits(island, entries);
     }
 

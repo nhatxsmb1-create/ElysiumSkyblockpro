@@ -6,6 +6,7 @@ import com.bgsoftware.superiorskyblock.api.world.Dimension;
 import com.bgsoftware.superiorskyblock.world.Dimensions;
 import com.bgsoftware.superiorskyblock.module.BuiltinModules;
 import com.bgsoftware.superiorskyblock.module.spirits.SpiritsModule.SpiritConfigInfo;
+import com.bgsoftware.superiorskyblock.module.spirits.SpiritManager.PlacedSpirit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -51,12 +52,13 @@ public class SpiritTask extends BukkitRunnable {
         }
 
         for (Island island : activeIslands) {
-            Map<Location, String> spirits = module.getSpiritManager().getPlacedSpiritLocations(island);
+            Map<Location, PlacedSpirit> spirits = module.getSpiritManager().getPlacedSpiritLocations(island);
             if (spirits.isEmpty()) continue;
 
-            for (Map.Entry<Location, String> entry : spirits.entrySet()) {
+            for (Map.Entry<Location, PlacedSpirit> entry : spirits.entrySet()) {
                 Location loc = entry.getKey();
-                String type = entry.getValue();
+                String type = entry.getValue().getType();
+                int level = entry.getValue().getLevel();
                 SpiritConfigInfo info = module.getConfiguration().getSpirits().get(type);
                 if (info == null) continue;
 
@@ -64,7 +66,12 @@ public class SpiritTask extends BukkitRunnable {
                     spawnParticle(loc.clone().add(0.5, 1.2, 0.5), info.getParticle());
                 }
 
-                if (tickCounter % info.getActionIntervalTicks() == 0) {
+                int currentInterval = info.getActionIntervalTicks();
+                if (info.getUpgrades().containsKey(level)) {
+                    currentInterval = info.getUpgrades().get(level).getIntervalTicks();
+                }
+                
+                if (tickCounter % currentInterval == 0) {
                     performSpiritAction(island, type);
                 }
             }

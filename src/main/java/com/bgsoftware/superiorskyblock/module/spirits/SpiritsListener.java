@@ -16,8 +16,28 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.block.Action;
+import com.bgsoftware.superiorskyblock.module.spirits.SpiritManager.PlacedSpirit;
+
 
 public class SpiritsListener implements Listener {
+
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onPlayerInteract(PlayerInteractEvent e) {
+        if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        Block block = e.getClickedBlock();
+        if (block == null) return;
+        Island island = plugin.getGrid().getIslandAt(block.getLocation());
+        if (island == null) return;
+        
+        PlacedSpirit spirit = module.getSpiritManager().getPlacedSpiritLocations(island).get(block.getLocation());
+        if (spirit != null) {
+            e.setCancelled(true);
+            new SpiritUpgradeMenu(module, island, block.getLocation(), spirit).open(e.getPlayer());
+        }
+    }
+
 
     private final SuperiorSkyblockPlugin plugin;
     private final SpiritsModule module;
@@ -39,7 +59,7 @@ public class SpiritsListener implements Listener {
         if (island == null)
             return;
 
-        module.getSpiritManager().addPlacedSpirit(island, type, block.getLocation());
+        module.getSpiritManager().addPlacedSpirit(island, type, 1, block.getLocation());
 
         e.getPlayer().sendMessage("\u00a7b\u2728 \u00a7e\u0110\u00e3 tri\u1ec7u h\u1ed3i Tinh Linh \u00a7f" +
                 org.bukkit.ChatColor.translateAlternateColorCodes('&', module.getConfiguration().getSpirits().get(type).getName()));
@@ -96,6 +116,9 @@ public class SpiritsListener implements Listener {
                     player.sendMessage("\u00a7b\u2728 \u00a7eB\u1ea1n \u0111\u00e3 l\u1ea5y 1 " + item.getItemMeta().getDisplayName());
                 }
             }
+        } else if (holder instanceof SpiritUpgradeMenu) {
+            e.setCancelled(true);
+            ((SpiritUpgradeMenu) holder).handleClick(e);
         } else if (holder instanceof PlayerSpiritsMenu) {
             e.setCancelled(true);
         }
