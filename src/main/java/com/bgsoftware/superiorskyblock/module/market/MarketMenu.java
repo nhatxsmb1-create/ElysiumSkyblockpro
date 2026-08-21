@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
@@ -28,9 +27,11 @@ public class MarketMenu implements Listener {
     private final SuperiorSkyblock plugin;
     private Inventory inventory;
     
-    private enum State { MAIN, MARKET_CATEGORY, MARKET_ITEM, SHOP_MAIN, SHOP_BUY }
-    private State currentState = State.MAIN;
+    private enum State { HUB, SHOP_CATS, SHOP_ITEMS, SHOP_BUY, MARKET_CATS, MARKET_ITEMS, MARKET_SELL }
+    private State currentState = State.HUB;
     private String currentCategory = null;
+    private int currentPage = 0;
+    
     private MarketModule.MarketItemInfo currentMarketItem = null;
     private MarketModule.Configuration.ShopItemInfo currentShopItem = null;
 
@@ -40,34 +41,23 @@ public class MarketMenu implements Listener {
         Bukkit.getPluginManager().registerEvents(this, (SuperiorSkyblockPlugin) plugin);
     }
 
-    public void open(Player player) {
-        openMain(player);
-    }
+    public void open(Player player) { openHub(player); }
+    public void openMarket(Player player) { openMarketCats(player); }
+    public void openBuyShop(Player player) { openShopCats(player); }
 
-    public void openMarket(Player player) {
-        openMarketCategory(player, "MINERAL");
-    }
-
-    public void openBuyShop(Player player) {
-        openShopMain(player, "BUILDING");
-    }
-
-    private void openMain(Player player) {
-        currentState = State.MAIN;
+    // ================= HUB =================
+    private void openHub(Player player) {
+        currentState = State.HUB;
         inventory = Bukkit.createInventory(null, 27, "\u00a78\u00a7lTrung T\u00e2m Giao Th\u01b0\u01a1ng");
-        
-        ItemStack border = getBorder();
-        for (int i = 0; i < 27; i++) {
-            inventory.setItem(i, border);
-        }
+        fillBorders(inventory, 27);
 
         ItemStack shopBtn = new ItemStack(Material.CHEST);
         ItemMeta shopMeta = shopBtn.getItemMeta();
         if (shopMeta != null) {
-            shopMeta.setDisplayName("\u00a7a\u00a7l\uD83D\uDED2 C\u1eecA H\u00c0NG V\u1eacT PH\u1ea8M (MUA)");
+            shopMeta.setDisplayName("\u00a7a\u00a7l\u27A4 C\u1eecA H\u00c0NG V\u1eacT PH\u1ea8M (MUA)");
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Click \u0111\u1ec3 v\u00e0o C\u1eeda h\u00e0ng mua s\u1eafm");
-            lore.add("\u00a77c\u00e1c v\u1eadt ph\u1ea9m x\u00e2y d\u1ef1ng, trang tr\u00ed.");
+            lore.add("\u00a77Click \u0111\u1ec3 mua s\u1eafm c\u00e1c v\u1eadt ph\u1ea9m");
+            lore.add("\u00a77x\u00e2y d\u1ef1ng, trang tr\u00ed, c\u00f4ng c\u1ee5...");
             shopMeta.setLore(lore);
             shopBtn.setItemMeta(shopMeta);
         }
@@ -76,163 +66,159 @@ public class MarketMenu implements Listener {
         ItemStack marketBtn = new ItemStack(Material.ENDER_CHEST);
         ItemMeta marketMeta = marketBtn.getItemMeta();
         if (marketMeta != null) {
-            marketMeta.setDisplayName("\u00a76\u00a7l\uD83D\uDCC8 S\u00c0N CH\u1ee8NG KHO\u00c1N (B\u00c1N)");
+            marketMeta.setDisplayName("\u00a76\u00a7l\u27A4 S\u00c0N CH\u1ee8NG KHO\u00c1N (B\u00c1N)");
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Click \u0111\u1ec3 v\u00e0o S\u00e0n giao d\u1ecbch");
-            lore.add("\u00a77qu\u1eb7ng v\u00e0 n\u00f4ng s\u1ea3n theo th\u1eddi gian th\u1ef1c.");
+            lore.add("\u00a77Click \u0111\u1ec3 \u0111\u1ea7u t\u01b0 v\u00e0 b\u00e1n qu\u1eb7ng,");
+            lore.add("\u00a77n\u00f4ng s\u1ea3n theo th\u1eddi gian th\u1ef1c.");
             marketMeta.setLore(lore);
             marketBtn.setItemMeta(marketMeta);
         }
         inventory.setItem(15, marketBtn);
-
         player.openInventory(inventory);
     }
 
-    private void openMarketCategory(Player player, String category) {
-        currentState = State.MARKET_CATEGORY;
+    // ================= SHOP CATEGORIES =================
+    private void openShopCats(Player player) {
+        currentState = State.SHOP_CATS;
+        inventory = Bukkit.createInventory(null, 45, "\u00a78\u00a7lC\u1eeda H\u00e0ng: Danh M\u1ee5c");
+        fillBorders(inventory, 45);
+
+        Material bMat = Material.BRICK;
+        try { bMat = Material.valueOf("BRICKS"); } catch(Exception e) {}
+        
+        inventory.setItem(19, getCatBtn("BUILDING", bMat, "Kh\u1ed1i X\u00e2y D\u1ef1ng"));
+        inventory.setItem(21, getCatBtn("DECORATION", Material.PAINTING, "\u0110\u1ed3 Trang Tr\u00ed"));
+        inventory.setItem(23, getCatBtn("TOOLS", Material.DIAMOND_PICKAXE, "C\u00f4ng C\u1ee5"));
+        
+        Material rMat = Material.NETHER_STAR;
+        inventory.setItem(25, getCatBtn("RARES", rMat, "\u0110\u1ed3 Hi\u1ebfm"));
+
+        setupNavigationBar(inventory, 45, false, false);
+        player.openInventory(inventory);
+    }
+
+    // ================= SHOP ITEMS =================
+    private void openShopItems(Player player, String category, int page) {
+        currentState = State.SHOP_ITEMS;
         currentCategory = category;
+        currentPage = page;
+        inventory = Bukkit.createInventory(null, 54, "\u00a78\u00a7lC\u1eeda H\u00e0ng: " + category);
+        
+        List<MarketModule.Configuration.ShopItemInfo> items = new ArrayList<>();
+        for (MarketModule.Configuration.ShopItemInfo info : module.getConfiguration().getShopItems().values()) {
+            if (info.getCategory().equalsIgnoreCase(category)) items.add(info);
+        }
+
+        int totalPages = (int) Math.ceil(items.size() / 45.0);
+        if (totalPages == 0) totalPages = 1;
+        
+        for (int i = 0; i < 45; i++) {
+            int idx = page * 45 + i;
+            if (idx < items.size()) {
+                MarketModule.Configuration.ShopItemInfo info = items.get(idx);
+                ItemStack item = new ItemStack(info.getMaterial());
+                ItemMeta meta = item.getItemMeta();
+                if (meta != null) {
+                    meta.setDisplayName("\u00a7a\u00a7l" + MarketModule.getVietnameseName(info.getMaterial()));
+                    List<String> lore = new ArrayList<>();
+                    lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
+                    lore.add("\u00a7eGi\u00e1 mua: \u00a7c$" + String.format("%.2f", info.getBuyPrice()));
+                    lore.add("");
+                    lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 Xem t\u00f9y ch\u1ecdn Mua");
+                    meta.setLore(lore);
+                    item.setItemMeta(meta);
+                }
+                inventory.setItem(i, item);
+            }
+        }
+
+        setupNavigationBar(inventory, 54, page > 0, page < totalPages - 1);
+        player.openInventory(inventory);
+    }
+
+    // ================= SHOP BUY CONFIRM =================
+    private void openShopBuy(Player player, MarketModule.Configuration.ShopItemInfo info) {
+        currentState = State.SHOP_BUY;
+        currentShopItem = info;
+        inventory = Bukkit.createInventory(null, 45, "\u00a78\u00a7lMua: " + MarketModule.getVietnameseName(info.getMaterial()));
+        fillBorders(inventory, 45);
+
+        inventory.setItem(13, getDisplayItem(info.getMaterial(), "\u00a7a\u00a7l" + MarketModule.getVietnameseName(info.getMaterial()), "\u00a7eGi\u00e1 g\u1ed1c: \u00a7c$" + info.getBuyPrice()));
+        
+        inventory.setItem(28, getBuyBtn(info, 1));
+        inventory.setItem(30, getBuyBtn(info, 64));
+        inventory.setItem(32, getBuyBtn(info, 128));
+        inventory.setItem(34, getBuyBtn(info, 192));
+
+        setupNavigationBar(inventory, 45, false, false);
+        player.openInventory(inventory);
+    }
+
+    // ================= MARKET CATEGORIES =================
+    private void openMarketCats(Player player) {
+        currentState = State.MARKET_CATS;
+        inventory = Bukkit.createInventory(null, 45, "\u00a78\u00a7lCh\u1ee9ng Kho\u00e1n: Danh M\u1ee5c");
+        fillBorders(inventory, 45);
+
+        inventory.setItem(20, getCatBtn("MINERAL", Material.DIAMOND_ORE, "S\u00e0n Kho\u00e1ng S\u1ea3n"));
+        
+        Material cMat = Material.WHEAT;
+        inventory.setItem(24, getCatBtn("CROP", cMat, "S\u00e0n N\u00f4ng S\u1ea3n"));
+
+        setupNavigationBar(inventory, 45, false, false);
+        player.openInventory(inventory);
+    }
+
+    // ================= MARKET ITEMS =================
+    private void openMarketItems(Player player, String category, int page) {
+        currentState = State.MARKET_ITEMS;
+        currentCategory = category;
+        currentPage = page;
         String title = category.equals("MINERAL") ? "\u00a78\u00a7lS\u00e0n Kho\u00e1ng S\u1ea3n" : "\u00a78\u00a7lS\u00e0n N\u00f4ng S\u1ea3n";
         inventory = Bukkit.createInventory(null, 54, title);
         
-        ItemStack border = getBorder();
-        for (int i = 0; i < 54; i++) {
-            if (i < 9 || i > 44 || i % 9 == 0 || i % 9 == 8) {
-                inventory.setItem(i, border);
-            }
+        List<MarketModule.MarketItemInfo> items = new ArrayList<>();
+        for (MarketModule.MarketItemInfo info : module.getConfiguration().getItems().values()) {
+            if (info.getCategory().equalsIgnoreCase(category)) items.add(info);
         }
 
-        inventory.setItem(49, getBackButton());
+        int totalPages = (int) Math.ceil(items.size() / 45.0);
+        if (totalPages == 0) totalPages = 1;
         
-        // Tab switchers
-        inventory.setItem(45, getTabButton(false)); // Switch to Shop
-        inventory.setItem(53, getTabButton(true)); // Switch to other market category
-        
-        if (category.equals("MINERAL")) {
-            inventory.getItem(53).getItemMeta().setDisplayName("\u00a7e\u27a4 Chuy\u1ec3n sang S\u00e0n N\u00f4ng S\u1ea3n");
-        } else {
-            inventory.getItem(53).getItemMeta().setDisplayName("\u00a7b\u27a4 Chuy\u1ec3n sang S\u00e0n Kho\u00e1ng S\u1ea3n");
-        }
-
-        int[] innerSlots = {10,11,12,13,14,15,16, 19,20,21,22,23,24,25, 28,29,30,31,32,33,34, 37,38,39,40,41,42,43};
-        int index = 0;
-        
-        for (Map.Entry<String, MarketModule.MarketItemInfo> entry : module.getConfiguration().getItems().entrySet()) {
-            MarketModule.MarketItemInfo info = entry.getValue();
-            if (!info.getCategory().equalsIgnoreCase(category)) continue;
-            if (index >= innerSlots.length) break;
-            
-            Material mat = info.getMaterial();
-            if (mat == null) continue;
-
-            ItemStack item = new ItemStack(mat);
-            ItemMeta meta = item.getItemMeta();
-            if (meta != null) {
-                meta.setDisplayName("\u00a76\u00a7l" + MarketModule.getVietnameseName(mat));
-                List<String> lore = new ArrayList<>();
-                double currentPrice = info.getCurrentPrice();
-                String status = currentPrice >= info.getBasePrice() ? "\u00a7a\u2b06 \u0110ang c\u00f3 gi\u00e1 (\u0110\u1ec9nh)" : "\u00a7c\u2b07 L\u1ea1m ph\u00e1t (R\u1edbt gi\u00e1)";
-                
-                lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
-                lore.add("\u00a77Tr\u1ea1ng th\u00e1i: " + status);
-                lore.add("\u00a7eGi\u00e1 thu mua: \u00a7a$" + String.format("%.2f", currentPrice));
-                lore.add("");
-                lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 B\u00c1N");
-                meta.setLore(lore);
-                item.setItemMeta(meta);
-            }
-            inventory.setItem(innerSlots[index++], item);
-        }
-        player.openInventory(inventory);
-    }
-
-    private void openShopMain(Player player, String category) {
-        currentState = State.SHOP_MAIN;
-        currentCategory = category;
-        inventory = Bukkit.createInventory(null, 54, "\u00a78\u00a7lC\u1eeda H\u00e0ng: " + category);
-        
-        ItemStack border = getBorder();
-        for (int i = 0; i < 54; i++) {
-            if (i < 9 || i > 44 || i % 9 == 0 || i % 9 == 8) {
-                inventory.setItem(i, border);
-            }
-        }
-
-        // Category tabs at top
-        inventory.setItem(2, getShopCatBtn("BUILDING", Material.COBBLESTONE, "Kh\u1ed1i X\u00e2y D\u1ef1ng", category));
-        inventory.setItem(3, getShopCatBtn("DECORATION", Material.SEA_LANTERN, "\u0110\u1ed3 Trang Tr\u00ed", category));
-        inventory.setItem(5, getShopCatBtn("TOOLS", Material.DIAMOND_PICKAXE, "C\u00f4ng C\u1ee5", category));
-        inventory.setItem(6, getShopCatBtn("RARES", Material.NETHER_STAR, "\u0110\u1ed3 Hi\u1ebfm", category));
-
-        inventory.setItem(49, getBackButton());
-        inventory.setItem(53, getTabButton(true)); // Switch to Market
-        
-        int[] innerSlots = {10,11,12,13,14,15,16, 19,20,21,22,23,24,25, 28,29,30,31,32,33,34, 37,38,39,40,41,42,43};
-        int index = 0;
-        
-        for (Map.Entry<String, MarketModule.Configuration.ShopItemInfo> entry : module.getConfiguration().getShopItems().entrySet()) {
-            MarketModule.Configuration.ShopItemInfo info = entry.getValue();
-            if (!info.getCategory().equalsIgnoreCase(category)) continue;
-            if (index >= innerSlots.length) break;
-            
-            Material mat = info.getMaterial();
-            if (mat == null) continue;
-
-            ItemStack item = new ItemStack(mat);
-            ItemMeta meta = item.getItemMeta();
-            if (meta != null) {
-                meta.setDisplayName("\u00a7a\u00a7l" + MarketModule.getVietnameseName(mat));
-                List<String> lore = new ArrayList<>();
-                lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
-                lore.add("\u00a7eGi\u00e1 mua: \u00a7c$" + String.format("%.2f", info.getBuyPrice()));
-                lore.add("");
-                lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 MUA");
-                meta.setLore(lore);
-                item.setItemMeta(meta);
-            }
-            inventory.setItem(innerSlots[index++], item);
-        }
-        player.openInventory(inventory);
-    }
-
-    private ItemStack getShopCatBtn(String id, Material mat, String name, String current) {
-        ItemStack item = new ItemStack(mat);
-        ItemMeta meta = item.getItemMeta();
-        if (meta != null) {
-            if (id.equals(current)) {
-                meta.setDisplayName("\u00a7a\u00a7l\u2728 " + name + " \u2728");
-            } else {
-                meta.setDisplayName("\u00a77" + name);
-            }
-            item.setItemMeta(meta);
-        }
-        return item;
-    }
-
-    private ItemStack getTabButton(boolean toMarket) {
-        ItemStack item = new ItemStack(Material.PAPER);
-        ItemMeta meta = item.getItemMeta();
-        if (meta != null) {
-            if (toMarket) {
-                meta.setDisplayName("\u00a76\u27a4 Chuy\u1ec3n sang Ch\u1ee9ng Kho\u00e1n");
-            } else {
-                meta.setDisplayName("\u00a7a\u27a4 Chuy\u1ec3n sang C\u1eeda H\u00e0ng");
-            }
-            item.setItemMeta(meta);
-        }
-        return item;
-    }
-
-    private void openMarketItem(Player player, MarketModule.MarketItemInfo info) {
-        currentState = State.MARKET_ITEM;
-        currentMarketItem = info;
-        inventory = Bukkit.createInventory(null, 45, "\u00a78\u00a7lB\u00e1n: " + MarketModule.getVietnameseName(info.getMaterial()));
-        
-        ItemStack border = getBorder();
         for (int i = 0; i < 45; i++) {
-            inventory.setItem(i, border);
+            int idx = page * 45 + i;
+            if (idx < items.size()) {
+                MarketModule.MarketItemInfo info = items.get(idx);
+                ItemStack item = new ItemStack(info.getMaterial());
+                ItemMeta meta = item.getItemMeta();
+                if (meta != null) {
+                    meta.setDisplayName("\u00a76\u00a7l" + MarketModule.getVietnameseName(info.getMaterial()));
+                    List<String> lore = new ArrayList<>();
+                    double currentPrice = info.getCurrentPrice();
+                    String status = currentPrice >= info.getBasePrice() ? "\u00a7a\u2b06 \u0110ang c\u00f3 gi\u00e1 (\u0110\u1ec9nh)" : "\u00a7c\u2b07 L\u1ea1m ph\u00e1t (R\u1edbt gi\u00e1)";
+                    
+                    lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
+                    lore.add("\u00a77Tr\u1ea1ng th\u00e1i: " + status);
+                    lore.add("\u00a7eGi\u00e1 thu mua: \u00a7a$" + String.format("%.2f", currentPrice));
+                    lore.add("");
+                    lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 Xem bi\u1ec3u \u0111\u1ed3 & B\u00c1N");
+                    meta.setLore(lore);
+                    item.setItemMeta(meta);
+                }
+                inventory.setItem(i, item);
+            }
         }
 
-        inventory.setItem(40, getBackButton());
+        setupNavigationBar(inventory, 54, page > 0, page < totalPages - 1);
+        player.openInventory(inventory);
+    }
+
+    // ================= MARKET SELL CONFIRM =================
+    private void openMarketSell(Player player, MarketModule.MarketItemInfo info) {
+        currentState = State.MARKET_SELL;
+        currentMarketItem = info;
+        inventory = Bukkit.createInventory(null, 54, "\u00a78\u00a7lB\u00e1n: " + MarketModule.getVietnameseName(info.getMaterial()));
+        fillBorders(inventory, 54);
 
         ItemStack center = new ItemStack(info.getMaterial());
         ItemMeta meta = center.getItemMeta();
@@ -242,33 +228,40 @@ public class MarketMenu implements Listener {
             double currentPrice = info.getCurrentPrice();
             lore.add("");
             lore.add("\u00a7eGi\u00e1 thu mua hi\u1ec7n t\u1ea1i: \u00a7a$" + String.format("%.2f", currentPrice) + " \u00a77/ c\u00e1i");
-            lore.add("");
-            lore.add("\u00a7bS\u1ed1 l\u01b0\u1ee3ng server \u0111\u00e3 b\u00e1n h\u00f4m nay: \u00a7f" + info.getPoolSize());
+            lore.add("\u00a7bS\u1ed1 l\u01b0\u1ee3ng server \u0111\u00e3 b\u00e1n: \u00a7f" + info.getPoolSize());
             lore.add("");
             lore.add("\u00a7d\u25bc Bi\u1ec3u \u0111\u1ed3 bi\u1ebfn \u0111\u1ed9ng gi\u00e1 \u25bc");
             
             List<Double> hist = new ArrayList<>(info.getPriceHistory());
             hist.add(currentPrice);
-            while (hist.size() < 15) {
-                hist.add(0, info.getBasePrice());
-            }
+            while (hist.size() < 15) { hist.add(0, info.getBasePrice()); }
             
             int CHART_HEIGHT = 5;
             int[] heights = new int[15];
             double min = info.getMinPrice();
             double max = info.getMaxPrice();
-            double range = max - min;
-            if (range <= 0) range = 1;
+            double base = info.getBasePrice();
             
             for (int i = 0; i < 15; i++) {
                 double p = hist.get(i);
-                double normalized = (p - min) / range;
-                int h = (int) Math.round(normalized * CHART_HEIGHT);
+                double normalized = 0.5;
+                if (p >= base) {
+                    double range = max - base;
+                    if (range <= 0) range = 1;
+                    normalized = 0.5 + 0.5 * (p - base) / range;
+                } else {
+                    double range = base - min;
+                    if (range <= 0) range = 1;
+                    normalized = 0.5 * (p - min) / range;
+                }
+                if (normalized < 0) normalized = 0;
+                if (normalized > 1) normalized = 1;
+                
+                int h = (int) Math.round(normalized * (CHART_HEIGHT - 1)) + 1;
                 if (h > CHART_HEIGHT) h = CHART_HEIGHT;
                 if (h < 1) h = 1;
                 heights[i] = h;
             }
-            
             for (int row = CHART_HEIGHT; row >= 1; row--) {
                 StringBuilder line = new StringBuilder("    ");
                 for (int col = 0; col < 15; col++) {
@@ -289,34 +282,84 @@ public class MarketMenu implements Listener {
         }
         inventory.setItem(13, center);
 
-        inventory.setItem(10, getSellBtn(info, 1, false));
-        inventory.setItem(11, getSellBtn(info, 64, false));
-        inventory.setItem(12, getSellBtn(info, -1, false)); // -1 means All
+        inventory.setItem(28, getSellBtn(info, 1, false));
+        inventory.setItem(29, getSellBtn(info, 64, false));
+        inventory.setItem(30, getSellBtn(info, -1, false));
+        
+        inventory.setItem(32, getSellBtn(info, 64, true));
+        inventory.setItem(33, getSellBtn(info, -1, true));
 
-        inventory.setItem(14, getSellBtn(info, 64, true));
-        inventory.setItem(15, getSellBtn(info, -1, true));
-
+        setupNavigationBar(inventory, 54, false, false);
         player.openInventory(inventory);
     }
 
-    private void openShopBuy(Player player, MarketModule.Configuration.ShopItemInfo info) {
-        currentState = State.SHOP_BUY;
-        currentShopItem = info;
-        inventory = Bukkit.createInventory(null, 45, "\u00a78\u00a7lMua: " + MarketModule.getVietnameseName(info.getMaterial()));
-        
-        ItemStack border = getBorder();
-        for (int i = 0; i < 45; i++) {
-            inventory.setItem(i, border);
+    // ================= HELPERS =================
+    private void fillBorders(Inventory inv, int size) {
+        ItemStack border = getBorder(false);
+        ItemStack accent = getBorder(true);
+        for (int i = 0; i < size; i++) {
+            if (i < 9 || i > size - 10 || i % 9 == 0 || i % 9 == 8) {
+                inv.setItem(i, (i < 9 || i > size - 10) ? accent : border);
+            }
         }
+    }
 
-        inventory.setItem(40, getBackButton());
+    private void setupNavigationBar(Inventory inv, int size, boolean hasPrev, boolean hasNext) {
+        int row = size / 9 - 1;
+        int base = row * 9;
+        
+        ItemStack border = getBorder(true);
+        for (int i = 0; i < 9; i++) {
+            inv.setItem(base + i, border);
+        }
+        
+        if (hasPrev) inv.setItem(base + 0, getNavBtn("\u00a7e\u25c0 Trang Tr\u01b0\u1edbc", Material.PAPER));
+        inv.setItem(base + 2, getNavBtn("\u00a7a\u00a7l\u27A4 C\u1eecA H\u00c0NG", Material.CHEST));
+        inv.setItem(base + 4, getNavBtn("\u00a7c\u00a7l\u2716 TR\u1ede L\u1ea0I", Material.BARRIER));
+        inv.setItem(base + 6, getNavBtn("\u00a76\u00a7l\u27A4 CH\u1ee8NG KHO\u00c1N", Material.ENDER_CHEST));
+        if (hasNext) inv.setItem(base + 8, getNavBtn("\u00a7eTrang T\u1edbi \u25b6", Material.PAPER));
+    }
 
-        inventory.setItem(10, getBuyBtn(info, 1));
-        inventory.setItem(12, getBuyBtn(info, 64));
-        inventory.setItem(14, getBuyBtn(info, 128));
-        inventory.setItem(16, getBuyBtn(info, 192));
+    private ItemStack getBorder(boolean accent) {
+        ItemStack border;
+        try { border = new ItemStack(Material.valueOf(accent ? "CYAN_STAINED_GLASS_PANE" : "GRAY_STAINED_GLASS_PANE")); } 
+        catch (Exception ex) { border = new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1, (short) (accent ? 9 : 7)); }
+        ItemMeta meta = border.getItemMeta();
+        if (meta != null) { meta.setDisplayName(" "); border.setItemMeta(meta); }
+        return border;
+    }
 
-        player.openInventory(inventory);
+    private ItemStack getNavBtn(String name, Material mat) {
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) { meta.setDisplayName(name); item.setItemMeta(meta); }
+        return item;
+    }
+
+    private ItemStack getDisplayItem(Material mat, String name, String loreLine) {
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            meta.setDisplayName(name);
+            List<String> lore = new ArrayList<>();
+            lore.add(loreLine);
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+        }
+        return item;
+    }
+
+    private ItemStack getCatBtn(String id, Material mat, String name) {
+        ItemStack item = new ItemStack(mat);
+        ItemMeta meta = item.getItemMeta();
+        if (meta != null) {
+            meta.setDisplayName("\u00a7a\u00a7l" + name);
+            List<String> lore = new ArrayList<>();
+            lore.add("\u00a77Click \u0111\u1ec3 xem danh s\u00e1ch.");
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+        }
+        return item;
     }
 
     private ItemStack getBuyBtn(MarketModule.Configuration.ShopItemInfo info, int amount) {
@@ -334,31 +377,27 @@ public class MarketMenu implements Listener {
         return item;
     }
 
-    private ItemStack getBorder() {
-        ItemStack border;
-        try {
-            border = new ItemStack(Material.valueOf("BLACK_STAINED_GLASS_PANE"));
-        } catch (Exception ex) {
-            border = new ItemStack(Material.valueOf("STAINED_GLASS_PANE"), 1, (short) 15);
-        }
-        ItemMeta meta = border.getItemMeta();
+    private ItemStack getSellBtn(MarketModule.MarketItemInfo info, int amount, boolean fromKho) {
+        Material icon = fromKho ? Material.ENDER_CHEST : Material.CHEST;
+        String amountStr = amount == -1 ? "T\u1ea5t C\u1ea3" : "x" + amount;
+        String fromStr = fromKho ? "Kho \u1ea2o" : "T\u00fai \u0110\u1ed3";
+        ItemStack item = new ItemStack(icon);
+        ItemMeta meta = item.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(" ");
-            border.setItemMeta(meta);
+            String color = fromKho ? "\u00a7d\u00a7l" : "\u00a7a\u00a7l";
+            meta.setDisplayName(color + "B\u00e1n " + amountStr + " (" + fromStr + ")");
+            List<String> lore = new ArrayList<>();
+            lore.add("\u00a77B\u00e1n " + amountStr + " " + MarketModule.getVietnameseName(info.getMaterial()));
+            lore.add("\u00a77t\u1eeb " + fromStr + " c\u1ee7a b\u1ea1n v\u00e0o S\u00e0n.");
+            lore.add("");
+            lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 B\u00e1n");
+            meta.setLore(lore);
+            item.setItemMeta(meta);
         }
-        return border;
+        return item;
     }
 
-    private ItemStack getBackButton() {
-        ItemStack back = new ItemStack(Material.BARRIER);
-        ItemMeta meta = back.getItemMeta();
-        if (meta != null) {
-            meta.setDisplayName("\u00a7c\u00a7l\u2b05 Tr\u1edf L\u1ea1i");
-            back.setItemMeta(meta);
-        }
-        return back;
-    }
-
+    // ================= EVENT HANDLER =================
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         if (!e.getInventory().equals(inventory)) return;
@@ -369,56 +408,78 @@ public class MarketMenu implements Listener {
         if (clickedMat.name().contains("GLASS_PANE")) return;
 
         Player player = (Player) e.getWhoClicked();
+        int slot = e.getSlot();
+        int size = inventory.getSize();
+        int row = size / 9 - 1;
+        int base = row * 9;
 
-        if (currentState == State.MAIN) {
-            if (clickedMat == Material.CHEST) openShopMain(player, "BUILDING");
-            else if (clickedMat == Material.ENDER_CHEST) openMarketCategory(player, "MINERAL");
-        } 
-        else if (currentState == State.MARKET_CATEGORY) {
-            if (clickedMat == Material.BARRIER) { openMain(player); return; }
-            if (clickedMat == Material.PAPER) {
-                if (e.getSlot() == 45) openShopMain(player, "BUILDING");
-                else openMarketCategory(player, currentCategory.equals("MINERAL") ? "CROP" : "MINERAL");
-                return;
-            }
-            MarketModule.MarketItemInfo info = null;
-            for (MarketModule.MarketItemInfo i : module.getConfiguration().getItems().values()) {
-                if (i.getMaterial() == clickedMat && i.getCategory().equalsIgnoreCase(currentCategory)) { info = i; break; }
-            }
-            if (info != null) openMarketItem(player, info);
+        // Global Navigation Bar Clicks
+        if (slot == base + 2 && clickedMat == Material.CHEST) { openShopCats(player); return; }
+        if (slot == base + 6 && clickedMat == Material.ENDER_CHEST) { openMarketCats(player); return; }
+        if (slot == base + 4 && clickedMat == Material.BARRIER) {
+            if (currentState == State.SHOP_CATS || currentState == State.MARKET_CATS) openHub(player);
+            else if (currentState == State.SHOP_ITEMS) openShopCats(player);
+            else if (currentState == State.SHOP_BUY) openShopItems(player, currentCategory, currentPage);
+            else if (currentState == State.MARKET_ITEMS) openMarketCats(player);
+            else if (currentState == State.MARKET_SELL) openMarketItems(player, currentCategory, currentPage);
+            return;
         }
-        else if (currentState == State.MARKET_ITEM) {
-            if (clickedMat == Material.BARRIER) { openMarketCategory(player, currentCategory); return; }
-            if (clickedMat == Material.CHEST || clickedMat == Material.ENDER_CHEST) {
-                int amount = -1;
-                if (e.getSlot() == 10) amount = 1;
-                if (e.getSlot() == 11 || e.getSlot() == 14) amount = 64;
-                handleSell(player, currentMarketItem, clickedMat == Material.ENDER_CHEST, amount);
-            }
+        if (slot == base + 0 && clickedMat == Material.PAPER) {
+            if (currentState == State.SHOP_ITEMS) openShopItems(player, currentCategory, currentPage - 1);
+            if (currentState == State.MARKET_ITEMS) openMarketItems(player, currentCategory, currentPage - 1);
+            return;
         }
-        else if (currentState == State.SHOP_MAIN) {
-            if (clickedMat == Material.BARRIER) { openMain(player); return; }
-            if (clickedMat == Material.PAPER && e.getSlot() == 53) { openMarketCategory(player, "MINERAL"); return; }
-            if (e.getSlot() == 2) { openShopMain(player, "BUILDING"); return; }
-            if (e.getSlot() == 3) { openShopMain(player, "DECORATION"); return; }
-            if (e.getSlot() == 5) { openShopMain(player, "TOOLS"); return; }
-            if (e.getSlot() == 6) { openShopMain(player, "RARES"); return; }
-            
-            MarketModule.Configuration.ShopItemInfo info = null;
-            for (MarketModule.Configuration.ShopItemInfo i : module.getConfiguration().getShopItems().values()) {
-                if (i.getMaterial() == clickedMat && i.getCategory().equalsIgnoreCase(currentCategory)) { info = i; break; }
+        if (slot == base + 8 && clickedMat == Material.PAPER) {
+            if (currentState == State.SHOP_ITEMS) openShopItems(player, currentCategory, currentPage + 1);
+            if (currentState == State.MARKET_ITEMS) openMarketItems(player, currentCategory, currentPage + 1);
+            return;
+        }
+
+        // State Specific Clicks
+        if (currentState == State.HUB) {
+            if (slot == 11) openShopCats(player);
+            else if (slot == 15) openMarketCats(player);
+        }
+        else if (currentState == State.SHOP_CATS) {
+            if (slot == 19) openShopItems(player, "BUILDING", 0);
+            if (slot == 21) openShopItems(player, "DECORATION", 0);
+            if (slot == 23) openShopItems(player, "TOOLS", 0);
+            if (slot == 25) openShopItems(player, "RARES", 0);
+        }
+        else if (currentState == State.SHOP_ITEMS) {
+            if (slot < 45) {
+                MarketModule.Configuration.ShopItemInfo info = null;
+                for (MarketModule.Configuration.ShopItemInfo i : module.getConfiguration().getShopItems().values()) {
+                    if (i.getMaterial() == clickedMat && i.getCategory().equalsIgnoreCase(currentCategory)) { info = i; break; }
+                }
+                if (info != null) openShopBuy(player, info);
             }
-            if (info != null) openShopBuy(player, info);
         }
         else if (currentState == State.SHOP_BUY) {
-            if (clickedMat == Material.BARRIER) { openShopMain(player, currentCategory); return; }
-            if (clickedMat == currentShopItem.getMaterial()) {
-                int amount = 1;
-                if (e.getSlot() == 12) amount = 64;
-                if (e.getSlot() == 14) amount = 128;
-                if (e.getSlot() == 16) amount = 192;
-                handleBuy(player, currentShopItem, amount);
+            if (slot == 28) handleBuy(player, currentShopItem, 1);
+            if (slot == 30) handleBuy(player, currentShopItem, 64);
+            if (slot == 32) handleBuy(player, currentShopItem, 128);
+            if (slot == 34) handleBuy(player, currentShopItem, 192);
+        }
+        else if (currentState == State.MARKET_CATS) {
+            if (slot == 20) openMarketItems(player, "MINERAL", 0);
+            if (slot == 24) openMarketItems(player, "CROP", 0);
+        }
+        else if (currentState == State.MARKET_ITEMS) {
+            if (slot < 45) {
+                MarketModule.MarketItemInfo info = null;
+                for (MarketModule.MarketItemInfo i : module.getConfiguration().getItems().values()) {
+                    if (i.getMaterial() == clickedMat && i.getCategory().equalsIgnoreCase(currentCategory)) { info = i; break; }
+                }
+                if (info != null) openMarketSell(player, info);
             }
+        }
+        else if (currentState == State.MARKET_SELL) {
+            if (slot == 28) handleSell(player, currentMarketItem, false, 1);
+            if (slot == 29) handleSell(player, currentMarketItem, false, 64);
+            if (slot == 30) handleSell(player, currentMarketItem, false, -1);
+            if (slot == 32) handleSell(player, currentMarketItem, true, 64);
+            if (slot == 33) handleSell(player, currentMarketItem, true, -1);
         }
     }
 
@@ -431,7 +492,6 @@ public class MarketMenu implements Listener {
             return;
         }
 
-        // Check inventory space
         int freeSpace = 0;
         Material mat = info.getMaterial();
         for (ItemStack item : player.getInventory().getContents()) {
@@ -447,7 +507,7 @@ public class MarketMenu implements Listener {
             return;
         }
 
-                plugin.getProviders().getEconomyProvider().withdrawMoney(sp, price);
+        plugin.getProviders().getEconomyProvider().withdrawMoney(sp, price);
         int remaining = amount;
         while (remaining > 0) {
             int current = Math.min(64, remaining);
@@ -458,26 +518,6 @@ public class MarketMenu implements Listener {
         
         try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_EXPERIENCE_ORB_PICKUP"), 1f, 1f); } 
         catch (Exception ex) { try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ORB_PICKUP"), 1f, 1f); } catch (Exception ignored) {} }
-    }
-
-    private ItemStack getSellBtn(MarketModule.MarketItemInfo info, int amount, boolean fromKho) {
-        Material icon = fromKho ? Material.ENDER_CHEST : Material.CHEST;
-        String amountStr = amount == -1 ? "Tất Cả" : "x" + amount;
-        String fromStr = fromKho ? "Kho Ảo" : "Túi Đồ";
-        ItemStack item = new ItemStack(icon);
-        ItemMeta meta = item.getItemMeta();
-        if (meta != null) {
-            String color = fromKho ? "§d§l" : "§a§l";
-            meta.setDisplayName(color + "Bán " + amountStr + " (" + fromStr + ")");
-            List<String> lore = new ArrayList<>();
-            lore.add("§7Bán " + amountStr + " " + MarketModule.getVietnameseName(info.getMaterial()));
-            lore.add("§7từ " + fromStr + " của bạn vào Sàn.");
-            lore.add("");
-            lore.add("§a[▶] Click để Bán");
-            meta.setLore(lore);
-            item.setItemMeta(meta);
-        }
-        return item;
     }
 
     private void handleSell(Player player, MarketModule.MarketItemInfo info, boolean fromKho, int exactAmount) {
@@ -500,7 +540,7 @@ public class MarketMenu implements Listener {
                     if (item != null && item.getType() == mat) count += item.getAmount();
                 }
                 if (count < exactAmount) {
-                    player.sendMessage("§cBạn không có đủ " + exactAmount + "x " + MarketModule.getVietnameseName(mat) + "!");
+                    player.sendMessage("\u00a7cB\u1ea1n kh\u00f4ng c\u00f3 \u0111\u1ee7 " + exactAmount + "x " + MarketModule.getVietnameseName(mat) + "!");
                     return;
                 }
                 int remaining = exactAmount;
@@ -520,7 +560,7 @@ public class MarketMenu implements Listener {
                 amountToSell = exactAmount;
             }
         } else {
-            if (sp.getIsland() == null) { player.sendMessage("§cBạn chưa có đảo!"); return; }
+            if (sp.getIsland() == null) { player.sendMessage("\u00a7cB\u1ea1n ch\u01b0a c\u00f3 \u0111\u1ea3o!"); return; }
             BigInteger amountInKho = BuiltinModules.ORE_STORAGE.getStorageManager().getAmount(sp.getIsland().getUniqueId(), mat);
             if (amountInKho.compareTo(BigInteger.ZERO) > 0) {
                 if (exactAmount == -1) {
@@ -528,19 +568,19 @@ public class MarketMenu implements Listener {
                     if (amountToSell > 100000L) amountToSell = 100000L;
                 } else {
                     if (amountInKho.compareTo(BigInteger.valueOf(exactAmount)) < 0) {
-                        player.sendMessage("§cKho Ảo của bạn không đủ " + exactAmount + "x " + MarketModule.getVietnameseName(mat) + "!");
+                        player.sendMessage("\u00a7cKho \u1ea2o c\u1ee7a b\u1ea1n kh\u00f4ng \u0111\u1ee7 " + exactAmount + "x " + MarketModule.getVietnameseName(mat) + "!");
                         return;
                     }
                     amountToSell = exactAmount;
                 }
                 BuiltinModules.ORE_STORAGE.getStorageManager().removeAmount(sp.getIsland().getUniqueId(), mat, BigInteger.valueOf(amountToSell));
             } else {
-                player.sendMessage("§cKho Ảo của bạn không còn " + MarketModule.getVietnameseName(mat) + "!");
+                player.sendMessage("\u00a7cKho \u1ea2o c\u1ee7a b\u1ea1n kh\u00f4ng c\u00f2n " + MarketModule.getVietnameseName(mat) + "!");
                 return;
             }
         }
 
-        if (amountToSell <= 0) { player.sendMessage("§cBạn không có " + MarketModule.getVietnameseName(mat) + " để bán!"); return; }
+        if (amountToSell <= 0) { player.sendMessage("\u00a7cB\u1ea1n kh\u00f4ng c\u00f3 " + MarketModule.getVietnameseName(mat) + " \u0111\u1ec3 b\u00e1n!"); return; }
 
         double currentPrice = info.getCurrentPrice();
         double totalMoney = currentPrice * amountToSell;
@@ -549,15 +589,15 @@ public class MarketMenu implements Listener {
         info.addPoolSize((int) amountToSell);
         module.saveData();
 
-        player.sendMessage("§a✔ Đã bán " + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " với giá $" + String.format("%.2f", totalMoney));
+        player.sendMessage("\u00a7a\u2714 \u0110\u00e3 b\u00e1n " + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " v\u1edbi gi\u00e1 $" + String.format("%.2f", totalMoney));
 
         if (amountToSell >= 10000 || totalMoney >= 100000) {
             Bukkit.getServer().broadcastMessage("");
-            Bukkit.getServer().broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
-            Bukkit.getServer().broadcastMessage("§c§l⚠ CẢNH BÁO CÁ MẬP XẢ HÀNG ⚠");
-            Bukkit.getServer().broadcastMessage("§eĐại gia §a" + player.getName() + " §evừa xả §f" + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " §evào thị trường!");
-            Bukkit.getServer().broadcastMessage("§7➤ Giá " + MarketModule.getVietnameseName(mat) + " đang rớt! Anh em cẩn thận!");
-            Bukkit.getServer().broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+            Bukkit.getServer().broadcastMessage("\u00a7b\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
+            Bukkit.getServer().broadcastMessage("\u00a7c\u00a7l\u26a0 C\u1ea2NH B\u00c1O C\u00c1 M\u1eacP X\u1ea2 H\u00c0NG \u26a0");
+            Bukkit.getServer().broadcastMessage("\u00a7e\u0110\u1ea1i gia \u00a7a" + player.getName() + " \u00a7ev\u1eeba x\u1ea3 \u00a7f" + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " \u00a7ev\u00e0o th\u1ecb tr\u01b0\u1eddng!");
+            Bukkit.getServer().broadcastMessage("\u00a77\u27a4 Gi\u00e1 " + MarketModule.getVietnameseName(mat) + " \u0111ang r\u1edbt! Anh em c\u1ea9n th\u1eadn!");
+            Bukkit.getServer().broadcastMessage("\u00a7b\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
             
             for (Player p : Bukkit.getOnlinePlayers()) {
                 try { p.playSound(p.getLocation(), org.bukkit.Sound.valueOf("ENTITY_ENDER_DRAGON_GROWL"), 0.5f, 1.5f); } 
@@ -573,7 +613,7 @@ public class MarketMenu implements Listener {
             try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_PLAYER_LEVELUP"), 0.5f, 2f); } 
             catch (Exception ex) { try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("LEVEL_UP"), 0.5f, 2f); } catch (Exception ignored) {} }
         }
-        openMarketItem(player, info);
+        openMarketSell(player, info);
     }
 
     @EventHandler
