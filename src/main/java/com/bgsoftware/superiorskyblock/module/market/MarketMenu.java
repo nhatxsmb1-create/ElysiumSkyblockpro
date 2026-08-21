@@ -332,11 +332,32 @@ public class MarketMenu implements Listener {
         info.addPoolSize((int) amountToSell);
         module.saveData();
 
-        player.sendMessage("\u00a7a\u2714 \u0110\u00e3 b\u00e1n " + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " v\u1edbi gi\u00e1 " + String.format("$%.2f", totalMoney));
-        try {
-            player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_EXPERIENCE_ORB_PICKUP"), 1f, 1f);
-        } catch (Exception ex) {
-            try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ORB_PICKUP"), 1f, 1f); } catch (Exception ignored) {}
+        player.sendMessage("§a✔ Đã bán " + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " với giá " + String.format("$%.2f", totalMoney));
+
+        if (amountToSell >= 10000 || totalMoney >= 100000) {
+            Bukkit.broadcastMessage("");
+            Bukkit.broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+            Bukkit.broadcastMessage("§c§l⚠ CẢNH BÁO CÁ MẬP XẢ HÀNG ⚠");
+            Bukkit.broadcastMessage("§eĐại gia §a" + player.getName() + " §evừa xả §f" + amountToSell + "x " + MarketModule.getVietnameseName(mat) + " §evào thị trường!");
+            Bukkit.broadcastMessage("§7➤ Giá của " + MarketModule.getVietnameseName(mat) + " đang rớt thê thảm! Anh em cẩn thận!");
+            Bukkit.broadcastMessage("§b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+            
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                try {
+                    p.playSound(p.getLocation(), org.bukkit.Sound.valueOf("ENTITY_ENDER_DRAGON_GROWL"), 0.5f, 1.5f);
+                } catch (Exception ex) {
+                    try { p.playSound(p.getLocation(), org.bukkit.Sound.valueOf("ENDERDRAGON_GROWL"), 0.5f, 1.5f); } catch (Exception ignored) {}
+                }
+            }
+            try {
+                player.getWorld().spawnParticle(org.bukkit.Particle.valueOf("TOTEM"), player.getLocation().add(0, 1, 0), 100, 0.5, 0.5, 0.5, 0.1);
+            } catch (Exception ignored) {}
+        } else {
+            try {
+                player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_PLAYER_LEVELUP"), 0.5f, 2f);
+            } catch (Exception ex) {
+                try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("LEVEL_UP"), 0.5f, 2f); } catch (Exception ignored) {}
+            }
         }
         
         // Refresh item view
