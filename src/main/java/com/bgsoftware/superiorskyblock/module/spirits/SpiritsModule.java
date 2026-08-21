@@ -83,6 +83,38 @@ public class SpiritsModule extends BuiltinModule<SpiritsModule.Configuration> {
         return instance;
     }
 
+    public static String getVietnameseName(Material mat) {
+        switch (mat.name()) {
+            case "DIAMOND_BLOCK": return "Khối Kim Cương";
+            case "IRON_BLOCK": return "Khối Sắt";
+            case "GOLD_BLOCK": return "Khối Vàng";
+            case "EMERALD_BLOCK": return "Khối Ngọc Lục Bảo";
+            case "COAL_BLOCK": return "Khối Than";
+            case "REDSTONE_BLOCK": return "Khối Đá Đỏ";
+            case "LAPIS_BLOCK": return "Khối Lưu Ly";
+            case "NETHERITE_BLOCK": return "Khối Netherite";
+            case "HAY_BLOCK": return "Khối Rơm";
+            case "MELON": return "Dưa Hấu";
+            case "PUMPKIN": return "Bí Ngô";
+            case "WHEAT": return "Lúa Mì";
+            case "CARROT": return "Cà Rốt";
+            case "POTATO": return "Khoai Tây";
+            case "SUGAR_CANE": return "Mía";
+            case "COBBLESTONE": return "Đá Cuội";
+            case "STONE": return "Đá";
+            default:
+                String[] parts = mat.name().toLowerCase().split("_");
+                StringBuilder sb = new StringBuilder();
+                for (String p : parts) {
+                    if (p.length() > 0) {
+                        sb.append(Character.toUpperCase(p.charAt(0))).append(p.substring(1)).append(" ");
+                    }
+                }
+                return sb.toString().trim();
+        }
+    }
+
+
     public static class SpiritUpgradeInfo {
         private final int level;
         private final int intervalTicks;

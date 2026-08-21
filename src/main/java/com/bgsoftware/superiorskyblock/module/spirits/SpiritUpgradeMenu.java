@@ -86,7 +86,7 @@ public class SpiritUpgradeMenu implements InventoryHolder {
                 for (Map.Entry<Material, Integer> cost : nextUp.getCost().entrySet()) {
                     boolean hasEnough = hasEnoughItem(cost.getKey(), cost.getValue());
                     String color = hasEnough ? "\u00a7a" : "\u00a7c";
-                    lore.add(color + "- " + cost.getValue() + "x " + cost.getKey().name());
+                    lore.add(color + "- " + cost.getValue() + "x " + SpiritsModule.getVietnameseName(cost.getKey()));
                 }
                 lore.add("");
                 lore.add("\u00a7e\u25b6 T\u1ed1c \u0111\u1ed9 m\u1edbi: \u00a7f" + (nextUp.getIntervalTicks() / 20.0) + "s/l\u1ea7n");

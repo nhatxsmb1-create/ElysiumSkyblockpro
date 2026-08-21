@@ -95,10 +95,17 @@ public class SpiritTask extends BukkitRunnable {
             BuiltinModules.ORE_STORAGE.getStorageManager().addAmount(island.getUniqueId(), drop.getKey(), BigInteger.valueOf(drop.getValue()));
         }
         
-        player.sendMessage("§b✨ §e§lBÁO CÁO NGOẠI TUYẾN");
+        
+        long totalMinutes = ticks / 1200L;
+        long hours = totalMinutes / 60;
+        long minutes = totalMinutes % 60;
+        String timeString = (hours > 0 ? hours + " Giờ " : "") + minutes + " Phút";
+        
+        player.sendMessage("§b✨ §e§lBÁO CÁO NGOẠI TUYẾN §7(" + timeString + ")");
+
         player.sendMessage("§7Tinh linh của bạn đã làm việc chăm chỉ và đưa vào /is kho:");
         for (Map.Entry<Material, Integer> drop : totalDrops.entrySet()) {
-            player.sendMessage("§a+ " + drop.getValue() + " §f" + drop.getKey().name());
+            player.sendMessage("§a+ " + drop.getValue() + " §f" + SpiritsModule.getVietnameseName(drop.getKey()));
         }
         try {
             player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_PLAYER_LEVELUP"), 1f, 1f);
