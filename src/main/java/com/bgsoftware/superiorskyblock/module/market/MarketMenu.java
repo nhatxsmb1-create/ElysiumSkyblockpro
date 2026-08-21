@@ -64,7 +64,12 @@ public class MarketMenu implements Listener {
         }
         inventory.setItem(11, minBtn);
 
-        ItemStack cropBtn = new ItemStack(Material.GOLDEN_HOE);
+                ItemStack cropBtn;
+        try {
+            cropBtn = new ItemStack(Material.valueOf("GOLDEN_HOE"));
+        } catch (Exception ex) {
+            cropBtn = new ItemStack(Material.valueOf("GOLD_HOE"));
+        }
         ItemMeta cropMeta = cropBtn.getItemMeta();
         if (cropMeta != null) {
             cropMeta.setDisplayName("\u00a7e\u00a7l\u2728 S\u00c0N N\u00d4NG S\u1ea2N \u2728");
@@ -257,7 +262,7 @@ public class MarketMenu implements Listener {
         if (currentState == State.MAIN) {
             if (clickedMat == Material.DIAMOND_PICKAXE) {
                 openCategory(player, "MINERAL");
-            } else if (clickedMat == Material.GOLDEN_HOE) {
+            } else if (clickedMat.name().contains("HOE")) {
                 openCategory(player, "CROP");
             }
         } 
