@@ -79,22 +79,29 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
     protected void loadData(SuperiorSkyblockPlugin plugin) {
     }
 
-    @Override
+@Override
     protected Listener[] getModuleListeners(SuperiorSkyblockPlugin plugin) {
         return new Listener[0];
     }
 
     @Override
-    protected SuperiorCommand[] getModuleCommands(SuperiorSkyblockPlugin plugin) {
-        return new SuperiorCommand[]{new CmdMarket(this), new CmdAdminMarket(this)};
+    protected SuperiorCommand[] getSuperiorCommands(SuperiorSkyblockPlugin plugin) {
+        return new SuperiorCommand[]{new CmdMarket(this)};
     }
 
     @Override
-    protected Configuration getConfiguration(CommentedConfiguration configuration) {
+    protected SuperiorCommand[] getSuperiorAdminCommands(SuperiorSkyblockPlugin plugin) {
+        return new SuperiorCommand[]{new CmdAdminMarket(this)};
+    }
+
+    @Override
+    protected Configuration createConfigFile(CommentedConfiguration configuration) {
         return new Configuration(configuration);
     }
 
     public static class Configuration implements IModuleConfiguration {
+        @Override
+        public boolean isEnabled() { return true; }
         private final Map<String, MarketItemInfo> items = new LinkedHashMap<>();
 
         public Configuration(CommentedConfiguration config) {
