@@ -24,7 +24,7 @@ public class CmdMarket implements SuperiorCommand {
 
     @Override
     public String getPermission() {
-        return "elysium.player.market";
+        return "";
     }
 
     @Override
