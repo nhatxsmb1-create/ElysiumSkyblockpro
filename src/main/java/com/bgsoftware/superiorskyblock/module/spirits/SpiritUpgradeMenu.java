@@ -143,7 +143,7 @@ public class SpiritUpgradeMenu implements InventoryHolder {
             
             // Spawn firework or sound
             try {
-                player.playSound(player.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f);
+                try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("ENTITY_PLAYER_LEVELUP"), 1f, 1f); } catch (Exception ex) { try { player.playSound(player.getLocation(), org.bukkit.Sound.valueOf("LEVEL_UP"), 1f, 1f); } catch (Exception ex2) {} }
             } catch (Exception ignored) {}
         }
     }
