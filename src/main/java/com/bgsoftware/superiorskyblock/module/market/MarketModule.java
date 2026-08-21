@@ -45,10 +45,13 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
         }
         dataConfig = YamlConfiguration.loadConfiguration(dataFile);
 
-        // Load pool sizes from dataConfig into Configuration
-        for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().entrySet()) {
+for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().entrySet()) {
             int poolSize = dataConfig.getInt("pool." + entry.getKey(), 0);
             entry.getValue().setPoolSize(poolSize);
+            java.util.List<Double> hist = dataConfig.getDoubleList("history." + entry.getKey());
+            if (hist != null) {
+                for (double h : hist) entry.getValue().addPriceHistory(h);
+            }
         }
 
         marketTask = new MarketTask(this);
@@ -65,10 +68,13 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
     }
 
     public void saveData() {
+
         if (dataConfig != null && dataFile != null) {
             for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().entrySet()) {
                 dataConfig.set("pool." + entry.getKey(), entry.getValue().getPoolSize());
+                dataConfig.set("history." + entry.getKey(), entry.getValue().getPriceHistory());
             }
+
             try {
                 dataConfig.save(dataFile);
             } catch (IOException ignored) {}
@@ -108,12 +114,13 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
             org.bukkit.configuration.ConfigurationSection section = config.getConfigurationSection("items");
             if (section != null) {
                 for (String key : section.getKeys(false)) {
+                    String category = section.getString(key + ".category", "MINERAL");
                     double basePrice = section.getDouble(key + ".base-price");
                     double minPrice = section.getDouble(key + ".min-price");
                     double maxPrice = section.getDouble(key + ".max-price");
                     double dropRate = section.getDouble(key + ".drop-rate");
                     int recoveryRate = section.getInt(key + ".recovery-rate");
-                    items.put(key, new MarketItemInfo(key, basePrice, minPrice, maxPrice, dropRate, recoveryRate));
+                    items.put(key, new MarketItemInfo(category, key, basePrice, minPrice, maxPrice, dropRate, recoveryRate));
                 }
             }
         }
@@ -126,6 +133,7 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
     }
 
     public static class MarketItemInfo {
+        private final String category;
         private final String materialName;
         private final double basePrice;
         private final double minPrice;
@@ -134,13 +142,26 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
         private final int recoveryRate;
         private int poolSize = 0;
 
-        public MarketItemInfo(String materialName, double basePrice, double minPrice, double maxPrice, double dropRate, int recoveryRate) {
+        private final java.util.LinkedList<Double> priceHistory = new java.util.LinkedList<>();
+
+        public MarketItemInfo(String category, String materialName, double basePrice, double minPrice, double maxPrice, double dropRate, int recoveryRate) {
+            this.category = category;
             this.materialName = materialName;
             this.basePrice = basePrice;
             this.minPrice = minPrice;
             this.maxPrice = maxPrice;
             this.dropRate = dropRate;
             this.recoveryRate = recoveryRate;
+        }
+
+
+        public String getCategory() { return category; }
+        public java.util.List<Double> getPriceHistory() { return priceHistory; }
+        public void addPriceHistory(double price) {
+            priceHistory.addLast(price);
+            if (priceHistory.size() > 10) {
+                priceHistory.removeFirst();
+            }
         }
 
         public Material getMaterial() {

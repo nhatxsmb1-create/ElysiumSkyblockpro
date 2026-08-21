@@ -1,61 +1,176 @@
 items:
   COAL:
+    category: "MINERAL"
     base-price: 2.0
     min-price: 0.5
     max-price: 5.0
     drop-rate: 0.0001
     recovery-rate: 100
+  COAL_BLOCK:
+    category: "MINERAL"
+    base-price: 18.0
+    min-price: 4.5
+    max-price: 45.0
+    drop-rate: 0.0009
+    recovery-rate: 11
   IRON_INGOT:
+    category: "MINERAL"
     base-price: 10.0
     min-price: 2.0
     max-price: 25.0
     drop-rate: 0.001
     recovery-rate: 50
+  IRON_BLOCK:
+    category: "MINERAL"
+    base-price: 90.0
+    min-price: 18.0
+    max-price: 225.0
+    drop-rate: 0.009
+    recovery-rate: 5
   GOLD_INGOT:
+    category: "MINERAL"
     base-price: 15.0
     min-price: 5.0
     max-price: 40.0
     drop-rate: 0.001
     recovery-rate: 50
+  GOLD_BLOCK:
+    category: "MINERAL"
+    base-price: 135.0
+    min-price: 45.0
+    max-price: 360.0
+    drop-rate: 0.009
+    recovery-rate: 5
   DIAMOND:
+    category: "MINERAL"
     base-price: 50.0
     min-price: 15.0
     max-price: 150.0
     drop-rate: 0.005
     recovery-rate: 20
+  DIAMOND_BLOCK:
+    category: "MINERAL"
+    base-price: 450.0
+    min-price: 135.0
+    max-price: 1350.0
+    drop-rate: 0.045
+    recovery-rate: 2
   EMERALD:
+    category: "MINERAL"
     base-price: 80.0
     min-price: 20.0
     max-price: 200.0
     drop-rate: 0.005
     recovery-rate: 20
+  EMERALD_BLOCK:
+    category: "MINERAL"
+    base-price: 720.0
+    min-price: 180.0
+    max-price: 1800.0
+    drop-rate: 0.045
+    recovery-rate: 2
+  REDSTONE:
+    category: "MINERAL"
+    base-price: 3.0
+    min-price: 0.5
+    max-price: 10.0
+    drop-rate: 0.0002
+    recovery-rate: 100
+  REDSTONE_BLOCK:
+    category: "MINERAL"
+    base-price: 27.0
+    min-price: 4.5
+    max-price: 90.0
+    drop-rate: 0.0018
+    recovery-rate: 11
+  LAPIS_LAZULI:
+    category: "MINERAL"
+    base-price: 4.0
+    min-price: 1.0
+    max-price: 15.0
+    drop-rate: 0.0003
+    recovery-rate: 80
+  LAPIS_BLOCK:
+    category: "MINERAL"
+    base-price: 36.0
+    min-price: 9.0
+    max-price: 135.0
+    drop-rate: 0.0027
+    recovery-rate: 8
   WHEAT:
+    category: "CROP"
     base-price: 3.0
     min-price: 1.0
     max-price: 10.0
     drop-rate: 0.0005
     recovery-rate: 100
+  HAY_BLOCK:
+    category: "CROP"
+    base-price: 27.0
+    min-price: 9.0
+    max-price: 90.0
+    drop-rate: 0.0045
+    recovery-rate: 11
   CARROT:
+    category: "CROP"
     base-price: 4.0
     min-price: 1.0
     max-price: 12.0
     drop-rate: 0.0005
     recovery-rate: 100
   POTATO:
+    category: "CROP"
     base-price: 4.0
     min-price: 1.0
     max-price: 12.0
     drop-rate: 0.0005
     recovery-rate: 100
+  MELON_SLICE:
+    category: "CROP"
+    base-price: 1.0
+    min-price: 0.2
+    max-price: 3.0
+    drop-rate: 0.0001
+    recovery-rate: 200
   MELON:
-    base-price: 6.0
-    min-price: 2.0
-    max-price: 15.0
-    drop-rate: 0.0005
-    recovery-rate: 100
+    category: "CROP"
+    base-price: 9.0
+    min-price: 1.8
+    max-price: 27.0
+    drop-rate: 0.0009
+    recovery-rate: 22
   SUGAR_CANE:
+    category: "CROP"
     base-price: 5.0
     min-price: 1.5
     max-price: 15.0
     drop-rate: 0.0005
     recovery-rate: 100
+  PUMPKIN:
+    category: "CROP"
+    base-price: 7.0
+    min-price: 2.0
+    max-price: 20.0
+    drop-rate: 0.0008
+    recovery-rate: 80
+  CACTUS:
+    category: "CROP"
+    base-price: 6.0
+    min-price: 1.5
+    max-price: 18.0
+    drop-rate: 0.0006
+    recovery-rate: 90
+  NETHER_WART:
+    category: "CROP"
+    base-price: 12.0
+    min-price: 4.0
+    max-price: 35.0
+    drop-rate: 0.0012
+    recovery-rate: 40
+  COCOA_BEANS:
+    category: "CROP"
+    base-price: 8.0
+    min-price: 2.5
+    max-price: 25.0
+    drop-rate: 0.0009
+    recovery-rate: 60

@@ -17,6 +17,7 @@ public class MarketTask extends BukkitRunnable {
         for (Map.Entry<String, MarketModule.MarketItemInfo> entry : module.getConfiguration().getItems().entrySet()) {
             MarketModule.MarketItemInfo info = entry.getValue();
             // recoveryRate defines how much pool size decreases per hour
+            info.addPriceHistory(info.getCurrentPrice());
             info.addPoolSize(-info.getRecoveryRate());
         }
         module.saveData();

@@ -60,6 +60,7 @@ public class CmdAdminMarket implements SuperiorCommand {
     public void execute(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
         if (args.length == 3 && args[2].equalsIgnoreCase("recover")) {
             for (MarketModule.MarketItemInfo info : module.getConfiguration().getItems().values()) {
+                info.addPriceHistory(info.getCurrentPrice());
                 info.addPoolSize(-info.getRecoveryRate());
             }
             module.saveData();
