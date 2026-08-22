@@ -152,10 +152,10 @@ public class CelestialEvent extends IslandWorldEvent {
                     cancel(); stars.cancel();
                     crystals.forEach(c -> { if (c.isValid()) c.remove(); });
                     Location d = beast.getLocation();
-                    world.dropItemNaturally(d, named(Material.GHAST_TEAR, "§d§lMảnh Tinh Tú"));
-                    world.dropItemNaturally(d, named(Material.GLOWSTONE_DUST, "§e§lBụi Thiên Thể"));
+                    world.dropItemNaturally(d, createEventItem(Material.GHAST_TEAR, "§d§lMảnh Tinh Tú", "§d§lSử Thi", "Thú Thiên Thể", "Một khối lấp lánh mang năng lượng từ những vì sao."));
+                    world.dropItemNaturally(d, createEventItem(Material.GLOWSTONE_DUST, "§e§lBụi Thiên Thể", "§a§lThường", "Thú Thiên Thể", "Tàn dư bụi sáng lấp lánh sót lại của linh thú."));
                     if (hasLootBonus()) {
-                        world.dropItemNaturally(d, named(Material.NETHER_STAR, "§b§lLõi Thiên Hà"));
+                        world.dropItemNaturally(d, createEventItem(Material.NETHER_STAR, "§b§lLõi Thiên Hà", "§6§lHuyền Thoại", "Thú Thiên Thể", "Vật phẩm tối cao chứa đựng năng lượng thiên hà."));
                         broadcast("§d✦ §lPhần thưởng đặc biệt! §r§dLõi Thiên Hà đã rơi!");
                     }
                     broadcast("§a✦ Ác Thú Sao đã bị đánh bại!");
@@ -242,7 +242,7 @@ public class CelestialEvent extends IslandWorldEvent {
                     }
                     particle(ground, 8, "PORTAL");
                     ground.getWorld().dropItemNaturally(ground.clone().add(0, 0.5, 0),
-                            named(Material.GLOWSTONE_DUST, "§e✦ Bụi Sao"));
+                            createEventItem(Material.GLOWSTONE_DUST, "§e✦ Bụi Sao", "§a§lThường", "Thú Thiên Thể", "Những hạt bụi phát sáng rơi xuống từ trận chiến tinh tú."));
                     return;
                 }
 

@@ -27,10 +27,10 @@ public class InvasionEvent extends IslandWorldEvent {
     private void spawnWave(int idx, Runnable onFinish) {
         if (idx >= WAVES.length) {
             Location drop = getPlayerNearbySpawn(5);
-            center.getWorld().dropItemNaturally(drop, named(Material.IRON_INGOT, "§c§lCúp Bảo Vệ Đảo"));
-            center.getWorld().dropItemNaturally(drop, named(Material.GOLD_NUGGET, "§6§lXu Chiến Lợi Phẩm", 5));
+            center.getWorld().dropItemNaturally(drop, createEventItem(Material.IRON_INGOT, "§c§lCúp Bảo Vệ Đảo", "§e§lHiếm", "Sự kiện Xâm Lược", "Kỷ niệm chương vinh danh người anh hùng đã dũng cảm bảo vệ hòn đảo khỏi bầy yêu quái."));
+            center.getWorld().dropItemNaturally(drop, createEventItem(Material.GOLD_NUGGET, "§6§lXu Chiến Lợi Phẩm", "§a§lThường", "Sự kiện Xâm Lược", "Đồng xu cổ được quân xâm lược mang theo.", 5));
             if (hasLootBonus()) {
-                center.getWorld().dropItemNaturally(drop, named(Material.DIAMOND, "§c§lKim Cương Chỉ Huy", 3));
+                center.getWorld().dropItemNaturally(drop, createEventItem(Material.DIAMOND, "§b§lKim Cương Chỉ Huy", "§6§lHuyền Thoại", "Sự kiện Xâm Lược", "Viên kim cương cướp được từ tên thủ lĩnh quân xâm lược.", 3));
                 broadcast("§c👹 §lPhần thưởng đặc biệt! §r§cKim Cương Chỉ Huy đã rơi!");
             }
             broadcast("§a👹 Quân xâm lược đã bị đẩy lui!");

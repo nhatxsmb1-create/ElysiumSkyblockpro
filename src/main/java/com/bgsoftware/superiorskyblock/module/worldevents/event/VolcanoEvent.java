@@ -123,10 +123,10 @@ public class VolcanoEvent extends IslandWorldEvent {
                 if (!boss.isValid()) {
                     cancel(); ash.cancel(); geysers.cancel(); heatAura.cancel();
                     Location d = boss.getLocation();
-                    world.dropItemNaturally(d, named(Material.MAGMA_CREAM, "§c§lTinh Thể Dung Nham"));
-                    world.dropItemNaturally(d, named(Material.BLAZE_ROD, "§6§lLõi Nham Thạch"));
+                    world.dropItemNaturally(d, createEventItem(Material.MAGMA_CREAM, "§c§lTinh Thể Dung Nham", "§d§lSử Thi", "Sự kiện Núi Lửa", "Tinh thể nóng chảy rớt ra từ lõi của Golem Lửa. Cầm trên tay vẫn còn cảm thấy sức nóng kinh người."));
+                    world.dropItemNaturally(d, createEventItem(Material.BLAZE_ROD, "§6§lLõi Nham Thạch", "§e§lHiếm", "Sự kiện Núi Lửa", "Thanh nhiệt lượng cung cấp sức mạnh cho Golem Lửa."));
                     if (hasLootBonus()) {
-                        world.dropItemNaturally(d, named(Material.NETHER_STAR, "§c§lBảo Ngọc Địa Ngục"));
+                        world.dropItemNaturally(d, createEventItem(Material.NETHER_STAR, "§4§lBảo Ngọc Địa Ngục", "§6§lHuyền Thoại", "Sự kiện Núi Lửa", "Viên ngọc chứa đựng toàn bộ cơn thịnh nộ của núi lửa. Vô cùng hiếm có."));
                         broadcast("§6🌋 §lPhần thưởng đặc biệt! §r§6Bảo Ngọc Địa Ngục đã rơi!");
                     }
                     broadcast("§a🌋 Golem Lửa đã bị tiêu diệt!");

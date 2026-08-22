@@ -88,11 +88,11 @@ public class AncientTreeEvent extends IslandWorldEvent {
                 if (!dryad.isValid()) {
                     cancel(); aura.cancel();
                     Location d = dryad.getLocation();
-                    world.dropItemNaturally(d, named(Material.VINE, "§a§lTinh Chất Thiên Nhiên"));
-                    world.dropItemNaturally(d, named(Material.SAPLING, "§2§lHạt Giống Cổ Rừng"));
-                    world.dropItemNaturally(d, named(Material.EMERALD, "§a§lBụi Rừng Xanh"));
+                    world.dropItemNaturally(d, createEventItem(Material.VINE, "§a§lTinh Chất Thiên Nhiên", "§e§lHiếm", "Thụ Thần Cổ Đại", "Nhựa cây tinh khiết hấp thụ sức sống ngàn năm của hòn đảo."));
+                    world.dropItemNaturally(d, createEventItem(Material.SAPLING, "§2§lHạt Giống Cổ Rừng", "§d§lSử Thi", "Thụ Thần Cổ Đại", "Mầm sống rực rỡ mang trong mình linh hồn của Dryad."));
+                    world.dropItemNaturally(d, createEventItem(Material.EMERALD, "§a§lBụi Rừng Xanh", "§a§lThường", "Thụ Thần Cổ Đại", "Mảnh vụn sinh thái lấp lánh rớt ra từ quái cây."));
                     if (hasLootBonus()) {
-                        world.dropItemNaturally(d, named(Material.NETHER_STAR, "§2§lPhước Lành Dryad"));
+                        world.dropItemNaturally(d, createEventItem(Material.NETHER_STAR, "§2§lPhước Lành Dryad", "§6§lHuyền Thoại", "Thụ Thần Cổ Đại", "Linh khí thần thánh ban phước cho bất kỳ sinh vật nào sở hữu nó."));
                         broadcast("§a🌳 §lPhần thưởng đặc biệt! §r§aPhước Lành Dryad đã rơi!");
                     }
                     broadcast("§a🌳 Dryad Cổ Đại đã bị đánh bại!");

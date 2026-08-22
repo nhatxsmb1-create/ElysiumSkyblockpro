@@ -180,7 +180,7 @@ public class MeteorShowerEvent extends IslandWorldEvent {
         Material mat = opts[rng.nextInt(opts.length)];
         int qty = hasLootBonus() ? 3 + rng.nextInt(3) : 1 + rng.nextInt(3);
         Item lootItem = world.dropItem(loc.clone().add(0, 1, 0),
-                named(mat, "§6§lQuặng Thiên Thạch (" + mat.name() + ")", qty));
+                createEventItem(mat, "§6§lQuặng Thiên Thạch", "§e§lHiếm", "Mưa Thiên Thạch", "Khối " + mat.name() + " mang năng lượng vũ trụ vừa đập xuống đảo của bạn.", qty));
         lootItem.setPickupDelay(0);
 
         if (rng.nextInt(100) < 25) {

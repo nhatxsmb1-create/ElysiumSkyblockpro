@@ -159,9 +159,9 @@ public class TornadoEvent extends IslandWorldEvent {
                 e += 20;
                 if (!boss.isValid()) {
                     cancel(); tornado.cancel();
-                    world.dropItemNaturally(boss.getLocation(), named(Material.NETHER_STAR, "§b§lLõi Bão"));
+                    world.dropItemNaturally(boss.getLocation(), createEventItem(Material.NETHER_STAR, "§b§lLõi Bão", "§d§lSử Thi", "Vòi Rồng", "Lõi năng lượng ngưng tụ của cơn bão dữ dội."));
                     if (hasLootBonus())
-                        world.dropItemNaturally(boss.getLocation(), named(Material.GOLD_INGOT, "§b§lMảnh Sét"));
+                        world.dropItemNaturally(boss.getLocation(), createEventItem(Material.GOLD_INGOT, "§e§lMảnh Sét", "§e§lHiếm", "Vòi Rồng", "Mảnh năng lượng sấm sét rớt ra từ Hồn Bão."));
                     broadcast("§a🌪 Hồn Bão đã bị tiêu diệt! §eLõi Bão §ađã rơi xuống!");
                     dropTrophy(boss.getLocation(), "tornado");
                     sound(center, 1f, 1.5f, "ENDERDRAGON_DEATH", "ENTITY_ENDER_DRAGON_DEATH");

@@ -213,10 +213,10 @@ public class SpaceRiftEvent extends IslandWorldEvent {
                 if (mobs.stream().noneMatch(Entity::isValid) && wavesDone[0] >= WAVES) {
                     cancel(); maelstrom.cancel();
                     Location drop = rift.clone().add(0, -5, 0);
-                    world.dropItemNaturally(drop, named(Material.ENDER_PEARL, "§5§lThánh Vật Hư Vô"));
-                    world.dropItemNaturally(drop, named(Material.EMERALD, "§d§lMảnh Cổng Không Gian"));
+                    world.dropItemNaturally(drop, createEventItem(Material.ENDER_PEARL, "§5§lThánh Vật Hư Vô", "§d§lSử Thi", "Vết Nứt Không Gian", "Vật thể kỳ lạ tỏa ra năng lượng tối từ chiều không gian khác."));
+                    world.dropItemNaturally(drop, createEventItem(Material.EMERALD, "§d§lMảnh Cổng Không Gian", "§e§lHiếm", "Vết Nứt Không Gian", "Một mảnh vỡ rớt lại sau khi vết nứt không gian khép lại."));
                     if (hasLootBonus()) {
-                        world.dropItemNaturally(drop, named(Material.OBSIDIAN, "§5§lTinh Chất Hư Vô", 5));
+                        world.dropItemNaturally(drop, createEventItem(Material.OBSIDIAN, "§5§lTinh Chất Hư Vô", "§6§lHuyền Thoại", "Vết Nứt Không Gian", "Cô đặc của bóng tối hư vô. Cực kỳ giá trị.", 5));
                         broadcast("§d🌀 §lPhần thưởng đặc biệt! §r§dTinh Chất Hư Vô đã rơi!");
                     }
                     broadcast("§a🌀 Cổng Không Gian đã đóng lại!");
