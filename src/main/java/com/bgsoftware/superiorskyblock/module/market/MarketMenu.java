@@ -135,7 +135,7 @@ public class MarketMenu implements Listener {
                     meta.setDisplayName("\u00a7a\u00a7l" + MarketModule.getVietnameseName(info.getMaterial()));
                     List<String> lore = new ArrayList<>();
                     lore.add("\u00a78\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584");
-                    lore.add("\u00a7eGi\u00e1 mua: \u00a7c$" + String.format("%.2f", info.getBuyPrice()));
+                    lore.add("\u00a7eGi\u00e1 mua: \u00a7c$" + String.format("%.2f", info.getCurrentBuyPrice()));
                     lore.add("");
                     lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 Xem t\u00f9y ch\u1ecdn Mua");
                     meta.setLore(lore);
@@ -156,7 +156,7 @@ public class MarketMenu implements Listener {
         inventory = Bukkit.createInventory(null, 45, "\u00a78\u00a7lMua: " + MarketModule.getVietnameseName(info.getMaterial()));
         fillBorders(inventory, 45);
 
-        inventory.setItem(13, getDisplayItem(info.getMaterial(), "\u00a7a\u00a7l" + MarketModule.getVietnameseName(info.getMaterial()), "\u00a7eGi\u00e1 g\u1ed1c: \u00a7c$" + info.getBuyPrice()));
+        inventory.setItem(13, getDisplayItem(info.getMaterial(), "\u00a7a\u00a7l" + MarketModule.getVietnameseName(info.getMaterial()), "\u00a7eGi\u00e1 g\u1ed1c: \u00a7c$" + info.getCurrentBuyPrice()));
         
         inventory.setItem(28, getBuyBtn(info, 1));
         inventory.setItem(30, getBuyBtn(info, 64));
@@ -389,7 +389,7 @@ public class MarketMenu implements Listener {
         if (meta != null) {
             meta.setDisplayName("\u00a7a\u00a7lMua x" + amount);
             List<String> lore = new ArrayList<>();
-            lore.add("\u00a77Gi\u00e1 ph\u1ea3i tr\u1ea3: \u00a7c$" + String.format("%.2f", info.getBuyPrice() * amount));
+            lore.add("\u00a77Gi\u00e1 ph\u1ea3i tr\u1ea3: \u00a7c$" + String.format("%.2f", info.getCurrentBuyPrice() * amount));
             lore.add("");
             lore.add("\u00a7a[\u25b6] Click \u0111\u1ec3 thanh to\u00e1n");
             meta.setLore(lore);
@@ -516,7 +516,7 @@ public class MarketMenu implements Listener {
 
     private void handleBuy(Player player, MarketModule.Configuration.ShopItemInfo info, int amount) {
         SuperiorPlayer sp = plugin.getPlayers().getSuperiorPlayer(player.getUniqueId());
-        double price = info.getBuyPrice() * amount;
+        double price = info.getCurrentBuyPrice() * amount;
         
         if (plugin.getProviders().getEconomyProvider().getBalance(sp).doubleValue() < price) {
             player.sendMessage("\u00a7cB\u1ea1n kh\u00f4ng \u0111\u1ee7 $" + String.format("%.2f", price) + " \u0111\u1ec3 mua!");
@@ -539,6 +539,8 @@ public class MarketMenu implements Listener {
         }
 
         plugin.getProviders().getEconomyProvider().withdrawMoney(sp, price);
+        info.addPoolSize(amount);
+        module.saveData();
         int remaining = amount;
         while (remaining > 0) {
             int current = Math.min(64, remaining);

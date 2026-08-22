@@ -48,7 +48,14 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
         }
         dataConfig = YamlConfiguration.loadConfiguration(dataFile);
 
-for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().entrySet()) {
+for (Map.Entry<String, Configuration.ShopItemInfo> entry : getConfiguration().getShopItems().entrySet()) {
+            int poolSize = dataConfig.getInt("shop_pool." + entry.getKey(), 0);
+            entry.getValue().setPoolSize(poolSize);
+        }
+        for (Map.Entry<String, Configuration.ShopItemInfo> entry : getConfiguration().getShopItems().entrySet()) {
+                dataConfig.set("shop_pool." + entry.getKey(), entry.getValue().getPoolSize());
+            }
+            for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().entrySet()) {
             int poolSize = dataConfig.getInt("pool." + entry.getKey(), 0);
             entry.getValue().setPoolSize(poolSize);
             java.util.List<Double> hist = dataConfig.getDoubleList("history." + entry.getKey());

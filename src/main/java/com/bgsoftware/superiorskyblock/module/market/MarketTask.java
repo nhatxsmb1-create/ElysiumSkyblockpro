@@ -20,6 +20,12 @@ public class MarketTask extends BukkitRunnable {
             info.addPriceHistory(info.getCurrentPrice());
             info.addPoolSize(-info.getRecoveryRate());
         }
+        
+        for (Map.Entry<String, MarketModule.Configuration.ShopItemInfo> entry : module.getConfiguration().getShopItems().entrySet()) {
+            MarketModule.Configuration.ShopItemInfo info = entry.getValue();
+            // Khôi phục giá (giảm 500 poolSize mỗi giờ, tương đương giảm 1% lạm phát)
+            info.addPoolSize(-500);
+        }
         module.saveData();
     }
 }
