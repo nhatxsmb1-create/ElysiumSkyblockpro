@@ -52,7 +52,8 @@ public class WorldEventsModule extends BuiltinModule<WorldEventsModule.Configura
     protected SuperiorCommand[] getSuperiorAdminCommands(SuperiorSkyblockPlugin plugin) {
         return new SuperiorCommand[]{
                 new CmdAdminTriggerEvent(this),
-                new CmdAdminSetInstability(this)
+                new CmdAdminSetInstability(this),
+                new com.bgsoftware.superiorskyblock.module.worldevents.commands.CmdAdminEventItems(this)
         };
     }
 
