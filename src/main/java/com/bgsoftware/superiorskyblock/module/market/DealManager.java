@@ -18,10 +18,12 @@ public class DealManager {
     
     private Map<UUID, Long> contributors = new HashMap<>();
     
-    public DealManager(MarketModule module) {
+    private final com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin plugin;
+    public DealManager(MarketModule module, com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin plugin) {
         this.module = module;
+        this.plugin = plugin;
 
-        Bukkit.getScheduler().runTaskTimer((org.bukkit.plugin.Plugin) module.getPlugin(), () -> {
+        Bukkit.getScheduler().runTaskTimer(this.plugin, () -> {
             if (active) {
                 Bukkit.getServer().broadcastMessage("\u00a7e\u00a7l\u272a TH\u01af\u01a0NG V\u1ee4 B\u1ea0C T\u1ef6 \u0111ang g\u1ecdi v\u1ed1n \u272a");
                 Bukkit.getServer().broadcastMessage("\u00a7fTi\u1ebfn \u0111\u1ed9 thu mua: \u00a7a" + currentAmount + " \u00a78/ \u00a7a" + targetAmount + " " + MarketModule.getVietnameseName(targetMaterial));

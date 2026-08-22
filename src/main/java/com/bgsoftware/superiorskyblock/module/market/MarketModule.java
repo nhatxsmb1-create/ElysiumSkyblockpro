@@ -21,7 +21,7 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
     private File dataFile;
     private YamlConfiguration dataConfig;
     private MarketTask marketTask;
-    private DealManager dealManager = new DealManager(this);
+    private DealManager dealManager;
 
     public DealManager getDealManager() { return dealManager; }
 
@@ -36,6 +36,7 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
 
     @Override
     protected void onEnable(SuperiorSkyblockPlugin plugin) {
+        this.dealManager = new DealManager(this, plugin);
         File marketFolder = new File(plugin.getDataFolder(), "modules/market");
         if (!marketFolder.exists()) {
             marketFolder.mkdirs();
@@ -133,6 +134,7 @@ for (Map.Entry<String, Configuration.ShopItemInfo> entry : getConfiguration().ge
             private final String category;
             private final String materialName;
             private final double buyPrice;
+            private int poolSize = 0;
 
             public ShopItemInfo(String category, String materialName, double buyPrice) {
                 this.category = category;
@@ -148,6 +150,14 @@ for (Map.Entry<String, Configuration.ShopItemInfo> entry : getConfiguration().ge
                 } catch (Exception ex) {
                     return Material.matchMaterial(materialName);
                 }
+            }
+            
+            public void setPoolSize(int size) { this.poolSize = Math.max(0, size); }
+            public int getPoolSize() { return poolSize; }
+            public void addPoolSize(int amount) { this.poolSize = Math.max(0, this.poolSize + amount); }
+            
+            public double getCurrentBuyPrice() {
+                return buyPrice * (1.0 + (poolSize / 1000.0) * 0.02);
             }
         }
 
