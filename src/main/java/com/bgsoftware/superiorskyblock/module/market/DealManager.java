@@ -130,7 +130,7 @@ public class DealManager {
             org.bukkit.entity.Player p = Bukkit.getPlayerExact(playerName);
             if (p != null) p.sendMessage(msg);
         } else if (finalCmd.startsWith("broadcast ")) {
-            Bukkit.broadcastMessage(finalCmd.substring(10).replace("&", "\u00a7"));
+            Bukkit.getServer().broadcastMessage(finalCmd.substring(10).replace("&", "\u00a7"));
         } else {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), finalCmd);
         }
