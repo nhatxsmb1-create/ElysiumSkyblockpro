@@ -1,5 +1,6 @@
 package com.bgsoftware.superiorskyblock.module.market;
 
+import com.bgsoftware.superiorskyblock.api.SuperiorSkyblock;
 import com.bgsoftware.superiorskyblock.SuperiorSkyblockPlugin;
 import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import com.bgsoftware.superiorskyblock.module.BuiltinModules;
@@ -26,14 +27,14 @@ import java.util.UUID;
 public class DealMenu implements Listener {
 
     private final MarketModule module;
-    private final SuperiorSkyblockPlugin plugin;
+    private final SuperiorSkyblock plugin;
     private Inventory inventory;
     private Player viewer;
 
-    public DealMenu(MarketModule module, SuperiorSkyblockPlugin plugin) {
+    public DealMenu(MarketModule module, SuperiorSkyblock plugin) {
         this.module = module;
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        Bukkit.getPluginManager().registerEvents(this, (SuperiorSkyblockPlugin) plugin);
     }
 
     public void open(Player player) {
@@ -149,8 +150,7 @@ public class DealMenu implements Listener {
             if (index < top.size()) {
                 OfflinePlayer p = Bukkit.getOfflinePlayer(top.get(index).getKey());
                 meta.setDisplayName(title + "\u00a78 - \u00a7a" + p.getName());
-                try { ((SkullMeta) meta).setOwningPlayer(p); } 
-                catch (Exception e) { try { ((SkullMeta) meta).setOwner(p.getName()); } catch (Exception ex) {} }
+                ((SkullMeta) meta).setOwner(p.getName());
                 List<String> lore = new ArrayList<>();
                 lore.add("\u00a77\u0110\u00e3 n\u1ed9p: \u00a7f" + top.get(index).getValue());
                 meta.setLore(lore);
@@ -216,7 +216,7 @@ public class DealMenu implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         if (e.getInventory().equals(inventory)) {
-            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            Bukkit.getScheduler().runTaskLater((SuperiorSkyblockPlugin) plugin, () -> {
                 if (!e.getPlayer().getOpenInventory().getTopInventory().equals(inventory)) {
                     HandlerList.unregisterAll(this);
                 }

@@ -1,12 +1,13 @@
 package com.bgsoftware.superiorskyblock.module.market;
 
+import com.bgsoftware.superiorskyblock.api.SuperiorSkyblock;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
-import com.bgsoftware.superiorskyblock.api.wrappers.SuperiorPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class CmdThuongVu implements SuperiorCommand {
 
@@ -27,18 +28,18 @@ public class CmdThuongVu implements SuperiorCommand {
     }
 
     @Override
-    public String getUsage(CommandSender sender) {
-        return "/is thuongvu";
+    public String getUsage(Locale locale) {
+        return "thuongvu";
     }
 
     @Override
-    public String getDescription(CommandSender sender) {
+    public String getDescription(Locale locale) {
         return "M\u1edf giao di\u1ec7n Th\u01b0\u01a1ng V\u1ee5 B\u1ea1c T\u1ef7";
     }
 
     @Override
     public int getMinArgs() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -57,14 +58,15 @@ public class CmdThuongVu implements SuperiorCommand {
     }
 
     @Override
-    public void execute(SuperiorPlayer superiorPlayer, String[] args) {
-        Player player = superiorPlayer.asPlayer();
-        DealMenu menu = new DealMenu(module, module.getPlugin());
-        menu.open(player);
+    public void execute(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
+        if (sender instanceof Player) {
+            DealMenu menu = new DealMenu(module, plugin);
+            menu.open((Player) sender);
+        }
     }
 
     @Override
-    public List<String> tabComplete(SuperiorPlayer superiorPlayer, String[] args) {
+    public List<String> tabComplete(SuperiorSkyblock plugin, CommandSender sender, String[] args) {
         return Collections.emptyList();
     }
 }
