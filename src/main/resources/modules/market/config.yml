@@ -1264,3 +1264,35 @@ buy-shop:
   ALLAY_SPAWN_EGG:
     buy-price: 15000.0
     category: RARES
+
+deal-settings:
+  chunk-size: 100
+  chunk-rewards:
+    - "eco give %player% 500"
+    - "msg %player% &a&l+ $500 &7(Thưởng đóng góp Thương Vụ)"
+  top1-rewards:
+    - "eco give %player% 500000"
+    - "broadcast &b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"
+    - "broadcast &6&l✪ THƯƠNG VỤ BẠC TỶ KẾT THÚC ✪"
+    - "broadcast &eĐại gia &a%player% &eđã xuất sắc giành TOP 1"
+    - "broadcast &evà nhận được &a$500,000&e từ Tập đoàn!"
+    - "broadcast &b▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"
+  top2-rewards:
+    - "eco give %player% 250000"
+    - "msg %player% &eBạn đạt TOP 2 Thương Vụ và nhận &a$250,000"
+  top3-rewards:
+    - "eco give %player% 100000"
+    - "msg %player% &eBạn đạt TOP 3 Thương Vụ và nhận &a$100,000"
+  possible-deals:
+    - material: WHEAT
+      target: 50000
+    - material: OAK_LOG
+      target: 25000
+    - material: COBBLESTONE
+      target: 100000
+    - material: IRON_INGOT
+      target: 15000
+    - material: CARROT
+      target: 50000
+    - material: STONE
+      target: 50000

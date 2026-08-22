@@ -21,6 +21,9 @@ public class MarketModule extends BuiltinModule<MarketModule.Configuration> {
     private File dataFile;
     private YamlConfiguration dataConfig;
     private MarketTask marketTask;
+    private DealManager dealManager = new DealManager(this);
+
+    public DealManager getDealManager() { return dealManager; }
 
     public MarketModule() {
         super("market");
@@ -68,6 +71,7 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
     }
 
     public void saveData() {
+        if (dealManager != null) dealManager.save(dataConfig);
 
         if (dataConfig != null && dataFile != null) {
             for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().entrySet()) {
@@ -83,6 +87,7 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
 
     @Override
     protected void loadData(SuperiorSkyblockPlugin plugin) {
+        if (dealManager != null) dealManager.load(dataConfig);
     }
 
 @Override
@@ -92,7 +97,7 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
 
     @Override
     protected SuperiorCommand[] getSuperiorCommands(SuperiorSkyblockPlugin plugin) {
-        return new SuperiorCommand[]{new CmdMarket(this)};
+        return new SuperiorCommand[]{new CmdMarket(this), new CmdThuongVu(this)};
     }
 
     @Override
@@ -106,6 +111,8 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
     }
 
     public static class Configuration implements IModuleConfiguration {
+        private com.bgsoftware.common.config.CommentedConfiguration config;
+        public com.bgsoftware.common.config.CommentedConfiguration getConfig() { return config; }
         @Override
         public boolean isEnabled() { return true; }
         private final Map<String, MarketItemInfo> items = new LinkedHashMap<>();
@@ -139,6 +146,7 @@ for (Map.Entry<String, MarketItemInfo> entry : getConfiguration().getItems().ent
 
 
         public Configuration(CommentedConfiguration config) {
+            this.config = config;
             
             if (config.contains("buy-shop")) {
                 org.bukkit.configuration.ConfigurationSection shopSection = config.getConfigurationSection("buy-shop");
